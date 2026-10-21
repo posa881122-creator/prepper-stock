@@ -107,6 +107,12 @@ p { margin: 0; }
 .f-text li { position: relative; padding-left: 32px; }
 .f-text li::before { content: ""; position: absolute; left: 0; top: .32em; width: 18px; height: 18px; border-radius: 5px; background: var(--moss) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23F1E3A4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
 
+.langs { padding: 8px 0 88px; }
+.langs .intro { margin-top: 14px; color: var(--mute); max-width: 34em; }
+.lang-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; list-style: none; }
+.lang-list li { padding: 10px 18px; border-radius: 999px; background: #fff; border: 1.5px solid #C9D3C4; font: 500 18px/1.2 var(--body); color: var(--forest); }
+.langs h2 { color: var(--forest); }
+
 /* privat */
 .private { background: var(--forest); color: var(--straw); padding: 80px 0; }
 .private-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; }
@@ -279,6 +285,18 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   </div>
 </section>
 
+<section class="langs" aria-labelledby="langs-h">
+  <div class="wrap">
+    <h2 id="langs-h" data-t="langs_h">Finns på 11 språk</h2>
+    <p class="intro" data-t="langs_p">Välj språk i appens inställningar. Hela appen byter språk, även hjälptexterna.</p>
+    <ul class="lang-list">
+      <li lang="sv">Svenska</li><li lang="en">English</li><li lang="de">Deutsch</li><li lang="es">Español</li>
+      <li lang="fr">Français</li><li lang="no">Norsk</li><li lang="da">Dansk</li><li lang="fi">Suomi</li>
+      <li lang="ja">日本語</li><li lang="zh">中文</li><li lang="ar" dir="rtl">العربية</li>
+    </ul>
+  </div>
+</section>
+
 <section class="private" aria-labelledby="priv-h">
   <div class="wrap private-grid">
     <h2 id="priv-h" data-t="priv_h">Ditt lager är din sak</h2>
@@ -403,6 +421,7 @@ var T = {
     f4_h: "Krisberedskap, även när nätet är nere",
     f4_p: "Spara myndigheternas råd, viktiga dokument och kontakter i telefonen. Det du behöver finns kvar även utan mobilnät.",
     f4_1: "Hitta ditt lands myndighet för krisberedskap", f4_2: "Personer, samlingsplatser och dokument",
+    langs_h: "Finns på 11 språk", langs_p: "Välj språk i appens inställningar. Hela appen byter språk, även hjälptexterna.",
     priv_h: "Ditt lager är din sak",
     p1_b: "Allt stannar i telefonen", p1_s: "Inget skickas till någon server. Du bestämmer själv över dina säkerhetskopior.",
     p2_b: "Inget konto, ingen reklam", p2_s: "Ingen inloggning, ingen spårning och inga annonser.",
@@ -454,6 +473,7 @@ var T = {
     f4_h: "Crisis preparedness, even when the network is down",
     f4_p: "Keep official advice, important documents and contacts on your phone. What you need is still there without mobile coverage.",
     f4_1: "Find your country's authority for preparedness", f4_2: "People, meeting points and documents",
+    langs_h: "Available in 11 languages", langs_p: "Choose the language in the app settings. The whole app switches, including the help texts.",
     priv_h: "Your stock is your business",
     p1_b: "Everything stays on your phone", p1_s: "Nothing is sent to any server. You decide what happens to your backups.",
     p2_b: "No account, no ads", p2_s: "No sign in, no tracking and no adverts.",
