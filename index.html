@@ -118,6 +118,12 @@ p { margin: 0; }
 .private-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; }
 .private h2 { color: var(--brass); }
 .facts { display: grid; gap: 0; }
+.priv-lead { margin-top: 18px; color: var(--lichen); font-size: 19px; max-width: 30em; }
+.private-grid { align-items: start; }
+@media (min-width: 861px) { .private-grid > div:first-child { position: sticky; top: 28px; } }
+.honest { margin-top: 40px; padding: 24px 26px; border: 1.5px solid rgba(241, 227, 164, .3); border-radius: 16px; max-width: 760px; }
+.honest b { display: block; font: 700 24px/1.15 var(--display); color: var(--brass); }
+.honest p { margin-top: 8px; color: var(--lichen); font-size: 17px; }
 .fact { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: start; padding: 20px 0; border-bottom: 1.5px solid rgba(241, 227, 164, .18); }
 .fact:last-child { border-bottom: 0; }
 .fact svg { width: 40px; height: 40px; color: var(--brass); }
@@ -297,22 +303,43 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   </div>
 </section>
 
-<section class="private" aria-labelledby="priv-h">
-  <div class="wrap private-grid">
-    <h2 id="priv-h" data-t="priv_h">Ditt lager är din sak</h2>
-    <div class="facts">
+<section class="private" id="offline" aria-labelledby="priv-h">
+  <div class="wrap">
+    <div class="private-grid">
+      <div>
+        <h2 id="priv-h" data-t="priv_h">Helt offline. Ditt lager stannar hos dig.</h2>
+        <p class="priv-lead" data-t="priv_lead"></p>
+      </div>
+      <div class="facts">
       <div class="fact">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
-        <div><b data-t="p1_b">Allt stannar i telefonen</b><span data-t="p1_s">Inget skickas till någon server. Du bestämmer själv över dina säkerhetskopior.</span></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="6" rx="1.5"/><rect x="3.5" y="14" width="17" height="6" rx="1.5"/><path d="M3 3l18 18"/></svg>
+        <div><b data-t="o1_b"></b><span data-t="o1_s"></span></div>
       </div>
       <div class="fact">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><path d="M3 3l18 18"/></svg>
-        <div><b data-t="p2_b">Inget konto, ingen reklam</b><span data-t="p2_s">Ingen inloggning, ingen spårning och inga annonser.</span></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4 18-7z"/><path d="M3 21L21 3" opacity=".0"/></svg>
+        <div><b data-t="o2_b"></b><span data-t="o2_s"></span></div>
       </div>
       <div class="fact">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
-        <div><b data-t="p3_b">PIN-lås och utan nät</b><span data-t="p3_s">Lås appen med PIN-kod. Allt fungerar i flygläge, i källaren och i skogen.</span></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 21l1.5-1v-5l8 2v-2l-8-5V4.5a1.5 1.5 0 0 0-3 0V10l-8 5v2l8-2v5l1.5 1z"/></svg>
+        <div><b data-t="o3_b"></b><span data-t="o3_s"></span></div>
       </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><rect x="9" y="8" width="6" height="5" rx="1"/><path d="M10 8V6.8a2 2 0 0 1 4 0V8"/></svg>
+        <div><b data-t="o4_b"></b><span data-t="o4_s"></span></div>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><path d="M12 15v2"/></svg>
+        <div><b data-t="o5_b"></b><span data-t="o5_s"></span></div>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9.5 14.5h5"/></svg>
+        <div><b data-t="o6_b"></b><span data-t="o6_s"></span></div>
+      </div>
+      </div>
+    </div>
+    <div class="honest">
+      <b data-t="hon_b"></b>
+      <p data-t="hon_p"></p>
     </div>
   </div>
 </section>
@@ -422,10 +449,22 @@ var T = {
     f4_p: "Spara myndigheternas råd, viktiga dokument och kontakter i telefonen. Det du behöver finns kvar även utan mobilnät.",
     f4_1: "Hitta ditt lands myndighet för krisberedskap", f4_2: "Personer, samlingsplatser och dokument",
     langs_h: "Finns på 11 språk", langs_p: "Välj språk i appens inställningar. Hela appen byter språk, även hjälptexterna.",
-    priv_h: "Ditt lager är din sak",
-    p1_b: "Allt stannar i telefonen", p1_s: "Inget skickas till någon server. Du bestämmer själv över dina säkerhetskopior.",
-    p2_b: "Inget konto, ingen reklam", p2_s: "Ingen inloggning, ingen spårning och inga annonser.",
-    p3_b: "PIN-lås och utan nät", p3_s: "Lås appen med PIN-kod. Allt fungerar i flygläge, i källaren och i skogen.",
+    priv_h: "Helt offline. Ditt lager stannar hos dig.",
+    priv_lead: "Ditt förråd, dina vapen, dina samlingsplatser och din familjs uppgifter är ingen annans sak. Därför finns allt bara i din telefon och ingen annanstans.",
+    o1_b: "Ingen server, inget konto",
+    o1_s: "Det finns ingen databas hos oss och ingen inloggning. Vi kan inte se vad du har, även om någon skulle fråga.",
+    o2_b: "Appen skickar ingenting",
+    o2_s: "Ingen statistik, ingen spårning, ingen reklam och ingen plats. Det som skrivs in lämnar aldrig telefonen av sig själv.",
+    o3_b: "Fungerar i flygläge",
+    o3_s: "Utan mobilnät, utan wifi, när nätet ligger nere. Allt du lagt in finns kvar och går att använda.",
+    o4_b: "Inlåst i telefonen",
+    o4_s: "Uppgifterna ligger i appens egen avskilda lagring. Andra appar kommer inte åt dem, och på Android följer de inte med i Googles automatiska molnbackup.",
+    o5_b: "PIN-lås",
+    o5_s: "Lås hela appen med en PIN-kod, eller bara vissa flikar, till exempel jakt eller personer.",
+    o6_b: "Säkerhetskopian styr du själv",
+    o6_s: "Du gör en fil och bestämmer själv var den ska ligga, till exempel på ett USB-minne i kassaskåpet. Med Pro kan den låsas med lösenord.",
+    hon_b: "Det enda som använder nätet",
+    hon_p: "Köp av Pro sköts av Google Play eller App Store, och länkarna till myndigheternas sidor öppnas i webbläsaren när du själv trycker på dem. Ingenting av ditt lager följer med.",
     plans_h: "Gratis att börja, Pro när lagret växer",
     plans_intro: "Gratisversionen räcker för ett mindre lager. Pro låser upp allt med ett engångsköp, utan prenumeration.",
     free_h: "Gratis", free_p: "0 kr",
@@ -474,10 +513,22 @@ var T = {
     f4_p: "Keep official advice, important documents and contacts on your phone. What you need is still there without mobile coverage.",
     f4_1: "Find your country's authority for preparedness", f4_2: "People, meeting points and documents",
     langs_h: "Available in 11 languages", langs_p: "Choose the language in the app settings. The whole app switches, including the help texts.",
-    priv_h: "Your stock is your business",
-    p1_b: "Everything stays on your phone", p1_s: "Nothing is sent to any server. You decide what happens to your backups.",
-    p2_b: "No account, no ads", p2_s: "No sign in, no tracking and no adverts.",
-    p3_b: "PIN lock and fully offline", p3_s: "Lock the app with a PIN. Everything works in flight mode, in the basement and in the woods.",
+    priv_h: "Fully offline. Your stock stays with you.",
+    priv_lead: "Your supplies, your firearms, your meeting points and your family's details are nobody else's business. That is why everything lives on your phone and nowhere else.",
+    o1_b: "No server, no account",
+    o1_s: "There is no database on our side and no sign in. We can't see what you have, even if someone asked.",
+    o2_b: "The app sends nothing",
+    o2_s: "No statistics, no tracking, no ads and no location. What you enter never leaves the phone on its own.",
+    o3_b: "Works in flight mode",
+    o3_s: "No mobile network, no wifi, the grid is down. Everything you added is still there and usable.",
+    o4_b: "Locked inside the phone",
+    o4_s: "Your data sits in the app's own separate storage. Other apps can't reach it, and on Android it is not included in Google's automatic cloud backup.",
+    o5_b: "PIN lock",
+    o5_s: "Lock the whole app with a PIN, or only certain tabs, for example hunting or people.",
+    o6_b: "You control the backup",
+    o6_s: "You make a file and decide where it goes, for example a USB stick in the safe. With Pro it can be locked with a password.",
+    hon_b: "The only things that use the internet",
+    hon_p: "Buying Pro is handled by Google Play or the App Store, and links to official websites open in your browser when you tap them. Nothing from your stock goes with them.",
     plans_h: "Free to start, Pro when your stock grows",
     plans_intro: "The free version is enough for a smaller stock. Pro unlocks everything with a one time purchase, no subscription.",
     free_h: "Free", free_p: "No cost",
