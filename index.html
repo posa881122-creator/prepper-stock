@@ -193,7 +193,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
       <h1 data-t="h1">Hela lagret i fickan</h1>
       <p class="lead" data-t="lead">Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.</p>
       <div class="stores" data-stores></div>
-      <p class="note" data-t="note">Appen testas just nu och släpps snart. Gratis att ladda ner.</p>
+      <p class="note" data-t="note">Gratis att ladda ner för Android och iPhone. Pro är ett engångsköp på 39 kr.</p>
     </div>
     <div class="hero-phone"><div class="phone"><img data-img="1-start" alt="" data-alt="alt1"></div></div>
   </div>
@@ -367,7 +367,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   <div class="wrap">
     <img class="icon" src="img/ikon-192.png" alt="">
     <h2 id="dl-h" data-t="dl_h">Ladda ner Prepper Stock</h2>
-    <p data-t="dl_p">Gratis för Android och snart för iPhone. Börja med det du redan har hemma.</p>
+    <p data-t="dl_p">Finns nu gratis för Android och iPhone. Börja med det du redan har hemma.</p>
     <div class="stores" data-stores></div>
   </div>
 </section>
@@ -384,11 +384,9 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
 </footer>
 
 <script>
-/* ===== Ändra här när appen finns i butikerna =====
-   PLAY_LIVE: sätt till true när appen är släppt för alla i Google Play.
-   APPSTORE_URL: klistra in länken till appen i App Store när den är godkänd. */
+/* ===== Länkar till butikerna =====
+   Klistra in länken till appen i App Store när den är godkänd. */
 var PLAY_URL = "https://play.google.com/store/apps/details?id=se.prepping.lager";
-var PLAY_LIVE = false;
 var APPSTORE_URL = "";
 
 var T = {
@@ -397,7 +395,7 @@ var T = {
     title: "Prepper Stock: hela beredskapslagret i fickan",
     h1: "Hela lagret i fickan",
     lead: "Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.",
-    note: "Appen testas just nu och släpps snart. Gratis att ladda ner.",
+    note: "Gratis att ladda ner för Android och iPhone. Pro är ett engångsköp på 39 kr.",
     note_live: "Gratis att ladda ner. Pro är ett engångsköp på 39 kr.",
     play_soon_s: "Släpps snart på", play_s: "Ladda ner på",
     ios_soon_s: "Snart för iPhone i", ios_s: "Ladda ner i",
@@ -435,7 +433,7 @@ var T = {
     share_h: "Bilder att dela",
     share_intro: "Känner du någon som borde ha koll på sitt lager? Tryck på en bild för att öppna den i full storlek och spara den.",
     dl_h: "Ladda ner Prepper Stock",
-    dl_p: "Gratis för Android och snart för iPhone. Börja med det du redan har hemma.",
+    dl_p: "Finns nu gratis för Android och iPhone. Börja med det du redan har hemma.",
     dl_p_both: "Gratis för Android och iPhone. Börja med det du redan har hemma.",
     privacy: "Integritetspolicy", contact: "Kontakt: posa881122@gmail.com",
     alt1: "Startsidan i appen med hur länge lagret räcker",
@@ -449,7 +447,7 @@ var T = {
     title: "Prepper Stock: your whole emergency stock in your pocket",
     h1: "Your whole stock in your pocket",
     lead: "Keep track of food, water, bags and important papers. See what expires soon and how long your stock lasts for your household. Everything works offline.",
-    note: "The app is being tested right now and will be released soon. Free to download.",
+    note: "Free to download for Android and iPhone. Pro is a one time purchase.",
     note_live: "Free to download. Pro is a one time purchase.",
     play_soon_s: "Coming soon to", play_s: "Get it on",
     ios_soon_s: "Coming soon to the", ios_s: "Download on the",
@@ -487,7 +485,7 @@ var T = {
     share_h: "Pictures to share",
     share_intro: "Know someone who should keep track of their stock? Tap a picture to open it full size and save it.",
     dl_h: "Download Prepper Stock",
-    dl_p: "Free for Android and coming soon for iPhone. Start with what you already have at home.",
+    dl_p: "Available now, free for Android and iPhone. Start with what you already have at home.",
     dl_p_both: "Free for Android and iPhone. Start with what you already have at home.",
     privacy: "Privacy policy", contact: "Contact: posa881122@gmail.com",
     alt1: "The start screen showing how long the stock lasts",
@@ -518,11 +516,9 @@ function render() {
     a.href = "promo/" + lang + "-reklam-" + n + ".jpg";
     var im = a.querySelector("img"); im.src = "promo/" + lang + "-reklam-" + n + "-liten.webp"; im.alt = t.promo + " " + n;
   });
-  var html = store(PLAY_URL, PLAY_LIVE, ICON_PLAY, t.play_soon_s, t.play_s, "Google Play") +
-             store(APPSTORE_URL, !!APPSTORE_URL, ICON_APPLE, t.ios_soon_s, t.ios_s, "App Store");
+  var html = store(PLAY_URL, true, ICON_PLAY, "", t.play_s, "Google Play") +
+             store(APPSTORE_URL || "#ladda-ner", true, ICON_APPLE, "", t.ios_s, "App Store");
   document.querySelectorAll("[data-stores]").forEach(function (el) { el.innerHTML = html; });
-  var note = document.querySelector('[data-t="note"]'); if (note) note.textContent = PLAY_LIVE ? t.note_live : t.note;
-  var dl = document.querySelector('[data-t="dl_p"]'); if (dl) dl.textContent = APPSTORE_URL ? t.dl_p_both : t.dl_p;
   document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
   calc();
 }
