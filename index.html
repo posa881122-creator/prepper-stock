@@ -1,26 +1,535 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prepper Stock</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prepper Stock: hela beredskapslagret i fickan</title>
+<meta name="description" content="Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker. Fungerar helt utan nät.">
+<meta name="theme-color" content="#1E3326">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prepper Stock: hela beredskapslagret i fickan">
+<meta property="og:description" content="Mat, vatten, väskor och viktiga papper i en app. Se vad som går ut och hur länge lagret räcker. Fungerar utan nät.">
+<meta property="og:image" content="https://posa881122-creator.github.io/prepper-stock/img/funktionsgrafik.jpg">
+<meta property="og:url" content="https://posa881122-creator.github.io/prepper-stock/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/ikon-192.png">
+<link rel="apple-touch-icon" href="img/ikon-192.png">
 <style>
-  :root { --bg:#F4F5F0; --ink:#1B261E; --acc:#34513B; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#16201A; --ink:#EEF1EA; --acc:#D4A537; } }
-  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 Georgia, "Times New Roman", serif; }
-  main { max-width:640px; margin:0 auto; padding:48px 16px; text-align:center; }
-  img { width:120px; height:120px; border-radius:28px; }
-  h1 { color:var(--acc); margin:16px 0 4px; }
-  a { color:var(--acc); }
+@font-face { font-family: "Barlow Condensed"; src: url(fonts/BarlowCondensed-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Barlow Condensed"; src: url(fonts/BarlowCondensed-Bold.woff) format("woff"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(fonts/Barlow-Regular.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(fonts/Barlow-Medium.woff) format("woff"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(fonts/Barlow-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+
+:root {
+  --forest: #1E3326;   /* granskog, mörka ytor */
+  --moss: #34513B;     /* mossa, kanter och knappar */
+  --brass: #D4A537;    /* mässing, rubriker och siffror */
+  --straw: #F1E3A4;    /* halm, text på mörkt */
+  --lichen: #E5EADF;   /* lav, ljusa ytor */
+  --coal: #142019;     /* kol, text på ljust */
+  --mute: #4D5F51;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "Barlow", system-ui, sans-serif;
+  --wrap: 1120px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--lichen); color: var(--coal); font: 400 18px/1.6 var(--body); }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; margin: 0; letter-spacing: -.2px; }
+h2 { font-size: clamp(36px, 5.2vw, 58px); }
+h3 { font-size: clamp(28px, 3.4vw, 38px); }
+p { margin: 0; }
+
+/* sidhuvud */
+.top { background: var(--forest); color: var(--straw); }
+.bar { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; padding-bottom: 18px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font: 700 26px/1 var(--display); color: var(--straw); }
+.brand img { width: 40px; height: 40px; border-radius: 10px; }
+.lang { display: flex; border: 1.5px solid var(--moss); border-radius: 999px; overflow: hidden; }
+.lang button { appearance: none; border: 0; background: transparent; color: var(--straw); font: 500 15px/1 var(--body); padding: 9px 14px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--moss); }
+
+/* hjälte */
+.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; padding-top: 40px; }
+.hero-text { padding-bottom: 96px; }
+.hero h1 { font-size: clamp(54px, 8vw, 104px); color: var(--brass); max-width: 12ch; }
+.hero .lead { font-size: clamp(19px, 2vw, 22px); line-height: 1.55; color: var(--lichen); margin-top: 24px; max-width: 34em; }
+.stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.store { display: inline-flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 20px 10px 16px; border-radius: 14px; text-decoration: none; background: var(--straw); color: var(--forest); font: 600 17px/1.15 var(--body); border: 2px solid var(--straw); }
+.store small { display: block; font: 500 13px/1.2 var(--body); opacity: .75; }
+.store svg { width: 28px; height: 28px; flex: none; }
+.store.soon { background: transparent; color: var(--straw); border-color: var(--moss); cursor: default; }
+.note { margin-top: 14px; font-size: 15px; color: #B9C6B6; }
+.hero-phone { align-self: end; justify-self: center; width: min(360px, 100%); }
+
+/* telefonram */
+.phone { background: #0E1711; border-radius: 44px; padding: 11px; box-shadow: 0 0 0 2px #3F5E47, 0 24px 60px rgba(8, 15, 10, .35); }
+.phone img { border-radius: 34px; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; object-position: top; background: #1b2a20; }
+.hero-phone .phone { border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-bottom: 0; }
+.hero-phone .phone img { border-bottom-left-radius: 0; border-bottom-right-radius: 0; aspect-ratio: 9 / 13; }
+
+/* räknaren */
+.calc { background: var(--moss); color: var(--straw); padding: 72px 0 80px; }
+.calc-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+.calc h2 { color: var(--straw); }
+.calc .intro { margin-top: 16px; color: var(--lichen); max-width: 30em; }
+.controls { display: grid; gap: 22px; margin-top: 30px; }
+.control label, .control .lbl { display: block; font: 600 16px/1.2 var(--body); margin-bottom: 10px; color: var(--lichen); }
+.stepper { display: inline-flex; align-items: center; border: 2px solid var(--straw); border-radius: 14px; overflow: hidden; }
+.stepper button { appearance: none; border: 0; background: transparent; color: var(--straw); width: 54px; height: 54px; font: 600 28px/1 var(--body); cursor: pointer; }
+.stepper button:active { background: rgba(241, 227, 164, .15); }
+.stepper output { min-width: 64px; text-align: center; font: 700 34px/1 var(--display); }
+.seg { display: inline-flex; border: 2px solid var(--straw); border-radius: 14px; overflow: hidden; }
+.seg button { appearance: none; border: 0; background: transparent; color: var(--straw); padding: 0 18px; height: 50px; font: 600 17px/1 var(--body); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--straw); color: var(--forest); }
+.results { display: grid; gap: 4px; }
+.res { display: grid; grid-template-columns: auto 1fr; column-gap: 22px; align-items: baseline; padding: 18px 0; border-bottom: 1.5px solid rgba(241, 227, 164, .25); }
+.res:last-of-type { border-bottom: 0; }
+.res .num { font: 700 clamp(64px, 9vw, 112px)/.9 var(--display); color: var(--brass); font-variant-numeric: tabular-nums; min-width: 3.2ch; }
+.res .what { font: 600 22px/1.25 var(--body); color: var(--straw); }
+.res .what span { display: block; font: 400 16px/1.4 var(--body); color: var(--lichen); margin-top: 4px; }
+.fine { font-size: 15px; color: #C9D3C4; margin-top: 18px; max-width: 40em; }
+
+/* funktioner */
+.features { padding: 96px 0 40px; }
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 40px 0; }
+.feature:nth-child(even) .f-media { order: 2; }
+.f-media { justify-self: center; width: min(300px, 100%); }
+.f-text h3 { color: var(--forest); }
+.f-text p { margin-top: 16px; color: var(--mute); max-width: 32em; }
+.f-text ul { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.f-text li { position: relative; padding-left: 32px; }
+.f-text li::before { content: ""; position: absolute; left: 0; top: .32em; width: 18px; height: 18px; border-radius: 5px; background: var(--moss) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23F1E3A4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
+
+/* privat */
+.private { background: var(--forest); color: var(--straw); padding: 80px 0; }
+.private-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; }
+.private h2 { color: var(--brass); }
+.facts { display: grid; gap: 0; }
+.fact { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: start; padding: 20px 0; border-bottom: 1.5px solid rgba(241, 227, 164, .18); }
+.fact:last-child { border-bottom: 0; }
+.fact svg { width: 40px; height: 40px; color: var(--brass); }
+.fact b { display: block; font: 700 26px/1.1 var(--display); color: var(--straw); }
+.fact span { display: block; margin-top: 4px; color: var(--lichen); font-size: 17px; }
+
+/* gratis och pro */
+.plans { padding: 96px 0; }
+.plans .intro { margin-top: 14px; color: var(--mute); max-width: 36em; }
+.plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 40px; border: 2px solid var(--forest); border-radius: 20px; overflow: hidden; }
+.plan { padding: 32px 30px 36px; }
+.plan + .plan { background: var(--forest); color: var(--straw); }
+.plan h3 { color: var(--forest); }
+.plan + .plan h3 { color: var(--brass); }
+.price { margin-top: 6px; font: 600 18px/1.3 var(--body); }
+.plan ul { margin: 22px 0 0; padding: 0 0 0 20px; display: grid; gap: 8px; }
+.plan li::marker { color: var(--moss); }
+.plan + .plan li::marker { color: var(--brass); }
+
+/* bilder att dela */
+.share { background: #D5DDCF; padding: 88px 0; }
+.share .intro { margin-top: 14px; color: var(--mute); max-width: 36em; }
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
+.gallery a { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 28px rgba(20, 32, 25, .18); }
+.gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.wide { margin-top: 18px; border-radius: 16px; overflow: hidden; display: block; }
+.wide img { width: 100%; height: auto; }
+
+/* ladda ner */
+.download { background: var(--forest); color: var(--straw); padding: 88px 0; text-align: center; }
+.download img.icon { width: 96px; height: 96px; border-radius: 22px; margin: 0 auto 22px; }
+.download h2 { color: var(--brass); }
+.download p { margin: 14px auto 0; color: var(--lichen); max-width: 32em; }
+.download .stores { justify-content: center; }
+
+footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 16px; }
+.foot { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; align-items: center; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.foot a { color: var(--straw); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 8px; padding-top: 18px; }
+  .hero-text { padding-bottom: 32px; }
+  .hero-phone { width: min(300px, 82%); }
+  .calc-grid, .private-grid { grid-template-columns: 1fr; gap: 28px; }
+  .feature { grid-template-columns: 1fr; gap: 28px; padding: 28px 0; }
+  .feature:nth-child(even) .f-media { order: 0; }
+  .f-media { width: min(260px, 76%); }
+  .plan-grid { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .features, .plans { padding-top: 64px; }
+}
+@media (max-width: 420px) {
+  .seg button { padding: 0 13px; }
+  .store { width: 100%; }
+  .brand span { display: none; }
+}
 </style>
 </head>
 <body>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#"><img src="img/ikon-192.png" alt=""><span data-t="appname">Preppinglager</span></a>
+    <div class="lang" role="group" aria-label="Språk / Language">
+      <button type="button" data-lang="sv" aria-pressed="true">Svenska</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+
+  <div class="wrap hero">
+    <div class="hero-text">
+      <h1 data-t="h1">Hela lagret i fickan</h1>
+      <p class="lead" data-t="lead">Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.</p>
+      <div class="stores" data-stores></div>
+      <p class="note" data-t="note">Appen testas just nu och släpps snart. Gratis att ladda ner.</p>
+    </div>
+    <div class="hero-phone"><div class="phone"><img data-img="1-start" alt="" data-alt="alt1"></div></div>
+  </div>
+</header>
+
 <main>
-<img src="icon.png" alt="">
-<h1>Prepper Stock</h1>
-<p>Keep track of your emergency supplies, bags and best-before dates – all offline.<br><span lang="sv">Håll koll på ditt beredskapslager – helt utan nät.</span></p>
-<p><a href="privacy/">Privacy policy / Integritetspolicy</a></p>
-<p>Contact: <a href="mailto:posa881122@gmail.com">posa881122@gmail.com</a></p>
+<section class="calc" aria-labelledby="calc-h">
+  <div class="wrap calc-grid">
+    <div>
+      <h2 id="calc-h" data-t="calc_h">Vad behöver ni hemma?</h2>
+      <p class="intro" data-t="calc_intro">Myndigheterna rekommenderar att hushållet klarar sig själv i minst en vecka. Räkna ut ungefär hur mycket vatten och mat det betyder för er.</p>
+      <div class="controls">
+        <div class="control">
+          <span class="lbl" id="ppl-l" data-t="people">Antal personer</span>
+          <div class="stepper" role="group" aria-labelledby="ppl-l">
+            <button type="button" data-step="-1" aria-label="Färre" data-al="fewer">−</button>
+            <output id="ppl" aria-live="polite">2</output>
+            <button type="button" data-step="1" aria-label="Fler" data-al="more">+</button>
+          </div>
+        </div>
+        <div class="control">
+          <span class="lbl" id="days-l" data-t="days">Antal dygn</span>
+          <div class="seg" role="group" aria-labelledby="days-l">
+            <button type="button" data-days="3" aria-pressed="false">3</button>
+            <button type="button" data-days="7" aria-pressed="true">7</button>
+            <button type="button" data-days="14" aria-pressed="false">14</button>
+            <button type="button" data-days="30" aria-pressed="false">30</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="results" aria-live="polite">
+      <div class="res"><div class="num" id="r-water">42</div><div class="what"><b data-t="water">liter dricksvatten</b><span data-t="water_s">3 liter per person och dygn</span></div></div>
+      <div class="res"><div class="num" id="r-kcal">28</div><div class="what"><b data-t="kcal">tusen kcal mat</b><span data-t="kcal_s">2 000 kcal per person och dygn</span></div></div>
+      <div class="res"><div class="num" id="r-kg">7,8</div><div class="what"><b data-t="kg">kg torrvaror</b><span data-t="kg_s">om allt vore pasta, ris eller havregryn</span></div></div>
+      <p class="fine" data-t="fine">En grov uppskattning för vuxna. Barn, äldre och den som har särskilda behov kan behöva annat. I appen räknar du i stället på det ni faktiskt har hemma.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features" aria-label="Funktioner" data-al="features">
+  <div class="wrap">
+    <article class="feature">
+      <div class="f-media"><div class="phone"><img data-img="2-lager" alt="" data-alt="alt2" loading="lazy"></div></div>
+      <div class="f-text">
+        <h3 data-t="f1_h">Allt i lagret, med bild och bäst före</h3>
+        <p data-t="f1_p">Lägg in varor med bild, antal och bäst före-datum. Appen visar vad som snart går ut och påminner dig i god tid.</p>
+        <ul>
+          <li data-t="f1_1">Påminnelser innan mat och medicin går ut</li>
+          <li data-t="f1_2">Kalender över alla bäst före-datum</li>
+          <li data-t="f1_3">Sortera i kategorier och lagerplatser</li>
+        </ul>
+      </div>
+    </article>
+    <article class="feature">
+      <div class="f-media"><div class="phone"><img data-img="1-start" alt="" data-alt="alt1" loading="lazy"></div></div>
+      <div class="f-text">
+        <h3 data-t="f2_h">Se hur länge lagret räcker</h3>
+        <p data-t="f2_p">Ange hur många ni är, så räknar appen ut hur många dagar maten och vattnet räcker. Siffrorna uppdateras när du lägger till eller tar bort något.</p>
+        <ul>
+          <li data-t="f2_1">Dagar med mat och dagar med vatten</li>
+          <li data-t="f2_2">Sätt ett eget mål, till exempel en vecka</li>
+        </ul>
+      </div>
+    </article>
+    <article class="feature">
+      <div class="f-media"><div class="phone"><img data-img="4-bob" alt="" data-alt="alt3" loading="lazy"></div></div>
+      <div class="f-text">
+        <h3 data-t="f3_h">Väskor och bil, packade och klara</h3>
+        <p data-t="f3_p">Håll ordning på vad som ligger i varje bug out bag och i bilen. Hämta saker från lagret utan att något räknas dubbelt.</p>
+        <ul>
+          <li data-t="f3_1">Lägg en hel väska i bilen och se den där</li>
+          <li data-t="f3_2">Packlistor, färdig 72-timmarslista eller egna</li>
+          <li data-t="f3_3">Jakt: vapenskåp, utrustning och skott</li>
+        </ul>
+      </div>
+    </article>
+    <article class="feature">
+      <div class="f-media"><div class="phone"><img data-img="5-kris" alt="" data-alt="alt4" loading="lazy"></div></div>
+      <div class="f-text">
+        <h3 data-t="f4_h">Krisberedskap, även när nätet är nere</h3>
+        <p data-t="f4_p">Spara myndigheternas råd, viktiga dokument och kontakter i telefonen. Det du behöver finns kvar även utan mobilnät.</p>
+        <ul>
+          <li data-t="f4_1">Hitta ditt lands myndighet för krisberedskap</li>
+          <li data-t="f4_2">Personer, samlingsplatser och dokument</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="private" aria-labelledby="priv-h">
+  <div class="wrap private-grid">
+    <h2 id="priv-h" data-t="priv_h">Ditt lager är din sak</h2>
+    <div class="facts">
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
+        <div><b data-t="p1_b">Allt stannar i telefonen</b><span data-t="p1_s">Inget skickas till någon server. Du bestämmer själv över dina säkerhetskopior.</span></div>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><path d="M3 3l18 18"/></svg>
+        <div><b data-t="p2_b">Inget konto, ingen reklam</b><span data-t="p2_s">Ingen inloggning, ingen spårning och inga annonser.</span></div>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+        <div><b data-t="p3_b">PIN-lås och utan nät</b><span data-t="p3_s">Lås appen med PIN-kod. Allt fungerar i flygläge, i källaren och i skogen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="plans" aria-labelledby="plans-h">
+  <div class="wrap">
+    <h2 id="plans-h" data-t="plans_h">Gratis att börja, Pro när lagret växer</h2>
+    <p class="intro" data-t="plans_intro">Gratisversionen räcker för ett mindre lager. Pro låser upp allt med ett engångsköp, utan prenumeration.</p>
+    <div class="plan-grid">
+      <div class="plan">
+        <h3 data-t="free_h">Gratis</h3>
+        <p class="price" data-t="free_p">0 kr</p>
+        <ul>
+          <li data-t="free_1">Upp till 50 varor</li>
+          <li data-t="free_2">1 väska, 1 bil och 1 vapenskåp</li>
+          <li data-t="free_3">1 bild per sak</li>
+          <li data-t="free_4">Påminnelser och säkerhetskopia</li>
+          <li data-t="free_5">11 språk</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Prepper Stock Pro</h3>
+        <p class="price" data-t="pro_p">39 kr, ett engångsköp</p>
+        <ul>
+          <li data-t="pro_1">Obegränsat med varor, väskor, bilar och bilder</li>
+          <li data-t="pro_2">Lägg en hel väska i bilen</li>
+          <li data-t="pro_3">Egna fält och egna flikar</li>
+          <li data-t="pro_4">Alla 32 teman och egna färger</li>
+          <li data-t="pro_5">Listor som PDF och Excel</li>
+          <li data-t="pro_6">Säkerhetskopia med lösenord</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="share" aria-labelledby="share-h">
+  <div class="wrap">
+    <h2 id="share-h" data-t="share_h">Bilder att dela</h2>
+    <p class="intro" data-t="share_intro">Känner du någon som borde ha koll på sitt lager? Tryck på en bild för att öppna den i full storlek och spara den.</p>
+    <div class="gallery">
+      <a data-promo="1" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
+      <a data-promo="2" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
+      <a data-promo="3" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
+      <a data-promo="4" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
+    </div>
+    <a class="wide" href="img/funktionsgrafik.jpg" target="_blank" rel="noopener"><img src="img/funktionsgrafik.jpg" alt="Prepper Stock" loading="lazy" width="1024" height="500"></a>
+  </div>
+</section>
+
+<section class="download" id="ladda-ner" aria-labelledby="dl-h">
+  <div class="wrap">
+    <img class="icon" src="img/ikon-192.png" alt="">
+    <h2 id="dl-h" data-t="dl_h">Ladda ner Prepper Stock</h2>
+    <p data-t="dl_p">Gratis för Android och snart för iPhone. Börja med det du redan har hemma.</p>
+    <div class="stores" data-stores></div>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Poles Nathan Oshalem</span>
+    <nav>
+      <a href="privacy/" data-t="privacy">Integritetspolicy</a>
+      <a href="mailto:posa881122@gmail.com" data-t="contact">Kontakt: posa881122@gmail.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* ===== Ändra här när appen finns i butikerna =====
+   PLAY_LIVE: sätt till true när appen är släppt för alla i Google Play.
+   APPSTORE_URL: klistra in länken till appen i App Store när den är godkänd. */
+var PLAY_URL = "https://play.google.com/store/apps/details?id=se.prepping.lager";
+var PLAY_LIVE = false;
+var APPSTORE_URL = "";
+
+var T = {
+  sv: {
+    appname: "Preppinglager",
+    title: "Prepper Stock: hela beredskapslagret i fickan",
+    h1: "Hela lagret i fickan",
+    lead: "Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.",
+    note: "Appen testas just nu och släpps snart. Gratis att ladda ner.",
+    note_live: "Gratis att ladda ner. Pro är ett engångsköp på 39 kr.",
+    play_soon_s: "Släpps snart på", play_s: "Ladda ner på",
+    ios_soon_s: "Snart för iPhone i", ios_s: "Ladda ner i",
+    calc_h: "Vad behöver ni hemma?",
+    calc_intro: "Myndigheterna rekommenderar att hushållet klarar sig själv i minst en vecka. Räkna ut ungefär hur mycket vatten och mat det betyder för er.",
+    people: "Antal personer", days: "Antal dygn", fewer: "Färre", more: "Fler",
+    water: "liter dricksvatten", water_s: "3 liter per person och dygn",
+    kcal: "tusen kcal mat", kcal_s: "2 000 kcal per person och dygn",
+    kg: "kg torrvaror", kg_s: "om allt vore pasta, ris eller havregryn",
+    fine: "En grov uppskattning för vuxna. Barn, äldre och den som har särskilda behov kan behöva annat. I appen räknar du i stället på det ni faktiskt har hemma.",
+    features: "Funktioner",
+    f1_h: "Allt i lagret, med bild och bäst före",
+    f1_p: "Lägg in varor med bild, antal och bäst före-datum. Appen visar vad som snart går ut och påminner dig i god tid.",
+    f1_1: "Påminnelser innan mat och medicin går ut", f1_2: "Kalender över alla bäst före-datum", f1_3: "Sortera i kategorier och lagerplatser",
+    f2_h: "Se hur länge lagret räcker",
+    f2_p: "Ange hur många ni är, så räknar appen ut hur många dagar maten och vattnet räcker. Siffrorna uppdateras när du lägger till eller tar bort något.",
+    f2_1: "Dagar med mat och dagar med vatten", f2_2: "Sätt ett eget mål, till exempel en vecka",
+    f3_h: "Väskor och bil, packade och klara",
+    f3_p: "Håll ordning på vad som ligger i varje bug out bag och i bilen. Hämta saker från lagret utan att något räknas dubbelt.",
+    f3_1: "Lägg en hel väska i bilen och se den där", f3_2: "Packlistor, färdig 72-timmarslista eller egna", f3_3: "Jakt: vapenskåp, utrustning och skott",
+    f4_h: "Krisberedskap, även när nätet är nere",
+    f4_p: "Spara myndigheternas råd, viktiga dokument och kontakter i telefonen. Det du behöver finns kvar även utan mobilnät.",
+    f4_1: "Hitta ditt lands myndighet för krisberedskap", f4_2: "Personer, samlingsplatser och dokument",
+    priv_h: "Ditt lager är din sak",
+    p1_b: "Allt stannar i telefonen", p1_s: "Inget skickas till någon server. Du bestämmer själv över dina säkerhetskopior.",
+    p2_b: "Inget konto, ingen reklam", p2_s: "Ingen inloggning, ingen spårning och inga annonser.",
+    p3_b: "PIN-lås och utan nät", p3_s: "Lås appen med PIN-kod. Allt fungerar i flygläge, i källaren och i skogen.",
+    plans_h: "Gratis att börja, Pro när lagret växer",
+    plans_intro: "Gratisversionen räcker för ett mindre lager. Pro låser upp allt med ett engångsköp, utan prenumeration.",
+    free_h: "Gratis", free_p: "0 kr",
+    free_1: "Upp till 50 varor", free_2: "1 väska, 1 bil och 1 vapenskåp", free_3: "1 bild per sak", free_4: "Påminnelser och säkerhetskopia", free_5: "11 språk",
+    pro_p: "39 kr, ett engångsköp",
+    pro_1: "Obegränsat med varor, väskor, bilar och bilder", pro_2: "Lägg en hel väska i bilen", pro_3: "Egna fält och egna flikar", pro_4: "Alla 32 teman och egna färger", pro_5: "Listor som PDF och Excel", pro_6: "Säkerhetskopia med lösenord",
+    share_h: "Bilder att dela",
+    share_intro: "Känner du någon som borde ha koll på sitt lager? Tryck på en bild för att öppna den i full storlek och spara den.",
+    dl_h: "Ladda ner Prepper Stock",
+    dl_p: "Gratis för Android och snart för iPhone. Börja med det du redan har hemma.",
+    dl_p_both: "Gratis för Android och iPhone. Börja med det du redan har hemma.",
+    privacy: "Integritetspolicy", contact: "Kontakt: posa881122@gmail.com",
+    alt1: "Startsidan i appen med hur länge lagret räcker",
+    alt2: "Lagret i appen med varor och bäst före-datum",
+    alt3: "Bug out bag-fliken med väskor och en väska i bilen",
+    alt4: "Krisberedskap med myndighetens råd",
+    promo: "Reklambild"
+  },
+  en: {
+    appname: "Prepper Stock",
+    title: "Prepper Stock: your whole emergency stock in your pocket",
+    h1: "Your whole stock in your pocket",
+    lead: "Keep track of food, water, bags and important papers. See what expires soon and how long your stock lasts for your household. Everything works offline.",
+    note: "The app is being tested right now and will be released soon. Free to download.",
+    note_live: "Free to download. Pro is a one time purchase.",
+    play_soon_s: "Coming soon to", play_s: "Get it on",
+    ios_soon_s: "Coming soon to the", ios_s: "Download on the",
+    calc_h: "What does your household need?",
+    calc_intro: "Authorities recommend that every household can manage on its own for at least a week. Work out roughly how much water and food that means for you.",
+    people: "Number of people", days: "Number of days", fewer: "Fewer", more: "More",
+    water: "litres of drinking water", water_s: "3 litres per person per day",
+    kcal: "thousand kcal of food", kcal_s: "2,000 kcal per person per day",
+    kg: "kg of dry food", kg_s: "if it were all pasta, rice or oats",
+    fine: "A rough estimate for adults. Children, older people and anyone with special needs may need something else. In the app you count what you actually have at home.",
+    features: "Features",
+    f1_h: "Your whole stock, with pictures and best before dates",
+    f1_p: "Add items with a picture, quantity and best before date. The app shows what expires soon and reminds you in good time.",
+    f1_1: "Reminders before food and medicine expire", f1_2: "Calendar of every best before date", f1_3: "Sort by category and storage place",
+    f2_h: "See how long your stock lasts",
+    f2_p: "Tell the app how many you are and it works out how many days your food and water will last. The numbers update as you add or use things.",
+    f2_1: "Days of food and days of water", f2_2: "Set your own goal, for example one week",
+    f3_h: "Bags and car, packed and ready",
+    f3_p: "Keep track of what is in every bug out bag and in the car. Fetch items from your stock without anything being counted twice.",
+    f3_1: "Put a whole bag in the car and see it there", f3_2: "Packing lists: a ready made 72 hour list or your own", f3_3: "Hunting: gun cabinet, gear and rounds",
+    f4_h: "Crisis preparedness, even when the network is down",
+    f4_p: "Keep official advice, important documents and contacts on your phone. What you need is still there without mobile coverage.",
+    f4_1: "Find your country's authority for preparedness", f4_2: "People, meeting points and documents",
+    priv_h: "Your stock is your business",
+    p1_b: "Everything stays on your phone", p1_s: "Nothing is sent to any server. You decide what happens to your backups.",
+    p2_b: "No account, no ads", p2_s: "No sign in, no tracking and no adverts.",
+    p3_b: "PIN lock and fully offline", p3_s: "Lock the app with a PIN. Everything works in flight mode, in the basement and in the woods.",
+    plans_h: "Free to start, Pro when your stock grows",
+    plans_intro: "The free version is enough for a smaller stock. Pro unlocks everything with a one time purchase, no subscription.",
+    free_h: "Free", free_p: "No cost",
+    free_1: "Up to 50 items", free_2: "1 bag, 1 car and 1 gun cabinet", free_3: "1 picture per item", free_4: "Reminders and backup", free_5: "11 languages",
+    pro_p: "One time purchase",
+    pro_1: "Unlimited items, bags, cars and pictures", pro_2: "Put a whole bag in the car", pro_3: "Your own fields and tabs", pro_4: "All 32 themes and your own colours", pro_5: "Lists as PDF and Excel", pro_6: "Password protected backup",
+    share_h: "Pictures to share",
+    share_intro: "Know someone who should keep track of their stock? Tap a picture to open it full size and save it.",
+    dl_h: "Download Prepper Stock",
+    dl_p: "Free for Android and coming soon for iPhone. Start with what you already have at home.",
+    dl_p_both: "Free for Android and iPhone. Start with what you already have at home.",
+    privacy: "Privacy policy", contact: "Contact: posa881122@gmail.com",
+    alt1: "The start screen showing how long the stock lasts",
+    alt2: "The stock with items and best before dates",
+    alt3: "The bug out bag tab with bags and a bag in the car",
+    alt4: "Crisis preparedness with official advice",
+    promo: "Promotional picture"
+  }
+};
+
+var ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.2 2.6c-.3.3-.4.7-.4 1.2v16.4c0 .5.1.9.4 1.2l9-9.4-9-9.4zm10.2 8.2L6 2.1l10.9 6.2-2.5 2.5zm0 2.4l2.5 2.5L6 21.9l8.4-8.7zm3.8-4.1l2.9 1.6c.8.5.8 1.2 0 1.7l-2.9 1.6-2.7-2.5 2.7-2.4z"/></svg>';
+var ICON_APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.7 1.3-2.8 0 0-2.4-.9-2.4-4zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>';
+
+var lang = "sv";
+function store(href, live, icon, smallSoon, smallLive, name) {
+  if (live) return '<a class="store" href="' + href + '" target="_blank" rel="noopener">' + icon + '<span><small>' + smallLive + '</small>' + name + '</span></a>';
+  return '<span class="store soon">' + icon + '<span><small>' + smallSoon + '</small>' + name + '</span></span>';
+}
+function render() {
+  var t = T[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelectorAll("[data-t]").forEach(function (el) { var k = el.getAttribute("data-t"); if (t[k] != null) el.textContent = t[k]; });
+  document.querySelectorAll("[data-al]").forEach(function (el) { var k = el.getAttribute("data-al"); if (t[k] != null) el.setAttribute("aria-label", t[k]); });
+  document.querySelectorAll("[data-img]").forEach(function (el) { el.src = "img/" + lang + "-" + el.getAttribute("data-img") + ".webp"; el.alt = t[el.getAttribute("data-alt")] || ""; });
+  document.querySelectorAll("[data-promo]").forEach(function (a) {
+    var n = a.getAttribute("data-promo");
+    a.href = "promo/" + lang + "-reklam-" + n + ".jpg";
+    var im = a.querySelector("img"); im.src = "promo/" + lang + "-reklam-" + n + "-liten.webp"; im.alt = t.promo + " " + n;
+  });
+  var html = store(PLAY_URL, PLAY_LIVE, ICON_PLAY, t.play_soon_s, t.play_s, "Google Play") +
+             store(APPSTORE_URL, !!APPSTORE_URL, ICON_APPLE, t.ios_soon_s, t.ios_s, "App Store");
+  document.querySelectorAll("[data-stores]").forEach(function (el) { el.innerHTML = html; });
+  var note = document.querySelector('[data-t="note"]'); if (note) note.textContent = PLAY_LIVE ? t.note_live : t.note;
+  var dl = document.querySelector('[data-t="dl_p"]'); if (dl) dl.textContent = APPSTORE_URL ? t.dl_p_both : t.dl_p;
+  document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
+  calc();
+}
+
+/* räknaren */
+var people = 2, days = 7;
+function fmt(n, d) { return n.toLocaleString(lang === "sv" ? "sv-SE" : "en-GB", { maximumFractionDigits: d, minimumFractionDigits: 0 }); }
+function calc() {
+  document.getElementById("ppl").textContent = people;
+  document.getElementById("r-water").textContent = fmt(people * days * 3, 0);
+  document.getElementById("r-kcal").textContent = fmt(people * days * 2, 0);
+  var kg = people * days * 2000 / 3600;
+  document.getElementById("r-kg").textContent = fmt(kg, kg < 10 ? 1 : 0);
+  document.querySelectorAll("[data-days]").forEach(function (b) { b.setAttribute("aria-pressed", +b.getAttribute("data-days") === days ? "true" : "false"); });
+}
+document.addEventListener("click", function (e) {
+  var s = e.target.closest("[data-step]"); if (s) { people = Math.min(12, Math.max(1, people + +s.getAttribute("data-step"))); calc(); return; }
+  var d = e.target.closest("[data-days]"); if (d) { days = +d.getAttribute("data-days"); calc(); return; }
+  var l = e.target.closest("[data-lang]"); if (l) { lang = l.getAttribute("data-lang"); try { localStorage.setItem("ps-lang", lang); } catch (x) {} render(); }
+});
+
+(function () {
+  var saved = null; try { saved = localStorage.getItem("ps-lang"); } catch (x) {}
+  var q = (location.search.match(/[?&]lang=(sv|en)/) || [])[1];
+  lang = q || saved || ((navigator.language || "").toLowerCase().indexOf("sv") === 0 ? "sv" : "en");
+  render();
+})();
+</script>
 </body>
 </html>
