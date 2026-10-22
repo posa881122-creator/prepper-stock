@@ -36,7 +36,8 @@
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--lichen); color: var(--coal); font: 400 18px/1.55 var(--body); overflow-wrap: break-word; }
-img, video { max-width: 100%; display: block; }
+/* height: auto behövs, annars låser bredd- och höjdattributen bilden i fel form */
+img, video { max-width: 100%; height: auto; display: block; }
 .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
 
 .top { background: var(--forest); color: var(--straw); }
@@ -70,7 +71,8 @@ main { padding: 40px 0 90px; }
 .tom h2 { margin: 0 0 8px; font: 700 26px/1.1 var(--display); color: var(--forest); }
 
 /* bildvisaren */
-.box { position: fixed; inset: 0; background: rgba(10,17,13,.94); display: none; z-index: 60; }
+/* touch-action och overscroll hindrar webbläsaren från att tolka svep i sidled som bakåt */
+.box { position: fixed; inset: 0; background: rgba(10,17,13,.94); display: none; z-index: 60; touch-action: pan-y; overscroll-behavior: contain; }
 .box.pa { display: block; }
 .box .inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 76px 96px; }
 .box img, .box video { max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: 10px; object-fit: contain; }
@@ -246,6 +248,20 @@ document.addEventListener("click", function (e) {
   var g = e.target.closest("[data-ga]"); if (g) { visa(nu + +g.getAttribute("data-ga")); return; }
   if (box.classList.contains("pa") && e.target === box) stang();
 });
+
+/* svep i sidled för att bläddra, och neråt för att stänga */
+var svepX = 0, svepY = 0, svepTid = 0;
+box.addEventListener("touchstart", function (e) {
+  if (e.touches.length !== 1 || e.target.closest("video")) { svepTid = 0; return; }
+  svepX = e.touches[0].clientX; svepY = e.touches[0].clientY; svepTid = Date.now();
+}, { passive: true });
+box.addEventListener("touchend", function (e) {
+  if (!svepTid || !e.changedTouches.length) return;
+  var dx = e.changedTouches[0].clientX - svepX, dy = e.changedTouches[0].clientY - svepY;
+  svepTid = 0;
+  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) visa(nu + (dx < 0 ? 1 : -1));
+  else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) stang();
+}, { passive: true });
 
 document.addEventListener("keydown", function (e) {
   if (!box.classList.contains("pa")) return;
