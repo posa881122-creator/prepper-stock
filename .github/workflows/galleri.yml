@@ -12,7 +12,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 concurrency:
   group: galleri
@@ -52,10 +51,3 @@ jobs:
           done
           echo "::error::Kunde inte spara galleriet, försök köra om."
           exit 1
-
-      - name: Be hemsidan uppdatera sig
-        # säkerhetsnät: en del inställningar bygger inte om sidan av sig själv
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api --method POST "repos/${{ github.repository }}/pages/builds" --silent || echo "::notice::Sidan byggs om av sig själv."
