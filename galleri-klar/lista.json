@@ -11,98 +11,108 @@
  },
  {
   "typ": "bild",
-  "full": "sv-01-fran-kaos-till-kontroll.webp",
-  "mini": "sv-01-fran-kaos-till-kontroll-mini.webp",
+  "full": "sv-01-ha-koll-nar-det-galler.webp",
+  "mini": "sv-01-ha-koll-nar-det-galler-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Fran kaos till kontroll",
-  "en": "Fran kaos till kontroll"
+  "sv": "Ha koll när det gäller",
+  "en": "Ha koll när det gäller"
  },
  {
   "typ": "bild",
-  "full": "sv-1-ha-koll.webp",
-  "mini": "sv-1-ha-koll-mini.webp",
+  "full": "sv-02-fran-kaos-till-kontroll.webp",
+  "mini": "sv-02-fran-kaos-till-kontroll-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Ha koll",
-  "en": "Ha koll"
+  "sv": "Från kaos till kontroll",
+  "en": "Från kaos till kontroll"
  },
  {
   "typ": "bild",
-  "full": "sv-1-nar-strommen-gar.webp",
-  "mini": "sv-1-nar-strommen-gar-mini.webp",
+  "full": "sv-03-allt-pa-sin-plats.webp",
+  "mini": "sv-03-allt-pa-sin-plats-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Nar strommen gar",
-  "en": "Nar strommen gar"
+  "sv": "Allt på sin plats",
+  "en": "Allt på sin plats"
  },
  {
   "typ": "bild",
-  "full": "sv-02-allt-pa-sin-plats.webp",
-  "mini": "sv-02-allt-pa-sin-plats-mini.webp",
+  "full": "sv-04-allt-pa-ett-stalle.webp",
+  "mini": "sv-04-allt-pa-ett-stalle-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Allt pa sin plats",
-  "en": "Allt pa sin plats"
+  "sv": "Allt på ett ställe",
+  "en": "Allt på ett ställe"
  },
  {
   "typ": "bild",
-  "full": "sv-2-allt-pa-ett-stalle.webp",
-  "mini": "sv-2-allt-pa-ett-stalle-mini.webp",
+  "full": "sv-05-hela-din-beredskap-en-app.webp",
+  "mini": "sv-05-hela-din-beredskap-en-app-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Allt pa ett stalle",
-  "en": "Allt pa ett stalle"
+  "sv": "Hela din beredskap, en app",
+  "en": "Hela din beredskap, en app"
  },
  {
   "typ": "bild",
-  "full": "sv-2-hur-lange-klarar-du-dig.webp",
-  "mini": "sv-2-hur-lange-klarar-du-dig-mini.webp",
+  "full": "sv-06-inget-gar-ut-i-smyg.webp",
+  "mini": "sv-06-inget-gar-ut-i-smyg-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Hur lange klarar du dig",
-  "en": "Hur lange klarar du dig"
+  "sv": "Inget går ut i smyg",
+  "en": "Inget går ut i smyg"
  },
  {
   "typ": "bild",
-  "full": "sv-03-inget-gar-ut-i-smyg.webp",
-  "mini": "sv-03-inget-gar-ut-i-smyg-mini.webp",
+  "full": "sv-07-sok-hitta-klart.webp",
+  "mini": "sv-07-sok-hitta-klart-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Inget gar ut i smyg",
-  "en": "Inget gar ut i smyg"
+  "sv": "Sök, hitta, klart",
+  "en": "Sök, hitta, klart"
  },
  {
   "typ": "bild",
-  "full": "sv-3-hela-din-beredskap-1.webp",
-  "mini": "sv-3-hela-din-beredskap-1-mini.webp",
+  "full": "sv-08-vet-var-det-finns.webp",
+  "mini": "sv-08-vet-var-det-finns-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Hela din beredskap 1",
-  "en": "Hela din beredskap 1"
+  "sv": "Vet var det finns",
+  "en": "Vet var det finns"
  },
  {
   "typ": "bild",
-  "full": "sv-04-sok-hitta-klart.webp",
-  "mini": "sv-04-sok-hitta-klart-mini.webp",
+  "full": "sv-09-hur-lange-klarar-du-dig.webp",
+  "mini": "sv-09-hur-lange-klarar-du-dig-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Sok hitta klart",
-  "en": "Sok hitta klart"
+  "sv": "Hur länge klarar du dig",
+  "en": "Hur länge klarar du dig"
  },
  {
   "typ": "bild",
-  "full": "sv-4-bug-out-bag.webp",
-  "mini": "sv-4-bug-out-bag-mini.webp",
+  "full": "sv-10-nar-strommen-gar.webp",
+  "mini": "sv-10-nar-strommen-gar-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "sv",
+  "sv": "När strömmen går",
+  "en": "När strömmen går"
+ },
+ {
+  "typ": "bild",
+  "full": "sv-11-bug-out-bag.webp",
+  "mini": "sv-11-bug-out-bag-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
@@ -111,22 +121,12 @@
  },
  {
   "typ": "bild",
-  "full": "sv-4-gratis-och-pro-1.webp",
-  "mini": "sv-4-gratis-och-pro-1-mini.webp",
+  "full": "sv-12-gratis-och-pro.webp",
+  "mini": "sv-12-gratis-och-pro-mini.webp",
   "b": 1600,
   "h": 2000,
   "sprak": "sv",
-  "sv": "Gratis och pro 1",
-  "en": "Gratis och pro 1"
- },
- {
-  "typ": "bild",
-  "full": "sv-05-vet-var-det-finns.webp",
-  "mini": "sv-05-vet-var-det-finns-mini.webp",
-  "b": 1600,
-  "h": 2000,
-  "sprak": "sv",
-  "sv": "Vet var det finns",
-  "en": "Vet var det finns"
+  "sv": "Gratis och Pro",
+  "en": "Gratis och Pro"
  }
 ]

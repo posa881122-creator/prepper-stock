@@ -55,7 +55,8 @@ img, video { max-width: 100%; display: block; }
 
 main { padding: 40px 0 90px; }
 
-.grid { columns: 3 280px; column-gap: 16px; }
+/* breda kolumner: bilderna är ofta affischer med text som måste gå att läsa */
+.grid { columns: 3 300px; column-gap: 16px; }
 .card { break-inside: avoid; margin: 0 0 16px; padding: 0; border: 0; width: 100%; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(20,32,25,.13); cursor: zoom-in; text-align: left; font: inherit; color: inherit; display: block; }
 .card:hover { box-shadow: 0 6px 18px rgba(20,32,25,.2); }
 .card:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
@@ -89,9 +90,9 @@ footer { background: var(--forest); color: #AFC0A8; padding: 30px 0 38px; font-s
 footer a { color: var(--straw); }
 
 @media (max-width: 640px) {
-  .grid { columns: 2 150px; column-gap: 11px; }
-  .card { margin-bottom: 11px; border-radius: 11px; }
-  .card figcaption { padding: 9px 11px 11px; font-size: 14px; }
+  .grid { column-gap: 12px; }
+  .card { margin-bottom: 12px; border-radius: 12px; }
+  .card figcaption { padding: 10px 13px 12px; font-size: 15px; }
   .box .txt { padding: 0 16px; font-size: 15px; bottom: 74px; }
   .box .inner { padding: 56px 12px 128px; }
   .forra, .nasta { top: auto; bottom: 14px; transform: none; }
