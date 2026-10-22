@@ -588,9 +588,10 @@ function inspEsc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, funct
 function inspRita() {
   var sek = document.getElementById("galleri"), ruta = document.getElementById("insp-grid");
   if (!sek || !ruta) return;
-  if (!inspPoster.length) { sek.hidden = true; return; }
+  var visade = inspPoster.filter(function (p) { return !p.sprak || p.sprak === lang; });
+  if (!visade.length) { sek.hidden = true; return; }
   sek.hidden = false;
-  ruta.innerHTML = inspPoster.slice(0, 8).map(function (p) {
+  ruta.innerHTML = visade.slice(0, 8).map(function (p) {
     var bt = (lang === "en" ? p.en : p.sv) || "";
     return '<a href="galleri/" aria-label="' + inspEsc(bt || T[lang].insp_mer) + '">' +
       '<img src="galleri-klar/' + inspEsc(p.mini) + '" alt="" loading="lazy" decoding="async">' +

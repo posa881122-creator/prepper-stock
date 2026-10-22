@@ -3,21 +3,65 @@ SÅ LÄGGER DU UPP BILDER OCH FILMER I GALLERIET
 
 Galleriet finns på https://prepperstock.se/galleri
 
-Lägg filerna i den här mappen, galleri-original. Resten sköter sig självt.
-Inom ett par minuter syns de på hemsidan.
+Lägg filerna i den här mappen, galleri-original, eller i någon av
+undermapparna. Resten sköter sig självt. Inom ett par minuter syns de
+på hemsidan.
+
+
+MAPPARNA
+--------
+   sv      visas BARA när sidan står på svenska
+   en      visas BARA när sidan står på engelska
+   film    filmer, visas på båda språken
+   (roten) visas på båda språken
+
+Har bilden text i sig ska den ligga i sv eller en. En svensk reklambild
+ska inte dyka upp för någon som läser sidan på engelska.
+
+Har bilden ingen text alls, till exempel ett foto på ditt skafferi,
+lägg den i roten eller i en egen mapp. Då visas den för alla.
+
+Du får skapa hur många egna mappar du vill: vaskor, lager, vinter,
+vad du nu vill sortera efter. Lägger du en sådan mapp inuti sv gäller
+svenska för allt som ligger i den.
+
+Så här kan det se ut:
+
+   galleri-original/
+      sv/            svenska reklambilder
+      en/            engelska reklambilder
+      film/          filmer
+      lager/         foton på lager, inga ord i bilden
+      vaskor/        foton på väskor
 
 
 SÅ GÖR DU FRÅN MOBILEN
 -----------------------
- 1. Öppna github.com i webbläsaren och logga in.
- 2. Gå till ditt förråd prepper-stock.
- 3. Tryck på mappen galleri-original.
- 4. Tryck på knappen "Add file" uppe till höger, välj "Upload files".
+ 1. Öppna github.com i Chrome och logga in. GitHub-appen kan inte
+    ladda upp filer, bara läsa dem.
+ 2. Tryck på de tre strecken uppe till vänster, scrolla till
+    Repositories och välj prepper-stock.
+ 3. Tryck dig in i galleri-original och vidare till rätt undermapp.
+ 4. Tryck på de tre prickarna uppe till höger, på raden med Files
+    och main, och välj Upload files.
+    Syns den inte: slå på Datorversion i Chrome-menyn, då dyker den
+    gröna knappen Add file upp i stället.
  5. Välj bilderna i telefonen. Du kan ta flera på en gång.
- 6. Scrolla ner och tryck på den gröna knappen "Commit changes".
- 7. Klart. Vänta några minuter och ladda om galleriet.
+ 6. Scrolla ner och tryck på den gröna knappen Commit changes.
 
 Samma sak fungerar från datorn. Där kan du dra filerna rakt in i rutan.
+
+
+SÅ SKAPAR DU EN NY MAPP
+------------------------
+Mappar skapas när du lägger en fil i dem.
+Gå in i galleri-original, tryck Add file och välj Create new file.
+Skriv mappens namn, snedstreck, och sedan ett filnamn:
+
+   vaskor/LAS-MIG.txt
+
+Skriv någon rad i rutan under och tryck Commit changes.
+Nu finns mappen vaskor, och du kan ladda upp bilder i den.
 
 
 NAMNET PÅ FILEN BLIR BILDTEXTEN
@@ -27,24 +71,22 @@ Döp filen till det du vill ska stå under bilden.
    Mitt skafferi i källaren.jpg
        ger texten: Mitt skafferi i källaren
 
-Vill du ha en egen engelsk text sätter du två understreck emellan:
+Ligger filen i roten eller i en egen mapp, alltså på båda språken,
+kan du ge den två texter med två understreck emellan:
 
    Mitt skafferi i källaren__My pantry in the basement.jpg
 
-Skriver du ett nummer först bestämmer det ordningen i galleriet,
-och numret visas inte:
+Skriver du ett nummer först bestämmer det ordningen, och numret visas
+inte:
 
-   01 Mitt skafferi__My pantry.jpg
-   02 Vattendunkarna__The water cans.jpg
+   01 Mitt skafferi.jpg
+   02 Vattendunkarna.jpg
 
-Vill du inte ha någon text alls: döp filen till bara ett nummer, 01.jpg
-
-
-ORDNING
--------
-Filer med nummer kommer först, i nummerordning.
-Resten kommer efter, i bokstavsordning.
 Numrera med 10, 20, 30 om du vill kunna skjuta in bilder emellan senare.
+
+Bindestreck i filnamnet blir mellanslag i texten, så en fil som heter
+mitt-skafferi.png får texten "Mitt skafferi". Vill du ha å, ä och ö i
+texten måste de stå i filnamnet.
 
 
 VAD SOM FUNGERAR
@@ -74,15 +116,16 @@ utsikt mot något igenkännbart, post med ditt namn på. Titta igenom bilden
 en gång innan du laddar upp den.
 
 
-TA BORT EN BILD
----------------
-Gå in i mappen galleri-original, tryck på filen, tryck på papperskorgen,
-och sedan på "Commit changes". Den försvinner från galleriet av sig själv.
+TA BORT ELLER BYTA NAMN
+------------------------
+Gå in i mappen, tryck på filen, tryck på de tre prickarna uppe till höger
+och välj Delete file eller Rename. Tryck sedan Commit changes.
+Galleriet uppdaterar sig av sig självt.
 
 
 OM DET INTE SYNS
 ----------------
-Gå till fliken "Actions" i förrådet och titta på den senaste körningen av
+Gå till fliken Actions i förrådet och titta på den senaste körningen av
 "Uppdatera galleriet". Står det gult eller rött där: skicka en skärmbild
 till Claude.
 

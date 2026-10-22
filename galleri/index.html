@@ -172,18 +172,22 @@ var T = {
   }
 };
 
-var lang = "sv", poster = [], nu = -1;
+var lang = "sv", poster = [], visade = [], nu = -1;
 var grid = document.getElementById("grid"), tom = document.getElementById("tom");
 var box = document.getElementById("box"), inner = document.getElementById("inner"), txt = document.getElementById("txt");
 
 function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 function text(p) { return (lang === "en" ? p.en : p.sv) || ""; }
 
+/* bilder i en mapp som heter sv eller en visas bara på det språket */
+function filtrera() {
+  visade = poster.filter(function (p) { return !p.sprak || p.sprak === lang; });
+}
+
 function ritaGrid() {
-  var t = T[lang];
-  if (!poster.length) { grid.hidden = true; tom.hidden = false; return; }
+  if (!visade.length) { grid.hidden = true; tom.hidden = false; return; }
   tom.hidden = true; grid.hidden = false;
-  grid.innerHTML = poster.map(function (p, i) {
+  grid.innerHTML = visade.map(function (p, i) {
     var h = Math.round(760 * p.h / Math.max(1, p.b));
     var bt = text(p);
     return '<button class="card" type="button" data-i="' + i + '">' +
@@ -197,13 +201,13 @@ function ritaGrid() {
 }
 
 function visa(i) {
-  if (!poster.length) return;
-  nu = (i + poster.length) % poster.length;
-  var p = poster[nu], t = T[lang], bt = text(p);
+  if (!visade.length) return;
+  nu = (i + visade.length) % visade.length;
+  var p = visade[nu], t = T[lang], bt = text(p);
   inner.innerHTML = p.typ === "film"
     ? '<video src="../galleri-klar/' + esc(p.full) + '" poster="../galleri-klar/' + esc(p.mini) + '" controls autoplay playsinline></video>'
     : '<img src="../galleri-klar/' + esc(p.full) + '" alt="' + esc(bt) + '">';
-  txt.innerHTML = esc(bt) + '<span class="nr">' + (nu + 1) + " " + t.av + " " + poster.length + "</span>";
+  txt.innerHTML = esc(bt) + '<span class="nr">' + (nu + 1) + " " + t.av + " " + visade.length + "</span>";
   box.classList.add("pa");
   document.body.style.overflow = "hidden";
   box.querySelector("[data-stang]").focus();
@@ -224,13 +228,18 @@ function render() {
   document.querySelectorAll("[data-t]").forEach(function (el) { var k = el.getAttribute("data-t"); if (t[k] != null) el.textContent = t[k]; });
   document.querySelectorAll("[data-al]").forEach(function (el) { var k = el.getAttribute("data-al"); if (t[k] != null) el.setAttribute("aria-label", t[k]); });
   document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
+  filtrera();
   ritaGrid();
-  if (nu >= 0) visa(nu);
 }
 
 document.addEventListener("click", function (e) {
   var l = e.target.closest("[data-lang]");
-  if (l) { lang = l.getAttribute("data-lang"); try { localStorage.setItem("ps-lang", lang); } catch (x) {} render(); return; }
+  if (l) {
+    lang = l.getAttribute("data-lang");
+    try { localStorage.setItem("ps-lang", lang); } catch (x) {}
+    if (box.classList.contains("pa")) stang();
+    render(); return;
+  }
   var k = e.target.closest(".card"); if (k) { visa(+k.getAttribute("data-i")); return; }
   if (e.target.closest("[data-stang]")) { stang(); return; }
   var g = e.target.closest("[data-ga]"); if (g) { visa(nu + +g.getAttribute("data-ga")); return; }

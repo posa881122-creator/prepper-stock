@@ -1,0 +1,3 @@
+Filmer. Visas på båda språken.
+Har filmen talad eller skriven svenska: lägg den i sv i stället.
+Engelsk film: lägg den i en.
