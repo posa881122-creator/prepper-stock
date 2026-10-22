@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Galleri: Prepper Stock</title>
+<meta name="description" content="Bilder och filmer på hur Prepper Stock används i verkligheten. Lager, väskor och lösningar från vardagen.">
+<meta name="theme-color" content="#1E3326">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Galleri: Prepper Stock">
+<meta property="og:description" content="Bilder och filmer på hur appen används i verkligheten.">
+<meta property="og:image" content="https://prepperstock.se/img/funktionsgrafik.jpg">
+<meta property="og:url" content="https://prepperstock.se/galleri/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/ikon-192.png">
+<link rel="apple-touch-icon" href="../img/ikon-192.png">
+<style>
+@font-face { font-family: "Barlow Condensed"; src: url(../fonts/BarlowCondensed-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Barlow Condensed"; src: url(../fonts/BarlowCondensed-Bold.woff) format("woff"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-Regular.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-Medium.woff) format("woff"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+
+:root {
+  --forest: #1E3326;
+  --moss: #34513B;
+  --brass: #D4A537;
+  --straw: #F1E3A4;
+  --lichen: #E5EADF;
+  --coal: #142019;
+  --mute: #4D5F51;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "Barlow", system-ui, sans-serif;
+  --wrap: 1120px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--lichen); color: var(--coal); font: 400 18px/1.55 var(--body); overflow-wrap: break-word; }
+img, video { max-width: 100%; display: block; }
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+
+.top { background: var(--forest); color: var(--straw); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--straw); text-decoration: none; font: 700 23px/1 var(--display); letter-spacing: .3px; }
+.brand img { width: 30px; height: 30px; border-radius: 7px; }
+.lang { display: flex; border: 1.5px solid var(--moss); border-radius: 999px; overflow: hidden; }
+.lang button { appearance: none; border: 0; background: transparent; color: var(--straw); font: 500 15px/1 var(--body); padding: 9px 14px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--moss); }
+
+.head { padding: 10px 16px 44px; }
+.head h1 { margin: 0; font: 700 clamp(34px, 7vw, 58px)/1.02 var(--display); color: #fff; letter-spacing: -.5px; }
+.head p { margin: 14px 0 0; max-width: 34em; color: #C9D6C2; }
+.back { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 18px; color: var(--brass); text-decoration: none; font: 500 16px/1 var(--body); }
+.back:hover { text-decoration: underline; }
+
+main { padding: 40px 0 90px; }
+
+.grid { columns: 3 280px; column-gap: 16px; }
+.card { break-inside: avoid; margin: 0 0 16px; padding: 0; border: 0; width: 100%; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 3px rgba(20,32,25,.13); cursor: zoom-in; text-align: left; font: inherit; color: inherit; display: block; }
+.card:hover { box-shadow: 0 6px 18px rgba(20,32,25,.2); }
+.card:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
+.card .pic { position: relative; background: #DCE3D6; }
+.card figcaption { padding: 11px 14px 13px; font: 500 16px/1.4 var(--body); color: var(--forest); }
+.play { position: absolute; inset: 0; display: grid; place-items: center; }
+.play span { width: 58px; height: 58px; border-radius: 50%; background: rgba(20,32,25,.72); display: grid; place-items: center; }
+.play svg { width: 24px; height: 24px; fill: #fff; margin-left: 3px; }
+
+.tom { background: #fff; border: 1.5px dashed #BBC9B4; border-radius: 16px; padding: 44px 24px; text-align: center; color: var(--mute); }
+.tom h2 { margin: 0 0 8px; font: 700 26px/1.1 var(--display); color: var(--forest); }
+
+/* bildvisaren */
+.box { position: fixed; inset: 0; background: rgba(10,17,13,.94); display: none; z-index: 60; }
+.box.pa { display: block; }
+.box .inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 76px 96px; }
+.box img, .box video { max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: 10px; object-fit: contain; }
+.box .txt { position: absolute; left: 0; right: 0; bottom: 20px; text-align: center; color: #E5EADF; font: 500 17px/1.4 var(--body); padding: 0 70px; }
+.box .nr { display: block; color: #93A58C; font-size: 14px; margin-top: 4px; }
+.knapp { position: absolute; appearance: none; border: 0; background: rgba(255,255,255,.1); color: #fff; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; }
+.knapp:hover { background: rgba(255,255,255,.22); }
+.knapp:focus-visible { outline: 3px solid var(--brass); outline-offset: 2px; }
+.knapp svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.stang { top: 14px; right: 14px; }
+.forra { left: 14px; top: 50%; transform: translateY(-50%); }
+.nasta { right: 14px; top: 50%; transform: translateY(-50%); }
+
+footer { background: var(--forest); color: #AFC0A8; padding: 30px 0 38px; font-size: 16px; }
+.foot { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; align-items: center; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+footer a { color: var(--straw); }
+
+@media (max-width: 640px) {
+  .grid { columns: 2 150px; column-gap: 11px; }
+  .card { margin-bottom: 11px; border-radius: 11px; }
+  .card figcaption { padding: 9px 11px 11px; font-size: 14px; }
+  .box .txt { padding: 0 16px; font-size: 15px; bottom: 74px; }
+  .box .inner { padding: 56px 12px 128px; }
+  .forra, .nasta { top: auto; bottom: 14px; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card, .knapp { transition: box-shadow .18s ease, background .18s ease; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="../"><img src="../img/ikon-192.png" alt=""><span data-t="appname">Preppinglager</span></a>
+    <div class="lang" role="group" aria-label="Språk / Language">
+      <button type="button" data-lang="sv" aria-pressed="true">Svenska</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+  <div class="wrap head">
+    <a class="back" href="../"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span data-t="back">Till startsidan</span></a>
+    <h1 data-t="h1">Galleri</h1>
+    <p data-t="lead">Bilder och filmer på hur appen används i verkligheten. Lager, väskor och lösningar från vardagen.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="grid" id="grid" hidden></div>
+    <div class="tom" id="tom" hidden>
+      <h2 data-t="tom_h">Här kommer bilderna</h2>
+      <p data-t="tom_p" style="margin:0">Galleriet fylls på efter hand. Titta in igen snart.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Poles Nathan Oshalem</span>
+    <nav>
+      <a href="../" data-t="start">Startsidan</a>
+      <a href="../privacy/" data-t="privacy">Integritetspolicy</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="box" id="box" role="dialog" aria-modal="true" aria-label="Bild">
+  <div class="inner" id="inner"></div>
+  <button class="knapp stang" type="button" data-stang data-al="stang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="knapp forra" type="button" data-ga="-1" data-al="forra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button class="knapp nasta" type="button" data-ga="1" data-al="nasta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  <p class="txt" id="txt"></p>
+</div>
+
+<script>
+var T = {
+  sv: {
+    appname: "Preppinglager",
+    title: "Galleri: Prepper Stock",
+    back: "Till startsidan", start: "Startsidan", privacy: "Integritetspolicy",
+    h1: "Galleri",
+    lead: "Bilder och filmer på hur appen används i verkligheten. Lager, väskor och lösningar från vardagen.",
+    tom_h: "Här kommer bilderna",
+    tom_p: "Galleriet fylls på efter hand. Titta in igen snart.",
+    stang: "Stäng", forra: "Föregående", nasta: "Nästa",
+    av: "av", film: "Film"
+  },
+  en: {
+    appname: "Prepper Stock",
+    title: "Gallery: Prepper Stock",
+    back: "Back to the start page", start: "Start page", privacy: "Privacy policy",
+    h1: "Gallery",
+    lead: "Photos and videos of the app in real use. Stockpiles, bags and everyday solutions.",
+    tom_h: "Pictures are on their way",
+    tom_p: "The gallery fills up over time. Come back soon.",
+    stang: "Close", forra: "Previous", nasta: "Next",
+    av: "of", film: "Video"
+  }
+};
+
+var lang = "sv", poster = [], nu = -1;
+var grid = document.getElementById("grid"), tom = document.getElementById("tom");
+var box = document.getElementById("box"), inner = document.getElementById("inner"), txt = document.getElementById("txt");
+
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function text(p) { return (lang === "en" ? p.en : p.sv) || ""; }
+
+function ritaGrid() {
+  var t = T[lang];
+  if (!poster.length) { grid.hidden = true; tom.hidden = false; return; }
+  tom.hidden = true; grid.hidden = false;
+  grid.innerHTML = poster.map(function (p, i) {
+    var h = Math.round(760 * p.h / Math.max(1, p.b));
+    var bt = text(p);
+    return '<button class="card" type="button" data-i="' + i + '">' +
+      '<figure style="margin:0"><span class="pic">' +
+      '<img src="../galleri-klar/' + esc(p.mini) + '" width="760" height="' + h + '" alt="' + esc(bt) + '" loading="lazy" decoding="async">' +
+      (p.typ === "film" ? '<span class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>' : "") +
+      '</span>' +
+      (bt ? '<figcaption>' + esc(bt) + '</figcaption>' : "") +
+      '</figure></button>';
+  }).join("");
+}
+
+function visa(i) {
+  if (!poster.length) return;
+  nu = (i + poster.length) % poster.length;
+  var p = poster[nu], t = T[lang], bt = text(p);
+  inner.innerHTML = p.typ === "film"
+    ? '<video src="../galleri-klar/' + esc(p.full) + '" poster="../galleri-klar/' + esc(p.mini) + '" controls autoplay playsinline></video>'
+    : '<img src="../galleri-klar/' + esc(p.full) + '" alt="' + esc(bt) + '">';
+  txt.innerHTML = esc(bt) + '<span class="nr">' + (nu + 1) + " " + t.av + " " + poster.length + "</span>";
+  box.classList.add("pa");
+  document.body.style.overflow = "hidden";
+  box.querySelector("[data-stang]").focus();
+}
+
+function stang() {
+  box.classList.remove("pa");
+  inner.innerHTML = "";
+  document.body.style.overflow = "";
+  var k = grid.querySelector('[data-i="' + nu + '"]'); if (k) k.focus();
+  nu = -1;
+}
+
+function render() {
+  var t = T[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelectorAll("[data-t]").forEach(function (el) { var k = el.getAttribute("data-t"); if (t[k] != null) el.textContent = t[k]; });
+  document.querySelectorAll("[data-al]").forEach(function (el) { var k = el.getAttribute("data-al"); if (t[k] != null) el.setAttribute("aria-label", t[k]); });
+  document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
+  ritaGrid();
+  if (nu >= 0) visa(nu);
+}
+
+document.addEventListener("click", function (e) {
+  var l = e.target.closest("[data-lang]");
+  if (l) { lang = l.getAttribute("data-lang"); try { localStorage.setItem("ps-lang", lang); } catch (x) {} render(); return; }
+  var k = e.target.closest(".card"); if (k) { visa(+k.getAttribute("data-i")); return; }
+  if (e.target.closest("[data-stang]")) { stang(); return; }
+  var g = e.target.closest("[data-ga]"); if (g) { visa(nu + +g.getAttribute("data-ga")); return; }
+  if (box.classList.contains("pa") && e.target === box) stang();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (!box.classList.contains("pa")) return;
+  if (e.key === "Escape") stang();
+  else if (e.key === "ArrowRight") visa(nu + 1);
+  else if (e.key === "ArrowLeft") visa(nu - 1);
+});
+
+(function () {
+  var sparat = null; try { sparat = localStorage.getItem("ps-lang"); } catch (x) {}
+  var q = (location.search.match(/[?&]lang=(sv|en)/) || [])[1];
+  lang = q || sparat || ((navigator.language || "").toLowerCase().indexOf("sv") === 0 ? "sv" : "en");
+  fetch("../galleri-klar/lista.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (d) { poster = Array.isArray(d) ? d : []; })
+    .catch(function () { poster = []; })
+    .then(function () { render(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+name: Uppdatera galleriet
+
+# Körs av sig själv så fort du lägger in eller tar bort en fil i galleri-original.
+# Bilderna krymps, all dold information tas bort, och sidan uppdateras.
+on:
+  push:
+    paths:
+      - "galleri-original/**"
+      - ".github/galleri.py"
+      - ".github/workflows/galleri.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: galleri
+  cancel-in-progress: false
+
+jobs:
+  galleri:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Hämta filerna
+        uses: actions/checkout@v4
+
+      - name: Installera verktygen
+        run: |
+          command -v ffmpeg  >/dev/null || sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          command -v magick  >/dev/null || command -v convert >/dev/null || sudo apt-get install -y -qq imagemagick
+          command -v magick >/dev/null && magick -version | head -1 || convert -version | head -1
+          ffmpeg -version | head -1
+
+      - name: Bygg galleriet
+        run: python3 .github/galleri.py
+
+      - name: Spara ändringarna
+        run: |
+          git config user.name  "Galleriet"
+          git config user.email "galleri@users.noreply.github.com"
+          git add -A galleri-klar
+          if git diff --cached --quiet; then
+            echo "::notice::Ingenting nytt att spara."
+            exit 0
+          fi
+          git commit -m "Galleriet uppdaterat"
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase --autostash || true
+          done
+          echo "::error::Kunde inte spara galleriet, försök köra om."
+          exit 1
+
+      - name: Be hemsidan uppdatera sig
+        # säkerhetsnät: en del inställningar bygger inte om sidan av sig själv
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${{ github.repository }}/pages/builds" --silent || echo "::notice::Sidan byggs om av sig själv."

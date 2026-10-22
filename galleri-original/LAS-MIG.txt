@@ -1,0 +1,89 @@
+SÅ LÄGGER DU UPP BILDER OCH FILMER I GALLERIET
+===============================================
+
+Galleriet finns på https://prepperstock.se/galleri
+
+Lägg filerna i den här mappen, galleri-original. Resten sköter sig självt.
+Inom ett par minuter syns de på hemsidan.
+
+
+SÅ GÖR DU FRÅN MOBILEN
+-----------------------
+ 1. Öppna github.com i webbläsaren och logga in.
+ 2. Gå till ditt förråd prepper-stock.
+ 3. Tryck på mappen galleri-original.
+ 4. Tryck på knappen "Add file" uppe till höger, välj "Upload files".
+ 5. Välj bilderna i telefonen. Du kan ta flera på en gång.
+ 6. Scrolla ner och tryck på den gröna knappen "Commit changes".
+ 7. Klart. Vänta några minuter och ladda om galleriet.
+
+Samma sak fungerar från datorn. Där kan du dra filerna rakt in i rutan.
+
+
+NAMNET PÅ FILEN BLIR BILDTEXTEN
+--------------------------------
+Döp filen till det du vill ska stå under bilden.
+
+   Mitt skafferi i källaren.jpg
+       ger texten: Mitt skafferi i källaren
+
+Vill du ha en egen engelsk text sätter du två understreck emellan:
+
+   Mitt skafferi i källaren__My pantry in the basement.jpg
+
+Skriver du ett nummer först bestämmer det ordningen i galleriet,
+och numret visas inte:
+
+   01 Mitt skafferi__My pantry.jpg
+   02 Vattendunkarna__The water cans.jpg
+
+Vill du inte ha någon text alls: döp filen till bara ett nummer, 01.jpg
+
+
+ORDNING
+-------
+Filer med nummer kommer först, i nummerordning.
+Resten kommer efter, i bokstavsordning.
+Numrera med 10, 20, 30 om du vill kunna skjuta in bilder emellan senare.
+
+
+VAD SOM FUNGERAR
+----------------
+Bilder:  jpg, png, webp, heic (iPhone-bilder), gif
+Filmer:  mp4, mov, m4v, webm
+
+Bilderna krymps automatiskt så sidan laddar snabbt.
+Filmerna görs om till ett format som fungerar i alla telefoner.
+Du behöver inte göra något själv med filerna innan du laddar upp dem.
+
+
+OM FILMER
+---------
+Håll dem korta, gärna under en minut. En film på över 90 MB går inte att
+lägga upp på GitHub. Spela in i vanlig kvalitet, inte 4K, så räcker det gott.
+
+
+VIKTIGT OM PLATSINFORMATION
+----------------------------
+Bilder från en mobil innehåller ofta dold information om var de togs,
+alltså var du bor. Den informationen tas automatiskt bort när bilden
+läggs upp i galleriet. Ingen kan se var bilden är tagen.
+
+Men tänk ändå på vad som syns i bild. Husnummer, gatuskyltar, fönster med
+utsikt mot något igenkännbart, post med ditt namn på. Titta igenom bilden
+en gång innan du laddar upp den.
+
+
+TA BORT EN BILD
+---------------
+Gå in i mappen galleri-original, tryck på filen, tryck på papperskorgen,
+och sedan på "Commit changes". Den försvinner från galleriet av sig själv.
+
+
+OM DET INTE SYNS
+----------------
+Gå till fliken "Actions" i förrådet och titta på den senaste körningen av
+"Uppdatera galleriet". Står det gult eller rött där: skicka en skärmbild
+till Claude.
+
+Mappen galleri-klar sköts helt automatiskt. Rör den inte.

@@ -144,6 +144,19 @@ p { margin: 0; }
 .plan + .plan li::marker { color: var(--brass); }
 
 /* bilder att dela */
+.insp { padding: 88px 0 0; }
+.insp .intro { margin-top: 14px; color: var(--mute); max-width: 36em; }
+.insp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(164px, 1fr)); gap: 12px; margin-top: 28px; }
+.insp-grid a { position: relative; display: block; border-radius: 13px; overflow: hidden; background: #DCE3D6; aspect-ratio: 1 / 1; }
+.insp-grid img { width: 100%; height: 100%; object-fit: cover; }
+.insp-grid .pl { position: absolute; inset: 0; display: grid; place-items: center; }
+.insp-grid .pl span { width: 46px; height: 46px; border-radius: 50%; background: rgba(20,32,25,.72); display: grid; place-items: center; }
+.insp-grid .pl svg { width: 19px; height: 19px; fill: #fff; margin-left: 2px; }
+.mer { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding: 13px 22px; border-radius: 999px; background: var(--forest); color: var(--straw); text-decoration: none; font: 600 17px/1 var(--body); }
+.mer:hover { background: var(--moss); }
+.mer svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 640px) { .insp { padding-top: 60px; } .insp-grid { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 9px; } }
+
 .share { background: #D5DDCF; padding: 88px 0; }
 .share .intro { margin-top: 14px; color: var(--mute); max-width: 36em; }
 .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
@@ -303,6 +316,15 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   </div>
 </section>
 
+<section class="insp" id="galleri" aria-labelledby="insp-h" hidden>
+  <div class="wrap">
+    <h2 id="insp-h" data-t="insp_h">Så används appen</h2>
+    <p class="intro" data-t="insp_p">Bilder och filmer från verkliga lager. Hämta idéer till ditt eget.</p>
+    <div class="insp-grid" id="insp-grid"></div>
+    <a class="mer" href="galleri/"><span data-t="insp_mer">Se hela galleriet</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
 <section class="private" id="offline" aria-labelledby="priv-h">
   <div class="wrap">
     <div class="private-grid">
@@ -404,6 +426,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   <div class="wrap foot">
     <span>© 2026 Poles Nathan Oshalem</span>
     <nav>
+      <a href="galleri/" data-t="galleri">Galleri</a>
       <a href="privacy/" data-t="privacy">Integritetspolicy</a>
       <a href="mailto:posa881122@gmail.com" data-t="contact">Kontakt: posa881122@gmail.com</a>
     </nav>
@@ -449,6 +472,7 @@ var T = {
     f4_p: "Spara myndigheternas råd, viktiga dokument och kontakter i telefonen. Det du behöver finns kvar även utan mobilnät.",
     f4_1: "Hitta ditt lands myndighet för krisberedskap", f4_2: "Personer, samlingsplatser och dokument",
     langs_h: "Finns på 11 språk", langs_p: "Välj språk i appens inställningar. Hela appen byter språk, även hjälptexterna.",
+    insp_h: "Så används appen", insp_p: "Bilder och filmer från verkliga lager. Hämta idéer till ditt eget.", insp_mer: "Se hela galleriet", galleri: "Galleri", film: "Film",
     priv_h: "Helt offline. Ditt lager stannar hos dig.",
     priv_lead: "Ditt förråd, dina vapen, dina samlingsplatser och din familjs uppgifter är ingen annans sak. Därför finns allt bara i din telefon och ingen annanstans.",
     o1_b: "Ingen server, inget konto",
@@ -513,6 +537,7 @@ var T = {
     f4_p: "Keep official advice, important documents and contacts on your phone. What you need is still there without mobile coverage.",
     f4_1: "Find your country's authority for preparedness", f4_2: "People, meeting points and documents",
     langs_h: "Available in 11 languages", langs_p: "Choose the language in the app settings. The whole app switches, including the help texts.",
+    insp_h: "The app in real use", insp_p: "Photos and videos from real stockpiles. Borrow ideas for your own.", insp_mer: "See the whole gallery", galleri: "Gallery", film: "Video",
     priv_h: "Fully offline. Your stock stays with you.",
     priv_lead: "Your supplies, your firearms, your meeting points and your family's details are nobody else's business. That is why everything lives on your phone and nowhere else.",
     o1_b: "No server, no account",
@@ -557,6 +582,23 @@ function store(href, live, icon, smallSoon, smallLive, name) {
   if (live) return '<a class="store" href="' + href + '" target="_blank" rel="noopener">' + icon + '<span><small>' + smallLive + '</small>' + name + '</span></a>';
   return '<span class="store soon">' + icon + '<span><small>' + smallSoon + '</small>' + name + '</span></span>';
 }
+/* galleriet: visas bara om det finns bilder i galleri-klar/lista.json */
+var inspPoster = [];
+function inspEsc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function inspRita() {
+  var sek = document.getElementById("galleri"), ruta = document.getElementById("insp-grid");
+  if (!sek || !ruta) return;
+  if (!inspPoster.length) { sek.hidden = true; return; }
+  sek.hidden = false;
+  ruta.innerHTML = inspPoster.slice(0, 8).map(function (p) {
+    var bt = (lang === "en" ? p.en : p.sv) || "";
+    return '<a href="galleri/" aria-label="' + inspEsc(bt || T[lang].insp_mer) + '">' +
+      '<img src="galleri-klar/' + inspEsc(p.mini) + '" alt="" loading="lazy" decoding="async">' +
+      (p.typ === "film" ? '<span class="pl"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></span></span>' : "") +
+      '</a>';
+  }).join("");
+}
+
 function render() {
   var t = T[lang];
   document.documentElement.lang = lang;
@@ -575,6 +617,7 @@ function render() {
   var note = document.querySelector('[data-t="note"]'); if (note) note.textContent = PLAY_LIVE ? t.note_live : t.note;
   var dl = document.querySelector('[data-t="dl_p"]'); if (dl) dl.textContent = APPSTORE_URL ? t.dl_p_both : t.dl_p;
   document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
+  inspRita();
   calc();
 }
 
@@ -600,6 +643,10 @@ document.addEventListener("click", function (e) {
   var q = (location.search.match(/[?&]lang=(sv|en)/) || [])[1];
   lang = q || saved || ((navigator.language || "").toLowerCase().indexOf("sv") === 0 ? "sv" : "en");
   render();
+  fetch("galleri-klar/lista.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (d) { inspPoster = Array.isArray(d) ? d : []; inspRita(); })
+    .catch(function () {});
 })();
 </script>
 </body>
