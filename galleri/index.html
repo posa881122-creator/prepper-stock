@@ -234,6 +234,7 @@ function stang() {
 function render() {
   var t = T[lang];
   document.documentElement.lang = lang;
+  document.querySelectorAll("a.ig").forEach(function (a) { var u = lang === "sv" ? "prepperstock.app" : "prepperstock.global"; a.href = "https://www.instagram.com/" + u + "/"; a.setAttribute("aria-label", "Instagram: " + u); });
   document.title = t.title;
   document.querySelectorAll("[data-t]").forEach(function (el) { var k = el.getAttribute("data-t"); if (t[k] != null) el.textContent = t[k]; });
   document.querySelectorAll("[data-al]").forEach(function (el) { var k = el.getAttribute("data-al"); if (t[k] != null) el.setAttribute("aria-label", t[k]); });
