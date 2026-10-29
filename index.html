@@ -415,7 +415,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
       <a data-promo="3" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
       <a data-promo="4" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
     </div>
-    <a class="wide" href="img/funktionsgrafik.jpg" target="_blank" rel="noopener"><img src="img/funktionsgrafik.jpg" alt="Prepper Stock" loading="lazy" width="1024" height="500"></a>
+    <a class="wide" data-fg href="img/funktionsgrafik-sv.jpg" target="_blank" rel="noopener"><img src="img/funktionsgrafik-sv.jpg" alt="Prepper Stock" loading="lazy" width="1024" height="500"></a>
   </div>
 </section>
 
@@ -620,6 +620,7 @@ function render() {
     a.href = "promo/" + lang + "-reklam-" + n + ".jpg";
     var im = a.querySelector("img"); im.src = "promo/" + lang + "-reklam-" + n + "-liten.webp"; im.alt = t.promo + " " + n;
   });
+  document.querySelectorAll("[data-fg]").forEach(function (a) { var f = "img/funktionsgrafik-" + lang + ".jpg"; a.href = f; a.querySelector("img").src = f; });
   var html = store(PLAY_URL, PLAY_LIVE, ICON_PLAY, t.play_soon_s, t.play_s, "Google Play") +
              store(APPSTORE_URL, !!APPSTORE_URL, ICON_APPLE, t.ios_soon_s, t.ios_s, "App Store");
   document.querySelectorAll("[data-stores]").forEach(function (el) { el.innerHTML = html; });
