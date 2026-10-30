@@ -1,13 +1,33 @@
 [
  {
   "typ": "bild",
-  "full": "en-funktionsgrafik.webp",
-  "mini": "en-funktionsgrafik-mini.webp",
-  "b": 1024,
-  "h": 500,
+  "full": "en-01-do-you-know-your-stock.webp",
+  "mini": "en-01-do-you-know-your-stock-mini.webp",
+  "b": 1080,
+  "h": 1350,
   "sprak": "en",
-  "sv": "Funktionsgrafik",
-  "en": "Funktionsgrafik"
+  "sv": "Do you know your stock",
+  "en": "Do you know your stock"
+ },
+ {
+  "typ": "bild",
+  "full": "en-02-what-s-in-your-bag.webp",
+  "mini": "en-02-what-s-in-your-bag-mini.webp",
+  "b": 1080,
+  "h": 1350,
+  "sprak": "en",
+  "sv": "What's in your bag",
+  "en": "What's in your bag"
+ },
+ {
+  "typ": "bild",
+  "full": "en-03-do-you-know-your-car.webp",
+  "mini": "en-03-do-you-know-your-car-mini.webp",
+  "b": 1080,
+  "h": 1350,
+  "sprak": "en",
+  "sv": "Do you know your car",
+  "en": "Do you know your car"
  },
  {
   "typ": "bild",
