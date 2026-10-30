@@ -163,7 +163,7 @@ p { margin: 0; }
 
 .share { background: #D5DDCF; padding: 88px 0; }
 .share .intro { margin-top: 14px; color: var(--mute); max-width: 36em; }
-.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px; }
 .gallery a { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 28px rgba(20, 32, 25, .18); }
 .gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .wide { margin-top: 18px; border-radius: 16px; overflow: hidden; display: block; }
@@ -190,7 +190,9 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   .feature:nth-child(even) .f-media { order: 0; }
   .f-media { width: min(260px, 76%); }
   .plan-grid { grid-template-columns: 1fr; }
-  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 74%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: none; }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery a { scroll-snap-align: start; }
   .features, .plans { padding-top: 64px; }
 }
 @media (max-width: 420px) {
@@ -413,7 +415,6 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
       <a data-promo="1" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
       <a data-promo="2" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
       <a data-promo="3" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
-      <a data-promo="4" target="_blank" rel="noopener"><img alt="" loading="lazy"></a>
     </div>
     <a class="wide" data-fg href="img/funktionsgrafik-sv.jpg" target="_blank" rel="noopener"><img src="img/funktionsgrafik-sv.jpg" alt="Prepper Stock" loading="lazy" width="1024" height="500"></a>
   </div>
