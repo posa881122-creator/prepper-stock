@@ -105,6 +105,9 @@ p { margin: 0; }
 .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 40px 0; }
 .feature:nth-child(even) .f-media { order: 2; }
 .f-media { justify-self: center; width: min(300px, 100%); }
+.f-media.duo { width: min(400px, 100%); display: flex; align-items: flex-start; }
+.duo .phone { width: 64%; flex: none; }
+.duo .phone + .phone { margin-left: -28%; margin-top: 16%; position: relative; z-index: 1; }
 .f-text h3 { color: var(--forest); }
 .f-text p { margin-top: 16px; color: var(--mute); max-width: 32em; }
 .f-text ul { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
@@ -189,6 +192,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   .feature { grid-template-columns: 1fr; gap: 28px; padding: 28px 0; }
   .feature:nth-child(even) .f-media { order: 0; }
   .f-media { width: min(260px, 76%); }
+  .f-media.duo { width: min(340px, 92%); }
   .plan-grid { grid-template-columns: 1fr; }
   .gallery { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 74%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: none; }
   .gallery::-webkit-scrollbar { display: none; }
@@ -288,7 +292,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
       </div>
     </article>
     <article class="feature">
-      <div class="f-media"><div class="phone"><img data-img="4-bob" alt="" data-alt="alt3" loading="lazy"></div></div>
+      <div class="f-media duo"><div class="phone"><img data-img="4-bob" alt="" data-alt="alt3" loading="lazy"></div><div class="phone"><img data-img="6-bil" alt="" data-alt="alt5" loading="lazy"></div></div>
       <div class="f-text">
         <h3 data-t="f3_h">Väskor och bil, packade och klara</h3>
         <p data-t="f3_p">Håll ordning på vad som ligger i varje bug out bag och i bilen. Hämta saker från lagret utan att något räknas dubbelt.</p>
@@ -511,8 +515,8 @@ var T = {
     privacy: "Integritetspolicy", contact: "Kontakt: posa881122@gmail.com",
     alt1: "Startsidan i appen med hur länge lagret räcker",
     alt2: "Lagret i appen med varor och bäst före-datum",
-    alt3: "Bug out bag-fliken med väskor och en väska i bilen",
-    alt4: "Krisberedskap med myndighetens råd",
+    alt3: "En bug out bag i appen med allt som är packat",
+    alt4: "Krisberedskap med myndighetens råd", alt5: "En bil i appen med en hel väska i bilen",
     promo: "Reklambild"
   },
   en: {
@@ -576,8 +580,8 @@ var T = {
     privacy: "Privacy policy", contact: "Contact: posa881122@gmail.com",
     alt1: "The start screen showing how long the stock lasts",
     alt2: "The stock with items and best before dates",
-    alt3: "The bug out bag tab with bags and a bag in the car",
-    alt4: "Crisis preparedness with official advice",
+    alt3: "A bug out bag in the app with everything packed",
+    alt4: "Crisis preparedness with official advice", alt5: "A car in the app with a whole bag inside",
     promo: "Promotional picture"
   }
 };
