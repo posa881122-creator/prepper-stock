@@ -166,10 +166,10 @@ p { margin: 0; }
 
 .share { background: #D5DDCF; padding: 88px 0; }
 .share .intro { margin-top: 14px; color: var(--mute); max-width: 36em; }
-.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px; }
-.gallery a { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 28px rgba(20, 32, 25, .18); }
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; width: min(1320px, calc(100vw - 40px)); position: relative; left: 50%; transform: translateX(-50%); }
+.gallery a { display: block; overflow: hidden; box-shadow: 0 10px 28px rgba(20, 32, 25, .18); }
 .gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.wide { margin-top: 18px; border-radius: 16px; overflow: hidden; display: block; }
+.wide { margin-top: 18px; overflow: hidden; display: block; width: min(1320px, calc(100vw - 40px)); position: relative; left: 50%; transform: translateX(-50%); box-shadow: 0 10px 28px rgba(20, 32, 25, .18); }
 .wide img { width: 100%; height: auto; }
 
 /* ladda ner */
@@ -194,7 +194,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   .f-media { width: min(260px, 76%); }
   .f-media.duo { width: min(340px, 92%); }
   .plan-grid { grid-template-columns: 1fr; }
-  .gallery { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 74%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: none; }
+  .gallery { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 88%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: none; }
   .gallery::-webkit-scrollbar { display: none; }
   .gallery a { scroll-snap-align: start; }
   .features, .plans { padding-top: 64px; }
