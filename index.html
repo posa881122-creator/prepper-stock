@@ -214,6 +214,13 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
   .store { width: 100%; }
   .brand span { display: none; }
 }
+.hero { align-items: start; }
+.hero-phone { align-self: start; width: min(310px, 100%); margin-top: 8px; }
+.rull { position: relative; aspect-ratio: 9 / 19.5; overflow: hidden; cursor: grab; user-select: none; touch-action: pan-y; border: 1px solid #2B3954; box-shadow: 0 18px 44px rgba(0, 0, 0, .35); background: #111827; scrollbar-width: none; overscroll-behavior: contain; }
+.rull::-webkit-scrollbar { display: none; }
+.rull img { display: block; width: 100%; height: auto; will-change: transform; pointer-events: none; -webkit-user-drag: none; }
+.rull.drar { cursor: grabbing; }
+.rull img.meny { position: absolute; left: 0; bottom: 0; will-change: auto; }
 </style>
 </head>
 <body>
@@ -237,7 +244,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
       <div class="stores" data-stores></div>
       <p class="note" data-t="note">Appen testas just nu och släpps snart. Gratis att ladda ner.</p>
     </div>
-    <div class="hero-phone"><div class="phone"><img data-img="1-start" alt="" data-alt="alt1"></div></div>
+    <div class="hero-phone"><div class="rull" id="rull" tabindex="0" aria-label="Startsidan i appen"><img data-img="s-hel" alt="" data-alt="alt1"><img class="meny" data-img="s-meny" alt=""></div></div>
   </div>
 </header>
 
@@ -685,6 +692,47 @@ document.addEventListener("click", function (e) {
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (d) { inspPoster = Array.isArray(d) ? d : []; inspRita(); })
     .catch(function () {});
+})();
+</script>
+<script>
+(function () {
+  var box = document.getElementById("rull"); if (!box) return;
+  var img = box.querySelector("img"), meny = box.querySelector("img.meny");
+  var lugn = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fart = 38, dir = 1, vila = 2200, paus = performance.now() + 1500, last = 0, pos = 0, drag = null;
+  function max() { return Math.max(0, img.offsetHeight - (box.clientHeight - (meny ? meny.offsetHeight : 0))); }
+  function satt(p) { pos = Math.min(max(), Math.max(0, p)); img.style.transform = "translate3d(0," + (-pos) + "px,0)"; }
+  function stopp() { paus = performance.now() + 5000; }
+  box.addEventListener("wheel", function (e) {
+    var m = max(), ny = pos + e.deltaY;
+    if ((e.deltaY > 0 && pos < m) || (e.deltaY < 0 && pos > 0)) { e.preventDefault(); satt(ny); stopp(); }
+  }, { passive: false });
+  box.addEventListener("pointerdown", function (e) {
+    stopp();
+    if (e.pointerType !== "mouse") return;
+    drag = { y: e.clientY, p: pos }; box.setPointerCapture(e.pointerId); box.classList.add("drar");
+  });
+  box.addEventListener("pointermove", function (e) { if (drag) { satt(drag.p - (e.clientY - drag.y)); stopp(); } });
+  function slapp() { drag = null; box.classList.remove("drar"); }
+  box.addEventListener("pointerup", slapp); box.addEventListener("pointercancel", slapp);
+  box.addEventListener("keydown", function (e) {
+    var k = { ArrowDown: 60, ArrowUp: -60, PageDown: 300, PageUp: -300 }[e.key];
+    if (k) { e.preventDefault(); satt(pos + k); stopp(); }
+  });
+  window.addEventListener("resize", function () { satt(pos); });
+  if (lugn) return;
+  function steg(t) {
+    var dt = last ? Math.min(0.1, (t - last) / 1000) : 0; last = t;
+    var m = max();
+    if (m > 0 && t > paus && !drag) {
+      var p = pos + dir * fart * dt;
+      if (p >= m) { p = m; dir = -1; paus = t + vila; }
+      else if (p <= 0) { p = 0; dir = 1; paus = t + vila; }
+      satt(p);
+    }
+    requestAnimationFrame(steg);
+  }
+  requestAnimationFrame(steg);
 })();
 </script>
 </body>
