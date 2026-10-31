@@ -1,33 +1,123 @@
 [
  {
   "typ": "bild",
-  "full": "en-01-do-you-know-your-stock.webp",
-  "mini": "en-01-do-you-know-your-stock-mini.webp",
-  "b": 1080,
-  "h": 1350,
+  "full": "en-01-be-ready-when-it-matters.webp",
+  "mini": "en-01-be-ready-when-it-matters-mini.webp",
+  "b": 1600,
+  "h": 2000,
   "sprak": "en",
-  "sv": "Do you know your stock",
-  "en": "Do you know your stock"
+  "sv": "Be ready when it matters",
+  "en": "Be ready when it matters"
  },
  {
   "typ": "bild",
-  "full": "en-02-what-s-in-your-bag.webp",
-  "mini": "en-02-what-s-in-your-bag-mini.webp",
-  "b": 1080,
-  "h": 1350,
+  "full": "en-02-from-chaos-to-control.webp",
+  "mini": "en-02-from-chaos-to-control-mini.webp",
+  "b": 1600,
+  "h": 2000,
   "sprak": "en",
-  "sv": "What's in your bag",
-  "en": "What's in your bag"
+  "sv": "From chaos to control",
+  "en": "From chaos to control"
  },
  {
   "typ": "bild",
-  "full": "en-03-do-you-know-your-car.webp",
-  "mini": "en-03-do-you-know-your-car-mini.webp",
-  "b": 1080,
-  "h": 1350,
+  "full": "en-03-everything-in-its-place.webp",
+  "mini": "en-03-everything-in-its-place-mini.webp",
+  "b": 1600,
+  "h": 2000,
   "sprak": "en",
-  "sv": "Do you know your car",
-  "en": "Do you know your car"
+  "sv": "Everything in its place",
+  "en": "Everything in its place"
+ },
+ {
+  "typ": "bild",
+  "full": "en-04-all-in-one-place.webp",
+  "mini": "en-04-all-in-one-place-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "All in one place",
+  "en": "All in one place"
+ },
+ {
+  "typ": "bild",
+  "full": "en-05-all-your-prep-one-app.webp",
+  "mini": "en-05-all-your-prep-one-app-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "All your prep, one app",
+  "en": "All your prep, one app"
+ },
+ {
+  "typ": "bild",
+  "full": "en-06-nothing-expires-unnoticed.webp",
+  "mini": "en-06-nothing-expires-unnoticed-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "Nothing expires unnoticed",
+  "en": "Nothing expires unnoticed"
+ },
+ {
+  "typ": "bild",
+  "full": "en-07-search-find-done.webp",
+  "mini": "en-07-search-find-done-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "Search, find, done",
+  "en": "Search, find, done"
+ },
+ {
+  "typ": "bild",
+  "full": "en-08-always-know-where-it-is.webp",
+  "mini": "en-08-always-know-where-it-is-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "Always know where it is",
+  "en": "Always know where it is"
+ },
+ {
+  "typ": "bild",
+  "full": "en-09-your-supplies-in-days.webp",
+  "mini": "en-09-your-supplies-in-days-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "Your supplies in days",
+  "en": "Your supplies in days"
+ },
+ {
+  "typ": "bild",
+  "full": "en-10-when-the-power-goes-out.webp",
+  "mini": "en-10-when-the-power-goes-out-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "When the power goes out",
+  "en": "When the power goes out"
+ },
+ {
+  "typ": "bild",
+  "full": "en-11-whats-in-your-bag.webp",
+  "mini": "en-11-whats-in-your-bag-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "Whats in your bag",
+  "en": "Whats in your bag"
+ },
+ {
+  "typ": "bild",
+  "full": "en-12-pro-no-limits.webp",
+  "mini": "en-12-pro-no-limits-mini.webp",
+  "b": 1600,
+  "h": 2000,
+  "sprak": "en",
+  "sv": "Pro, no limits",
+  "en": "Pro, no limits"
  },
  {
   "typ": "bild",
