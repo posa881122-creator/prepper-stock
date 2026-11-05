@@ -68,6 +68,8 @@ p { margin: 0; }
 .store { display: inline-flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 20px 10px 16px; border-radius: 14px; text-decoration: none; background: var(--straw); color: var(--forest); font: 600 17px/1.15 var(--body); border: 2px solid var(--straw); }
 .store small { display: block; font: 500 13px/1.2 var(--body); opacity: .75; }
 .store svg { width: 28px; height: 28px; flex: none; }
+.badge { display: inline-flex; align-items: center; height: 58px; overflow: visible; }
+.badge img { display: block; height: 86px; width: auto; margin: 0 -13px; }
 .store.soon { background: transparent; color: var(--straw); border-color: var(--moss); cursor: default; }
 .note { margin-top: 14px; font-size: 15px; color: #B9C6B6; }
 .hero-phone { align-self: end; justify-self: center; width: min(360px, 100%); }
@@ -480,7 +482,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
    PLAY_LIVE: sätt till true när appen är släppt för alla i Google Play.
    APPSTORE_URL: klistra in länken till appen i App Store när den är godkänd. */
 var PLAY_URL = "https://play.google.com/store/apps/details?id=se.prepping.lager";
-var PLAY_LIVE = false;
+var PLAY_LIVE = true;
 var APPSTORE_URL = "";
 
 var T = {
@@ -621,6 +623,8 @@ var ICON_APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="curren
 
 var lang = "sv";
 function store(href, live, icon, smallSoon, smallLive, name) {
+  /* Googles officiella svarta knapp, hämtas direkt från Google, på sidans språk */
+  if (live && name === "Google Play") return '<a class="badge" href="' + href + '" target="_blank" rel="noopener"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/' + (lang === "sv" ? "sv" : "en") + '_badge_web_generic.png" alt="' + smallLive + ' Google Play"></a>';
   if (live) return '<a class="store" href="' + href + '" target="_blank" rel="noopener">' + icon + '<span><small>' + smallLive + '</small>' + name + '</span></a>';
   return '<span class="store soon">' + icon + '<span><small>' + smallSoon + '</small>' + name + '</span></span>';
 }
