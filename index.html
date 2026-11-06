@@ -70,11 +70,11 @@ p { margin: 0; }
 .hero h1 { font-size: clamp(54px, 8vw, 104px); color: var(--brass); max-width: 12ch; }
 .hero .lead { font-size: clamp(19px, 2vw, 22px); line-height: 1.55; color: var(--lichen); margin-top: 24px; max-width: 34em; }
 .stores { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.store { display: inline-flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 20px 10px 16px; border-radius: 14px; text-decoration: none; background: var(--straw); color: var(--forest); font: 600 17px/1.15 var(--body); border: 2px solid var(--straw); }
+.store { display: inline-flex; align-items: center; gap: 12px; min-height: 58px; min-width: 205px; padding: 10px 20px 10px 16px; border-radius: 14px; text-decoration: none; background: var(--straw); color: var(--forest); font: 600 17px/1.15 var(--body); border: 2px solid var(--straw); }
 .store small { display: block; font: 500 13px/1.2 var(--body); opacity: .75; }
 .store svg { width: 28px; height: 28px; flex: none; }
 .badge { display: inline-flex; align-items: center; height: 62px; overflow: visible; }
-.badge img { display: block; height: 76px; width: auto; margin: 0 -4px; }
+.badge img { display: block; height: 76px; width: auto; margin: 0 -1px 0 0; }
 .store.soon { background: transparent; color: var(--straw); border-color: var(--moss); cursor: default; }
 .note { margin-top: 14px; font-size: 15px; color: #B9C6B6; }
 .hero-phone { align-self: end; justify-self: center; width: min(360px, 100%); }
@@ -218,7 +218,6 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
 }
 @media (max-width: 420px) {
   .seg button { padding: 0 13px; }
-  .store { min-width: 180px; }
   .brand span { display: none; }
 }
 .hero { align-items: start; }
