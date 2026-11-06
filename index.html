@@ -11,6 +11,9 @@
 <meta property="og:description" content="Mat, vatten, väskor och viktiga papper i en app. Se vad som går ut och hur länge lagret räcker. Fungerar utan nät.">
 <meta property="og:image" content="https://prepperstock.se/img/funktionsgrafik.jpg">
 <meta property="og:url" content="https://prepperstock.se/">
+<link rel="alternate" hreflang="sv" href="https://prepperstock.se/?lang=sv">
+<link rel="alternate" hreflang="en" href="https://prepperstock.se/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://prepperstock.se/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/ikon-192.png">
 <link rel="apple-touch-icon" href="img/ikon-192.png">
@@ -70,8 +73,8 @@ p { margin: 0; }
 .store { display: inline-flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 20px 10px 16px; border-radius: 14px; text-decoration: none; background: var(--straw); color: var(--forest); font: 600 17px/1.15 var(--body); border: 2px solid var(--straw); }
 .store small { display: block; font: 500 13px/1.2 var(--body); opacity: .75; }
 .store svg { width: 28px; height: 28px; flex: none; }
-.badge { display: inline-flex; align-items: center; height: 58px; overflow: visible; }
-.badge img { display: block; height: 86px; width: auto; margin: 0 -13px; }
+.badge { display: inline-flex; align-items: center; height: 62px; overflow: visible; }
+.badge img { display: block; height: 76px; width: auto; margin: 0 -4px; }
 .store.soon { background: transparent; color: var(--straw); border-color: var(--moss); cursor: default; }
 .note { margin-top: 14px; font-size: 15px; color: #B9C6B6; }
 .hero-phone { align-self: end; justify-self: center; width: min(360px, 100%); }
@@ -215,7 +218,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
 }
 @media (max-width: 420px) {
   .seg button { padding: 0 13px; }
-  .store { width: 100%; }
+  .store { min-width: 180px; }
   .brand span { display: none; }
 }
 .hero { align-items: start; }
@@ -247,7 +250,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
       <h1 data-t="h1">Hela lagret i fickan</h1>
       <p class="lead" data-t="lead">Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.</p>
       <div class="stores" data-stores></div>
-      <p class="note" data-t="note">Appen testas just nu och släpps snart. Gratis att ladda ner.</p>
+      <p class="note" data-t="note">Gratis att ladda ner. Pro är ett engångsköp på 39 kr.</p>
     </div>
     <div class="hero-phone"><div class="rull" id="rull" tabindex="0" aria-label="Startsidan i appen"><img data-img="s-hel" alt="" data-alt="alt1"><img class="meny" data-img="s-meny" alt=""></div></div>
   </div>
@@ -494,6 +497,7 @@ var T = {
     partners: "Partners",
     appname: "Prepper Stock",
     title: "Prepper Stock: hela beredskapslagret i fickan",
+    desc: "Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker. Fungerar helt utan nät.",
     h1: "Hela lagret i fickan",
     lead: "Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.",
     note: "Appen testas just nu och släpps snart. Gratis att ladda ner.",
@@ -560,6 +564,7 @@ var T = {
     partners: "Partners",
     appname: "Prepper Stock",
     title: "Prepper Stock: your whole emergency stock in your pocket",
+    desc: "Keep track of food, water, bags and important papers. See what expires soon and how long your stock lasts. Works fully offline.",
     h1: "Your whole stock in your pocket",
     lead: "Keep track of food, water, bags and important papers. See what expires soon and how long your stock lasts for your household. Everything works offline.",
     note: "The app is being tested right now and will be released soon. Free to download.",
@@ -657,6 +662,7 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("a.ig").forEach(function (a) { var u = lang === "sv" ? "prepperstock.app" : "prepperstock.global"; a.href = "https://www.instagram.com/" + u + "/"; a.setAttribute("aria-label", "Instagram: " + u); });
   document.title = t.title;
+  var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", t.desc);
   document.querySelectorAll("[data-t]").forEach(function (el) { var k = el.getAttribute("data-t"); if (t[k] != null) el.textContent = t[k]; });
   document.querySelectorAll("[data-al]").forEach(function (el) { var k = el.getAttribute("data-al"); if (t[k] != null) el.setAttribute("aria-label", t[k]); });
   document.querySelectorAll("[data-img]").forEach(function (el) { el.src = "img/" + lang + "-" + el.getAttribute("data-img") + ".webp"; el.alt = t[el.getAttribute("data-alt")] || ""; });
