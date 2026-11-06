@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partners: Prepper Stock</title>
+<meta name="description" content="Butiker och företag som samarbetar med Prepper Stock, och hur ditt företag kan bli partner.">
+<meta name="theme-color" content="#1E3326">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Partners: Prepper Stock">
+<meta property="og:description" content="Nå hushåll som aktivt bygger sin beredskap. Ansök om partnerskap med Prepper Stock.">
+<meta property="og:image" content="https://prepperstock.se/img/funktionsgrafik.jpg">
+<meta property="og:url" content="https://prepperstock.se/partners/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/ikon-192.png">
+<style>
+@font-face { font-family: "Barlow Condensed"; src: url(../fonts/BarlowCondensed-Bold.woff) format("woff"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-Regular.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-Medium.woff) format("woff"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+:root { --forest:#1E3326; --moss:#34513B; --brass:#D4A537; --straw:#F1E3A4; --lichen:#E5EADF; --coal:#142019; --mute:#4D5F51;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"Barlow",system-ui,sans-serif; --wrap:1120px; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--lichen); color:var(--coal); font:400 18px/1.55 var(--body); }
+.wrap { width:100%; max-width:var(--wrap); margin:0 auto; padding:0 16px; }
+.top { background:var(--forest); color:var(--straw); }
+.bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; flex-wrap:wrap; }
+.brand { display:flex; align-items:center; gap:10px; color:var(--straw); text-decoration:none; font:700 23px/1 var(--display); }
+.brand img { width:30px; height:30px; border-radius:7px; }
+.lang { display:flex; border:1.5px solid var(--moss); border-radius:999px; overflow:hidden; }
+.lang button { appearance:none; border:0; background:transparent; color:var(--straw); font:500 15px/1 var(--body); padding:9px 14px; cursor:pointer; }
+.lang button[aria-pressed="true"] { background:var(--moss); }
+.head { padding:10px 16px 44px; }
+.back { display:inline-flex; gap:7px; margin-bottom:18px; color:var(--brass); text-decoration:none; font:500 16px/1 var(--body); }
+.head h1 { margin:0; font:700 clamp(40px,7vw,64px)/1.02 var(--display); color:var(--brass); }
+.head p { margin:14px 0 0; max-width:34em; color:#C9D6C2; }
+main { padding:44px 0 90px; }
+h2 { font:700 clamp(30px,4vw,42px)/1.05 var(--display); color:var(--forest); margin:0 0 10px; }
+.tom { background:#fff; border:1.5px dashed #BBC9B4; border-radius:16px; padding:36px 24px; text-align:center; color:var(--mute); margin-bottom:56px; }
+.tom b { display:block; font:700 24px/1.1 var(--display); color:var(--forest); margin-bottom:6px; }
+.apply { background:var(--forest); color:var(--lichen); border-radius:20px; padding:36px 28px; }
+.apply h2 { color:var(--brass); }
+.apply > p { max-width:36em; color:#C9D6C2; }
+.why { margin:24px 0 0; border-left:4px solid var(--brass); background:#26402F; border-radius:0 14px 14px 0; padding:18px 20px; max-width:40em; }
+.why b { display:block; color:var(--brass); font:700 24px/1.1 var(--display); margin-bottom:8px; }
+.why p { color:var(--lichen); margin:0 0 10px; } .why p:last-child { margin:0; }
+.fakta { margin-top:12px; padding-top:12px; border-top:1px solid var(--moss); color:var(--straw) !important; font:600 16px/1.4 var(--body); }
+.points { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:26px 0; }
+.pt { background:#26402F; border:1.5px solid var(--moss); border-radius:14px; padding:18px; }
+.pt b { display:block; color:var(--straw); font:600 18px/1.3 var(--body); margin-bottom:4px; }
+.pt span { font-size:16px; color:#C9D6C2; }
+.btn { display:inline-flex; align-items:center; gap:10px; background:var(--brass); color:var(--coal); text-decoration:none; font:600 18px/1 var(--body); padding:17px 26px; border-radius:14px; }
+.val { margin-top:18px; background:#26402F; border:1.5px solid var(--moss); border-radius:14px; padding:18px; max-width:460px; }
+.val[hidden] { display:none; }
+.val b { display:block; color:var(--straw); font:600 17px/1.3 var(--body); margin-bottom:12px; }
+.val a, .val button { display:flex; align-items:center; justify-content:space-between; width:100%; margin:0 0 8px; padding:13px 16px; border-radius:10px; border:1.5px solid var(--moss); background:var(--forest); color:var(--straw); font:500 17px/1 var(--body); text-decoration:none; cursor:pointer; text-align:left; }
+.val a:hover, .val button:hover { background:var(--moss); }
+.val .adr { margin-top:6px; font-size:15px; color:#AFC0A8; }
+.small { margin-top:16px; font-size:15px; color:#AFC0A8; }
+footer { background:var(--forest); color:#AFC0A8; padding:30px 0 38px; font-size:16px; }
+.foot { display:flex; flex-wrap:wrap; gap:10px 26px; justify-content:space-between; }
+.foot nav { display:flex; gap:10px 24px; flex-wrap:wrap; } footer a { color:var(--straw); }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="../"><img src="../img/ikon-192.png" alt=""><span>Prepper Stock</span></a>
+    <div class="lang" role="group" aria-label="Språk / Language">
+      <button type="button" data-lang="sv" aria-pressed="true">Svenska</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+  <div class="wrap head">
+    <a class="back" href="../"><span aria-hidden="true">←</span><span data-t="back">Till startsidan</span></a>
+    <h1 data-t="h1">Partners</h1>
+    <p data-t="lead">Butiker och företag som hjälper människor att bygga sin beredskap. Här ser du vilka vi samarbetar med, och hur ditt företag kan bli en av dem.</p>
+  </div>
+</header>
+<main><div class="wrap">
+  <h2 data-t="our_h">Våra partners</h2>
+  <div class="tom"><b data-t="tom_b">De första partnerna presenteras snart</b><span data-t="tom_p">Vi går igenom varje samarbete noga innan det visas här.</span></div>
+
+  <section class="apply">
+    <h2 data-t="ap_h">Ansök om partnerskap</h2>
+    <p data-t="ap_p">Säljer ditt företag mat för lagring, vatten, friluftsutrustning eller annat som hör till hemberedskap? Då vill vi gärna höra av dig. Företag från alla länder är välkomna.</p>
+    <div class="why">
+      <b data-t="why_h">Varför synas i Prepper Stock?</b>
+      <p data-t="why_1">Prepper Stock används av hushåll som aktivt bygger sin beredskap. Appen visar vad som finns hemma, vad som saknas och vad som snart behöver bytas ut. Det gör användarna till köpare med ett tydligt och återkommande behov.</p>
+      <p data-t="why_2">När appen visar att vattnet räcker i två dygn, eller att konserverna går ut nästa månad, finns er butik ett tryck bort. Precis när beslutet att handla fattas.</p>
+      <p class="fakta" data-t="fakta">Finns på Google Play i 176 länder och på 11 språk. Snart även för iPhone.</p>
+    </div>
+    <div class="points">
+      <div class="pt"><b data-t="p1b">Synlig i appen</b><span data-t="p1">Möt kunderna där de planerar sina inköp, med er logga och en direktlänk till butiken.</span></div>
+      <div class="pt"><b data-t="p2b">Synlig här</b><span data-t="p2">Extra synlighet på prepperstock.se, med er logga och en direktlänk till butiken.</span></div>
+      <div class="pt"><b data-t="p3b">Ärligt märkt</b><span data-t="p3">Partners visas tydligt märkta som samarbete. Klicken räknas hos er, appen spårar ingen.</span></div>
+      <div class="pt"><b data-t="p4b">Inga bindningar</b><span data-t="p4">Avtalet ger ingen ensamrätt och kan avslutas när som helst.</span></div>
+    </div>
+    <button type="button" class="btn" id="mail" style="border:0;cursor:pointer" aria-expanded="false" aria-controls="val"><span data-t="btn">Skicka en ansökan</span><span aria-hidden="true">↗</span></button>
+    <div class="val" id="val" hidden>
+      <b data-t="val_b">Hur vill du skicka?</b>
+      <a id="v-gmail" target="_blank" rel="noopener"><span data-t="v_gmail">Öppna i Gmail</span><span aria-hidden="true">↗</span></a>
+      <a id="v-outlook" target="_blank" rel="noopener"><span data-t="v_outlook">Öppna i Outlook</span><span aria-hidden="true">↗</span></a>
+      <a id="v-app"><span data-t="v_app">Öppna i mejlappen</span><span aria-hidden="true">↗</span></a>
+      <button type="button" id="v-copy"><span id="v-copy-t" data-t="v_copy">Kopiera adressen</span><span aria-hidden="true">⧉</span></button>
+      <p class="adr">posa881122@gmail.com</p>
+    </div>
+    <p class="small" data-t="small">Öppnar ditt mejlprogram med ett färdigt utkast. Skriv gärna på svenska eller engelska.</p>
+  </section>
+</div></main>
+<footer><div class="wrap foot"><span>© 2026 Poles Nathan Oshalem</span>
+<nav><a href="../" data-t="start">Startsidan</a><a href="../privacy/" data-t="privacy">Integritetspolicy</a></nav></div></footer>
+<script>
+var T = {
+ sv: { back:"Till startsidan", h1:"Partners", lead:"Butiker och företag som hjälper människor att bygga sin beredskap. Här ser du vilka vi samarbetar med, och hur ditt företag kan bli en av dem.",
+  our_h:"Våra partners", tom_b:"De första partnerna presenteras snart", tom_p:"Vi går igenom varje samarbete noga innan det visas här.",
+  ap_h:"Ansök om partnerskap", ap_p:"Säljer ditt företag mat för lagring, vatten, friluftsutrustning eller annat som hör till hemberedskap? Då vill vi gärna höra av dig. Företag från alla länder är välkomna.",
+  why_h:"Varför synas i Prepper Stock?", why_1:"Prepper Stock används av hushåll som aktivt bygger sin beredskap. Appen visar vad som finns hemma, vad som saknas och vad som snart behöver bytas ut. Det gör användarna till köpare med ett tydligt och återkommande behov.", why_2:"När appen visar att vattnet räcker i två dygn, eller att konserverna går ut nästa månad, finns er butik ett tryck bort. Precis när beslutet att handla fattas.", fakta:"Finns på Google Play i 176 länder och på 11 språk. Snart även för iPhone.",
+  p1b:"Synlig i appen", p1:"Möt kunderna där de planerar sina inköp, med er logga och en direktlänk till butiken.", p2b:"Synlig här", p2:"Extra synlighet på prepperstock.se, med er logga och en direktlänk till butiken.",
+  p3b:"Ärligt märkt", p3:"Partners visas tydligt märkta som samarbete. Klicken räknas hos er, appen spårar ingen.", p4b:"Inga bindningar", p4:"Avtalet ger ingen ensamrätt och kan avslutas när som helst.",
+  btn:"Skicka en ansökan", small:"Mejlet blir färdigt ifyllt. Skriv gärna på svenska eller engelska.", val_b:"Hur vill du skicka?", v_gmail:"Öppna i Gmail", v_outlook:"Öppna i Outlook", v_app:"Öppna i mejlappen", v_copy:"Kopiera adressen", copied:"Adressen är kopierad",
+  start:"Startsidan", privacy:"Integritetspolicy",
+  subj:"Ansökan om partnerskap: Prepper Stock", body:"Företag:\nWebbplats:\nLand:\nVad ni säljer:\nKontaktperson:\n" },
+ en: { back:"Back to start", h1:"Partners", lead:"Shops and companies that help people build their preparedness. See who we work with, and how your company can become one of them.",
+  our_h:"Our partners", tom_b:"Our first partners will be presented soon", tom_p:"We review every partnership carefully before it is shown here.",
+  ap_h:"Apply for partnership", ap_p:"Does your company sell long life food, water, outdoor gear or anything else for home preparedness? We would love to hear from you. Companies from every country are welcome.",
+  why_h:"Why partner with Prepper Stock?", why_1:"Prepper Stock is used by households that actively build their preparedness. The app shows what they have at home, what is missing and what soon needs replacing. That makes its users buyers with a clear and recurring need.", why_2:"When the app shows that the water will last two days, or that the canned food expires next month, your shop is one tap away. Right when the decision to buy is made.", fakta:"Available on Google Play in 176 countries and in 11 languages. Coming soon for iPhone.",
+  p1b:"Visible in the app", p1:"Meet customers where they plan their purchases, with your logo and a direct link to your shop.", p2b:"Visible here", p2:"Extra visibility on prepperstock.se, with your logo and a direct link to your shop.",
+  p3b:"Honestly labelled", p3:"Partners are clearly labelled as partnerships. Clicks are counted on your side, the app tracks no one.", p4b:"No commitment", p4:"The agreement is non exclusive and can be ended at any time.",
+  btn:"Send an application", small:"The email is filled in for you. Write in English or Swedish.", val_b:"How do you want to send it?", v_gmail:"Open in Gmail", v_outlook:"Open in Outlook", v_app:"Open in your email app", v_copy:"Copy the address", copied:"Address copied",
+  start:"Home", privacy:"Privacy policy",
+  subj:"Partnership application: Prepper Stock", body:"Company:\nWebsite:\nCountry:\nWhat you sell:\nContact person:\n" }
+};
+var lang;
+function render(){ var t=T[lang]; document.documentElement.lang=lang;
+ document.querySelectorAll("[data-t]").forEach(function(e){ var k=e.getAttribute("data-t"); if(t[k]) e.textContent=t[k]; });
+ document.querySelectorAll("[data-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-lang")===lang?"true":"false"); });
+ var to="posa881122@gmail.com", su=encodeURIComponent(t.subj), bo=encodeURIComponent(t.body);
+ document.getElementById("v-gmail").href="https://mail.google.com/mail/?view=cm&fs=1&to="+to+"&su="+su+"&body="+bo;
+ document.getElementById("v-outlook").href="https://outlook.live.com/mail/0/deeplink/compose?to="+to+"&subject="+su+"&body="+bo;
+ document.getElementById("v-app").href="mailto:"+to+"?subject="+su+"&body="+bo; }
+document.getElementById("mail").addEventListener("click",function(){ var v=document.getElementById("val"); v.hidden=!v.hidden; this.setAttribute("aria-expanded", v.hidden?"false":"true"); });
+document.getElementById("v-copy").addEventListener("click",function(){ var el=document.getElementById("v-copy-t");
+ function ok(){ el.textContent=T[lang].copied; setTimeout(function(){ el.textContent=T[lang].v_copy; },2500); }
+ if(navigator.clipboard){ navigator.clipboard.writeText("posa881122@gmail.com").then(ok,function(){}); } });
+document.addEventListener("click",function(e){ var l=e.target.closest("[data-lang]"); if(l){ lang=l.getAttribute("data-lang"); try{localStorage.setItem("ps-lang",lang);}catch(x){} render(); }});
+var saved=null; try{saved=localStorage.getItem("ps-lang");}catch(x){}
+var q=(location.search.match(/[?&]lang=(sv|en)/)||[])[1];
+lang=q||saved||((navigator.language||"").toLowerCase().indexOf("sv")===0?"sv":"en"); render();
+</script>
+</body>
+</html>
