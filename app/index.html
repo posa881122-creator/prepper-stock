@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Prepper Stock</title>
+<link rel="icon" href="/img/ikon-192.png">
+<script>
+/* ===== Ändra här =====
+   IOS_LIVE: sätt till true när Apple har godkänt appen.
+   Då skickas iPhone-användare direkt till App Store i stället för till hemsidan. */
+var PLAY_URL = "https://play.google.com/store/apps/details?id=se.prepping.lager";
+var APPSTORE_URL = "https://apps.apple.com/app/id6825012438";
+var IOS_LIVE = false;
+
+var ua = navigator.userAgent || "";
+var isAndroid = /Android/i.test(ua);
+var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+if (isAndroid) {
+  location.replace(PLAY_URL);
+} else if (isIOS) {
+  location.replace(IOS_LIVE ? APPSTORE_URL : "/");
+}
+</script>
+<style>
+@font-face { font-family: "Barlow Condensed"; src: url("/fonts/BarlowCondensed-Bold.woff") format("woff"); font-weight: 700; }
+@font-face { font-family: "Barlow"; src: url("/fonts/Barlow-Medium.woff") format("woff"); font-weight: 500; }
+body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: #1E3326; color: #E5EADF; font-family: "Barlow", sans-serif; text-align: center; }
+.box { padding: 32px 24px; max-width: 420px; }
+img.logo { width: 96px; height: 96px; border-radius: 22px; }
+h1 { font-family: "Barlow Condensed", sans-serif; font-size: 40px; margin: 16px 0 8px; }
+p { color: #F1E3A4; margin: 0 0 28px; }
+a.btn { display: block; margin: 12px 0; padding: 14px 20px; border-radius: 12px;
+  background: #D4A537; color: #142019; font-weight: 500; text-decoration: none; font-size: 18px; }
+a.btn.alt { background: transparent; color: #E5EADF; border: 2px solid #34513B; }
+</style>
+</head>
+<body>
+<div class="box">
+  <img class="logo" src="/img/ikon-192.png" alt="">
+  <h1>Prepper Stock</h1>
+  <p id="lead">Välj din butik</p>
+  <a class="btn" id="play" href="https://play.google.com/store/apps/details?id=se.prepping.lager">Google Play (Android)</a>
+  <a class="btn" id="ios" href="https://apps.apple.com/app/id6825012438">App Store (iPhone)</a>
+  <a class="btn alt" id="home" href="/">prepperstock.se</a>
+</div>
+<script>
+if (!/^sv\b/i.test(navigator.language || "")) {
+  document.documentElement.lang = "en";
+  document.getElementById("lead").textContent = "Choose your store";
+}
+</script>
+</body>
+</html>
