@@ -79,6 +79,11 @@ a.store { background: #000; color: #fff; border: 1px solid #A6A6A6; border-radiu
 a.store small { opacity: .9; }
 .store.soon { background: transparent; color: var(--straw); border-color: var(--moss); cursor: default; }
 .note { margin-top: 14px; font-size: 15px; color: #B9C6B6; }
+.qr { display: inline-flex; align-items: center; gap: 18px; margin-top: 26px; padding: 14px 22px 14px 14px; border-radius: 16px; background: var(--lichen); color: var(--coal); }
+.qr img { width: 112px; height: 112px; flex: none; display: block; image-rendering: pixelated; }
+.qr strong { display: block; font: 700 20px/1.15 var(--display); letter-spacing: .02em; text-transform: uppercase; color: var(--forest); }
+.qr span { display: block; max-width: 210px; margin-top: 6px; font-size: 15px; line-height: 1.35; color: var(--mute); }
+@media (max-width: 860px), (hover: none) { .qr { display: none; } }
 .hero-phone { align-self: end; justify-self: center; width: min(360px, 100%); }
 
 /* telefonram */
@@ -252,6 +257,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
       <p class="lead" data-t="lead">Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.</p>
       <div class="stores" data-stores></div>
       <p class="note" data-t="note">Gratis att ladda ner. Pro är ett engångsköp på 39 kr.</p>
+      <div class="qr"><img src="img/qr-app.svg" width="112" height="112" alt="QR-kod till prepperstock.se/app" data-alt="qr_alt"><div><strong data-t="qr_h">Skanna med mobilen</strong><span data-t="qr_p">Kameran öppnar rätt butik, Google Play eller App Store.</span></div></div>
     </div>
     <div class="hero-phone"><div class="rull" id="rull" tabindex="0" aria-label="Startsidan i appen"><img data-img="s-hel" alt="" data-alt="alt1"><img class="meny" data-img="s-meny" alt=""></div></div>
   </div>
@@ -503,6 +509,7 @@ var T = {
     lead: "Håll koll på mat, vatten, väskor och viktiga papper. Se vad som snart går ut och hur länge lagret räcker för ditt hushåll. Allt fungerar utan nät.",
     note: "Appen testas just nu och släpps snart. Gratis att ladda ner.",
     note_live: "Gratis att ladda ner. Pro är ett engångsköp på 39 kr.",
+    qr_h: "Skanna med mobilen", qr_p: "Kameran öppnar rätt butik, Google Play eller App Store.", qr_alt: "QR-kod till prepperstock.se/app",
     play_soon_s: "Släpps snart på", play_s: "Ladda ner på",
     ios_soon_s: "Snart för iPhone i", ios_s: "Ladda ner i",
     calc_h: "Vad behöver ni hemma?",
@@ -570,6 +577,7 @@ var T = {
     lead: "Keep track of food, water, bags and important papers. See what expires soon and how long your stock lasts for your household. Everything works offline.",
     note: "The app is being tested right now and will be released soon. Free to download.",
     note_live: "Free to download. Pro is a one time purchase.",
+    qr_h: "Scan with your phone", qr_p: "Your camera opens the right store, Google Play or the App Store.", qr_alt: "QR code for prepperstock.se/app",
     play_soon_s: "Coming soon to", play_s: "Get it on",
     ios_soon_s: "Coming soon to the", ios_s: "Download on the",
     calc_h: "What does your household need?",
