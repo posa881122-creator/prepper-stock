@@ -73,12 +73,9 @@ p { margin: 0; }
 .store { display: inline-flex; align-items: center; gap: 12px; min-height: 58px; min-width: 205px; padding: 10px 20px 10px 16px; border-radius: 14px; text-decoration: none; background: var(--straw); color: var(--forest); font: 600 17px/1.15 var(--body); border: 2px solid var(--straw); }
 .store small { display: block; font: 500 13px/1.2 var(--body); opacity: .75; }
 .store svg { width: 28px; height: 28px; flex: none; }
-.badge { display: inline-flex; align-items: center; height: 62px; overflow: visible; }
-.badge img { display: block; height: 76px; width: auto; margin: 0 -1px 0 0; }
-.badge img.en { height: 85px; margin: 0 -62px 0 -9px; } /* Googles engelska bild har mer tom kant, så den förstoras och kanten räknas bort */
+.badge { display: inline-flex; align-items: center; }
+.badge img { display: block; height: 58px; width: 195px; } /* Googles bild utan tomma kanter, lika stor som App Store-knappen */
 a.store { background: #000; color: #fff; border: 1px solid #A6A6A6; border-radius: 10px; height: 58px; min-height: 0; width: 195px; min-width: 0; padding: 0 16px; justify-content: center; } /* samma mått som Google-knappen */
-html[lang="en"] a.store { width: 148px; padding: 0 10px; gap: 9px; }
-html[lang="en"] a.store svg { width: 24px; height: 24px; }
 a.store span { white-space: nowrap; }
 a.store small { opacity: .9; }
 .store.soon { background: transparent; color: var(--straw); border-color: var(--moss); cursor: default; }
@@ -648,7 +645,7 @@ var ICON_APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="curren
 var lang = "sv";
 function store(href, live, icon, smallSoon, smallLive, name) {
   /* Googles officiella svarta knapp, hämtas direkt från Google, på sidans språk */
-  if (live && name === "Google Play") return '<a class="badge" href="' + href + '" target="_blank" rel="noopener"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/' + (lang === "sv" ? "sv" : "en") + '_badge_web_generic.png"' + (lang === "sv" ? "" : ' class="en"') + ' alt="' + smallLive + ' Google Play"></a>';
+  if (live && name === "Google Play") return '<a class="badge" href="' + href + '" target="_blank" rel="noopener"><img src="img/google-play-' + (lang === "sv" ? "sv" : "en") + '.png" width="195" height="58" alt="' + smallLive + ' Google Play"></a>';
   if (live) return '<a class="store" href="' + href + '" target="_blank" rel="noopener">' + icon + '<span><small>' + smallLive + '</small>' + name + '</span></a>';
   return '<span class="store soon">' + icon + '<span><small>' + smallSoon + '</small>' + name + '</span></span>';
 }
