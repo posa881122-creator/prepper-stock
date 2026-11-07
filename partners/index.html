@@ -68,10 +68,10 @@ h2 { font:700 clamp(30px,4vw,42px)/1.05 var(--display); color:var(--forest); mar
 .demo-p { margin:0 0 22px; color:var(--mute); max-width:36em; }
 .side { display:flex; flex-direction:column; align-items:center; }
 .tag { align-self:center; margin-bottom:12px; font:700 14px/1 var(--body); letter-spacing:.12em; text-transform:uppercase; color:var(--forest); background:#fff; border:1.5px solid #BBC9B4; border-radius:999px; padding:8px 14px; }
-.cap { margin:14px 0 0; max-width:290px; text-align:center; font-size:15px; line-height:1.45; color:var(--mute); }
+.cap { margin:14px 0 0; max-width:340px; text-align:center; font-size:15px; line-height:1.45; color:var(--mute); }
 .cap b { display:block; color:var(--forest); font:700 20px/1.15 var(--display); margin-bottom:3px; }
-@media (min-width:1380px) {
-  .wrap.layout { max-width:1640px; grid-template-columns:minmax(290px,1fr) minmax(0,780px) minmax(290px,1fr); gap:40px; align-items:start; }
+@media (min-width:1500px) {
+  .wrap.layout { max-width:1640px; grid-template-columns:minmax(350px,1fr) minmax(0,780px) minmax(350px,1fr); gap:40px; align-items:start; }
   .layout > .content { grid-column:2; grid-row:1; }
   .demo { display:contents; }
   .demo-intro { display:none; }
@@ -82,7 +82,7 @@ h2 { font:700 clamp(30px,4vw,42px)/1.05 var(--display); color:var(--forest); mar
 @media (max-width:680px) { .demo { grid-template-columns:1fr; gap:40px; } .points { grid-template-columns:1fr; } }
 
 /* ===== Telefonen ===== */
-.phone { width:290px; max-width:100%; background:#0D0F0B; border-radius:44px; padding:10px; box-shadow:0 30px 60px -20px rgba(20,32,25,.55), 0 0 0 1.5px #2A2E22 inset; }
+.phone { width:290px; max-width:100%; zoom:1.2; background:#0D0F0B; border-radius:44px; padding:10px; box-shadow:0 30px 60px -20px rgba(20,32,25,.55), 0 0 0 1.5px #2A2E22 inset; }
 .scr { position:relative; background:#1C1F17; border-radius:35px; overflow:hidden; padding:34px 14px 16px; color:#ECE3C9; font:400 13px/1.4 var(--body); }
 .scr::before { content:""; position:absolute; top:10px; left:50%; width:84px; height:22px; margin-left:-42px; border-radius:20px; background:#0D0F0B; }
 .ab { display:flex; align-items:center; gap:8px; margin:6px 0 10px; }
