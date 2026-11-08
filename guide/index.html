@@ -204,6 +204,9 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .tag.e { background: var(--lichen); color: var(--mute); }
 .addf { display: grid; grid-template-columns: 1fr 120px auto; gap: 8px; padding: 14px 24px 6px; }
 .akut .addf { padding: 16px 0 4px; border-top: 1px solid var(--line); margin-top: 6px; }
+.addf.withcat { grid-template-columns: 170px 1fr 110px auto; }
+.addf select { font: 500 16px/1 var(--body); padding: 11px 10px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; color: var(--coal); min-width: 0; }
+.addf .nc { grid-column: 1 / 2; grid-row: 2; }
 .addf input { font: 500 16px/1 var(--body); padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px; min-width: 0; background: #fff; color: var(--coal); }
 .addf input:focus { outline: none; border-color: var(--forest); }
 .addf .btn { padding: 12px 18px; background: var(--forest); color: var(--straw); }
@@ -213,7 +216,8 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
   .li { grid-template-columns: 22px 1fr auto 28px !important; padding: 11px 12px 11px 16px; }
   .ak-r { grid-template-columns: 22px 1fr 28px !important; }
   .ak-r b { grid-row: 2; }
-  .addf { grid-template-columns: 1fr 90px; padding: 14px 16px 6px; }
+  .addf, .addf.withcat { grid-template-columns: 1fr 90px; padding: 14px 16px 6px; }
+  .addf select, .addf .nc { grid-column: 1 / -1; grid-row: auto; }
   .addf .btn { grid-column: 1 / -1; justify-content: center; }
 }
 @media print { .rm, .addf, .undo { display: none !important; } }
@@ -951,9 +955,10 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   }
 
   /* Lägga till och ta bort */
-  function addForm(l) {
+  function addForm(l, cats) {
     var n = Object.keys(ST.r).filter(function (k) { return k.indexOf(l + ":") === 0; }).length;
-    return '<form class="addf" data-l="' + l + '"><input name="n" placeholder="Lägg till vara" maxlength="60" aria-label="Vara" required><input name="q" placeholder="Antal" maxlength="20" aria-label="Antal"><button class="btn" type="submit">Lägg till</button></form>' +
+    var sel = cats ? '<select name="c" aria-label="Kategori">' + cats.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join("") + '<option value="__ny">Ny kategori…</option></select><input name="nc" class="nc" placeholder="Namn på kategorin" maxlength="40" aria-label="Namn på kategorin" hidden>' : "";
+    return '<form class="addf' + (cats ? ' withcat' : '') + '" data-l="' + l + '">' + sel + '<input name="n" placeholder="Lägg till vara" maxlength="60" aria-label="Vara" required><input name="q" placeholder="Antal" maxlength="20" aria-label="Antal"><button class="btn" type="submit">Lägg till</button></form>' +
       (n ? '<button type="button" class="undo" data-l="' + l + '">Visa ' + n + (n === 1 ? ' borttagen vara' : ' borttagna varor') + ' igen</button>' : '');
   }
   function omrita() { var y = scrollY; calc(); if (!$("#akut").hidden) akut(); scrollTo(0, y); }
@@ -961,7 +966,13 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     var f = e.target; if (!f.classList || !f.classList.contains("addf")) return;
     e.preventDefault();
     var n = f.n.value.trim(), q = f.q.value.trim(); if (!n) return;
-    ST.add[f.dataset.l].push([n, q]); spara(); omrita();
+    var cat = "";
+    if (f.c) cat = f.c.value === "__ny" ? (f.nc.value.trim() || "Egna varor") : f.c.value;
+    ST.add[f.dataset.l].push([n, q, cat]); spara(); omrita();
+  });
+  document.addEventListener("change", function (e) {
+    var t = e.target; if (t.name !== "c" || !t.form) return;
+    var nc = t.form.querySelector(".nc"); nc.hidden = t.value !== "__ny"; nc.required = !nc.hidden; if (!nc.hidden) nc.focus();
   });
   document.addEventListener("click", function (e) {
     var b = e.target.closest ? e.target.closest(".rm, .undo") : null; if (!b) return;
@@ -1040,20 +1051,27 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     h += '<div class="ak-prog"><div><b id="ak-cnt">0 av 0 köpta</b><span>Kryssen sparas i den här telefonen.</span></div><button class="btn ghost dark" type="button" id="ak-reset">Rensa listan</button></div><div class="ak-bar"><i id="ak-fill"></i></div>';
     h += '<p class="ak-lead">Köp i den här ordningen. Tar något slut, hoppa till nästa.</p>';
     G = G.map(function (g) { return [g[0], g[1].filter(function (r) { return !ST.r["a:" + r[0]]; })]; }).filter(function (g) { return g[1].length; });
-    if (ST.add.a.length) G.push(["Egna varor", ST.add.a.map(function (x) { return ["+" + x[0], x[1], ""]; })]);
+    ST.add.a.forEach(function (x) {
+      var cat = x[2] || "Egna varor", g = null;
+      G.forEach(function (y) { if (y[0] === cat) g = y; });
+      if (!g) { g = [cat, []]; G.push(g); }
+      g[1].push(["+" + x[0], x[1], ""]);
+    });
+    var cats = G.map(function (y) { return y[0]; });
+    if (cats.indexOf("Egna varor") < 0) cats.push("Egna varor");
     var txt = "AKUT INKÖPSLISTA, " + (folk ? folk + " personer, " : "") + lbl + "\n";
     G.forEach(function (g, gi) {
-      h += '<div class="ak-g"><div class="ak-n">' + (gi + 1) + '</div><div class="ak-b"><h4>' + g[0] + '</h4>';
+      h += '<div class="ak-g"><div class="ak-n">' + (gi + 1) + '</div><div class="ak-b"><h4>' + esc(g[0]) + '</h4>';
       txt += "\n" + (gi + 1) + ". " + g[0].toUpperCase() + "\n";
       g[1].forEach(function (r) {
         var nm = r[0].charAt(0) === "+" ? esc(r[0].slice(1)) : r[0];
         h += '<label class="ak-r"><input type="checkbox" data-k="a:' + esc(r[0]) + '"><span>' + nm + (r[2] ? '<small>' + r[2] + '</small>' : '') + '</span><b>' + esc(r[1]) + '</b>' + XBTN + '</label>';
-        txt += "[ ] " + (r[0].charAt(0) === "+" ? r[0].slice(1) : r[0]) + (r[1] ? ": " + r[1] : "") + "\n";
+        txt += (ST.c["a:" + r[0]] ? "[x] " : "[ ] ") + (r[0].charAt(0) === "+" ? r[0].slice(1) : r[0]) + (r[1] ? ": " + r[1] : "") + "\n";
       });
       h += '</div></div>';
     });
-    h += addForm("a");
-    h += '<div class="actions"><button class="btn" type="button" id="ak-copy">Kopiera listan som text</button></div>';
+    h += addForm("a", cats);
+    h += '<div class="actions"><button class="btn" type="button" id="ak-dl">Ladda ner listan</button><button class="btn ghost dark" type="button" id="ak-share" hidden>Dela</button><button class="btn ghost dark" type="button" id="ak-copy">Kopiera listan som text</button></div>';
     $("#akut").innerHTML = h;
     $("#akut").hidden = false;
     $("#ak-reset").onclick = function () {
@@ -1062,10 +1080,35 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     };
     koppla();
     $("#ak-close").onclick = function () { $("#akut").hidden = true; $("#calc").scrollIntoView(); };
+    function nuText() {
+      var t = txt.split("\n")[0] + "\n";
+      document.querySelectorAll("#akut .ak-g").forEach(function (g, i) {
+        t += "\n" + (i + 1) + ". " + g.querySelector("h4").textContent.toUpperCase() + "\n";
+        g.querySelectorAll(".ak-r").forEach(function (r) {
+          var sp = r.querySelector("span"), nm = sp.firstChild ? sp.firstChild.textContent : "", q = r.querySelector("b").textContent;
+          t += (r.querySelector("input").checked ? "[x] " : "[ ] ") + nm + (q ? ": " + q : "") + "\n";
+        });
+      });
+      return t;
+    }
+    $("#ak-dl").onclick = function () {
+      var txt = nuText();
+      try {
+        var blob = new Blob(["\ufeff" + txt.replace(/\n/g, "\r\n")], { type: "text/plain;charset=utf-8" });
+        var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "inkopslista-prepper-stock.txt";
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+        $("#ak-dl").textContent = "Listan är nedladdad"; setTimeout(function () { $("#ak-dl").textContent = "Ladda ner listan"; }, 2200);
+      } catch (e) {}
+    };
+    if (navigator.share) {
+      $("#ak-share").hidden = false;
+      $("#ak-share").onclick = function () { navigator.share({ text: nuText(), title: "Inköpslista" }).catch(function () {}); };
+    }
     $("#ak-copy").onclick = function () {
       var bt = $("#ak-copy");
       var ok = function () { bt.textContent = "Listan är kopierad"; setTimeout(function () { bt.textContent = "Kopiera listan som text"; }, 2200); };
-      try { navigator.clipboard.writeText(txt).then(ok, function () { bt.textContent = "Kunde inte kopiera"; }); } catch (e) { bt.textContent = "Kunde inte kopiera"; }
+      try { navigator.clipboard.writeText(nuText()).then(ok, function () { bt.textContent = "Kunde inte kopiera"; }); } catch (e) { bt.textContent = "Kunde inte kopiera"; }
     };
     $("#akut").scrollIntoView();
   }
