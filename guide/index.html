@@ -2291,6 +2291,17 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   };
   document.querySelectorAll(".season button").forEach(function (b) { b.addEventListener("click", function () { setTimeout(ghCalc, 0); }); });
   ghCalc();
+
+  /* Kampanj från adressen, till exempel ?c=tiktok. Sparas för besöket och läggs på butikslänkarna. */
+  (function () {
+    var c = (location.search.match(/[?&]c=([a-z0-9-]{1,30})/i) || [])[1];
+    try { if (c) sessionStorage.setItem("ps-c", c.toLowerCase()); else c = sessionStorage.getItem("ps-c"); } catch (e) {}
+    if (!c) return;
+    c = c.toLowerCase();
+    document.querySelectorAll('a[href*="play.google.com"], a[href*="apps.apple.com"]').forEach(function (a) {
+      a.href = a.href.replace(/utm_campaign%3D[a-z0-9-]+/i, "utm_campaign%3D" + c).replace(/([?&]ct=)[a-z0-9-]+/i, "$1" + c);
+    });
+  })();
   var dn = $("#dr-notes"); dn.value = ST.dn || "";
   dn.oninput = function () { ST.dn = dn.value; spara(); };
   $("#dr-add").onclick = function () {
