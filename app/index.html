@@ -13,6 +13,10 @@
 var PLAY_URL = "https://play.google.com/store/apps/details?id=se.prepping.lager";
 var APPSTORE_URL = "https://apps.apple.com/app/id6825012438";
 var IOS_LIVE = true;
+/* Kampanj: prepperstock.se/app?c=tiktok syns som tiktok i butikernas statistik. Utan c blir det "app". */
+var CMP = ((location.search.match(/[?&]c=([a-z0-9-]{1,30})/i) || [])[1] || "app").toLowerCase();
+PLAY_URL += "&referrer=" + encodeURIComponent("utm_source=prepperstock.se&utm_medium=web&utm_campaign=" + CMP);
+APPSTORE_URL += "?ct=" + CMP + "&mt=8";
 
 var ua = navigator.userAgent || "";
 var isAndroid = /Android/i.test(ua);
@@ -48,6 +52,8 @@ a.btn.alt { background: transparent; color: #E5EADF; border: 2px solid #34513B; 
   <a class="btn alt" id="home" href="/">prepperstock.se</a>
 </div>
 <script>
+document.getElementById("play").href = PLAY_URL;
+document.getElementById("ios").href = APPSTORE_URL;
 if (!/^sv\b/i.test(navigator.language || "")) {
   document.documentElement.lang = "en";
   document.getElementById("lead").textContent = "Choose your store";
