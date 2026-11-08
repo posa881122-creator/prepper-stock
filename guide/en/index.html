@@ -426,6 +426,27 @@ section.cs { padding: 14px 0 0; }
 .dx-hist button { background: none; border: 0; color: var(--straw); opacity: .7; cursor: pointer; font-size: 13px; }
 @media (max-width: 860px) { .dx-sc { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
 @media (max-width: 520px) { .dx-sc { grid-template-columns: minmax(0,1fr); } }
+.gh { background: #fff; border-radius: 22px; padding: 22px 24px; margin-bottom: 18px; border-top: 5px solid var(--brass); }
+.gh h3 { font-size: 30px; margin-bottom: 4px; }
+.gh-in { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 10px; margin: 14px 0; }
+.gh-in label { font: 600 13px/1.3 var(--body); color: var(--mute); }
+.gh-in input, .gh-in select { display: block; width: 100%; margin-top: 4px; font: 500 16px/1.2 var(--body); color: var(--coal); padding: 10px 11px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--paper); }
+.gh-st { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; }
+.gh-st div { background: var(--forest); color: var(--straw); border-radius: 16px; padding: 14px; }
+.gh-st span { display: block; font: 600 12px/1.2 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--brass); }
+.gh-st b { display: block; font: 700 28px/1.1 var(--display); color: #fff; margin: 4px 0; }
+.gh-st small { font-size: 12.5px; }
+.gh-day { margin: 12px 0 6px; font-size: 15px; }
+.gh-warn { background: #FBE6DC; border-radius: 12px; padding: 10px 14px; font-weight: 600; font-size: 14.5px; margin-top: 8px; }
+.gh h4 { font-size: 22px; margin: 18px 0 6px; }
+.gh-items { columns: 2; column-gap: 24px; }
+.gh-items .task { break-inside: avoid; }
+.gh-items .tl span { flex: 1; padding: 7px 0; font-size: 15px; }
+.gh-pb { background: var(--paper); border-radius: 16px; padding: 16px; margin-top: 14px; }
+.gh-pb p { font-size: 14.5px; margin: 4px 0 10px; }
+.gh-pb input { width: 100%; font: 500 16px/1.2 var(--body); padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 12px; margin-bottom: 10px; }
+.gh .src { margin-top: 14px; }
+@media (max-width: 860px) { .gh-in { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } .gh-st { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } .gh-items { columns: 1; } }
 .drill { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; }
 .dr-steps { display: grid; gap: 12px; }
 .dr { display: grid; grid-template-columns: 44px 1fr; gap: 14px; background: #fff; border-radius: 20px; padding: 18px 20px; }
@@ -1099,6 +1120,22 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       <span>Season:</span>
       <button type="button" data-se="s" aria-pressed="false">Summer</button>
       <button type="button" data-se="w" aria-pressed="true">Winter</button>
+    </div>
+    <div class="gh" id="gh">
+      <h3>Work out your get home bag</h3><p style="margin:0">Enter how far you are from home at work or school. The page works out how long it takes to walk and what your bag needs.</p>
+      <div class="gh-in">
+        <label>Distance home (miles)<input type="number" id="gh-d" min="1" max="300" value="28" inputmode="decimal"></label>
+        <label>Your weight (lb)<input type="number" id="gh-w" min="20" max="400" value="170" inputmode="decimal"></label>
+        <label>You leave at<input type="time" id="gh-t" value="16:00"></label>
+        <label>Date<input type="date" id="gh-dt"></label>
+        <label>Where do you live?<select id="gh-r"><option value="30">Around 30° north (Texas, Florida)</option><option value="40">Around 40° north (New York, Madrid)</option><option value="51" selected>Around 50° north (London, Vancouver)</option><option value="55.7">Around 55° north (Scotland, Denmark)</option><option value="60">Around 60° north (Oslo, Helsinki)</option><option value="65">Around 65° north (northern Scandinavia)</option></select></label>
+      </div>
+      <div class="gh-st" id="gh-st"></div>
+      <div id="gh-day"></div>
+      <h4>What your bag needs</h4>
+      <div class="gh-items" id="gh-items"></div>
+      <div class="gh-pb" id="gh-pb" hidden><h4 style="margin:0">Plan B: where can you stop?</h4><p>If you cannot walk the distance in a day, you need somewhere to stop halfway, for example with a colleague, a friend or family. Decide in advance and tell your family.</p><input id="gh-pbi" placeholder="For example: at Anna's in the next town"><button class="btn" type="button" id="gh-pbb">Save in the emergency plan</button> <span class="kp-saved" id="gh-pbm"></span></div>
+      <p class="src">Sources: US Army foot march manual (ATP 3-21.18): 4 km (2.5 miles) per hour with a 10 minute rest every hour, normal day march 20 to 32 km (12 to 20 miles). ACSM: 0.4 to 0.8 liters of fluid per hour during long exercise. Compendium of Physical Activities: 3.5 MET for walking with a day pack. Common hiking guideline: about 10 % of body weight at most on a day hike and 20 % on multi day trips. In winter we count 3.5 km (2.2 miles) per hour for ice, snow and darkness. Daylight times are approximate.</p>
     </div>
     <div class="tabs btabs" role="tablist">
       <button role="tab" aria-selected="true" data-b="b1">Get home bag</button>
@@ -2187,6 +2224,58 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     spara(); dxHist(); sumLater();
   };
   dxRender(); dxMedal();
+
+  /* ===== Räknare för get home bag ===== */
+  var GH = {"ui": {"h": "Work out your get home bag", "p": "Enter how far you are from home at work or school. The page works out how long it takes to walk and what your bag needs.", "dist": "Distance home", "du": "miles", "wt": "Your weight", "wu": "lb", "start": "You leave at", "date": "Date", "reg": "Where do you live?", "regs": [["Around 30° north (Texas, Florida)", 30], ["Around 40° north (New York, Madrid)", 40], ["Around 50° north (London, Vancouver)", 51], ["Around 55° north (Scotland, Denmark)", 55.7], ["Around 60° north (Oslo, Helsinki)", 60], ["Around 65° north (northern Scandinavia)", 65]], "dst": false, "st": ["Walking time", "Water", "Food", "Bag at most"], "tm": "{h} h {m} min", "tmn": "including a 10 minute rest every hour", "wl": "{l} liters", "wln": "carry at most 2 liters, refill the rest", "kc": "{k} kcal", "kcn": "what you burn on the way", "kg": "{k} lb", "kgn": "{p} % of your weight", "day": "That day it is light from about {a} to {b}. If you walk the whole way without stopping, you get home at about {c}.", "dark": "You will walk part of the way in the dark.", "far": "The distance is longer than a normal day march for soldiers, 20 miles. Plan to stop on the way.", "long": "It takes more than 10 hours. Plan to stop on the way.", "ih": "What your bag needs", "pb": "Plan B: where can you stop?", "pbp": "If you cannot walk the distance in a day, you need somewhere to stop halfway, for example with a colleague, a friend or family. Decide in advance and tell your family.", "pbph": "For example: at Anna's in the next town", "pbb": "Save in the emergency plan", "pbs": "Saved under Other in the emergency plan.", "pbt": "Plan B on the way home: ", "src": "Sources: US Army foot march manual (ATP 3-21.18): 4 km (2.5 miles) per hour with a 10 minute rest every hour, normal day march 20 to 32 km (12 to 20 miles). ACSM: 0.4 to 0.8 liters of fluid per hour during long exercise. Compendium of Physical Activities: 3.5 MET for walking with a day pack. Common hiking guideline: about 10 % of body weight at most on a day hike and 20 % on multi day trips. In winter we count 3.5 km (2.2 miles) per hour for ice, snow and darkness. Daylight times are approximate.", "info": "Explanation", "nd": " the next day"}, "en": true, "it": [["water", "Water bottle, {w} liters", "You lose fluid the whole way, even in the cold. Drink a little and often rather than a lot at once."], ["filter", "Water filter or purification tablets", "You need more water than you can carry. With a filter you can refill from lakes and streams."], ["food", "Food with about {k} kcal", "Nuts, chocolate, energy bars and dried fruit give a lot of energy per gram and need no cooking."], ["shoes", "Shoes you can walk far in", "Office shoes give you blisters after a few miles. If you do not wear good shoes, a pair needs to be in the bag."], ["feet", "Blister plasters, tape and a spare pair of socks", "The military teaches you to deal with your feet as soon as something rubs, and to change into dry socks on long marches. A blister can stop you completely."], ["map", "Paper map of the way home", "Mobile networks and map apps may be down. Mark two different routes home."], ["light", "Headlamp and spare batteries", "You will walk part of the way in the dark. A headlamp keeps your hands free."], ["reflex", "Reflective vest", "In the dark, drivers cannot see you. A reflective vest is visible from hundreds of meters away."], ["rain", "Rain jacket or poncho", "Wet clothes cool your body quickly, even in summer."], ["warm", "Hat, gloves and a warm layer", "You get cold when you stop to rest. Wool stays warm even when damp."], ["sun", "Sunscreen and a cap", "A whole day in the sun gives sunburn and headaches."], ["blanket", "Emergency blanket", "Weighs almost nothing and can save you from hypothermia if you have to stop."], ["sleep", "Bivy bag or light sleeping cover", "You may need to rest or sleep on the way. A bivy bag keeps you dry and warm."], ["power", "Power bank and cable", "So your phone lasts the whole way if the network works."], ["cash", "Cash", "Shops and cafés along the way may only take cash."], ["first", "Small first aid kit and your medicine", "A cut or a headache should not stop you. Bring medicine for at least one day."], ["numbers", "Important numbers on paper", "If your phone dies, you can borrow one and still reach your family."]]};
+  ST.gh = ST.gh || {};
+  ["d", "w", "t", "dt", "r"].forEach(function (k) { var el = $("#gh-" + k); if (ST.gh[k]) el.value = ST.gh[k]; el.addEventListener("input", function () { ST.gh[k] = el.value; spara(); ghCalc(); }); });
+  if (!$("#gh-dt").value) { var td = new Date(); $("#gh-dt").value = td.getFullYear() + "-" + ("0" + (td.getMonth() + 1)).slice(-2) + "-" + ("0" + td.getDate()).slice(-2); }
+  function hm(x) { x = ((x % 24) + 24) % 24; var h = Math.floor(x), m = Math.round((x - h) * 60); if (m === 60) { h = (h + 1) % 24; m = 0; } return ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2); }
+  function ghCalc() {
+    var u = GH.ui, en = GH.en;
+    var dIn = parseFloat(String($("#gh-d").value).replace(",", ".")) || 0, wIn = parseFloat(String($("#gh-w").value).replace(",", ".")) || 0;
+    var km = en ? dIn * 1.609 : dIn, kgw = en ? wIn * 0.4536 : wIn;
+    var dt = new Date($("#gh-dt").value || Date.now()), mo = dt.getMonth();
+    var se = document.querySelector('.season button[aria-pressed="true"]'), winter = se ? se.dataset.se === "w" : (mo < 3 || mo > 8);
+    var sp = winter ? 3.5 : 4, tot = km / sp, mov = tot * 50 / 60;
+    var lit = Math.max(0.5, Math.round(tot * (winter ? 0.4 : 0.6) * 2) / 2);
+    var kcal = Math.round(3.5 * (kgw || 75) * mov / 100) * 100;
+    var lat = parseFloat($("#gh-r").value) * Math.PI / 180, doy = Math.floor((dt - new Date(dt.getFullYear(), 0, 0)) / 864e5);
+    var decl = 23.44 * Math.PI / 180 * Math.sin(2 * Math.PI * (284 + doy) / 365), ch = (Math.sin(-0.833 * Math.PI / 180) - Math.sin(lat) * Math.sin(decl)) / (Math.cos(lat) * Math.cos(decl));
+    var H = ch <= -1 ? 12 : ch >= 1 ? 0 : Math.acos(ch) * 180 / Math.PI / 15;
+    var B = 2 * Math.PI * (doy - 81) / 364, eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B), so = $("#gh-r").selectedOptions[0], lon = so && so.dataset.lon ? +so.dataset.lon : 15;
+    var noon = 12 + (15 - lon) / 15 - eot / 60 + (u.dst && mo >= 3 && mo <= 9 ? 1 : 0), rise = noon - H, set = noon + H;
+    var tp = ($("#gh-t").value || "16:00").split(":"), t0 = +tp[0] + (+tp[1] || 0) / 60, arr = t0 + tot;
+    var dark = H < 12 && (t0 < rise || arr > set || H === 0), plan = km > 32 || tot > 10, pct = plan ? 20 : 10;
+    var maxkg = Math.round((kgw || 75) * pct / 100 * 10) / 10, maxShow = en ? Math.round(maxkg / 0.4536) : String(maxkg).replace(".", ",");
+    var hh = Math.floor(tot), mm = Math.round((tot - hh) * 60); if (mm === 60) { hh++; mm = 0; }
+    var lt = en ? String(lit) : String(lit).replace(".", ",");
+    function f(s, o) { return s.replace(/\{(\w)\}/g, function (m, k) { return o[k] != null ? o[k] : ""; }); }
+    $("#gh-st").innerHTML = [[u.st[0], f(u.tm, { h: hh, m: mm }), u.tmn], [u.st[1], f(u.wl, { l: lt }), lit > 2 ? u.wln : ""], [u.st[2], f(u.kc, { k: kcal.toLocaleString(en ? "en-US" : "sv-SE") }), u.kcn], [u.st[3], f(u.kg, { k: maxShow }), f(u.kgn, { p: pct })]]
+      .map(function (x) { return '<div><span>' + x[0] + '</span><b>' + x[1] + '</b><small>' + x[2] + '</small></div>'; }).join("");
+    var dtx = f(u.day, { a: hm(rise), b: hm(set), c: hm(arr) + (arr >= 24 ? GH.ui.nd : "") }); if (ch <= -1 || ch >= 1) dtx = (ch <= -1 ? "The sun does not set that day." : "The sun does not rise that day.") + " " + dtx.replace(/^[^.]*\. /, "");
+    var dh = '<p class="gh-day">' + dtx + '</p>';
+    if (dark) dh += '<div class="gh-warn">' + u.dark + '</div>';
+    if (km > 32) dh += '<div class="gh-warn">' + u.far + '</div>'; else if (tot > 10) dh += '<div class="gh-warn">' + u.long + '</div>';
+    $("#gh-day").innerHTML = dh;
+    var need = { water: 1, filter: lit > 2, food: 1, shoes: 1, feet: km > 8, map: 1, light: dark || winter, reflex: dark, rain: 1, warm: winter || plan, sun: !winter && tot > 3, blanket: 1, sleep: plan, power: 1, cash: 1, first: 1, numbers: 1 };
+    $("#gh-items").innerHTML = GH.it.filter(function (x) { return need[x[0]]; }).map(function (x) {
+      var id = "ghi-" + x[0], n = f(x[1], { w: lt.replace(/^(\d+([.,]\d)?)$/, function (v) { return lit > 2 ? (en ? "2" : "2") : v; }), k: kcal.toLocaleString(en ? "en-US" : "sv-SE") });
+      return '<div class="task"><div class="tl"><span>' + n + '</span><button type="button" class="ib" aria-expanded="false" aria-controls="' + id + '" aria-label="' + u.info + '">i</button></div><div class="ibx" id="' + id + '" hidden>' + x[2] + '</div></div>';
+    }).join("");
+    $("#gh-pb").hidden = !plan;
+  }
+  $("#gh-pbi").value = ST.gh.pb || "";
+  $("#gh-pbi").oninput = function () { ST.gh.pb = $("#gh-pbi").value; spara(); };
+  $("#gh-pbb").onclick = function () {
+    var v = $("#gh-pbi").value.trim(); if (!v) return;
+    var o = (ST.p.ovr || "").trim(), line = GH.ui.pbt + v;
+    if (o.indexOf(line) < 0) ST.p.ovr = (o ? o + "\n" : "") + line;
+    if (KP.elements.ovr) KP.elements.ovr.value = ST.p.ovr;
+    spara(); $("#gh-pbm").textContent = GH.ui.pbs; sumLater();
+  };
+  document.querySelectorAll(".season button").forEach(function (b) { b.addEventListener("click", function () { setTimeout(ghCalc, 0); }); });
+  ghCalc();
   var dn = $("#dr-notes"); dn.value = ST.dn || "";
   dn.oninput = function () { ST.dn = dn.value; spara(); };
   $("#dr-add").onclick = function () {
