@@ -491,6 +491,60 @@ section.cs { padding: 14px 0 0; }
 .m b { display: block; font: 700 24px/1.1 var(--display); color: var(--brass); margin-bottom: 8px; }
 
 /* checklista */
+.ib { flex: none; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--moss); background: #fff; color: var(--moss); font: italic 700 14px/1 Georgia, serif; cursor: pointer; padding: 0; display: inline-grid; place-items: center; }
+.ib[aria-expanded="true"] { background: var(--moss); color: #fff; }
+.ibx { font-size: 14px; line-height: 1.45; color: var(--mute); background: var(--paper); border-radius: 10px; padding: 9px 12px; margin-top: 8px; }
+.sumtop { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr); gap: 16px; margin-bottom: 16px; }
+.lvlc { background: var(--forest); color: var(--straw); border-radius: 22px; padding: 24px; }
+.lvlc .kicker { color: var(--brass); }
+.lvlc h3 { font-size: 40px; color: #fff; margin: 6px 0; }
+.lvlc p { margin: 0 0 14px; }
+.lvlm { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.lvlm i { height: 10px; border-radius: 99px; background: rgba(255,255,255,.18); }
+.lvlm i.on { background: var(--brass); }
+.lvln { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; font-size: 11.5px; margin-top: 6px; opacity: .85; }
+.lvlp { font-size: 14px; margin-top: 10px; }
+.nx3 { background: #fff; border-radius: 22px; padding: 22px 24px; }
+.nx3 h3 { font-size: 26px; margin-bottom: 10px; }
+.nx3 ol { margin: 0; padding-left: 22px; }
+.nx3 li { margin: 8px 0; }
+.nx3 a { font-weight: 600; color: var(--forest); }
+.srows { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.srow { background: #fff; border-radius: 18px; padding: 16px 18px; }
+.sr-top { display: flex; align-items: center; gap: 8px; }
+.sr-n { font: 700 20px/1.1 var(--display); flex: 1; }
+.sr-t { font-size: 14px; color: var(--mute); margin-top: 6px; }
+.sr-bar { height: 8px; border-radius: 99px; background: var(--lichen); overflow: hidden; margin-top: 10px; }
+.sr-bar i { display: block; height: 100%; background: var(--moss); border-radius: 99px; }
+.srow.ok .sr-bar i { background: var(--brass); }
+.sr-go { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--rust); }
+.srow.ok .sr-go { display: none; }
+.sumact { margin-top: 16px; }
+.cmp { display: grid; gap: 10px; margin-bottom: 22px; }
+.cmp-h, .cmp-r { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1fr) minmax(0,1.2fr); gap: 12px; }
+.cmp-h { font: 600 12px/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); padding: 0 18px; }
+.cmp-r { background: #fff; border-radius: 16px; padding: 14px 18px; font-size: 15px; }
+.cmp-r b { font: 700 19px/1.2 var(--display); }
+.cmp-r .old { color: var(--mute); }
+.cmp-r .new { color: var(--forest); font-weight: 500; }
+.cmp-r em { display: none; font-style: normal; font: 600 11px/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--rust); }
+.yr { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin: 10px 0 22px; counter-reset: yr; }
+.yr div { background: var(--forest); color: var(--straw); border-radius: 18px; padding: 18px; }
+.yr h4 { color: #fff; font-size: 21px; margin-bottom: 6px; }
+.yr h4::before { counter-increment: yr; content: counter(yr); display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--brass); color: var(--coal); font: 700 14px/1 var(--body); margin-right: 8px; vertical-align: 2px; }
+.yr p { margin: 0; font-size: 14.5px; }
+.feat { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin: 10px 0 14px; }
+.feat div { background: #fff; border-radius: 16px; padding: 16px 18px; }
+.feat h4 { font-size: 20px; margin-bottom: 4px; }
+.feat p { margin: 0; font-size: 14.5px; }
+.price { font-size: 15px; margin-bottom: 14px; }
+@media (max-width: 860px) { .sumtop, .yr, .feat { grid-template-columns: minmax(0,1fr); } .yr { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+@media (max-width: 640px) {
+  .yr { grid-template-columns: minmax(0,1fr); }
+  .cmp-h { display: none; }
+  .cmp-r { grid-template-columns: minmax(0,1fr); gap: 6px; }
+  .cmp-r em { display: block; }
+}
 .check { columns: 2; column-gap: 28px; background: #fff; border-radius: 22px; padding: 26px 30px; }
 .check .grp { break-inside: avoid; margin-bottom: 8px; }
 .check label { display: flex; gap: 10px; align-items: flex-start; break-inside: avoid; padding: 6px 0; }
@@ -559,7 +613,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
     <nav class="route" aria-label="Fem delar, en sak i taget">
       <h2>Fem delar, en sak i taget</h2>
-      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Förstå</b><small>Varför preppa?, Vad händer när…, Hur förberedd är du?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Planera</b><small>Vad säger myndigheterna?, Räkna ut för ditt hushåll, Familjens krisplan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Skaffa</b><small>Bygg upp lagret på fyra veckor, Sju områden, i den här ordningen, Så äter du av lagret, Väskorna</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Lös</b><small>Så löser du det, När det kräver lite mer</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Öva</b><small>En kväll utan ström, Vanliga misstag, Har du det här hemma?</small></span></a></li></ol>
+      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Förstå</b><small>Varför preppa?, Vad händer när…, Hur förberedd är du?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Planera</b><small>Vad säger myndigheterna?, Räkna ut för ditt hushåll, Familjens krisplan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Skaffa</b><small>Bygg upp lagret på fyra veckor, Sju områden, i den här ordningen, Så äter du av lagret, Väskorna</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Lös</b><small>Så löser du det, När det kräver lite mer</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Öva</b><small>En kväll utan ström, Vanliga misstag, Din beredskap, samlad, Håll lagret vid liv</small></span></a></li></ol>
     </nav>
   </div>
 </header>
@@ -1297,7 +1351,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
   </div>
 </section>
-<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Del 5 av 5</div><h2>Öva</h2><p>Prova, undvik vanliga misstag och se till att allt håller.</p><div class="chap-steps"><a href="#drill"><b>13</b>En kväll utan ström</a><a href="#myths"><b>14</b>Vanliga misstag</a><a href="#list"><b>15</b>Har du det här hemma?</a></div></div></div>
+<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Del 5 av 5</div><h2>Öva</h2><p>Prova, undvik vanliga misstag och se till att allt håller.</p><div class="chap-steps"><a href="#drill"><b>13</b>En kväll utan ström</a><a href="#myths"><b>14</b>Vanliga misstag</a><a href="#list"><b>15</b>Din beredskap, samlad</a><a href="#app"><b>16</b>Håll lagret vid liv</a></div></div></div>
 <section class="cs" id="drill">
   <div class="wrap">
     <div class="eyebrow">Steg 13</div>
@@ -1342,43 +1396,27 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 <section class="cs" id="list">
   <div class="wrap">
     <div class="eyebrow">Steg 15</div>
-    <h2 class="t">Har du det här hemma?</h2>
-    <p class="sub">Bocka av. Skriv ut sidan om du vill ha listan på papper.</p>
-    <div class="check">
-      <div class="grp"><h4>Vatten</h4>
-      <label><input type="checkbox" data-k="c:Dricksvatten för hela perioden">Dricksvatten för hela perioden</label>
-      <label><input type="checkbox" data-k="c:Tomma dunkar med lock för att hämta vatten">Tomma dunkar med lock för att hämta vatten</label></div>
-      <div class="grp"><h4>Mat</h4>
-      <label><input type="checkbox" data-k="c:Mat som håller i rumstemperatur">Mat som håller i rumstemperatur</label>
-      <label><input type="checkbox" data-k="c:Mat som går att äta kall">Mat som går att äta kall</label>
-      <label><input type="checkbox" data-k="c:Konservöppnare">Konservöppnare</label></div>
-      <div class="grp"><h4>Värme</h4>
-      <label><input type="checkbox" data-k="c:Sovsäck eller varma filtar till alla">Sovsäck eller varma filtar till alla</label>
-      <label><input type="checkbox" data-k="c:Stormkök eller gasolkök och bränsle">Stormkök eller gasolkök och bränsle</label>
-      <label><input type="checkbox" data-k="c:Tändstickor eller tändare">Tändstickor eller tändare</label>
-      <label><input type="checkbox" data-k="c:Brandvarnare och brandsläckare">Brandvarnare och brandsläckare</label></div>
-      <div class="grp"><h4>Ljus och ström</h4>
-      <label><input type="checkbox" data-k="c:Pannlampa eller ficklampa">Pannlampa eller ficklampa</label>
-      <label><input type="checkbox" data-k="c:Batterier">Batterier</label>
-      <label><input type="checkbox" data-k="c:Laddad powerbank">Laddad powerbank</label></div>
-      <div class="grp"><h4>Information</h4>
-      <label><input type="checkbox" data-k="c:Radio på batteri, vev eller solceller">Radio på batteri, vev eller solceller</label>
-      <label><input type="checkbox" data-k="c:Viktiga telefonnummer på papper">Viktiga telefonnummer på papper</label></div>
-      <div class="grp"><h4>Medicin och hygien</h4>
-      <label><input type="checkbox" data-k="c:Mediciner för hela perioden">Mediciner för hela perioden</label>
-      <label><input type="checkbox" data-k="c:Husapotek">Husapotek</label>
-      <label><input type="checkbox" data-k="c:Våtservetter, handsprit, toalettpapper">Våtservetter, handsprit, toalettpapper</label>
-      <label><input type="checkbox" data-k="c:Hink och sopsäckar till nödtoalett">Hink och sopsäckar till nödtoalett</label></div>
-      <div class="grp"><h4>Pengar och papper</h4>
-      <label><input type="checkbox" data-k="c:Kontanter i små valörer">Kontanter i små valörer</label>
-      <label><input type="checkbox" data-k="c:Betalkort från mer än en bank">Betalkort från mer än en bank</label>
-      <label><input type="checkbox" data-k="c:Pass, id och försäkringar samlade">Pass, id och försäkringar samlade</label></div>
-    </div>
-
+    <h2 class="t">Din beredskap, samlad</h2>
+    <p class="sub">Här ser du allt du har gjort i guiden. Det som inte är klart har en länk tillbaka till rätt steg. Allt sparas bara i den här telefonen eller datorn.</p>
+    <div class="sumtop"><div class="lvlc" id="sum-lvl"></div><div class="nx3" id="sum-nx"></div></div>
+    <div class="srows" id="sum-rows"></div>
+    <div class="actions sumact no-print"><button class="btn" type="button" id="sum-share">Dela din nivå</button><button class="btn ghost dark" type="button" id="sum-dl">Ladda ner</button><button class="btn ghost dark" type="button" id="sum-pr">Skriv ut</button></div>
     <div class="cal">
       <div><h3>Påminn mig två gånger om året</h3><p>Lägger in en påminnelse i telefonens kalender när klockan ställs om i mars och oktober: gå igenom lagret, byt vatten och mat som snart går ut, och se över väskorna.</p></div>
       <button class="btn" type="button" id="cal-add">Lägg in i kalendern</button>
     </div>
+  </div>
+</section>
+<section class="cs" id="app">
+  <div class="wrap">
+    <div class="eyebrow">Steg 16</div>
+    <h2 class="t">Håll lagret vid liv</h2>
+    <p class="sub">Ett lager som inte sköts blir sämre för varje månad. Mat går ut, batterier laddas ur och väskorna passar inte längre årstiden. Därför behöver beredskapen ett verktyg, inte bara en lista.</p>
+    <div class="cmp"><div class="cmp-h"><span></span><span>Med papper och minne</span><span>Med Prepper Stock</span></div><div class="cmp-r"><b>Bäst före</b><div class="old"><em>Med papper och minne</em>Du hittar gammal mat när den redan har gått ut.</div><div class="new"><em>Med Prepper Stock</em>Appen påminner dig innan något går ut, och startsidan visar vad som går ut snart.</div></div><div class="cmp-r"><b>Hur länge räcker det?</b><div class="old"><em>Med papper och minne</em>Du gissar.</div><div class="new"><em>Med Prepper Stock</em>Startsidan räknar ut hur många dagar maten och vattnet räcker för hela hushållet, och hur nära du är ditt mål.</div></div><div class="cmp-r"><b>Väskorna</b><div class="old"><em>Med papper och minne</em>Du minns inte vad som ligger i vilken väska.</div><div class="new"><em>Med Prepper Stock</em>Varje väska har en bild och en lista. Det du flyttar från lagret räknas inte två gånger.</div></div><div class="cmp-r"><b>Viktiga papper</b><div class="old"><em>Med papper och minne</em>Pärmen kanske inte följer med när du måste lämna hemmet.</div><div class="new"><em>Med Prepper Stock</em>Kopior av pass och viktiga papper finns i telefonen, bara hos dig.</div></div><div class="cmp-r"><b>Utan nät</b><div class="old"><em>Med papper och minne</em>Mycket slutar fungera när nätet går ner.</div><div class="new"><em>Med Prepper Stock</em>Allt fungerar utan internet och utan konto.</div></div></div>
+    <h3>Ett år med ett levande lager</h3><div class="yr"><div><h4>Varje månad</h4><p>Titta på startsidan i appen. Ät det som går ut snart och köp nytt. Det kallas att rotera lagret.</p></div><div><h4>Vår och höst</h4><p>Gå igenom lagret när klockan ställs om. Byt vatten, ladda powerbanks och batterier och byt kläder i väskorna efter årstid.</p></div><div><h4>En gång om året</h4><p>Gör övningen i steg 13. Uppdatera krisplanen och familjens uppgifter i appen.</p></div><div><h4>Efter varje kris eller övning</h4><p>Fyll på det som gick åt och lägg till det som saknades. Då blir lagret bättre varje gång.</p></div></div>
+    <h3>Mer i appen</h3><div class="feat"><div><h4>Packlistor</h4><p>En färdig lista för 72 timmar eller egna listor att bocka av när du packar.</p></div><div><h4>Personer</h4><p>Familjens telefonnummer, adresser och medicinska uppgifter på ett ställe.</p></div><div><h4>Platser</h4><p>Mötesplatser och vattenkällor med koordinater som öppnas i kartan.</p></div><div><h4>Överlevnad</h4><p>Kunskap som fungerar utan nät: första hjälpen, vatten, eld, skydd, att hitta rätt, signaler och knopar.</p></div><div><h4>Säkerhetskopia</h4><p>Spara allt i en fil och ta med det till en ny telefon. Alltid gratis.</p></div><div><h4>PIN-lås</h4><p>Ingen annan kan se ditt lager om de tar din telefon.</p></div></div>
+    <p class="price">Gratis för ett mindre lager: 50 saker, 1 väska och 1 bil. Pro låser upp allt med ett enda köp, utan prenumeration.</p>
+    <div class="stores"><a class="btn" href="https://play.google.com/store/apps/details?id=se.prepping.lager" target="_blank" rel="noopener">Google Play</a><a class="btn" href="https://apps.apple.com/app/id6825012438" target="_blank" rel="noopener">App Store</a></div>
   </div>
 </section>
 <section class="endsec" id="end">
@@ -1982,6 +2020,94 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   };
   if (navigator.share) { $("#kp-share").hidden = false; $("#kp-share").onclick = function () { navigator.share({ title: L.kptitle, text: kpText() }).catch(function () {}); }; }
   $("#kp-clear").onclick = function () { if (!confirm(L.clearq)) return; ST.p = {}; spara(); KP.reset(); $("#kp-saved").textContent = ""; };
+  var SM = {"rows": {"hush": ["Ert hushåll", "Räknaren behöver veta hur många ni är och hur länge ni vill klara er. Allt annat i guiden räknas utifrån det.", "Fyll i hur många ni är i räknaren", "{f} personer, {d} dygn", "Inte ifyllt"], "test": ["Testet", "Tio frågor som visar var ni står idag. Gör det igen efter ett tag och se skillnaden.", "Gör testet, det tar två minuter", "{x} av 10 poäng", "Inte gjort än"], "food": ["Inköpslistan", "Maten och vattnet är grunden. Bocka av det ni har köpt i listan i steg 5.", "Köp det som saknas på inköpslistan", "{a} av {b} köpta", "Inget avbockat än"], "plan": ["Krisplanen", "Vem gör vad, var ni ses och vilka ni ringer. En plan som finns på papper gör att ingen behöver gissa när det händer.", "Fyll i familjens krisplan", "{a} av {b} fält ifyllda", "Inte påbörjad"], "weeks": ["Fyra veckor", "Planen delar upp allt i fyra veckor så att det inte blir för mycket på en gång.", "Gör nästa vecka i planen", "{a} av {b} klara", "Inte påbörjad"], "bags": ["Väskorna", "Väskan för att ta dig hem, väskan för att lämna hemmet och bilen. Siffran gäller den årstid du har valt.", "Packa väskorna", "{t}", "Inget packat än"], "drill": ["Övningen", "Det enda sättet att veta om allt fungerar är att prova. Du hittar alltid något som saknas.", "Gör en kväll utan ström", "{a} av {b} uppgifter", "Inte gjord än"]}, "levels": [["Nybörjare", "Du har tagit första steget. Börja med de tre sakerna nedan."], ["På väg", "Grunden finns. Fortsätt med det som saknas, en sak i taget."], ["Förberedd", "Ert hushåll klarar sig bättre än de flesta. Fyll på det sista."], ["Självgående", "Ni klarar er själva länge. Håll lagret vid liv och öva en gång om året."]], "lvl": "Din nivå", "nextlvl": "Nästa nivå vid {p} %", "top": "Klart", "next3": "Gör det här härnäst", "none": "Inget kvar. Gör övningen igen om ett år.", "go": "Gå till", "bagn": ["Get home bag", "Bug out bag", "Bilen"], "file": "min-beredskap.txt", "img": "min-beredskap.png", "shtxt": "Jag är på nivån {l} i guiden Börja preppa. Testa hur förberedd du är: https://prepperstock.se/guide/", "en": false, "info": "Förklaring", "cap": "Hur förberedd är du? Testa själv."};
+
+  /* ===== i-knappar ===== */
+  var IBN = 0;
+  function ib(txt) { IBN++; return '<button type="button" class="ib" aria-expanded="false" aria-controls="ibx' + IBN + '" aria-label="' + SM.info + '">i</button>' + '\u0000' + '<div class="ibx" id="ibx' + IBN + '" hidden>' + txt + '</div>'; }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest(".ib") : null; if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    var x = document.getElementById(b.getAttribute("aria-controls")); if (!x) return;
+    x.hidden = !x.hidden; b.setAttribute("aria-expanded", !x.hidden);
+  }, true);
+
+  /* ===== Sammanfattning ===== */
+  function cnt(sel) { var a = 0, b = 0; document.querySelectorAll(sel).forEach(function (i) { b++; if (i.checked) a++; }); return [a, b]; }
+  function fill(s, o) { return s.replace(/\{(\w)\}/g, function (m, k) { return o[k] != null ? o[k] : ""; }); }
+  function stepOf(id) { var s = document.getElementById(id); return s ? s.querySelector(".eyebrow").textContent : ""; }
+  var SUMD = [];
+  function sum() {
+    var R = SM.rows, d = [];
+    d.push(["hush", "calc", S.folk ? 100 : 0, S.folk ? fill(R.hush[3], { f: S.folk, d: S.D || D }) : R.hush[4]]);
+    var qn = Object.keys(QA).length, qs = 0; Object.keys(QA).forEach(function (k) { qs += QA[k]; });
+    var qx = (qs / 2) % 1 ? (qs / 2).toFixed(1).replace(".", L.dec) : qs / 2;
+    d.push(["test", "test", qn >= L.q.length ? Math.round(qs / 2 / L.q.length * 100) : 0, qn >= L.q.length ? fill(R.test[3], { x: qx }) : R.test[4]]);
+    var f = cnt('#food input[type="checkbox"]');
+    d.push(["food", "calc", f[1] ? Math.round(f[0] / f[1] * 100) : 0, f[0] ? fill(R.food[3], { a: f[0], b: f[1] }) : R.food[4]]);
+    var pe = Array.prototype.filter.call(KP.elements, function (e) { return e.name; }), pf = pe.filter(function (e) { return (ST.p[e.name] || "").trim(); }).length;
+    d.push(["plan", "plan", pe.length ? Math.round(pf / pe.length * 100) : 0, pf ? fill(R.plan[3], { a: pf, b: pe.length }) : R.plan[4]]);
+    var w = cnt('#weeks input[data-k^="w:"]');
+    d.push(["weeks", "weeks", w[1] ? Math.round(w[0] / w[1] * 100) : 0, w[0] ? fill(R.weeks[3], { a: w[0], b: w[1] }) : R.weeks[4]]);
+    var se = document.querySelector('.season button[aria-pressed="true"]'), sv = se ? se.dataset.se : "";
+    var bp = ["b1", "b2", "b3"].map(function (id) {
+      var a = 0, b = 0;
+      document.querySelectorAll("#" + id + " label").forEach(function (l) { var i = l.querySelector("input"); if (!i) return; var x = l.getAttribute("data-se"); if (x && x !== sv) return; b++; if (i.checked) a++; });
+      return b ? Math.round(a / b * 100) : 0;
+    });
+    var bavg = Math.round((bp[0] + bp[1] + bp[2]) / 3);
+    d.push(["bags", "bags", bavg, bavg ? fill(R.bags[3], { t: SM.bagn.map(function (n, i) { return n + " " + bp[i] + " %"; }).join(", ") }) : R.bags[4]]);
+    var dr = cnt('#drill input[data-k^="d:"]');
+    d.push(["drill", "drill", dr[1] ? Math.round(dr[0] / dr[1] * 100) : 0, dr[0] ? fill(R.drill[3], { a: dr[0], b: dr[1] }) : R.drill[4]]);
+    SUMD = d;
+    var tot = Math.round(d.reduce(function (s, x) { return s + x[2]; }, 0) / d.length);
+    var lv = tot >= 80 ? 3 : tot >= 50 ? 2 : tot >= 25 ? 1 : 0, nxt = [25, 50, 80][lv];
+    $("#sum-lvl").innerHTML = '<div class="kicker">' + SM.lvl + '</div><h3>' + SM.levels[lv][0] + '</h3><p>' + SM.levels[lv][1] + '</p><div class="lvlm">' + [0, 1, 2, 3].map(function (i) { return '<i class="' + (i <= lv ? "on" : "") + '"></i>'; }).join("") + '</div><div class="lvln">' + SM.levels.map(function (x) { return '<span>' + x[0] + '</span>'; }).join("") + '</div><div class="lvlp"><b>' + tot + ' %</b> ' + SM.top.toLowerCase() + (nxt ? '. ' + fill(SM.nextlvl, { p: nxt }) : "") + '</div>';
+    var todo = d.filter(function (x) { return x[2] < 100; }).slice(0, 3);
+    $("#sum-nx").innerHTML = '<h3>' + SM.next3 + '</h3>' + (todo.length ? '<ol>' + todo.map(function (x) { return '<li><a href="#' + x[1] + '">' + R[x[0]][2] + '</a> <span style="color:var(--mute)">(' + stepOf(x[1]) + ')</span></li>'; }).join("") + '</ol>' : '<p>' + SM.none + '</p>');
+    IBN = 1000;
+    $("#sum-rows").innerHTML = d.map(function (x) {
+      var p = ib(R[x[0]][1]).split("\u0000");
+      return '<div class="srow' + (x[2] >= 100 ? " ok" : "") + '"><div class="sr-top"><span class="sr-n">' + R[x[0]][0] + '</span>' + p[0] + '</div>' + p[1] + '<div class="sr-t">' + x[3] + '</div><div class="sr-bar"><i style="width:' + x[2] + '%"></i></div><a class="sr-go" href="#' + x[1] + '">' + SM.go + ' ' + stepOf(x[1]).toLowerCase() + ' <span aria-hidden="true">→</span></a></div>';
+    }).join("");
+    SUMD.tot = tot; SUMD.lv = lv;
+  }
+  var sumT = 0;
+  function sumLater() { clearTimeout(sumT); sumT = setTimeout(sum, 60); }
+  document.addEventListener("change", sumLater);
+  document.addEventListener("input", sumLater);
+  document.addEventListener("click", function (e) { if (!e.target.closest || e.target.closest(".ib, #sum-rows")) return; sumLater(); });
+  sum();
+  function sumText() {
+    var R = SM.rows, t = SM.lvl + ": " + SM.levels[SUMD.lv][0] + " (" + SUMD.tot + " %)\n\n";
+    SUMD.forEach(function (x) { t += (x[2] >= 100 ? "[x] " : "[ ] ") + R[x[0]][0] + ": " + x[3] + "\n"; });
+    var todo = SUMD.filter(function (x) { return x[2] < 100; }).slice(0, 3);
+    if (todo.length) { t += "\n" + SM.next3 + ":\n"; todo.forEach(function (x, i) { t += (i + 1) + ". " + R[x[0]][2] + "\n"; }); }
+    return t + "\nhttps://prepperstock.se/guide/" + (SM.en ? "en/" : "") + "\n";
+  }
+  $("#sum-dl").onclick = function () { sum(); dlText(sumText(), SM.file, "text/plain"); };
+  $("#sum-pr").onclick = function () { sum(); openSec("list", false); window.print(); };
+  $("#sum-share").onclick = function () {
+    sum();
+    var c = document.createElement("canvas"); c.width = 1080; c.height = 1080; var g = c.getContext("2d");
+    g.fillStyle = "#1E3326"; g.fillRect(0, 0, 1080, 1080);
+    g.fillStyle = "#D4A537"; g.font = "600 44px Barlow, sans-serif"; g.fillText(SM.lvl.toUpperCase(), 90, 210);
+    g.fillStyle = "#ffffff"; g.font = "700 150px 'Barlow Condensed', sans-serif"; g.fillText(SM.levels[SUMD.lv][0], 84, 380);
+    for (var i = 0; i < 4; i++) { g.fillStyle = i <= SUMD.lv ? "#D4A537" : "rgba(255,255,255,.18)"; g.fillRect(90 + i * 228, 450, 210, 26); }
+    g.fillStyle = "#F1E3A4"; g.font = "500 40px Barlow, sans-serif";
+    SM.levels.forEach(function (x, i) { g.font = "500 30px Barlow, sans-serif"; g.fillText(x[0], 90 + i * 228, 530); });
+    g.font = "700 120px 'Barlow Condensed', sans-serif"; g.fillStyle = "#ffffff"; g.fillText(SUMD.tot + " %", 90, 720);
+    g.font = "500 40px Barlow, sans-serif"; g.fillStyle = "#F1E3A4"; g.fillText(SM.cap, 90, 790);
+    g.fillStyle = "#D4A537"; g.font = "600 46px Barlow, sans-serif"; g.fillText("prepperstock.se/guide", 90, 960);
+    var txt = fill(SM.shtxt, { l: SM.levels[SUMD.lv][0] });
+    c.toBlob(function (bl) {
+      try {
+        var fi = new File([bl], SM.img, { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [fi] })) { navigator.share({ files: [fi], text: txt }).catch(function () {}); return; }
+      } catch (e) {}
+      var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = SM.img; document.body.appendChild(a); a.click(); a.remove();
+    }, "image/png");
+  };
 
   /* ===== Öva en kväll utan ström ===== */
   var dn = $("#dr-notes"); dn.value = ST.dn || "";

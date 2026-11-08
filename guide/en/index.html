@@ -491,6 +491,60 @@ section.cs { padding: 14px 0 0; }
 .m b { display: block; font: 700 24px/1.1 var(--display); color: var(--brass); margin-bottom: 8px; }
 
 /* checklista */
+.ib { flex: none; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--moss); background: #fff; color: var(--moss); font: italic 700 14px/1 Georgia, serif; cursor: pointer; padding: 0; display: inline-grid; place-items: center; }
+.ib[aria-expanded="true"] { background: var(--moss); color: #fff; }
+.ibx { font-size: 14px; line-height: 1.45; color: var(--mute); background: var(--paper); border-radius: 10px; padding: 9px 12px; margin-top: 8px; }
+.sumtop { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr); gap: 16px; margin-bottom: 16px; }
+.lvlc { background: var(--forest); color: var(--straw); border-radius: 22px; padding: 24px; }
+.lvlc .kicker { color: var(--brass); }
+.lvlc h3 { font-size: 40px; color: #fff; margin: 6px 0; }
+.lvlc p { margin: 0 0 14px; }
+.lvlm { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.lvlm i { height: 10px; border-radius: 99px; background: rgba(255,255,255,.18); }
+.lvlm i.on { background: var(--brass); }
+.lvln { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; font-size: 11.5px; margin-top: 6px; opacity: .85; }
+.lvlp { font-size: 14px; margin-top: 10px; }
+.nx3 { background: #fff; border-radius: 22px; padding: 22px 24px; }
+.nx3 h3 { font-size: 26px; margin-bottom: 10px; }
+.nx3 ol { margin: 0; padding-left: 22px; }
+.nx3 li { margin: 8px 0; }
+.nx3 a { font-weight: 600; color: var(--forest); }
+.srows { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.srow { background: #fff; border-radius: 18px; padding: 16px 18px; }
+.sr-top { display: flex; align-items: center; gap: 8px; }
+.sr-n { font: 700 20px/1.1 var(--display); flex: 1; }
+.sr-t { font-size: 14px; color: var(--mute); margin-top: 6px; }
+.sr-bar { height: 8px; border-radius: 99px; background: var(--lichen); overflow: hidden; margin-top: 10px; }
+.sr-bar i { display: block; height: 100%; background: var(--moss); border-radius: 99px; }
+.srow.ok .sr-bar i { background: var(--brass); }
+.sr-go { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--rust); }
+.srow.ok .sr-go { display: none; }
+.sumact { margin-top: 16px; }
+.cmp { display: grid; gap: 10px; margin-bottom: 22px; }
+.cmp-h, .cmp-r { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1fr) minmax(0,1.2fr); gap: 12px; }
+.cmp-h { font: 600 12px/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); padding: 0 18px; }
+.cmp-r { background: #fff; border-radius: 16px; padding: 14px 18px; font-size: 15px; }
+.cmp-r b { font: 700 19px/1.2 var(--display); }
+.cmp-r .old { color: var(--mute); }
+.cmp-r .new { color: var(--forest); font-weight: 500; }
+.cmp-r em { display: none; font-style: normal; font: 600 11px/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--rust); }
+.yr { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin: 10px 0 22px; counter-reset: yr; }
+.yr div { background: var(--forest); color: var(--straw); border-radius: 18px; padding: 18px; }
+.yr h4 { color: #fff; font-size: 21px; margin-bottom: 6px; }
+.yr h4::before { counter-increment: yr; content: counter(yr); display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--brass); color: var(--coal); font: 700 14px/1 var(--body); margin-right: 8px; vertical-align: 2px; }
+.yr p { margin: 0; font-size: 14.5px; }
+.feat { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin: 10px 0 14px; }
+.feat div { background: #fff; border-radius: 16px; padding: 16px 18px; }
+.feat h4 { font-size: 20px; margin-bottom: 4px; }
+.feat p { margin: 0; font-size: 14.5px; }
+.price { font-size: 15px; margin-bottom: 14px; }
+@media (max-width: 860px) { .sumtop, .yr, .feat { grid-template-columns: minmax(0,1fr); } .yr { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+@media (max-width: 640px) {
+  .yr { grid-template-columns: minmax(0,1fr); }
+  .cmp-h { display: none; }
+  .cmp-r { grid-template-columns: minmax(0,1fr); gap: 6px; }
+  .cmp-r em { display: block; }
+}
 .check { columns: 2; column-gap: 28px; background: #fff; border-radius: 22px; padding: 26px 30px; }
 .check .grp { break-inside: avoid; margin-bottom: 8px; }
 .check label { display: flex; gap: 10px; align-items: flex-start; break-inside: avoid; padding: 6px 0; }
@@ -559,7 +613,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
     <nav class="route" aria-label="Five parts, one thing at a time">
       <h2>Five parts, one thing at a time</h2>
-      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Understand</b><small>Why prep?, What happens when…, How prepared are you?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Plan</b><small>What do the authorities say?, Plan for your household, Family emergency plan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Get</b><small>Build your supplies in four weeks, Seven areas, in this order, How to eat from your supplies, The bags</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Solve</b><small>How to solve it, When it takes a little more</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Practice</b><small>An evening without power, Common mistakes, Do you have this at home?</small></span></a></li></ol>
+      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Understand</b><small>Why prep?, What happens when…, How prepared are you?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Plan</b><small>What do the authorities say?, Plan for your household, Family emergency plan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Get</b><small>Build your supplies in four weeks, Seven areas, in this order, How to eat from your supplies, The bags</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Solve</b><small>How to solve it, When it takes a little more</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Practice</b><small>An evening without power, Common mistakes, Your preparedness, in one place, Keep your supplies alive</small></span></a></li></ol>
     </nav>
   </div>
 </header>
@@ -1297,7 +1351,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
   </div>
 </section>
-<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Part 5 of 5</div><h2>Practice</h2><p>Try it, avoid common mistakes and keep everything fresh.</p><div class="chap-steps"><a href="#drill"><b>13</b>An evening without power</a><a href="#myths"><b>14</b>Common mistakes</a><a href="#list"><b>15</b>Do you have this at home?</a></div></div></div>
+<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Part 5 of 5</div><h2>Practice</h2><p>Try it, avoid common mistakes and keep everything fresh.</p><div class="chap-steps"><a href="#drill"><b>13</b>An evening without power</a><a href="#myths"><b>14</b>Common mistakes</a><a href="#list"><b>15</b>Your preparedness, in one place</a><a href="#app"><b>16</b>Keep your supplies alive</a></div></div></div>
 <section class="cs" id="drill">
   <div class="wrap">
     <div class="eyebrow">Step 13</div>
@@ -1342,43 +1396,27 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 <section class="cs" id="list">
   <div class="wrap">
     <div class="eyebrow">Step 15</div>
-    <h2 class="t">Do you have this at home?</h2>
-    <p class="sub">Tick it off. Print the page if you want the list on paper.</p>
-    <div class="check">
-      <div class="grp"><h4>Water</h4>
-      <label><input type="checkbox" data-k="c:Drinking water for the whole period">Drinking water for the whole period</label>
-      <label><input type="checkbox" data-k="c:Empty containers with lids to fetch water">Empty containers with lids to fetch water</label></div>
-      <div class="grp"><h4>Food</h4>
-      <label><input type="checkbox" data-k="c:Food that keeps at room temperature">Food that keeps at room temperature</label>
-      <label><input type="checkbox" data-k="c:Food that can be eaten cold">Food that can be eaten cold</label>
-      <label><input type="checkbox" data-k="c:Can opener">Can opener</label></div>
-      <div class="grp"><h4>Heat</h4>
-      <label><input type="checkbox" data-k="c:Sleeping bag or warm blankets for everyone">Sleeping bag or warm blankets for everyone</label>
-      <label><input type="checkbox" data-k="c:Camping stove and fuel">Camping stove and fuel</label>
-      <label><input type="checkbox" data-k="c:Matches or a lighter">Matches or a lighter</label>
-      <label><input type="checkbox" data-k="c:Smoke alarm and fire extinguisher">Smoke alarm and fire extinguisher</label></div>
-      <div class="grp"><h4>Light and power</h4>
-      <label><input type="checkbox" data-k="c:Headlamp or flashlight">Headlamp or flashlight</label>
-      <label><input type="checkbox" data-k="c:Batteries">Batteries</label>
-      <label><input type="checkbox" data-k="c:Charged power bank">Charged power bank</label></div>
-      <div class="grp"><h4>Information</h4>
-      <label><input type="checkbox" data-k="c:Battery, crank or solar radio">Battery, crank or solar radio</label>
-      <label><input type="checkbox" data-k="c:Important phone numbers on paper">Important phone numbers on paper</label></div>
-      <div class="grp"><h4>Medicine and hygiene</h4>
-      <label><input type="checkbox" data-k="c:Medicine for the whole period">Medicine for the whole period</label>
-      <label><input type="checkbox" data-k="c:First aid kit">First aid kit</label>
-      <label><input type="checkbox" data-k="c:Wet wipes, hand sanitizer, toilet paper">Wet wipes, hand sanitizer, toilet paper</label>
-      <label><input type="checkbox" data-k="c:Bucket and trash bags for an emergency toilet">Bucket and trash bags for an emergency toilet</label></div>
-      <div class="grp"><h4>Money and papers</h4>
-      <label><input type="checkbox" data-k="c:Cash in small bills">Cash in small bills</label>
-      <label><input type="checkbox" data-k="c:Cards from more than one bank">Cards from more than one bank</label>
-      <label><input type="checkbox" data-k="c:Passports, ID and insurance in one place">Passports, ID and insurance in one place</label></div>
-    </div>
-
+    <h2 class="t">Your preparedness, in one place</h2>
+    <p class="sub">Here you see everything you have done in the guide. What is not done has a link back to the right step. Everything is stored only on this phone or computer.</p>
+    <div class="sumtop"><div class="lvlc" id="sum-lvl"></div><div class="nx3" id="sum-nx"></div></div>
+    <div class="srows" id="sum-rows"></div>
+    <div class="actions sumact no-print"><button class="btn" type="button" id="sum-share">Share your level</button><button class="btn ghost dark" type="button" id="sum-dl">Download</button><button class="btn ghost dark" type="button" id="sum-pr">Print</button></div>
     <div class="cal">
       <div><h3>Remind me twice a year</h3><p>Adds a reminder to your phone's calendar in spring and autumn: go through your supplies, replace water and food that will soon expire, and check the bags.</p></div>
       <button class="btn" type="button" id="cal-add">Add to calendar</button>
     </div>
+  </div>
+</section>
+<section class="cs" id="app">
+  <div class="wrap">
+    <div class="eyebrow">Step 16</div>
+    <h2 class="t">Keep your supplies alive</h2>
+    <p class="sub">Supplies that are not looked after get worse every month. Food expires, batteries run flat and the bags no longer fit the season. That is why preparedness needs a tool, not just a list.</p>
+    <div class="cmp"><div class="cmp-h"><span></span><span>With paper and memory</span><span>With Prepper Stock</span></div><div class="cmp-r"><b>Best before</b><div class="old"><em>With paper and memory</em>You find old food when it has already expired.</div><div class="new"><em>With Prepper Stock</em>The app reminds you before something expires, and the start page shows what is expiring soon.</div></div><div class="cmp-r"><b>How long will it last?</b><div class="old"><em>With paper and memory</em>You guess.</div><div class="new"><em>With Prepper Stock</em>The start page works out how many days the food and water last for the whole household, and how close you are to your goal.</div></div><div class="cmp-r"><b>The bags</b><div class="old"><em>With paper and memory</em>You cannot remember what is in which bag.</div><div class="new"><em>With Prepper Stock</em>Every bag has a picture and a list. What you move from your stock is not counted twice.</div></div><div class="cmp-r"><b>Important papers</b><div class="old"><em>With paper and memory</em>The folder may not come with you when you have to leave.</div><div class="new"><em>With Prepper Stock</em>Copies of passports and important papers are on your phone, only with you.</div></div><div class="cmp-r"><b>Without a network</b><div class="old"><em>With paper and memory</em>A lot stops working when the network goes down.</div><div class="new"><em>With Prepper Stock</em>Everything works offline and without an account.</div></div></div>
+    <h3>A year with living supplies</h3><div class="yr"><div><h4>Every month</h4><p>Look at the start page in the app. Eat what is expiring soon and buy new. This is called rotating your stock.</p></div><div><h4>Spring and autumn</h4><p>Go through your supplies when the clocks change. Replace water, charge power banks and batteries, and switch the clothes in the bags for the season.</p></div><div><h4>Once a year</h4><p>Do the exercise in step 13. Update the emergency plan and your family's details in the app.</p></div><div><h4>After every crisis or exercise</h4><p>Restock what was used and add what was missing. Your supplies get better every time.</p></div></div>
+    <h3>More in the app</h3><div class="feat"><div><h4>Packing lists</h4><p>A ready made 72 hour list, or your own lists to tick off as you pack.</p></div><div><h4>People</h4><p>Your family's phone numbers, addresses and medical details in one place.</p></div><div><h4>Places</h4><p>Meeting points and water sources with coordinates that open in the map.</p></div><div><h4>Survival</h4><p>Knowledge that works offline: first aid, water, fire, shelter, navigation, signalling and knots.</p></div><div><h4>Backup</h4><p>Save everything to one file and bring it to a new phone. Always free.</p></div><div><h4>PIN lock</h4><p>Nobody else can see your supplies if they pick up your phone.</p></div></div>
+    <p class="price">Free for smaller supplies: 50 items, 1 bag and 1 car. Pro unlocks everything with a single purchase, no subscription.</p>
+    <div class="stores"><a class="btn" href="https://play.google.com/store/apps/details?id=se.prepping.lager" target="_blank" rel="noopener">Google Play</a><a class="btn" href="https://apps.apple.com/app/id6825012438" target="_blank" rel="noopener">App Store</a></div>
   </div>
 </section>
 <section class="endsec" id="end">
@@ -1983,6 +2021,94 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   };
   if (navigator.share) { $("#kp-share").hidden = false; $("#kp-share").onclick = function () { navigator.share({ title: L.kptitle, text: kpText() }).catch(function () {}); }; }
   $("#kp-clear").onclick = function () { if (!confirm(L.clearq)) return; ST.p = {}; spara(); KP.reset(); $("#kp-saved").textContent = ""; };
+  var SM = {"rows": {"hush": ["Your household", "The calculator needs to know how many you are and how long you want to manage. Everything else in the guide is based on that.", "Fill in how many you are in the calculator", "{f} people, {d} days", "Not filled in"], "test": ["The test", "Ten questions that show where you stand today. Take it again after a while and see the difference.", "Take the test, it takes two minutes", "{x} of 10 points", "Not taken yet"], "food": ["The shopping list", "Food and water are the foundation. Tick off what you have bought in the list in step 5.", "Buy what is missing on the shopping list", "{a} of {b} bought", "Nothing ticked yet"], "plan": ["The emergency plan", "Who does what, where you meet and who you call. A plan on paper means nobody has to guess when it happens.", "Fill in your family emergency plan", "{a} of {b} fields filled in", "Not started"], "weeks": ["Four weeks", "The plan splits everything into four weeks so it is never too much at once.", "Do the next week in the plan", "{a} of {b} done", "Not started"], "bags": ["The bags", "The bag to get home, the bag to leave home and the car. The number is for the season you have chosen.", "Pack the bags", "{t}", "Nothing packed yet"], "drill": ["The exercise", "The only way to know that everything works is to try. You always find something missing.", "Do an evening without power", "{a} of {b} tasks", "Not done yet"]}, "levels": [["Beginner", "You have taken the first step. Start with the three things below."], ["On the way", "The basics are there. Keep going with what is missing, one thing at a time."], ["Prepared", "Your household will manage better than most. Fill in the last gaps."], ["Self reliant", "You can manage on your own for a long time. Keep your supplies fresh and practise once a year."]], "lvl": "Your level", "nextlvl": "Next level at {p} %", "top": "Done", "next3": "Do this next", "none": "Nothing left. Do the exercise again in a year.", "go": "Go to", "bagn": ["Get home bag", "Bug out bag", "The car"], "file": "my-preparedness.txt", "img": "my-preparedness.png", "shtxt": "I am at level {l} in the Start prepping guide. Test how prepared you are: https://prepperstock.se/guide/en/", "en": true, "info": "Explanation", "cap": "How prepared are you? Find out."};
+
+  /* ===== i-knappar ===== */
+  var IBN = 0;
+  function ib(txt) { IBN++; return '<button type="button" class="ib" aria-expanded="false" aria-controls="ibx' + IBN + '" aria-label="' + SM.info + '">i</button>' + '\u0000' + '<div class="ibx" id="ibx' + IBN + '" hidden>' + txt + '</div>'; }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest(".ib") : null; if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    var x = document.getElementById(b.getAttribute("aria-controls")); if (!x) return;
+    x.hidden = !x.hidden; b.setAttribute("aria-expanded", !x.hidden);
+  }, true);
+
+  /* ===== Sammanfattning ===== */
+  function cnt(sel) { var a = 0, b = 0; document.querySelectorAll(sel).forEach(function (i) { b++; if (i.checked) a++; }); return [a, b]; }
+  function fill(s, o) { return s.replace(/\{(\w)\}/g, function (m, k) { return o[k] != null ? o[k] : ""; }); }
+  function stepOf(id) { var s = document.getElementById(id); return s ? s.querySelector(".eyebrow").textContent : ""; }
+  var SUMD = [];
+  function sum() {
+    var R = SM.rows, d = [];
+    d.push(["hush", "calc", S.folk ? 100 : 0, S.folk ? fill(R.hush[3], { f: S.folk, d: S.D || D }) : R.hush[4]]);
+    var qn = Object.keys(QA).length, qs = 0; Object.keys(QA).forEach(function (k) { qs += QA[k]; });
+    var qx = (qs / 2) % 1 ? (qs / 2).toFixed(1).replace(".", L.dec) : qs / 2;
+    d.push(["test", "test", qn >= L.q.length ? Math.round(qs / 2 / L.q.length * 100) : 0, qn >= L.q.length ? fill(R.test[3], { x: qx }) : R.test[4]]);
+    var f = cnt('#food input[type="checkbox"]');
+    d.push(["food", "calc", f[1] ? Math.round(f[0] / f[1] * 100) : 0, f[0] ? fill(R.food[3], { a: f[0], b: f[1] }) : R.food[4]]);
+    var pe = Array.prototype.filter.call(KP.elements, function (e) { return e.name; }), pf = pe.filter(function (e) { return (ST.p[e.name] || "").trim(); }).length;
+    d.push(["plan", "plan", pe.length ? Math.round(pf / pe.length * 100) : 0, pf ? fill(R.plan[3], { a: pf, b: pe.length }) : R.plan[4]]);
+    var w = cnt('#weeks input[data-k^="w:"]');
+    d.push(["weeks", "weeks", w[1] ? Math.round(w[0] / w[1] * 100) : 0, w[0] ? fill(R.weeks[3], { a: w[0], b: w[1] }) : R.weeks[4]]);
+    var se = document.querySelector('.season button[aria-pressed="true"]'), sv = se ? se.dataset.se : "";
+    var bp = ["b1", "b2", "b3"].map(function (id) {
+      var a = 0, b = 0;
+      document.querySelectorAll("#" + id + " label").forEach(function (l) { var i = l.querySelector("input"); if (!i) return; var x = l.getAttribute("data-se"); if (x && x !== sv) return; b++; if (i.checked) a++; });
+      return b ? Math.round(a / b * 100) : 0;
+    });
+    var bavg = Math.round((bp[0] + bp[1] + bp[2]) / 3);
+    d.push(["bags", "bags", bavg, bavg ? fill(R.bags[3], { t: SM.bagn.map(function (n, i) { return n + " " + bp[i] + " %"; }).join(", ") }) : R.bags[4]]);
+    var dr = cnt('#drill input[data-k^="d:"]');
+    d.push(["drill", "drill", dr[1] ? Math.round(dr[0] / dr[1] * 100) : 0, dr[0] ? fill(R.drill[3], { a: dr[0], b: dr[1] }) : R.drill[4]]);
+    SUMD = d;
+    var tot = Math.round(d.reduce(function (s, x) { return s + x[2]; }, 0) / d.length);
+    var lv = tot >= 80 ? 3 : tot >= 50 ? 2 : tot >= 25 ? 1 : 0, nxt = [25, 50, 80][lv];
+    $("#sum-lvl").innerHTML = '<div class="kicker">' + SM.lvl + '</div><h3>' + SM.levels[lv][0] + '</h3><p>' + SM.levels[lv][1] + '</p><div class="lvlm">' + [0, 1, 2, 3].map(function (i) { return '<i class="' + (i <= lv ? "on" : "") + '"></i>'; }).join("") + '</div><div class="lvln">' + SM.levels.map(function (x) { return '<span>' + x[0] + '</span>'; }).join("") + '</div><div class="lvlp"><b>' + tot + ' %</b> ' + SM.top.toLowerCase() + (nxt ? '. ' + fill(SM.nextlvl, { p: nxt }) : "") + '</div>';
+    var todo = d.filter(function (x) { return x[2] < 100; }).slice(0, 3);
+    $("#sum-nx").innerHTML = '<h3>' + SM.next3 + '</h3>' + (todo.length ? '<ol>' + todo.map(function (x) { return '<li><a href="#' + x[1] + '">' + R[x[0]][2] + '</a> <span style="color:var(--mute)">(' + stepOf(x[1]) + ')</span></li>'; }).join("") + '</ol>' : '<p>' + SM.none + '</p>');
+    IBN = 1000;
+    $("#sum-rows").innerHTML = d.map(function (x) {
+      var p = ib(R[x[0]][1]).split("\u0000");
+      return '<div class="srow' + (x[2] >= 100 ? " ok" : "") + '"><div class="sr-top"><span class="sr-n">' + R[x[0]][0] + '</span>' + p[0] + '</div>' + p[1] + '<div class="sr-t">' + x[3] + '</div><div class="sr-bar"><i style="width:' + x[2] + '%"></i></div><a class="sr-go" href="#' + x[1] + '">' + SM.go + ' ' + stepOf(x[1]).toLowerCase() + ' <span aria-hidden="true">→</span></a></div>';
+    }).join("");
+    SUMD.tot = tot; SUMD.lv = lv;
+  }
+  var sumT = 0;
+  function sumLater() { clearTimeout(sumT); sumT = setTimeout(sum, 60); }
+  document.addEventListener("change", sumLater);
+  document.addEventListener("input", sumLater);
+  document.addEventListener("click", function (e) { if (!e.target.closest || e.target.closest(".ib, #sum-rows")) return; sumLater(); });
+  sum();
+  function sumText() {
+    var R = SM.rows, t = SM.lvl + ": " + SM.levels[SUMD.lv][0] + " (" + SUMD.tot + " %)\n\n";
+    SUMD.forEach(function (x) { t += (x[2] >= 100 ? "[x] " : "[ ] ") + R[x[0]][0] + ": " + x[3] + "\n"; });
+    var todo = SUMD.filter(function (x) { return x[2] < 100; }).slice(0, 3);
+    if (todo.length) { t += "\n" + SM.next3 + ":\n"; todo.forEach(function (x, i) { t += (i + 1) + ". " + R[x[0]][2] + "\n"; }); }
+    return t + "\nhttps://prepperstock.se/guide/" + (SM.en ? "en/" : "") + "\n";
+  }
+  $("#sum-dl").onclick = function () { sum(); dlText(sumText(), SM.file, "text/plain"); };
+  $("#sum-pr").onclick = function () { sum(); openSec("list", false); window.print(); };
+  $("#sum-share").onclick = function () {
+    sum();
+    var c = document.createElement("canvas"); c.width = 1080; c.height = 1080; var g = c.getContext("2d");
+    g.fillStyle = "#1E3326"; g.fillRect(0, 0, 1080, 1080);
+    g.fillStyle = "#D4A537"; g.font = "600 44px Barlow, sans-serif"; g.fillText(SM.lvl.toUpperCase(), 90, 210);
+    g.fillStyle = "#ffffff"; g.font = "700 150px 'Barlow Condensed', sans-serif"; g.fillText(SM.levels[SUMD.lv][0], 84, 380);
+    for (var i = 0; i < 4; i++) { g.fillStyle = i <= SUMD.lv ? "#D4A537" : "rgba(255,255,255,.18)"; g.fillRect(90 + i * 228, 450, 210, 26); }
+    g.fillStyle = "#F1E3A4"; g.font = "500 40px Barlow, sans-serif";
+    SM.levels.forEach(function (x, i) { g.font = "500 30px Barlow, sans-serif"; g.fillText(x[0], 90 + i * 228, 530); });
+    g.font = "700 120px 'Barlow Condensed', sans-serif"; g.fillStyle = "#ffffff"; g.fillText(SUMD.tot + " %", 90, 720);
+    g.font = "500 40px Barlow, sans-serif"; g.fillStyle = "#F1E3A4"; g.fillText(SM.cap, 90, 790);
+    g.fillStyle = "#D4A537"; g.font = "600 46px Barlow, sans-serif"; g.fillText("prepperstock.se/guide", 90, 960);
+    var txt = fill(SM.shtxt, { l: SM.levels[SUMD.lv][0] });
+    c.toBlob(function (bl) {
+      try {
+        var fi = new File([bl], SM.img, { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [fi] })) { navigator.share({ files: [fi], text: txt }).catch(function () {}); return; }
+      } catch (e) {}
+      var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = SM.img; document.body.appendChild(a); a.click(); a.remove();
+    }, "image/png");
+  };
 
   /* ===== Öva en kväll utan ström ===== */
   var dn = $("#dr-notes"); dn.value = ST.dn || "";
