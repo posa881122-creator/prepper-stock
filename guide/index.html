@@ -398,6 +398,34 @@ section.cs { padding: 14px 0 0; }
 #plan .actions .btn.dark, #test .btn.dark { color: var(--coal); border-color: var(--line); }
 
 /* övning */
+.dx-pick { background: #fff; border-radius: 22px; padding: 20px 22px; margin-bottom: 14px; }
+.dx-pick .kicker { color: var(--rust); margin: 4px 0 10px; }
+.dx-sc { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; margin-bottom: 16px; }
+.dx-sc button, .dx-len button { appearance: none; text-align: left; border: 1.5px solid var(--line); background: var(--paper); border-radius: 14px; padding: 12px 14px; cursor: pointer; color: var(--coal); font: 600 15px/1.25 var(--body); }
+.dx-sc button small { display: block; font-weight: 400; font-size: 13px; color: var(--mute); margin-top: 4px; }
+.dx-sc button[aria-pressed="true"], .dx-len button[aria-pressed="true"] { background: var(--forest); border-color: var(--forest); color: var(--straw); }
+.dx-sc button[aria-pressed="true"] small { color: var(--straw); opacity: .85; }
+.dx-len { display: flex; flex-wrap: wrap; gap: 8px; }
+.dx-len button { padding: 10px 16px; border-radius: 999px; }
+.dx-safe { background: #FBE6DC; border-radius: 14px; padding: 12px 16px; font-size: 14.5px; font-weight: 500; margin-bottom: 14px; }
+.task { border-top: 1px solid var(--line); }
+.task .tl { display: flex; align-items: flex-start; gap: 8px; }
+.task .tl label { flex: 1; border-top: 0; }
+.task .ib { margin-top: 6px; }
+.task .ibx { margin: 0 0 8px 27px; }
+.dr-cnt { font-size: 13px; color: var(--mute); }
+.dx-card { background: var(--forest); color: var(--straw); border-radius: 18px; padding: 18px; margin: 10px 0 18px; }
+.dx-card .evt { font: 600 18px/1.35 var(--body); color: #fff; min-height: 2.6em; margin-bottom: 12px; }
+.kid label { display: flex; gap: 9px; align-items: flex-start; padding: 7px 0; border-top: 1px solid rgba(255,255,255,.15); font-size: 14.5px; }
+.kid label small { display: block; opacity: .8; font-size: 13px; }
+.kid input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--brass); flex: none; }
+.medal { display: none; margin-top: 10px; background: var(--brass); color: var(--coal); border-radius: 12px; padding: 10px 14px; font: 700 18px/1.2 var(--display); }
+.medal.on { display: block; }
+.dx-hist { list-style: none; padding: 0; margin: 8px 0; font-size: 14.5px; }
+.dx-hist li { display: flex; gap: 8px; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.15); padding: 7px 0; }
+.dx-hist button { background: none; border: 0; color: var(--straw); opacity: .7; cursor: pointer; font-size: 13px; }
+@media (max-width: 860px) { .dx-sc { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+@media (max-width: 520px) { .dx-sc { grid-template-columns: minmax(0,1fr); } }
 .drill { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; }
 .dr-steps { display: grid; gap: 12px; }
 .dr { display: grid; grid-template-columns: 44px 1fr; gap: 14px; background: #fff; border-radius: 20px; padding: 18px 20px; }
@@ -613,7 +641,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
     <nav class="route" aria-label="Fem delar, en sak i taget">
       <h2>Fem delar, en sak i taget</h2>
-      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Förstå</b><small>Varför preppa?, Vad händer när…, Hur förberedd är du?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Planera</b><small>Vad säger myndigheterna?, Räkna ut för ditt hushåll, Familjens krisplan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Skaffa</b><small>Bygg upp lagret på fyra veckor, Sju områden, i den här ordningen, Så äter du av lagret, Väskorna</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Lös</b><small>Så löser du det, När det kräver lite mer</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Öva</b><small>En kväll utan ström, Vanliga misstag, Din beredskap, samlad, Håll lagret vid liv</small></span></a></li></ol>
+      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Förstå</b><small>Varför preppa?, Vad händer när…, Hur förberedd är du?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Planera</b><small>Vad säger myndigheterna?, Räkna ut för ditt hushåll, Familjens krisplan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Skaffa</b><small>Bygg upp lagret på fyra veckor, Sju områden, i den här ordningen, Så äter du av lagret, Väskorna</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Lös</b><small>Så löser du det, När det kräver lite mer</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Öva</b><small>Öva på en kris, Vanliga misstag, Din beredskap, samlad, Håll lagret vid liv</small></span></a></li></ol>
     </nav>
   </div>
 </header>
@@ -1351,29 +1379,29 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
   </div>
 </section>
-<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Del 5 av 5</div><h2>Öva</h2><p>Prova, undvik vanliga misstag och se till att allt håller.</p><div class="chap-steps"><a href="#drill"><b>13</b>En kväll utan ström</a><a href="#myths"><b>14</b>Vanliga misstag</a><a href="#list"><b>15</b>Din beredskap, samlad</a><a href="#app"><b>16</b>Håll lagret vid liv</a></div></div></div>
+<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Del 5 av 5</div><h2>Öva</h2><p>Prova, undvik vanliga misstag och se till att allt håller.</p><div class="chap-steps"><a href="#drill"><b>13</b>Öva på en kris</a><a href="#myths"><b>14</b>Vanliga misstag</a><a href="#list"><b>15</b>Din beredskap, samlad</a><a href="#app"><b>16</b>Håll lagret vid liv</a></div></div></div>
 <section class="cs" id="drill">
   <div class="wrap">
     <div class="eyebrow">Steg 13</div>
-    <h2 class="t">En kväll utan ström</h2>
-    <p class="sub">Det bästa sättet att hitta det som saknas är att prova. Välj en kväll, gärna en helg, och låtsas att strömmen är borta i fyra timmar. Flera svenska kommuner har liknande övningar.</p>
+    <h2 class="t">Öva på en kris</h2>
+    <p class="sub">Det bästa sättet att hitta det som saknas är att prova. Välj ett scenario och hur länge ni vill öva. Börja gärna kort och gör det svårare nästa gång.</p>
+    <div class="dx-pick"><div class="kicker">1. Välj scenario</div><div class="dx-sc" id="dx-sc"></div><div class="kicker">2. Välj längd</div><div class="dx-len" id="dx-len"></div></div>
+    <div class="dx-safe">Säkerheten först: kyl, frys, brandvarnare, larm och medicinsk utrustning stängs aldrig av. Avbryt direkt om någon mår dåligt eller blir för kall.</div>
     <div class="drill">
       <div class="dr-steps">
-        <div class="dr"><b>1</b><div><h4>Bestäm reglerna</h4><p>Ingen lampa, ingen spis, inget wifi, inget eluttag. Låt kyl, frys och larm vara på. Berätta för alla i hushållet i förväg.</p></div></div>
-        <div class="dr"><b>2</b><div><h4>Prova det här</h4>
-          <label><input type="checkbox" data-k="d:1">Hitta lampan i mörker</label>
-          <label><input type="checkbox" data-k="d:2">Laga eller värm en måltid utan el</label>
-          <label><input type="checkbox" data-k="d:3">Lyssna på nyheterna på radion</label>
-          <label><input type="checkbox" data-k="d:4">Ladda mobilen från powerbanken</label>
-          <label><input type="checkbox" data-k="d:5">Håll ett rum varmt, eller sov i sovsäck</label>
-          <label><input type="checkbox" data-k="d:6">Diska och tvätta händerna med lite vatten</label></div></div>
-        <div class="dr"><b>3</b><div><h4>Skriv ner vad som saknades</h4><p>En sak per rad. Lägg sedan till dem på akutlistan med ett tryck.</p>
+        <div id="dx-tasks" style="display:grid;gap:12px"></div>
+        <div class="dr"><b id="dx-num">5</b><div><h4>Skriv ner vad som saknades</h4><p>En sak per rad. Lägg sedan till dem på akutlistan med ett tryck.</p>
           <textarea id="dr-notes" rows="4" placeholder="Till exempel: fler batterier&#10;tändstickor&#10;en termos"></textarea>
           <div class="actions"><button class="btn" type="button" id="dr-add">Lägg till på akutlistan</button><span class="kp-saved" id="dr-msg"></span></div></div></div>
       </div>
       <div class="dr-side">
-        <h4>Varför fyra timmar?</h4><p>Det är tillräckligt länge för att märka det som inte fungerar, men kort nog för att det ska vara roligt. Barn brukar tycka att det är ett äventyr.</p>
-        <h4>Gör det till en vana</h4><p>Upprepa övningen en gång om året. Nästa gång: en hel helg, eller utan vatten.</p>
+        <h4>Händelsekort</h4><p>Dra ett kort när som helst under övningen. Då händer något ni inte har planerat för.</p>
+        <div class="dx-card"><div class="evt" id="dx-evt"></div><button class="btn" type="button" id="dx-draw">Dra ett kort</button></div>
+        <h4>Barnens uppdrag</h4><p>Klarar barnen alla uppdrag får de en medalj.</p>
+        <div class="kid" id="dx-kids"></div><div class="medal" id="dx-medal">Medalj! Bra jobbat.</div>
+        <h4 style="margin-top:20px">Dina övningar</h4><p>Spara när ni är klara, så ser ni hur ni blir bättre för varje år.</p>
+        <ul class="dx-hist" id="dx-hist"></ul><p id="dx-next" style="font-weight:600"></p>
+        <button class="btn" type="button" id="dx-save">Spara övningen</button>
       </div>
     </div>
   </div>
@@ -2057,8 +2085,8 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     });
     var bavg = Math.round((bp[0] + bp[1] + bp[2]) / 3);
     d.push(["bags", "bags", bavg, bavg ? fill(R.bags[3], { t: SM.bagn.map(function (n, i) { return n + " " + bp[i] + " %"; }).join(", ") }) : R.bags[4]]);
-    var dr = cnt('#drill input[data-k^="d:"]');
-    d.push(["drill", "drill", dr[1] ? Math.round(dr[0] / dr[1] * 100) : 0, dr[0] ? fill(R.drill[3], { a: dr[0], b: dr[1] }) : R.drill[4]]);
+    var dr = cnt('#dx-tasks input'), dh = (ST.dx || []), dl = dh[dh.length - 1];
+    d.push(["drill", "drill", dl ? 100 : (dr[1] ? Math.round(dr[0] / dr[1] * 100) : 0), dl ? dl.d + ", " + dl.s : (dr[0] ? fill(R.drill[3], { a: dr[0], b: dr[1] }) : R.drill[4])]);
     SUMD = d;
     var tot = Math.round(d.reduce(function (s, x) { return s + x[2]; }, 0) / d.length);
     var lv = tot >= 80 ? 3 : tot >= 50 ? 2 : tot >= 25 ? 1 : 0, nxt = [25, 50, 80][lv];
@@ -2110,6 +2138,54 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   };
 
   /* ===== Öva en kväll utan ström ===== */
+
+  /* ===== Övningen ===== */
+  var DX = {"t": {"tell": ["Berätta för alla i hushållet", "Alla ska veta när övningen börjar och slutar och vad reglerna är. Kom överens om hur man avbryter om någon mår dåligt eller det blir för kallt."], "safe": ["Bestäm vad som aldrig stängs av", "Kyl, frys, brandvarnare, larm och medicinsk utrustning ska vara på hela tiden. Är det kallt ute stängs inte värmen av för den som är äldre, sjuk eller liten."], "water": ["Fyll vatten i dunkar och flaskor", "Räkna med 3 till 5 liter per person och dygn. Märk dunkarna så att ingen använder vattnet till annat."], "charge": ["Ladda powerbanks och telefoner", "Fulladdade powerbanks gör att mobilen räcker i flera dygn om du sparar på den."], "cash": ["Ta ut lite kontanter", "Vid störningar i betalsystemen kan kontanter vara det enda som fungerar. Ha gärna små valörer."], "light": ["Hitta lampan i mörker", "Kan alla hitta en lampa utan att tända taklampan? Ha en lampa på en fast plats i varje rum."], "radio": ["Slå på radion och hitta nyheterna", "Vid allvarliga händelser sänder Sveriges Radio P4 viktig information från myndigheterna. Ta reda på vilken frekvens som gäller där du bor och skriv upp den."], "neighbor": ["Hör av dig till en granne", "Knacka på hos någon i närheten, helst en äldre eller ensamboende. Fråga om de har ljus, värme och vatten och om de behöver något. I en kris är det ofta grannar som hjälper varandra först, långt innan hjälpen hinner fram."], "freezer": ["Gör en plan för kyl och frys", "En full frys håller kylan i ungefär två dygn om luckan hålls stängd, en halvfull ungefär ett dygn. Bestäm vilken mat som äts först om strömmen är borta på riktigt."], "meal": ["Laga eller värm en måltid utan el", "Använd stormkök, gasolkök eller grill, alltid med god ventilation och grillen bara utomhus. Skriv upp hur mycket bränsle det gick åt."], "coldmeal": ["Ät en måltid som inte kräver värme", "Se om familjen blir mätt på det som går att äta kallt, och om det smakar så att alla äter."], "heat": ["Håll ett rum varmt", "Samla alla i ett rum, stäng dörrarna och häng filtar för fönstren. Mät temperaturen när ni börjar och när ni slutar."], "phone": ["Spara på mobilen", "Flygplansläge, låg ljusstyrka och bara nödvändiga samtal. Se hur länge batteriet räcker."], "games": ["Gör något tillsammans utan skärmar", "Spel, böcker och kort håller humöret uppe, särskilt för barn. Ha några saker samlade i en låda."], "dishes": ["Diska och tvätta händerna med lite vatten", "Använd två baljor: en med diskvatten och en att skölja i. Handsprit när vattnet tar slut."], "recharge": ["Ladda mobilen från powerbanken", "Hur många gånger räcker powerbanken? Prova också att ladda i bilen om ni har en."], "sleep": ["Sov en natt utan el", "Sovsäck på madrass, mössa på huvudet och flera i samma rum. Kolla hur varmt det är på morgonen."], "toilet": ["Använd nödtoaletten", "Vid vattenavbrott och långa strömavbrott ska du inte spola. En hink med sopsäck och lite strö eller kattsand fungerar. Knyt ihop påsen efter varje gång."], "wash": ["Tvätta dig med en liter vatten", "Tvättlapp, en skål med vatten och lite tvål räcker långt. Barn och ansikte först."], "measure": ["Mät hur mycket vatten ni använder", "Skriv upp hur många liter som går åt till dryck, mat, disk och hygien. De flesta blir förvånade över hur mycket det blir."], "boil": ["Koka vatten så att det går att dricka", "Låt vattnet koka upp ordentligt och svalna under lock. Det är så man gör när kommunen säger att vattnet måste kokas."], "nowater": ["Använd bara vatten ni har sparat", "Ingen kran under övningen. Allt vatten tas från dunkarna och flaskorna."], "temp": ["Mät temperaturen inne varje timme", "Då ser ni hur fort huset kyls ner, och när det är dags att flytta ihop i ett rum."], "layers": ["Klä er i lager", "Ull eller syntet närmast kroppen, flera tunna lager och mössa inomhus. Varma fötter och händer gör stor skillnad för hur man mår."], "thermos": ["Gör varm dryck och fyll en termos", "Varm dryck värmer inifrån och sparar bränsle om den hålls varm i termos."], "watch": ["Håll koll på dem som fryser mest", "Små barn och äldre kyls ner snabbare. Känn på händer och nacke och fråga hur de mår. Avbryt om någon blir för kall."], "timer": ["Ställ en timer på 10 minuter och packa", "Ta det ni skulle ta med om ni måste lämna hemmet nu: väskor, medicin, papper, laddare och kläder för två dygn."], "docs": ["Få med pass, id och mediciner", "Det är det svåraste att ersätta. Ha dem samlade på ett ställe."], "pets": ["Få med husdjuren och deras mat", "Bur, koppel, mat och vattenskål. Djur blir ofta rädda och gömmer sig när det är stressigt."], "shut": ["Stäng av spisen, släck ljus och lås", "Gå igenom huset på väg ut. Det tar längre tid än man tror."], "where": ["Bestäm vart ni ska", "Släkt eller vänner utanför området. Vet alla adressen och hur man tar sig dit?"], "tank": ["Kontrollera tanken i bilen", "Håll tanken minst halvfull. Det är svårt att tanka när strömmen är borta."], "forgot": ["Skriv upp vad ni glömde", "Det ni glömde under övningen är det ni skulle ha glömt på riktigt. Lägg det i väskan direkt."], "walk": ["Gå en del av vägen hem från jobbet", "Gå minst en timme av sträckan med väskan på ryggen. Då vet du hur tungt det känns och hur fort du går."], "shoes": ["Gå i skorna du har på jobbet", "Många har skor på jobbet som inte går att gå långt i. Då behöver det finnas ett par i väskan."], "map": ["Hitta vägen utan mobilen", "Använd en papperskarta. Mobilnät och kartappar kan ligga nere."], "route": ["Välj en väg som inte följer de stora vägarna", "Stora vägar och broar kan vara avstängda eller fulla av trafik. Ha två vägar hem."], "tellhome": ["Bestäm hur familjen får veta att du är på väg", "Om mobilen inte fungerar ska familjen veta att du kommer gående och ungefär när."], "time": ["Skriv upp hur lång tid det tog", "Räkna sedan ut hur lång tid hela vägen skulle ta. Är det mer än det är ljust ute?"], "phoneoff": ["Stäng av mobilen", "Bara för nödsamtal. Märk hur ofta du vill ta upp den."], "payshop": ["Handla något utan kort och mobil", "Testa att betala kontant i en butik som tar emot det. Vet du vilka butiker nära dig som gör det?"], "noweb": ["Hitta information utan internet", "Radio, papper och grannar. Har du det viktigaste nedskrivet?"], "numbers": ["Ring familjen utan att titta i mobilen", "Kan du numren utantill eller har du dem på papper?"], "meet": ["Gå till er mötesplats", "Om ni inte kan nå varandra ska alla veta var ni ses. Prova att ta er dit."], "restock": ["Fyll på det som gick åt", "Gör det samma dag, annars blir det inte av."], "talk": ["Prata om hur det kändes", "Fråga alla, även barnen, vad som var svårast. Det säger mycket om vad som behöver bli bättre."]}, "sc": [["power", "Strömavbrott", "Allt som går på el är borta: lampor, spis, wifi och uttag.", true, {"pre": [["tell", 0], ["safe", 0], ["water", 0], ["charge", 0]], "first": [["light", 0], ["radio", 0], ["freezer", 0], ["neighbor", 1]], "during": [["meal", 0], ["coldmeal", 1], ["heat", 0], ["phone", 0], ["games", 0], ["dishes", 0], ["recharge", 1], ["sleep", 2], ["toilet", 2], ["wash", 3]], "after": [["restock", 0], ["talk", 0]]}], ["water", "Vattenavbrott", "Inget vatten kommer ur kranen. Ni lever på det ni har sparat.", true, {"pre": [["tell", 0], ["water", 0]], "first": [["nowater", 0], ["radio", 0], ["neighbor", 1]], "during": [["measure", 0], ["dishes", 0], ["wash", 1], ["coldmeal", 0], ["boil", 1], ["toilet", 2]], "after": [["restock", 0], ["talk", 0]]}], ["cold", "Vinterkyla utan värme", "Strömmen och värmen är borta en kall dag. Gör övningen bara när alla är friska.", true, {"pre": [["tell", 0], ["safe", 0], ["charge", 0]], "first": [["temp", 0], ["layers", 0], ["heat", 0]], "during": [["thermos", 0], ["watch", 0], ["meal", 0], ["games", 0], ["sleep", 2], ["toilet", 3]], "after": [["restock", 0], ["talk", 0]]}], ["evac", "Lämna hemmet på 10 minuter", "En brand eller ett utsläpp i närheten, och ni måste lämna hemmet nu.", false, {"pre": [["tell", 0]], "first": [["timer", 0], ["docs", 0], ["pets", 0], ["shut", 0]], "during": [["where", 0], ["tank", 0], ["meet", 0]], "after": [["forgot", 0], ["talk", 0]]}], ["home", "Ta dig hem utan bil och kollektivtrafik", "Tåg, bussar och vägar står still. Du är på jobbet eller i skolan och måste gå hem.", false, {"pre": [["tellhome", 0], ["route", 0]], "first": [["shoes", 0], ["map", 0]], "during": [["walk", 0], ["time", 0]], "after": [["forgot", 0], ["talk", 0]]}], ["nonet", "Ingen mobil, inget internet och inga kortköp", "Mobilnätet, internet och betalningar ligger nere.", true, {"pre": [["tell", 0], ["cash", 0]], "first": [["phoneoff", 0], ["radio", 0]], "during": [["noweb", 0], ["numbers", 0], ["payshop", 1], ["meet", 1], ["neighbor", 2]], "after": [["restock", 0], ["talk", 0]]}]], "ev": {"*": ["Ett barn får feber. Var finns febernedsättande och termometern?", "Någon skär sig i fingret. Hitta plåster och tvätta såret med rent vatten.", "Batterierna i lampan tar slut. Var finns reserven?", "Radion säger att det dröjer till i morgon. Vad ändrar ni i planen?", "En granne knackar på och frågar om ni har vatten över."], "power": ["Nu kommer inget vatten ur kranen heller. Ni får bara använda det ni har sparat.", "Det blir mörkt ute. Ingen tänder något med låga utan att en vuxen är med."], "water": ["Kommunen meddelar att vattnet måste kokas innan det dricks, i en vecka.", "Toaletten får inte spolas. Ställ i ordning nödtoaletten nu."], "cold": ["Det är 15 grader inne. Vad gör ni nu?", "Ett barn har kalla fötter och vill inte ha på sig mössan."], "evac": ["Vägen ni tänkt ta är avstängd. Vilken väg tar ni i stället?", "En i familjen är inte hemma. Hur når ni hen?"], "home": ["Bron på din väg är avstängd. Hitta en annan väg på kartan.", "Det börjar regna. Vad har du i väskan?", "Telefonen är död. Hur får familjen veta var du är?"], "nonet": ["Butiken tar bara kontanter. Räcker det du har till mat i tre dagar?", "Du behöver nå en släkting men minns inte numret."]}, "kids": [["Ficklampsansvarig", "Håll reda på lamporna och se till att de släcks när de inte behövs."], ["Hitta tre saker i mörker", "En lampa, en filt och en flaska vatten."], ["Känn igen varningssignalen", "Viktigt meddelande till allmänheten låter 7 sekunder och är tyst 14 sekunder, om och om igen i minst 2 minuter. Testas första måndagen i varje kvartal klockan 15."], ["Rita kartan", "Rita vägen till er mötesplats."], ["Räkna vattnet", "Hur många liter vatten har familjen?"], ["Radioansvarig", "Berätta för familjen vad nyheterna säger."]], "ui": {"h": "Öva på en kris", "sub": "Det bästa sättet att hitta det som saknas är att prova. Välj ett scenario och hur länge ni vill öva. Börja gärna kort och gör det svårare nästa gång.", "p1": "1. Välj scenario", "p2": "2. Välj längd", "lens": ["4 timmar", "8 timmar", "Ett dygn", "Två dygn"], "nolen": "Den här övningen tar så lång tid som den tar.", "ph": {"pre": "Före", "first": "Första timmen", "during": "Under övningen", "after": "Efteråt"}, "safety": "Säkerheten först: kyl, frys, brandvarnare, larm och medicinsk utrustning stängs aldrig av. Avbryt direkt om någon mår dåligt eller blir för kall.", "notesh": "Skriv ner vad som saknades", "notesp": "En sak per rad. Lägg sedan till dem på akutlistan med ett tryck.", "evh": "Händelsekort", "evp": "Dra ett kort när som helst under övningen. Då händer något ni inte har planerat för.", "evb": "Dra ett kort", "kh": "Barnens uppdrag", "kp": "Klarar barnen alla uppdrag får de en medalj.", "medal": "Medalj! Bra jobbat.", "rh": "Dina övningar", "rp": "Spara när ni är klara, så ser ni hur ni blir bättre för varje år.", "rb": "Spara övningen", "rnone": "Inga sparade övningar än.", "rnext": "Nästa gång: prova {x}.", "done": "{a} av {b} uppgifter", "info": "Förklaring", "rm": "Ta bort"}}, dxs = ST.dxs || "power", dxl = ST.dxl == null ? 0 : ST.dxl;
+  ST.dx = ST.dx || [];
+  function dxRender() {
+    var sc = DX.sc.filter(function (s) { return s[0] === dxs; })[0] || DX.sc[0];
+    $("#dx-sc").innerHTML = DX.sc.map(function (s) { return '<button type="button" data-s="' + s[0] + '" aria-pressed="' + (s[0] === sc[0]) + '">' + s[1] + '<small>' + s[2] + '</small></button>'; }).join("");
+    $("#dx-len").innerHTML = sc[3] ? DX.ui.lens.map(function (l, i) { return '<button type="button" data-l="' + i + '" aria-pressed="' + (i === dxl) + '">' + l + '</button>'; }).join("") : '<p style="margin:0;color:var(--mute)">' + DX.ui.nolen + '</p>';
+    var lv = sc[3] ? dxl : 3, n = 0, h = "";
+    ["pre", "first", "during", "after"].forEach(function (p) {
+      var ts = sc[4][p].filter(function (t) { return t[1] <= lv; }); if (!ts.length) return; n++;
+      h += '<div class="dr"><b>' + n + '</b><div><h4>' + DX.ui.ph[p] + '</h4>';
+      ts.forEach(function (t) {
+        var x = DX.t[t[0]], k = "d:" + sc[0] + ":" + t[0], id = "dxi-" + t[0] + "-" + p;
+        h += '<div class="task"><div class="tl"><label><input type="checkbox" data-k="' + k + '">' + x[0] + '</label><button type="button" class="ib" aria-expanded="false" aria-controls="' + id + '" aria-label="' + DX.ui.info + '">i</button></div><div class="ibx" id="' + id + '" hidden>' + x[1] + '</div></div>';
+      });
+      h += '</div></div>';
+    });
+    $("#dx-tasks").innerHTML = h;
+    $("#dx-num").textContent = n + 1;
+    koppla(); dxHist();
+  }
+  $("#dx-sc").onclick = function (e) { var b = e.target.closest("button[data-s]"); if (!b) return; dxs = ST.dxs = b.dataset.s; spara(); $("#dx-evt").textContent = ""; dxRender(); };
+  $("#dx-len").onclick = function (e) { var b = e.target.closest("button[data-l]"); if (!b) return; dxl = ST.dxl = +b.dataset.l; spara(); dxRender(); };
+  $("#dx-draw").onclick = function () {
+    var p = (DX.ev[dxs] || []).concat(DX.ev["*"]), cur = $("#dx-evt").textContent, x;
+    do { x = p[Math.floor(Math.random() * p.length)]; } while (p.length > 1 && x === cur);
+    $("#dx-evt").textContent = x;
+  };
+  $("#dx-kids").innerHTML = DX.kids.map(function (k, i) { return '<label><input type="checkbox" data-k="k:' + i + '"><span>' + k[0] + '<small>' + k[1] + '</small></span></label>'; }).join("");
+  function dxMedal() { var a = document.querySelectorAll('#dx-kids input'), c = 0; a.forEach(function (i) { if (i.checked) c++; }); $("#dx-medal").classList.toggle("on", c === a.length); }
+  $("#dx-kids").addEventListener("change", function () { setTimeout(dxMedal, 0); });
+  function dxHist() {
+    var h = ST.dx.length ? ST.dx.slice().reverse().map(function (r, j) { return '<li><span>' + r.d + ', ' + r.s + (r.l ? ', ' + r.l : '') + '<br><small>' + DX.ui.done.replace("{a}", r.a).replace("{b}", r.b) + '</small></span><button type="button" data-x="' + (ST.dx.length - 1 - j) + '">' + DX.ui.rm + '</button></li>'; }).join("") : '<li>' + DX.ui.rnone + '</li>';
+    $("#dx-hist").innerHTML = h;
+    var sc = DX.sc.filter(function (s) { return s[0] === dxs; })[0], nx = "";
+    if (ST.dx.length) { nx = sc[3] && dxl < 3 ? DX.ui.lens[dxl + 1].toLowerCase() : DX.sc[(DX.sc.indexOf(sc) + 1) % DX.sc.length][1].toLowerCase(); $("#dx-next").textContent = DX.ui.rnext.replace("{x}", nx); } else $("#dx-next").textContent = "";
+  }
+  $("#dx-hist").onclick = function (e) { var b = e.target.closest("button[data-x]"); if (!b) return; ST.dx.splice(+b.dataset.x, 1); spara(); dxHist(); sumLater(); };
+  $("#dx-save").onclick = function () {
+    var sc = DX.sc.filter(function (s) { return s[0] === dxs; })[0], a = 0, b = 0;
+    document.querySelectorAll('#dx-tasks input').forEach(function (i) { b++; if (i.checked) a++; });
+    var dt = new Date(), d = dt.getFullYear() + "-" + ("0" + (dt.getMonth() + 1)).slice(-2) + "-" + ("0" + dt.getDate()).slice(-2);
+    ST.dx.push({ d: d, s: sc[1], l: sc[3] ? DX.ui.lens[dxl] : "", a: a, b: b });
+    document.querySelectorAll('#dx-tasks input').forEach(function (i) { if (i.checked) { i.checked = false; delete ST.c[i.dataset.k]; i.closest("label").classList.remove("done"); } });
+    spara(); dxHist(); sumLater();
+  };
+  dxRender(); dxMedal();
   var dn = $("#dr-notes"); dn.value = ST.dn || "";
   dn.oninput = function () { ST.dn = dn.value; spara(); };
   $("#dr-add").onclick = function () {
