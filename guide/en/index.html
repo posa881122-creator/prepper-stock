@@ -260,6 +260,8 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .pc li::before { position: absolute; left: 0; top: 1px; width: 17px; height: 17px; border-radius: 5px; display: grid; place-items: center; font: 700 12px/1 var(--body); color: #fff; }
 .pc .y::before { content: "✓"; background: var(--moss); }
 .pc .n::before { content: "!"; background: var(--rust); }
+.pc .co { background: #FBE6DC; border-radius: 10px; padding: 9px 12px 9px 36px; font-weight: 600; }
+.pc .co::before { content: "CO"; background: var(--rust); left: 10px; top: 10px; font-size: 9px; }
 .mt { margin-top: auto; display: flex; flex-wrap: wrap; gap: 5px; }
 .mt span { font: 600 12px/1 var(--body); padding: 5px 8px; border-radius: 7px; background: var(--lichen); color: var(--mute); }
 .mt .k { background: #F3E6C4; color: #6B4E1A; }
@@ -451,6 +453,17 @@ section.cs { padding: 14px 0 0; }
 .meal .chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 4px; }
 .meal .chips .tag { margin: 0; }
 .cold { font-size: 13px; color: var(--mute); margin-top: 10px; }
+.meal ul em { font-style: normal; color: var(--mute); font-size: 13.5px; }
+.mstat { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 0 12px; }
+.mstat span { background: var(--paper, #f4f1e8); border-radius: 10px; padding: 7px 9px; font-size: 12.5px; color: var(--mute); line-height: 1.2; }
+.mstat b { display: block; font: 700 17px/1.1 var(--display); color: var(--forest); }
+.swap { font-size: 13px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.swap b { color: var(--rust); }
+.mtotal { margin: 14px 0 0; font-size: 15px; }
+.mtog { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 12px; }
+.mtog span { font: 600 15px/1 var(--body); color: var(--mute); margin-right: 6px; }
+.mtog button { appearance: none; border: 1.5px solid var(--moss); background: transparent; color: var(--forest); border-radius: 999px; padding: 8px 16px; font: 600 14px/1 var(--body); cursor: pointer; }
+.mtog button[aria-pressed="true"] { background: var(--moss); color: var(--straw); }
 .days7 { margin-top: 18px; }
 .days7 .tbl td { font-size: 15px; }
 
@@ -950,34 +963,47 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   <div class="wrap">
     <div class="eyebrow">Step 9</div>
     <h2 class="t">How to eat from your supplies</h2>
-    <p class="sub">Every meal has carbs for energy, protein for your muscles and fat to keep you full. Everything comes from the shopping list above.</p>
+    <p class="sub">Every meal has carbs for energy, protein for your muscles and fat to keep you full. The amounts are for one adult. Everything comes from the shopping list above.</p>
     <div class="meals">
       <div class="meal"><div class="lbl">Breakfast</div><h4>Oatmeal with raisins</h4>
-        <ul><li>Rolled oats</li><li>Powdered milk mixed with water</li><li>Raisins</li><li>Crackers with peanut butter</li></ul>
+        <ul><li>Rolled oats <em>2/3 cup</em></li><li>Powdered milk mixed with water <em>1 cup of milk</em></li><li>Raisins <em>2 tbsp</em></li><li>Crackers with peanut butter <em>2 crackers, 1 tbsp</em></li></ul>
+        <div class="mstat"><span><b>540</b> kcal</span><span><b>23 g</b> protein</span><span><b>2 1/3 cups</b> water</span><span><b>3 min</b> cooking</span></div>
         <div class="chips"><span class="tag k">Carbs</span><span class="tag p">Protein</span><span class="tag f">Fat</span></div>
-        <div class="cold">No heat: soak the oats in cold water and powdered milk the night before.</div></div>
+        <div class="cold">No heat: soak the oats in cold water and powdered milk the night before.</div>
+        <div class="swap"><b>Missing something?</b> No raisins? Use dried fruit or a little jam. No powdered milk? Use shelf stable milk or oat drink.</div></div>
       <div class="meal"><div class="lbl">Lunch</div><h4>Bean and tuna salad</h4>
-        <ul><li>Canned beans or lentils</li><li>Tuna</li><li>Corn</li><li>Oil, salt</li><li>Crackers</li></ul>
+        <ul><li>Canned beans or lentils <em>half a can</em></li><li>Tuna <em>half a can</em></li><li>Corn <em>a small handful</em></li><li>Oil, salt <em>1 tbsp oil</em></li><li>Crackers <em>2</em></li></ul>
+        <div class="mstat"><span><b>420</b> kcal</span><span><b>26 g</b> protein</span><span><b>None</b> water</span><span><b>None</b> cooking</span></div>
         <div class="chips"><span class="tag k">Carbs</span><span class="tag p">Protein</span><span class="tag f">Fat</span><span class="tag v">Vegetables</span></div>
-        <div class="cold">Eaten cold. Needs no heat and no extra water.</div></div>
+        <div class="cold">Eaten cold. Needs no heat and no extra water.</div>
+        <div class="swap"><b>Missing something?</b> No tuna? Use mackerel, sardines or chickpeas. If you do not eat fish, double the beans.</div></div>
       <div class="meal"><div class="lbl">Dinner</div><h4>Pasta with chili</h4>
-        <ul><li>Quick cook pasta or rice</li><li>Canned chili or stew</li><li>Canned tomatoes</li><li>A splash of oil</li></ul>
+        <ul><li>Quick cook pasta or rice <em>3.5 oz (100 g)</em></li><li>Canned chili or stew <em>half a can</em></li><li>Canned tomatoes <em>a quarter can</em></li><li>A splash of oil <em>1 tsp</em></li></ul>
+        <div class="mstat"><span><b>720</b> kcal</span><span><b>33 g</b> protein</span><span><b>2 cups</b> water</span><span><b>5 min</b> cooking</span></div>
         <div class="chips"><span class="tag k">Carbs</span><span class="tag p">Protein</span><span class="tag f">Fat</span><span class="tag v">Vegetables</span></div>
-        <div class="cold">Needs cooking. Quick cook pasta takes 3 minutes and saves fuel and water.</div></div>
+        <div class="cold">Needs cooking. Cook the pasta in as little water as possible and stir in the sauce when it is done, so one pot is enough.</div>
+        <div class="swap"><b>Missing something?</b> No chili? Use beans in tomato sauce or a canned vegetable stew. Without heat, the can is fine cold with crackers.</div></div>
       <div class="meal"><div class="lbl">Snack</div><h4>Energy between meals</h4>
-        <ul><li>Nuts and raisins</li><li>Fruit juice or canned fruit, for vitamin C</li><li>A piece of chocolate</li></ul>
+        <ul><li>Nuts <em>a handful, 1 oz</em></li><li>Raisins <em>2 tbsp</em></li><li>Fruit juice or canned fruit, for vitamin C <em>1 cup</em></li><li>A piece of chocolate <em>3 squares</em></li></ul>
+        <div class="mstat"><span><b>490</b> kcal</span><span><b>9 g</b> protein</span><span><b>None</b> water</span><span><b>None</b> cooking</span></div>
         <div class="chips"><span class="tag k">Carbs</span><span class="tag f">Fat</span><span class="tag v">Vitamins</span></div>
-        <div class="cold">Eaten cold. Good to keep close when it is cold inside.</div></div>
+        <div class="cold">Eaten cold. Good to keep close when it is cold inside.</div>
+        <div class="swap"><b>Missing something?</b> Nut allergy? Use sunflower or pumpkin seeds. No juice? Use canned fruit.</div></div>
     </div>
-
+    <p class="mtotal">Eating all four gives about 2,200 kcal and 90 g of protein per adult per day, the same level the calculator above uses.</p>
     <div class="days7">
+      <div class="mtog" role="group" aria-label="Show the weekly menu"><span>Show the weekly menu:</span><button type="button" data-m="0" aria-pressed="true">Normal week</button><button type="button" data-m="1" aria-pressed="false">No heat at all</button></div>
       <div class="tblwrap"><table class="tbl">
         <tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th></tr>
-        <tr><td>Day 1</td><td>Oatmeal with raisins</td><td>Bean and tuna salad</td><td>Pasta with chili</td></tr>
-        <tr><td>Day 2</td><td>Crackers, peanut butter, milk</td><td>Tuna, corn and crackers</td><td>Rice with beans in tomato sauce</td></tr>
-        <tr><td>Day 3</td><td>Cold oats with milk</td><td>Lentil salad with oil and salt</td><td>Pasta with tuna and tomato</td></tr>
-        <tr><td>Day 4</td><td>Oatmeal with peanut butter</td><td>Crackers, beans and corn</td><td>Rice with chili</td></tr>
+        <tr><td>Day 1</td><td data-n="Oatmeal with raisins" data-c="Overnight oats with milk and raisins">Oatmeal with raisins</td><td>Bean and tuna salad</td><td data-n="Pasta with chili" data-c="Chili straight from the can with crackers">Pasta with chili</td></tr>
+        <tr><td>Day 2</td><td>Crackers, peanut butter, milk</td><td>Tuna, corn and crackers</td><td data-n="Rice with beans in tomato sauce" data-c="Bean salad with canned tomatoes, oil and crackers">Rice with beans in tomato sauce</td></tr>
+        <tr><td>Day 3</td><td>Cold oats with milk</td><td>Lentil salad with oil and salt</td><td data-n="Pasta with tuna and tomato" data-c="Tuna, corn and canned tomatoes with crackers">Pasta with tuna and tomato</td></tr>
+        <tr><td>Day 4</td><td data-n="Oatmeal with peanut butter" data-c="Overnight oats with peanut butter">Oatmeal with peanut butter</td><td>Crackers, beans and corn</td><td data-n="Rice with chili" data-c="Chili from the can with crackers">Rice with chili</td></tr>
+        <tr><td>Day 5</td><td>Crackers with peanut butter and juice</td><td>Tuna salad with beans and oil</td><td data-n="Noodles with beans and tomato" data-c="Bean and corn salad with oil and crackers">Noodles with beans and tomato</td></tr>
+        <tr><td>Day 6</td><td data-n="Oatmeal with milk and raisins" data-c="Overnight oats with milk and raisins">Oatmeal with milk and raisins</td><td>Crackers, tuna and corn</td><td data-n="Pasta with chili and corn" data-c="Chili and corn from the can with crackers">Pasta with chili and corn</td></tr>
+        <tr><td>Day 7</td><td>Cold oats with nuts and raisins</td><td>Lentils with canned tomatoes and oil</td><td data-n="Rice with tuna and peas" data-c="Tuna and peas with crackers">Rice with tuna and peas</td></tr>
       </table></div>
+      <p class="note" id="m-cn" hidden>Without heat you use more crackers and fewer packs of pasta and rice. Consider adding an extra pack of crackers to the shopping list.</p>
       <p class="note">Start with what can be eaten cold if you are unsure how long your fuel will last. Eat what is in the freezer first, while it is still frozen.</p>
     </div>
   </div>
@@ -1206,7 +1232,8 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
         <div class="mc" data-bo="l h r" data-k="Clothes"><h4>Dress right</h4><p>Several thin layers, wool next to the skin, a hat and thick socks. Indoors and at night too.</p><ul class="pc"><li class="y">The simplest thing there is, and it works.</li><li class="n">Change into dry clothes. Damp makes you cold.</li></ul></div>
         <div class="mc" data-bo="l h r" data-k="Hot water"><h4>Hot bottles and hot food</h4><p>Fill a thermos or hot water bottle when you boil water anyway. Eat hot food and drink hot drinks.</p><ul class="pc"><li class="y">A lot of warmth for little fuel.</li><li class="n">Use bottles made for heat, and wrap them so nobody gets burned.</li></ul></div>
         <div class="mc" data-bo="h r" data-k="Wood"><h4>Wood stove or fireplace</h4><p>The best way to heat a house without power.</p><ul class="pc"><li class="y">Gives a lot of heat for a long time. A masonry stove holds heat for many hours.</li><li class="n">Needs dry wood, a clean chimney and a smoke alarm. Damp wood gives little heat and a lot of soot.</li></ul></div>
-        <div class="mc" data-bo="l h r" data-k="Kerosene or propane"><h4>Heaters made for indoor use</h4><p>Kerosene and propane heaters that are made to be used indoors.</p><ul class="pc"><li class="y">Can heat a room without power.</li><li class="n">Only models clearly approved for indoor use. Ventilate, and have a carbon monoxide alarm and a smoke alarm. Not in bedrooms while you sleep.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Propane"><h4>Propane heater</h4><p>A heater that runs on propane and warms a room without power. Choose one that is made for indoor use and has an oxygen depletion sensor, which shuts the heater off if the air gets bad.</p><ul class="pc"><li class="co">Always have a carbon monoxide alarm in the same room. Carbon monoxide cannot be seen or smelled, and people who breathe it in often notice too late.</li><li class="y">Heats quickly without power. Many people already have propane for the grill.</li><li class="n">Air out the room for a while every hour and never sleep with the heater on. Place it on a stable surface, well away from curtains and furniture, and keep a smoke alarm and a fire extinguisher nearby.</li><li class="n">Many places only allow small cylinders inside homes and apartments, and large cylinders outdoors. Never store propane in a basement or a shared garage. Check the rules where you live.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Kerosene"><h4>Kerosene heater</h4><p>A heater that burns kerosene with a wick and gives heat without power.</p><ul class="pc"><li class="co">Always have a carbon monoxide alarm in the same room. Even a heater that burns well can fill the room with carbon monoxide if the air is not replaced.</li><li class="y">Steady heat for many hours on one tank. The fuel is easy to store.</li><li class="n">Use only the fuel the maker specifies. Refuel outdoors once the heater has cooled. Air out every hour and never sleep with it on.</li><li class="n">Keep the fuel in its original container, and never in a basement storage room or attic.</li></ul></div>
         <div class="mc" data-bo="h r" data-k="Fuel"><h4>Generator</h4><p>A gasoline or diesel generator can run, for example, a circulation pump, a heat pump or a few heaters.</p><ul class="pc"><li class="y">Can keep a whole house warm.</li><li class="n">Always outdoors, far from windows, because of carbon monoxide. Uses a lot of fuel. Never connect it to your home's wiring without a licensed electrician.</li></ul></div>
         <div class="mc warn2" data-bo="l h r" data-k="Myth"><h4>Flower pot candle heater, a myth</h4><p>Clay pots over tea lights that are said to heat a room.</p><ul class="pc"><li class="n">Gives about as little heat as the candles alone, and can get hot enough to start a fire. Spend the effort on keeping heat in instead.</li></ul></div>
       </div>
@@ -1764,6 +1791,14 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   });
 
 
+  document.querySelectorAll(".mtog button").forEach(function (b) {
+    b.onclick = function () {
+      var k = b.dataset.m === "1";
+      document.querySelectorAll(".mtog button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      document.querySelectorAll("#meals td[data-c]").forEach(function (c) { c.textContent = k ? c.dataset.c : c.dataset.n; c.classList.toggle("kall", k); });
+      $("#m-cn").hidden = !k;
+    };
+  });
   document.querySelectorAll(".tbl").forEach(function (t) {
     var h = [].map.call(t.querySelectorAll("thead th, tr:first-child th"), function (x) { return x.textContent.trim(); });
     t.querySelectorAll("tr").forEach(function (r) { if (r.querySelector("th")) r.classList.add("th-row"); });

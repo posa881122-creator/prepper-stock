@@ -260,6 +260,8 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .pc li::before { position: absolute; left: 0; top: 1px; width: 17px; height: 17px; border-radius: 5px; display: grid; place-items: center; font: 700 12px/1 var(--body); color: #fff; }
 .pc .y::before { content: "✓"; background: var(--moss); }
 .pc .n::before { content: "!"; background: var(--rust); }
+.pc .co { background: #FBE6DC; border-radius: 10px; padding: 9px 12px 9px 36px; font-weight: 600; }
+.pc .co::before { content: "CO"; background: var(--rust); left: 10px; top: 10px; font-size: 9px; }
 .mt { margin-top: auto; display: flex; flex-wrap: wrap; gap: 5px; }
 .mt span { font: 600 12px/1 var(--body); padding: 5px 8px; border-radius: 7px; background: var(--lichen); color: var(--mute); }
 .mt .k { background: #F3E6C4; color: #6B4E1A; }
@@ -451,6 +453,17 @@ section.cs { padding: 14px 0 0; }
 .meal .chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 4px; }
 .meal .chips .tag { margin: 0; }
 .cold { font-size: 13px; color: var(--mute); margin-top: 10px; }
+.meal ul em { font-style: normal; color: var(--mute); font-size: 13.5px; }
+.mstat { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 0 12px; }
+.mstat span { background: var(--paper, #f4f1e8); border-radius: 10px; padding: 7px 9px; font-size: 12.5px; color: var(--mute); line-height: 1.2; }
+.mstat b { display: block; font: 700 17px/1.1 var(--display); color: var(--forest); }
+.swap { font-size: 13px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.swap b { color: var(--rust); }
+.mtotal { margin: 14px 0 0; font-size: 15px; }
+.mtog { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 12px; }
+.mtog span { font: 600 15px/1 var(--body); color: var(--mute); margin-right: 6px; }
+.mtog button { appearance: none; border: 1.5px solid var(--moss); background: transparent; color: var(--forest); border-radius: 999px; padding: 8px 16px; font: 600 14px/1 var(--body); cursor: pointer; }
+.mtog button[aria-pressed="true"] { background: var(--moss); color: var(--straw); }
 .days7 { margin-top: 18px; }
 .days7 .tbl td { font-size: 15px; }
 
@@ -950,34 +963,47 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   <div class="wrap">
     <div class="eyebrow">Steg 9</div>
     <h2 class="t">Så äter du av lagret</h2>
-    <p class="sub">Varje måltid har en kolhydratkälla för energi, protein för musklerna och fett för att hålla dig mätt. Allt kommer från inköpslistan ovan.</p>
+    <p class="sub">Varje måltid har en kolhydratkälla för energi, protein för musklerna och fett för att hålla dig mätt. Mängderna gäller en vuxen. Allt kommer från inköpslistan ovan.</p>
     <div class="meals">
       <div class="meal"><div class="lbl">Frukost</div><h4>Havregrynsgröt med russin</h4>
-        <ul><li>Havregryn</li><li>Mjölkpulver rört i vatten</li><li>Russin</li><li>Knäckebröd med jordnötssmör</li></ul>
+        <ul><li>Havregryn <em>1,5 dl</em></li><li>Mjölkpulver rört i vatten <em>2,5 dl mjölk</em></li><li>Russin <em>2 msk</em></li><li>Knäckebröd med jordnötssmör <em>2 skivor, 1 msk</em></li></ul>
+        <div class="mstat"><span><b>540</b> kcal</span><span><b>23 g</b> protein</span><span><b>5,5 dl</b> vatten</span><span><b>3 min</b> kokning</span></div>
         <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span></div>
-        <div class="cold">Utan värme: blötlägg havregrynen i kallt vatten och mjölkpulver kvällen innan.</div></div>
+        <div class="cold">Utan värme: blötlägg havregrynen i kallt vatten och mjölkpulver kvällen innan.</div>
+        <div class="swap"><b>Saknas något?</b> Inga russin? Ta torkad frukt eller lite sylt. Inget mjölkpulver? Ta havredryck eller mjölk som håller i rumstemperatur.</div></div>
       <div class="meal"><div class="lbl">Lunch</div><h4>Bön och tonfisksallad</h4>
-        <ul><li>Bönor eller linser på burk</li><li>Tonfisk</li><li>Majs</li><li>Rapsolja, salt</li><li>Knäckebröd</li></ul>
+        <ul><li>Bönor eller linser på burk <em>en halv burk</em></li><li>Tonfisk <em>en halv burk</em></li><li>Majs <em>en liten näve</em></li><li>Rapsolja, salt <em>1 msk olja</em></li><li>Knäckebröd <em>2 skivor</em></li></ul>
+        <div class="mstat"><span><b>420</b> kcal</span><span><b>26 g</b> protein</span><span><b>Ingen</b> vatten</span><span><b>Ingen</b> kokning</span></div>
         <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span><span class="tag v">Grönsaker</span></div>
-        <div class="cold">Äts kall. Kräver varken värme eller extra vatten.</div></div>
+        <div class="cold">Äts kall. Kräver varken värme eller extra vatten.</div>
+        <div class="swap"><b>Saknas något?</b> Ingen tonfisk? Ta makrill, sardiner eller kikärtor. Äter du inte fisk räcker det med dubbelt så mycket bönor.</div></div>
       <div class="meal"><div class="lbl">Middag</div><h4>Pasta med köttfärssås</h4>
-        <ul><li>Snabbkokt pasta eller ris</li><li>Köttfärssås på burk</li><li>Krossade tomater</li><li>En skvätt olja</li></ul>
+        <ul><li>Snabbkokt pasta eller ris <em>1 dl, cirka 100 g</em></li><li>Köttfärssås på burk <em>en halv burk</em></li><li>Krossade tomater <em>en kvarts burk</em></li><li>En skvätt olja <em>1 tsk</em></li></ul>
+        <div class="mstat"><span><b>720</b> kcal</span><span><b>33 g</b> protein</span><span><b>5 dl</b> vatten</span><span><b>5 min</b> kokning</span></div>
         <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span><span class="tag v">Grönsaker</span></div>
-        <div class="cold">Kräver kokning. Snabbpasta tar 3 minuter och sparar bränsle och vatten.</div></div>
+        <div class="cold">Kräver kokning. Koka pastan i så lite vatten som möjligt och häll i såsen när den är klar, så räcker en kastrull.</div>
+        <div class="swap"><b>Saknas något?</b> Ingen köttfärssås? Ta bönor i tomatsås eller en vegetarisk gryta på burk. Utan värme går burken att äta kall med knäckebröd.</div></div>
       <div class="meal"><div class="lbl">Mellanmål</div><h4>Energi mellan målen</h4>
-        <ul><li>Nötter och russin</li><li>Nyponsoppa, ger C-vitamin</li><li>En bit choklad</li></ul>
+        <ul><li>Nötter <em>en näve, 30 g</em></li><li>Russin <em>2 msk</em></li><li>Nyponsoppa, ger C-vitamin <em>2,5 dl</em></li><li>En bit choklad <em>3 rutor</em></li></ul>
+        <div class="mstat"><span><b>490</b> kcal</span><span><b>9 g</b> protein</span><span><b>Ingen</b> vatten</span><span><b>Ingen</b> kokning</span></div>
         <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag f">Fett</span><span class="tag v">Vitaminer</span></div>
-        <div class="cold">Äts kallt. Bra att ha nära till hands när det är kallt inne.</div></div>
+        <div class="cold">Äts kallt. Bra att ha nära till hands när det är kallt inne.</div>
+        <div class="swap"><b>Saknas något?</b> Nötallergi? Ta solroskärnor eller pumpafrön. Ingen nyponsoppa? Ta juice eller frukt på burk.</div></div>
     </div>
-
+    <p class="mtotal">Äter man alla fyra blir det ungefär 2 200 kcal och 90 g protein per vuxen och dag, samma nivå som räknaren ovan räknar med.</p>
     <div class="days7">
+      <div class="mtog" role="group" aria-label="Visa veckomenyn"><span>Visa veckomenyn:</span><button type="button" data-m="0" aria-pressed="true">Vanlig vecka</button><button type="button" data-m="1" aria-pressed="false">Bara utan värme</button></div>
       <div class="tblwrap"><table class="tbl">
         <tr><th>Dag</th><th>Frukost</th><th>Lunch</th><th>Middag</th></tr>
-        <tr><td>Dag 1</td><td>Havregrynsgröt med russin</td><td>Bön och tonfisksallad</td><td>Pasta med köttfärssås</td></tr>
-        <tr><td>Dag 2</td><td>Knäckebröd, jordnötssmör, mjölk</td><td>Tonfisk, majs och knäckebröd</td><td>Ris med bönor i tomatsås</td></tr>
-        <tr><td>Dag 3</td><td>Kalla havregryn med mjölk</td><td>Linssallad med olja och salt</td><td>Pasta med tonfisk och tomat</td></tr>
-        <tr><td>Dag 4</td><td>Havregrynsgröt med jordnötssmör</td><td>Knäckebröd, bönor och majs</td><td>Ris med köttfärssås</td></tr>
+        <tr><td>Dag 1</td><td data-n="Havregrynsgröt med russin" data-c="Blötlagda havregryn med mjölk och russin">Havregrynsgröt med russin</td><td>Bön och tonfisksallad</td><td data-n="Pasta med köttfärssås" data-c="Köttfärssås direkt ur burken med knäckebröd">Pasta med köttfärssås</td></tr>
+        <tr><td>Dag 2</td><td>Knäckebröd, jordnötssmör, mjölk</td><td>Tonfisk, majs och knäckebröd</td><td data-n="Ris med bönor i tomatsås" data-c="Bönsallad med krossade tomater, olja och knäckebröd">Ris med bönor i tomatsås</td></tr>
+        <tr><td>Dag 3</td><td>Kalla havregryn med mjölk</td><td>Linssallad med olja och salt</td><td data-n="Pasta med tonfisk och tomat" data-c="Tonfisk, majs och krossade tomater med knäckebröd">Pasta med tonfisk och tomat</td></tr>
+        <tr><td>Dag 4</td><td data-n="Havregrynsgröt med jordnötssmör" data-c="Blötlagda havregryn med jordnötssmör">Havregrynsgröt med jordnötssmör</td><td>Knäckebröd, bönor och majs</td><td data-n="Ris med köttfärssås" data-c="Köttfärssås ur burken med knäckebröd">Ris med köttfärssås</td></tr>
+        <tr><td>Dag 5</td><td>Knäckebröd med jordnötssmör och nyponsoppa</td><td>Tonfisksallad med bönor och olja</td><td data-n="Nudlar med bönor och tomat" data-c="Bön och majssallad med olja och knäckebröd">Nudlar med bönor och tomat</td></tr>
+        <tr><td>Dag 6</td><td data-n="Havregrynsgröt med mjölk och russin" data-c="Blötlagda havregryn med mjölk och russin">Havregrynsgröt med mjölk och russin</td><td>Knäckebröd, tonfisk och majs</td><td data-n="Pasta med köttfärssås och majs" data-c="Köttfärssås och majs ur burken med knäckebröd">Pasta med köttfärssås och majs</td></tr>
+        <tr><td>Dag 7</td><td>Kalla havregryn med nötter och russin</td><td>Linser med krossade tomater och olja</td><td data-n="Ris med tonfisk och ärtor" data-c="Tonfisk och ärtor med knäckebröd">Ris med tonfisk och ärtor</td></tr>
       </table></div>
+      <p class="note" id="m-cn" hidden>Utan värme går det åt mer knäckebröd och färre paket pasta och ris. Lägg gärna till ett extra paket knäckebröd i inköpslistan.</p>
       <p class="note">Börja med det som går att äta kallt om du är osäker på hur länge bränslet räcker. Ät det som ligger i frysen först, medan det fortfarande är fryst.</p>
     </div>
   </div>
@@ -1206,7 +1232,8 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
         <div class="mc" data-bo="l h r" data-k="Kläder"><h4>Klä dig rätt</h4><p>Flera tunna lager, ull närmast kroppen, mössa och tjocka sockor. Även inomhus och på natten.</p><ul class="pc"><li class="y">Det enklaste som finns, och det fungerar.</li><li class="n">Byt till torra kläder. Fukt gör att du fryser.</li></ul></div>
         <div class="mc" data-bo="l h r" data-k="Varmt vatten"><h4>Varma flaskor och varm mat</h4><p>Fyll en termos eller värmeflaska med varmt vatten när du ändå kokar. Ät varm mat och drick varm dryck.</p><ul class="pc"><li class="y">Mycket värme för lite bränsle.</li><li class="n">Använd flaskor som tål värme, och vira in dem så att ingen bränns.</li></ul></div>
         <div class="mc" data-bo="h r" data-k="Ved"><h4>Kamin, braskamin eller kakelugn</h4><p>Det bästa sättet att värma ett hus utan el.</p><ul class="pc"><li class="y">Ger mycket värme, länge. En kakelugn håller värmen i många timmar.</li><li class="n">Kräver torr ved, sotad skorsten och brandvarnare. Ved som är fuktig ger lite värme och mycket sot.</li></ul></div>
-        <div class="mc" data-bo="l h r" data-k="Fotogen eller gasol"><h4>Värmare för inomhusbruk</h4><p>Fotogenkaminer och gasolvärmare som är gjorda för att användas inomhus.</p><ul class="pc"><li class="y">Kan värma ett rum utan el.</li><li class="n">Bara modeller som uttryckligen är godkända för inomhusbruk. Vädra, ha ett kolmonoxidlarm och en brandvarnare. Inte i sovrum när ni sover.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Gasol"><h4>Gasolvärmare</h4><p>En värmare som drivs med gasol och värmer ett rum utan el. Välj en som är gjord för inomhusbruk och har syrevakt, som stänger av värmaren om luften blir dålig.</p><ul class="pc"><li class="co">Ha alltid ett kolmonoxidlarm i samma rum. Kolmonoxid syns inte och luktar inte, och den som andas in den märker det ofta för sent.</li><li class="y">Värmer snabbt utan el. Många har redan gasol hemma till grillen.</li><li class="n">Vädra en stund varje timme och sov aldrig med värmaren igång. Ställ den stadigt, en bra bit från gardiner och möbler, och ha brandvarnare och brandsläckare nära.</li><li class="n">I en lägenhet får bara små behållare under 5 liter förvaras inomhus. Större flaskor får bara stå på en balkong som inte är inglasad, så i lägenhet passar i praktiken bara små värmare. Aldrig gasol i källarförråd, på vinden eller i ett gemensamt garage. Utan tillstånd får ett hushåll ha högst 60 liter flaskvolym, normalt en flaska i bruk och en i reserv.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Fotogen"><h4>Fotogenkamin</h4><p>En kamin som bränner fotogen med en veke och värmer utan el.</p><ul class="pc"><li class="co">Ha alltid ett kolmonoxidlarm i samma rum. Även en kamin som brinner fint kan fylla rummet med kolmonoxid om luften inte byts.</li><li class="y">Jämn värme i många timmar på en tank. Bränslet är lätt att förvara.</li><li class="n">Använd bara det bränsle tillverkaren anger. Fyll på utomhus när kaminen har svalnat. Vädra varje timme och sov aldrig med den igång.</li><li class="n">Förvara bränslet i originalförpackningen och aldrig i källar- eller vindsförråd.</li></ul></div>
         <div class="mc" data-bo="h r" data-k="Bränsle"><h4>Elverk</h4><p>Ett elverk som går på bensin eller diesel kan driva till exempel en cirkulationspump, en värmepump eller några element.</p><ul class="pc"><li class="y">Kan hålla hela huset varmt.</li><li class="n">Alltid utomhus, långt från fönster, på grund av kolmonoxid. Kräver mycket bränsle. Koppla aldrig in i elcentralen utan behörig elektriker.</li></ul></div>
         <div class="mc warn2" data-bo="l h r" data-k="Myt"><h4>Värmeljusugn, en myt</h4><p>Lerkrukor över värmeljus som sägs värma ett rum.</p><ul class="pc"><li class="n">Ger ungefär lika lite värme som ljusen ensamma, och kan bli så varma att de orsakar brand. Lägg energin på att behålla värmen i stället.</li></ul></div>
       </div>
@@ -1763,6 +1790,14 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   });
 
 
+  document.querySelectorAll(".mtog button").forEach(function (b) {
+    b.onclick = function () {
+      var k = b.dataset.m === "1";
+      document.querySelectorAll(".mtog button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      document.querySelectorAll("#meals td[data-c]").forEach(function (c) { c.textContent = k ? c.dataset.c : c.dataset.n; c.classList.toggle("kall", k); });
+      $("#m-cn").hidden = !k;
+    };
+  });
   document.querySelectorAll(".tbl").forEach(function (t) {
     var h = [].map.call(t.querySelectorAll("thead th, tr:first-child th"), function (x) { return x.textContent.trim(); });
     t.querySelectorAll("tr").forEach(function (r) { if (r.querySelector("th")) r.classList.add("th-row"); });
