@@ -222,6 +222,35 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 }
 @media print { .rm, .addf, .undo { display: none !important; } }
 
+
+/* lösningar */
+.bo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 14px; }
+.bo span { font: 600 15px/1 var(--body); color: var(--mute); margin-right: 6px; }
+.bo button { appearance: none; border: 1.5px solid var(--moss); background: transparent; color: var(--forest); border-radius: 999px; padding: 8px 16px; font: 600 14px/1 var(--body); cursor: pointer; }
+.bo button[aria-pressed="true"] { background: var(--moss); color: var(--straw); }
+@media (max-width: 560px) { .htabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: -20px; margin-right: -20px; padding: 0 20px 4px; } .htabs::-webkit-scrollbar { display: none; } .htabs button { flex: 0 0 auto; } }
+.htabs button[aria-selected="true"] { background: var(--brass); color: var(--coal); border-color: var(--brass); }
+.hpane { display: none; }
+.hpane.on { display: block; }
+.hint { font-size: 17px; color: var(--mute); margin: 0 0 16px; max-width: 820px; }
+.mgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 16px; }
+.mc { background: #fff; border-radius: 20px; padding: 20px 20px 16px; display: flex; flex-direction: column; border-top: 5px solid var(--moss); }
+.mc.cl { border-top-color: #2C6B8F; }
+.mc.tip2 { border-top-color: var(--brass); }
+.mc.warn2 { border-top-color: var(--rust); }
+.mc[hidden] { display: none; }
+.mc h4 { font-size: 23px; margin-bottom: 6px; }
+.mc > p { font-size: 15.5px; margin-bottom: 8px; }
+.pc { list-style: none; margin: 0 0 12px; padding: 0; font-size: 15px; }
+.pc li { position: relative; padding-left: 24px; margin: 6px 0; }
+.pc li::before { position: absolute; left: 0; top: 1px; width: 17px; height: 17px; border-radius: 5px; display: grid; place-items: center; font: 700 12px/1 var(--body); color: #fff; }
+.pc .y::before { content: "✓"; background: var(--moss); }
+.pc .n::before { content: "!"; background: var(--rust); }
+.mt { margin-top: auto; display: flex; flex-wrap: wrap; gap: 5px; }
+.mt span { font: 600 12px/1 var(--body); padding: 5px 8px; border-radius: 7px; background: var(--lichen); color: var(--mute); }
+.mt .k { background: #F3E6C4; color: #6B4E1A; }
+.cltag { display: inline-block; font: 600 11px/1 var(--body); letter-spacing: .6px; text-transform: uppercase; color: #2C6B8F; margin-bottom: 6px; }
+
 /* matsedel */
 .meals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .meal { background: #fff; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; }
@@ -329,6 +358,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       <ol>
         <li><a href="#why">Varför preppa?<small>Det handlar inte om domedagen</small></a></li>
         <li><a href="#scen">Vad händer när…<small>Strömavbrott, cyberattack, storm, krig</small></a></li>
+        <li><a href="#how">Så löser du det<small>Rena vatten, laga mat, hålla värmen</small></a></li>
         <li><a href="#law">Vad säger myndigheterna?<small>Sex länder och EU</small></a></li>
         <li><a href="#calc">Räkna ut för ditt hushåll<small>Vatten, mat och inköpslista</small></a></li>
         <li><a href="#meals">Så äter du av lagret<small>Måltider med lång hållbarhet</small></a></li>
@@ -341,7 +371,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <nav class="jump" aria-label="Hoppa till">
   <div class="wrap">
-    <a href="#why">Varför</a><a href="#scen">Vad händer</a><a href="#law">Myndigheterna</a><a href="#calc">Räknare</a><a href="#meals">Måltider</a><a href="#areas">Områden</a><a href="#myths">Misstag</a><a href="#list">Checklista</a>
+    <a href="#why">Varför</a><a href="#scen">Vad händer</a><a href="#how">Lösningar</a><a href="#law">Myndigheterna</a><a href="#calc">Räknare</a><a href="#meals">Måltider</a><a href="#areas">Områden</a><a href="#myths">Misstag</a><a href="#list">Checklista</a>
   </div>
 </nav>
 
@@ -420,9 +450,120 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   </div>
 </section>
 
-<section id="law">
+<section id="how">
   <div class="wrap">
     <div class="eyebrow">Steg 3</div>
+    <h2 class="t">Så löser du det</h2>
+    <p class="sub">Det finns nästan alltid flera sätt. Här är metoderna som fungerar, vad som är bra med dem och vad du ska tänka på. Välj hur du bor så visas det som passar dig.</p>
+    <div class="bo" role="group" aria-label="Hur bor du?">
+      <span>Hur bor du?</span>
+      <button type="button" data-bo="all" aria-pressed="true">Alla</button>
+      <button type="button" data-bo="l" aria-pressed="false">Lägenhet</button>
+      <button type="button" data-bo="h" aria-pressed="false">Hus</button>
+      <button type="button" data-bo="r" aria-pressed="false">Landsbygd</button>
+    </div>
+    <div class="tabs htabs" role="tablist">
+      <button role="tab" aria-selected="true" data-h="h1">Vatten</button>
+      <button role="tab" aria-selected="false" data-h="h2">Mat</button>
+      <button role="tab" aria-selected="false" data-h="h3">Värme</button>
+      <button role="tab" aria-selected="false" data-h="h4">Ljus och ström</button>
+      <button role="tab" aria-selected="false" data-h="h5">Information</button>
+      <button role="tab" aria-selected="false" data-h="h6">Toalett och hygien</button>
+    </div>
+
+    <div class="hpane on" id="h1">
+      <p class="hint">Först: skaffa vatten. Sedan: gör det säkert att dricka. Rent kranvatten som du har lagrat behöver inte renas.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Inget"><h4>Lagra vatten i förväg</h4><p>Flaskor och dunkar med kranvatten, i ett mörkt och svalt utrymme.</p><ul class="pc"><li class="y">Enklast och säkrast. Klart att dricka direkt.</li><li class="n">Tar plats och är tungt. Byt ungefär två gånger per år.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Förvarning"><h4>Fyll allt när det börjar</h4><p>Hör du om en störning: fyll badkar, kastruller, hinkar och flaskor medan kranen fungerar.</p><ul class="pc"><li class="y">Gratis och ger mycket vatten snabbt.</li><li class="n">Badkarsvatten används till toalett och disk. Koka det om du ska dricka.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Inget"><h4>Varmvattenberedaren</h4><p>I ett hus rymmer varmvattenberedaren ofta 100 till 300 liter rent vatten, som går att tappa ur via avtappningskranen i botten.</p><ul class="pc"><li class="y">En stor reserv som de flesta glömmer.</li><li class="n">Stäng av elen till beredaren och huvudkranen först, så att inget smutsigt vatten kommer in. Låt vattnet svalna.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Inget"><h4>Vattnet i ledningarna</h4><p>När trycket försvinner finns det fortfarande vatten i rören. Öppna den lägst placerade kranen i bostaden och samla upp det.</p><ul class="pc"><li class="y">Några liter extra, utan kostnad.</li><li class="n">Stäng huvudkranen först, om det finns risk att förorenat vatten kommer tillbaka.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Kärl"><h4>Regn och snö</h4><p>Samla regnvatten i rena kärl, eller smält snö.</p><ul class="pc"><li class="y">Finns ofta när annat saknas.</li><li class="n">Måste alltid renas. Vatten från tak och stuprör kan innehålla smuts och fågelavföring. Snö ger lite vatten och kräver mycket bränsle att smälta.</li></ul></div>
+        <div class="mc" data-bo="r" data-k="Rening"><h4>Sjö, bäck eller brunn</h4><p>Hämta vatten från naturen eller en grannes brunn.</p><ul class="pc"><li class="y">Obegränsat, om det finns nära.</li><li class="n">Alltid renas. Välj rinnande och klart vatten, uppströms från bebyggelse och åkrar.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Bränsle"><h4>Koka</h4><p>Koka vattnet tills det bubblar kraftigt. Det är det myndigheterna råder vid kokningsrekommendation.</p><ul class="pc"><li class="y">Dödar bakterier, virus och parasiter. Säkrast av alla metoder.</li><li class="n">Kräver bränsle och tid. Tar inte bort kemikalier, olja eller tungmetaller.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Inget"><h4>Vattenfilter</h4><p>Små filter du suger eller pressar vatten genom, pumpfilter, eller filter som droppar med tyngdkraften.</p><ul class="pc"><li class="y">Snabbt, inget bränsle. Tar bort bakterier, parasiter och grumlighet.</li><li class="n">De flesta tar inte bort virus eller kemikalier. Är vattnet kanske förorenat av avlopp: kombinera med kokning eller tabletter. Kan frysa sönder.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Väntetid"><h4>Reningstabletter</h4><p>Tabletter med klor eller klordioxid som du löser i vattnet.</p><ul class="pc"><li class="y">Lätta, billiga och håller länge. Dödar bakterier och virus. Klordioxid tar även de flesta parasiter.</li><li class="n">Väntetid från 30 minuter upp till flera timmar. Smakar klor. Fungerar sämre i grumligt och kallt vatten.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Duk"><h4>Sila först</h4><p>Häll grumligt vatten genom en ren duk eller ett kaffefilter, eller låt det stå så att skräpet sjunker.</p><ul class="pc"><li class="y">Gör att filter håller längre och att tabletter fungerar bättre.</li><li class="n">Ger inte säkert vatten. Rena alltid efteråt.</li></ul></div>
+      </div>
+      <div class="do"><b>Smart kombination:</b> lagra det du dricker, fyll badkaret till toaletten, och ha både ett filter och tabletter som reserv. Då har du två sätt om det ena inte fungerar.</div>
+    </div>
+
+    <div class="hpane" id="h2">
+      <p class="hint">Ät i rätt ordning: först kylen, sedan frysen så länge den är kall, sist skafferiet. Öppna kyl och frys så sällan som möjligt.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Inget"><h4>Mat som inte behöver lagas</h4><p>Knäckebröd, konserver, jordnötssmör, nötter, torkad frukt och havregryn som blötläggs i kallt vatten.</p><ul class="pc"><li class="y">Kräver varken bränsle eller extra vatten. Fungerar överallt.</li><li class="n">Tråkigt i längden. Varm mat är viktig när det är kallt inne.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="T-sprit"><h4>Spritkök</h4><p>Ett litet kök som brinner på T-sprit. Vanligt i friluftsliv.</p><ul class="pc"><li class="y">Enkelt, tyst och fungerar bra i kyla. Bränslet är lätt att förvara.</li><li class="n">Långsammare än gas. Lågan syns dåligt i dagsljus. Använd med god ventilation och fyll aldrig på när det brinner.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Gaspatroner"><h4>Gaskök med patron</h4><p>Ett campingkök som skruvas på en gaspatron.</p><ul class="pc"><li class="y">Snabbt och lätt att reglera.</li><li class="n">Ren butan fungerar dåligt under fryspunkten. Välj patroner med blandning för vinterbruk och förvara dem varmt. God ventilation.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Gasol eller kol"><h4>Grill</h4><p>Gasolgrill eller kolgrill, med kastrull på gallret.</p><ul class="pc"><li class="y">Många har redan en. Klarar stora kastruller.</li><li class="n">Bara utomhus, aldrig i garage eller under tak. Kolmonoxid kan döda. Kolla vad som gäller för balkong i ditt hus.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Ved"><h4>Kamin, vedspis eller kakelugn</h4><p>Laga mat på kaminens ovansida eller i vedspisen, samtidigt som du värmer huset.</p><ul class="pc"><li class="y">Värme och matlagning på en gång.</li><li class="n">Kräver torr ved för hela perioden och en sotad skorsten. Fungerar bara om kaminen har en plan yta.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Ved"><h4>Eldstad utomhus</h4><p>Eld i en eldstad, grillplats eller öppen plats på marken.</p><ul class="pc"><li class="y">Bränslet finns ofta i närheten på landet.</li><li class="n">Följ eldningsförbud. Kräver torr ved, tändmaterial och vana. Svårt i regn.</li></ul></div>
+        <div class="mc tip2" data-bo="l h r" data-k="Isolering"><h4>Höbox, sparar bränsle</h4><p>Koka upp maten några minuter, slå in kastrullen i en sovsäck, filtar eller en isolerad låda, och låt den stå. Maten blir klar av sin egen värme.</p><ul class="pc"><li class="y">Sparar en stor del av bränslet. Fungerar för ris, gryn, bönor och grytor.</li><li class="n">Tar längre tid. Fungerar inte för pasta, som blir mosig.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Kall vinter"><h4>Kyla som kylskåp</h4><p>På vintern kan en kall balkong, ett förråd eller en låda utomhus ersätta kylen.</p><ul class="pc"><li class="y">Gratis kyla för mjölk och rester.</li><li class="n">Skydda mot djur och sol. Fungerar bara när det är kallt ute.</li></ul></div>
+      </div>
+      <div class="do"><b>Spara bränsle:</b> lock på kastrullen, mat som kokar på några minuter, blötlägg gryn och bönor i förväg, och koka bara så mycket vatten du behöver.</div>
+    </div>
+
+    <div class="hpane" id="h3">
+      <p class="hint">Det första och billigaste är alltid att hålla kvar värmen du har. Ett hus utan uppvärmning blir snabbt kallt på vintern.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Inget"><h4>Ett varmt rum</h4><p>Samla alla i ett litet rum, gärna mitt i bostaden. Stäng dörrar, häng filtar för fönster och dörrar, lägg mattor på golvet.</p><ul class="pc"><li class="y">Fungerar överallt och kostar inget.</li><li class="n">Vädra kort några gånger om dagen, annars blir luften fuktig och dålig.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Sovsäck"><h4>Tält inomhus</h4><p>Ställ upp ett tält eller bygg en koja av filtar över ett bord, och sov där i sovsäck.</p><ul class="pc"><li class="y">Kroppsvärmen stannar i det lilla utrymmet. Bra för barn.</li><li class="n">Tar plats. Använd aldrig levande ljus eller kök inne i tältet.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Kläder"><h4>Klä dig rätt</h4><p>Flera tunna lager, ull närmast kroppen, mössa och tjocka sockor. Även inomhus och på natten.</p><ul class="pc"><li class="y">Det enklaste som finns, och det fungerar.</li><li class="n">Byt till torra kläder. Fukt gör att du fryser.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Varmt vatten"><h4>Varma flaskor och varm mat</h4><p>Fyll en termos eller värmeflaska med varmt vatten när du ändå kokar. Ät varm mat och drick varm dryck.</p><ul class="pc"><li class="y">Mycket värme för lite bränsle.</li><li class="n">Använd flaskor som tål värme, och vira in dem så att ingen bränns.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Ved"><h4>Kamin, braskamin eller kakelugn</h4><p>Det bästa sättet att värma ett hus utan el.</p><ul class="pc"><li class="y">Ger mycket värme, länge. En kakelugn håller värmen i många timmar.</li><li class="n">Kräver torr ved, sotad skorsten och brandvarnare. Ved som är fuktig ger lite värme och mycket sot.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Fotogen eller gasol"><h4>Värmare för inomhusbruk</h4><p>Fotogenkaminer och gasolvärmare som är gjorda för att användas inomhus.</p><ul class="pc"><li class="y">Kan värma ett rum utan el.</li><li class="n">Bara modeller som uttryckligen är godkända för inomhusbruk. Vädra, ha ett kolmonoxidlarm och en brandvarnare. Inte i sovrum när ni sover.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Bränsle"><h4>Elverk</h4><p>Ett elverk som går på bensin eller diesel kan driva till exempel en cirkulationspump, en värmepump eller några element.</p><ul class="pc"><li class="y">Kan hålla hela huset varmt.</li><li class="n">Alltid utomhus, långt från fönster, på grund av kolmonoxid. Kräver mycket bränsle. Koppla aldrig in i elcentralen utan behörig elektriker.</li></ul></div>
+        <div class="mc warn2" data-bo="l h r" data-k="Myt"><h4>Värmeljusugn, en myt</h4><p>Lerkrukor över värmeljus som sägs värma ett rum.</p><ul class="pc"><li class="n">Ger ungefär lika lite värme som ljusen ensamma, och kan bli så varma att de orsakar brand. Lägg energin på att behålla värmen i stället.</li></ul></div>
+      </div>
+      <div class="do"><b>Bor du i lägenhet:</b> grannarna värmer dina väggar. Rummet i mitten av lägenheten håller värmen längst. Bor du på bottenvåningen, vänd dig till en granne högre upp.</div>
+    </div>
+
+    <div class="hpane" id="h4">
+      <p class="hint">Ha samma batteristorlek till allt, och ha laddat i förväg. Det mesta går att ladda när du har ström, inte när den är borta.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Batterier"><h4>Pannlampa och ficklampa</h4><p>LED-lampor på vanliga batterier.</p><ul class="pc"><li class="y">Säkert, ljust och batterierna räcker länge.</li><li class="n">Ha extra batterier i samma storlek. Pannlampa ger fria händer.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Batterier"><h4>LED-lykta</h4><p>En lykta som lyser upp hela rummet.</p><ul class="pc"><li class="y">Bättre än levande ljus. Ingen brandrisk.</li><li class="n">Välj en som går på samma batterier som lamporna.</li></ul></div>
+        <div class="mc warn2" data-bo="l h r" data-k="Tändstickor"><h4>Levande ljus</h4><p>Värmeljus och stearinljus.</p><ul class="pc"><li class="y">Billigt och finns i de flesta hem.</li><li class="n">Vanlig orsak till bränder vid strömavbrott. Aldrig obevakat, aldrig nära textilier, alltid på ett stadigt underlag.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Laddad i förväg"><h4>Powerbank</h4><p>Ett batteri som laddar mobil, lampor och radio via USB.</p><ul class="pc"><li class="y">Litet och enkelt. En stor powerbank laddar en mobil flera gånger.</li><li class="n">Laddar ur sig sakta. Ladda den varje månad.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Laddad i förväg"><h4>Bärbar kraftstation</h4><p>Ett stort batteri med vanliga eluttag.</p><ul class="pc"><li class="y">Kan driva lampor, en router, en laddare eller en liten kylbox. Tyst och säkert inomhus.</li><li class="n">Räcker inte till element eller spis. Dyrt.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Sol"><h4>Solpanel</h4><p>En vikbar panel som laddar powerbank eller kraftstation.</p><ul class="pc"><li class="y">Ger ny ström så länge krisen varar.</li><li class="n">Ger lite ström på vintern i norr och när det är molnigt.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Muskler"><h4>Vev</h4><p>Lampor, radior och laddare som drivs med en vev.</p><ul class="pc"><li class="y">Fungerar alltid, utan batterier.</li><li class="n">Ger lite ström för mycket vevande. Bäst som reserv.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Bensin"><h4>Bilen</h4><p>Ladda mobilen och powerbanken i bilens uttag.</p><ul class="pc"><li class="y">Bilen är ett stort batteri som de flesta redan har.</li><li class="n">Bara utomhus om motorn går, aldrig i garage. Låt motorn gå så att bilbatteriet inte tar slut.</li></ul></div>
+      </div>
+      <div class="do"><b>Spara mobilen:</b> sänk ljusstyrkan, stäng av appar du inte behöver och använd flygplansläge. Sms går ofta fram när samtal inte gör det.</div>
+    </div>
+
+    <div class="hpane" id="h5">
+      <p class="hint">När mobilnät och internet är borta måste du veta var informationen finns på andra sätt.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Batterier"><h4>Radio på batteri, vev eller sol</h4><p>Det sätt myndigheterna når alla på. I Sverige är Sveriges Radio P4 beredskapskanal.</p><ul class="pc"><li class="y">Fungerar när allt annat är borta.</li><li class="n">Ta reda på vilken frekvens som gäller där du bor och skriv upp den.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Bensin"><h4>Bilradion</h4><p>Bilen har en radio som fungerar utan elnät.</p><ul class="pc"><li class="y">De flesta har redan en.</li><li class="n">Kör inte motorn i garage. Utan motor kan radion tömma bilbatteriet.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Inget"><h4>Kommunens informationspunkter</h4><p>Många kommuner öppnar platser vid en kris där du kan få information, hjälp och ibland ladda mobilen.</p><ul class="pc"><li class="y">Information och hjälp när inget annat fungerar.</li><li class="n">Ta reda på i förväg var de finns där du bor.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Inget"><h4>Grannar</h4><p>Bestäm i förväg vem som kollar till vem, och vem som har vad.</p><ul class="pc"><li class="y">Den snabbaste hjälpen finns ofta i trappuppgången eller på gatan.</li><li class="n">Tänk särskilt på äldre och ensamma grannar.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Papper"><h4>Papper och plan</h4><p>Viktiga nummer, adresser och en karta på papper, och en plan för var familjen träffas.</p><ul class="pc"><li class="y">Fungerar även när mobilen är död.</li><li class="n">Uppdatera listan en gång om året.</li></ul></div>
+        <div class="mc warn2" data-bo="l h r" data-k="Kritiskt tänkande"><h4>Rykten och falska uppgifter</h4><p>I en kris sprids felaktig information snabbt, ibland med flit.</p><ul class="pc"><li class="n">Lita på myndigheternas kanaler. Fråga dig vem som sprider det och varför, innan du delar vidare.</li></ul></div>
+      </div>
+      <div class="do"><b>Lär dig signalen:</b> i Sverige betyder Viktigt meddelande till allmänheten att du ska gå inomhus, stänga fönster och ventilation och lyssna på radion.</div>
+    </div>
+
+    <div class="hpane" id="h6">
+      <p class="hint">Utan vatten blir toaletten det första problemet. God hygien gör att ingen blir sjuk när vården är svår att nå.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Vatten"><h4>Spola med en hink</h4><p>Häll en hink vatten snabbt i toalettstolen, till exempel badkarsvatten.</p><ul class="pc"><li class="y">Enkelt om avloppet fungerar.</li><li class="n">Bara om avloppet fungerar. Vid översvämning eller om kommunen säger det: spola inte.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Hink och påsar"><h4>Nödtoalett</h4><p>Lägg två kraftiga sopsäckar i toalettstolen eller en hink med lock. Strö över kattsand, sågspån eller torv efter varje besök.</p><ul class="pc"><li class="y">Fungerar när varken vatten eller avlopp fungerar. Strö minskar lukt.</li><li class="n">Knyt ihop påsen när den är halvfull. Förvara den tätt och svalt tills sophämtningen fungerar.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Plats"><h4>Utedass eller grop</h4><p>På landet kan ett utedass eller en grop långt från brunn och vatten vara en lösning.</p><ul class="pc"><li class="y">Klarar längre tid än påsar.</li><li class="n">Långt från brunnar, sjöar och bäckar. Täck efter varje besök.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Lite vatten"><h4>Tvätta dig med lite vatten</h4><p>En tvättlapp i en skål med vatten räcker långt. Händerna är viktigast.</p><ul class="pc"><li class="y">Håller dig frisk med några dl om dagen.</li><li class="n">Tvätta alltid händerna efter toaletten och före mat.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Inget vatten"><h4>Våtservetter och handsprit</h4><p>När det inte finns vatten över alls.</p><ul class="pc"><li class="y">Kräver inget vatten.</li><li class="n">Handsprit fungerar dåligt på smutsiga händer. Torka bort smutsen först.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Papper"><h4>Disk utan vatten</h4><p>Papperstallrikar, eller torka ur kastrullen med hushållspapper och diska när vattnet kommer tillbaka.</p><ul class="pc"><li class="y">Sparar vattnet till dryck och mat.</li><li class="n">Torka ur direkt, innan maten torkar fast.</li></ul></div>
+      </div>
+      <div class="do"><b>Sopor:</b> sophämtningen kan stå still. Förvara soporna i täta påsar, svalt och utom räckhåll för djur.</div>
+    </div>
+  </div>
+</section>
+
+<section id="law">
+  <div class="wrap">
+    <div class="eyebrow">Steg 4</div>
     <h2 class="t">Vad säger myndigheterna?</h2>
     <p class="sub">Grunderna är desamma överallt: vatten, mat, värme, information. Länderna skiljer sig mest i hur länge du ska klara dig.</p>
     <div class="tblwrap"><table class="tbl">
@@ -441,7 +582,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="calc">
   <div class="wrap">
-    <div class="eyebrow">Steg 4</div>
+    <div class="eyebrow">Steg 5</div>
     <h2 class="t">Räkna ut för ditt hushåll</h2>
     <p class="sub">Fyll i vilka som bor hemma och hur länge ni vill klara er. Allt räknas här på sidan. Ingenting skickas någonstans.</p>
 
@@ -519,7 +660,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="meals">
   <div class="wrap">
-    <div class="eyebrow">Steg 5</div>
+    <div class="eyebrow">Steg 6</div>
     <h2 class="t">Så äter du av lagret</h2>
     <p class="sub">Varje måltid har en kolhydratkälla för energi, protein för musklerna och fett för att hålla dig mätt. Allt kommer från inköpslistan ovan.</p>
     <div class="meals">
@@ -556,7 +697,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="areas">
   <div class="wrap">
-    <div class="eyebrow">Steg 6</div>
+    <div class="eyebrow">Steg 7</div>
     <h2 class="t">Sju områden, i den här ordningen</h2>
     <p class="sub">Utan vatten klarar du dig några dagar, utan mat några veckor. Därför börjar du med vatten. Siffrorna i listorna räknas för hushållet du fyllde i.</p>
 
@@ -683,7 +824,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="myths">
   <div class="wrap">
-    <div class="eyebrow">Steg 7</div>
+    <div class="eyebrow">Steg 8</div>
     <h2 class="t">Vanliga misstag</h2>
     <p class="sub">Sådant som sällan står i broschyrerna men som många nybörjare gör.</p>
     <div class="myth">
@@ -1123,10 +1264,34 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   };
 
   /* Flikar för scenarierna */
-  document.querySelectorAll(".tabs button").forEach(function (b) {
+  document.querySelectorAll("#scen .tabs button").forEach(function (b) {
     b.onclick = function () {
-      document.querySelectorAll(".tabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll("#scen .tabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
       document.querySelectorAll(".scen").forEach(function (s) { s.classList.toggle("on", s.id === b.dataset.s); });
+    };
+  });
+
+
+  /* Lösningar: flikar, boende och etiketter */
+  var BO = {"l": "Lägenhet", "h": "Hus", "r": "Landsbygd"};
+  document.querySelectorAll(".mc").forEach(function (c) {
+    var b = (c.dataset.bo || "").split(" ").filter(Boolean);
+    var m = document.createElement("div"); m.className = "mt";
+    m.innerHTML = '<span class="k">Kräver: ' + c.dataset.k + '</span><span>Passar: ' + (b.length === 3 ? "Alla boenden" : b.map(function (x) { return BO[x]; }).join(", ")) + '</span>';
+    c.appendChild(m);
+    if (c.classList.contains("cl")) c.insertAdjacentHTML("afterbegin", '<span class="cltag">Rening</span>');
+  });
+  document.querySelectorAll(".htabs button").forEach(function (b) {
+    b.onclick = function () {
+      document.querySelectorAll(".htabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll(".hpane").forEach(function (p) { p.classList.toggle("on", p.id === b.dataset.h); });
+    };
+  });
+  document.querySelectorAll(".bo button").forEach(function (b) {
+    b.onclick = function () {
+      var v = b.dataset.bo;
+      document.querySelectorAll(".bo button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      document.querySelectorAll(".mc").forEach(function (c) { c.hidden = v !== "all" && (" " + c.dataset.bo + " ").indexOf(" " + v + " ") < 0; });
     };
   });
 

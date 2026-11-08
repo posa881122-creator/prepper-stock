@@ -222,6 +222,35 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 }
 @media print { .rm, .addf, .undo { display: none !important; } }
 
+
+/* lösningar */
+.bo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 14px; }
+.bo span { font: 600 15px/1 var(--body); color: var(--mute); margin-right: 6px; }
+.bo button { appearance: none; border: 1.5px solid var(--moss); background: transparent; color: var(--forest); border-radius: 999px; padding: 8px 16px; font: 600 14px/1 var(--body); cursor: pointer; }
+.bo button[aria-pressed="true"] { background: var(--moss); color: var(--straw); }
+@media (max-width: 560px) { .htabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: -20px; margin-right: -20px; padding: 0 20px 4px; } .htabs::-webkit-scrollbar { display: none; } .htabs button { flex: 0 0 auto; } }
+.htabs button[aria-selected="true"] { background: var(--brass); color: var(--coal); border-color: var(--brass); }
+.hpane { display: none; }
+.hpane.on { display: block; }
+.hint { font-size: 17px; color: var(--mute); margin: 0 0 16px; max-width: 820px; }
+.mgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 16px; }
+.mc { background: #fff; border-radius: 20px; padding: 20px 20px 16px; display: flex; flex-direction: column; border-top: 5px solid var(--moss); }
+.mc.cl { border-top-color: #2C6B8F; }
+.mc.tip2 { border-top-color: var(--brass); }
+.mc.warn2 { border-top-color: var(--rust); }
+.mc[hidden] { display: none; }
+.mc h4 { font-size: 23px; margin-bottom: 6px; }
+.mc > p { font-size: 15.5px; margin-bottom: 8px; }
+.pc { list-style: none; margin: 0 0 12px; padding: 0; font-size: 15px; }
+.pc li { position: relative; padding-left: 24px; margin: 6px 0; }
+.pc li::before { position: absolute; left: 0; top: 1px; width: 17px; height: 17px; border-radius: 5px; display: grid; place-items: center; font: 700 12px/1 var(--body); color: #fff; }
+.pc .y::before { content: "✓"; background: var(--moss); }
+.pc .n::before { content: "!"; background: var(--rust); }
+.mt { margin-top: auto; display: flex; flex-wrap: wrap; gap: 5px; }
+.mt span { font: 600 12px/1 var(--body); padding: 5px 8px; border-radius: 7px; background: var(--lichen); color: var(--mute); }
+.mt .k { background: #F3E6C4; color: #6B4E1A; }
+.cltag { display: inline-block; font: 600 11px/1 var(--body); letter-spacing: .6px; text-transform: uppercase; color: #2C6B8F; margin-bottom: 6px; }
+
 /* matsedel */
 .meals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .meal { background: #fff; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; }
@@ -329,6 +358,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       <ol>
         <li><a href="#why">Why prep?<small>It is not about doomsday</small></a></li>
         <li><a href="#scen">What happens when…<small>Blackout, cyberattack, storm, war</small></a></li>
+        <li><a href="#how">How to solve it<small>Treat water, cook, stay warm</small></a></li>
         <li><a href="#law">What do the authorities say?<small>Six countries and the EU</small></a></li>
         <li><a href="#calc">Plan for your household<small>Water, food and shopping list</small></a></li>
         <li><a href="#meals">How to eat from your supplies<small>Meals that keep for a long time</small></a></li>
@@ -341,7 +371,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <nav class="jump" aria-label="Jump to">
   <div class="wrap">
-    <a href="#why">Why</a><a href="#scen">What happens</a><a href="#law">Authorities</a><a href="#calc">Calculator</a><a href="#meals">Meals</a><a href="#areas">Areas</a><a href="#myths">Mistakes</a><a href="#list">Checklist</a>
+    <a href="#why">Why</a><a href="#scen">What happens</a><a href="#how">Solutions</a><a href="#law">Authorities</a><a href="#calc">Calculator</a><a href="#meals">Meals</a><a href="#areas">Areas</a><a href="#myths">Mistakes</a><a href="#list">Checklist</a>
   </div>
 </nav>
 
@@ -420,9 +450,120 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   </div>
 </section>
 
-<section id="law">
+<section id="how">
   <div class="wrap">
     <div class="eyebrow">Step 3</div>
+    <h2 class="t">How to solve it</h2>
+    <p class="sub">There is almost always more than one way. Here are the methods that work, what is good about them and what to watch out for. Choose how you live to see what fits you.</p>
+    <div class="bo" role="group" aria-label="How do you live?">
+      <span>How do you live?</span>
+      <button type="button" data-bo="all" aria-pressed="true">All</button>
+      <button type="button" data-bo="l" aria-pressed="false">Apartment</button>
+      <button type="button" data-bo="h" aria-pressed="false">House</button>
+      <button type="button" data-bo="r" aria-pressed="false">Rural</button>
+    </div>
+    <div class="tabs htabs" role="tablist">
+      <button role="tab" aria-selected="true" data-h="h1">Water</button>
+      <button role="tab" aria-selected="false" data-h="h2">Food</button>
+      <button role="tab" aria-selected="false" data-h="h3">Heat</button>
+      <button role="tab" aria-selected="false" data-h="h4">Light and power</button>
+      <button role="tab" aria-selected="false" data-h="h5">Information</button>
+      <button role="tab" aria-selected="false" data-h="h6">Toilet and hygiene</button>
+    </div>
+
+    <div class="hpane on" id="h1">
+      <p class="hint">First: get water. Then: make it safe to drink. Clean tap water that you have stored does not need treating.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Nothing"><h4>Store water in advance</h4><p>Bottles and containers of tap water, in a dark and cool place.</p><ul class="pc"><li class="y">Simplest and safest. Ready to drink right away.</li><li class="n">Takes space and is heavy. Replace about twice a year.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Warning"><h4>Fill everything when it starts</h4><p>If you hear of a disruption: fill the bathtub, pots, buckets and bottles while the tap still works.</p><ul class="pc"><li class="y">Free and gives a lot of water quickly.</li><li class="n">Bathtub water is for the toilet and dishes. Boil it if you need to drink it.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Nothing"><h4>The water heater</h4><p>In a house, the hot water tank often holds 100 to 300 liters (25 to 80 gallons) of clean water, which you can drain from the valve at the bottom.</p><ul class="pc"><li class="y">A big reserve most people forget.</li><li class="n">Turn off the power or gas to the heater and the main water valve first, so no dirty water gets in. Let the water cool.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Nothing"><h4>The water in the pipes</h4><p>When the pressure is gone, there is still water in the pipes. Open the lowest tap in your home and collect it.</p><ul class="pc"><li class="y">A few extra liters, for free.</li><li class="n">Close the main valve first if contaminated water could flow back.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Containers"><h4>Rain and snow</h4><p>Collect rainwater in clean containers, or melt snow.</p><ul class="pc"><li class="y">Often available when nothing else is.</li><li class="n">Always needs treating. Water from roofs and gutters can contain dirt and bird droppings. Snow gives little water and takes a lot of fuel to melt.</li></ul></div>
+        <div class="mc" data-bo="r" data-k="Treatment"><h4>Lake, stream or well</h4><p>Fetch water from nature or a neighbor's well.</p><ul class="pc"><li class="y">Unlimited, if it is close by.</li><li class="n">Always treat it. Choose flowing, clear water, upstream from houses and farmland.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Fuel"><h4>Boil</h4><p>Boil the water until it bubbles strongly. This is what authorities advise when they issue a boil water notice.</p><ul class="pc"><li class="y">Kills bacteria, viruses and parasites. The safest method.</li><li class="n">Takes fuel and time. Does not remove chemicals, oil or heavy metals.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Nothing"><h4>Water filter</h4><p>Small filters you suck or squeeze water through, pump filters, or filters that drip by gravity.</p><ul class="pc"><li class="y">Fast, no fuel. Removes bacteria, parasites and cloudiness.</li><li class="n">Most do not remove viruses or chemicals. If the water may contain sewage: combine with boiling or tablets. Can be ruined by freezing.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Waiting time"><h4>Purification tablets</h4><p>Tablets with chlorine or chlorine dioxide that you dissolve in the water.</p><ul class="pc"><li class="y">Light, cheap and keep for a long time. Kill bacteria and viruses. Chlorine dioxide also handles most parasites.</li><li class="n">Waiting time from 30 minutes to several hours. Tastes of chlorine. Works less well in cloudy and cold water.</li></ul></div>
+        <div class="mc cl" data-bo="l h r" data-k="Cloth"><h4>Strain first</h4><p>Pour cloudy water through a clean cloth or a coffee filter, or let it stand so the dirt sinks.</p><ul class="pc"><li class="y">Makes filters last longer and tablets work better.</li><li class="n">Does not make water safe. Always treat it afterwards.</li></ul></div>
+      </div>
+      <div class="do"><b>Smart combination:</b> store what you drink, fill the bathtub for the toilet, and keep both a filter and tablets as backup. Then you have two ways if one fails.</div>
+    </div>
+
+    <div class="hpane" id="h2">
+      <p class="hint">Eat in the right order: the fridge first, then the freezer while it is still cold, the pantry last. Open the fridge and freezer as little as possible.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Nothing"><h4>Food that needs no cooking</h4><p>Crackers, canned food, peanut butter, nuts, dried fruit and oats soaked in cold water.</p><ul class="pc"><li class="y">Needs no fuel and no extra water. Works everywhere.</li><li class="n">Boring in the long run. Hot food matters when it is cold inside.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Alcohol fuel"><h4>Alcohol stove</h4><p>A small stove that burns denatured alcohol. Common in hiking.</p><ul class="pc"><li class="y">Simple, quiet and works well in the cold. The fuel is easy to store.</li><li class="n">Slower than gas. The flame is hard to see in daylight. Use with good ventilation and never refill while it burns.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Gas canisters"><h4>Gas stove with canister</h4><p>A camping stove that screws onto a gas canister.</p><ul class="pc"><li class="y">Fast and easy to control.</li><li class="n">Pure butane works poorly below freezing. Choose winter blend canisters and keep them warm. Good ventilation.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Gas or charcoal"><h4>Grill</h4><p>A gas or charcoal grill, with a pot on the grate.</p><ul class="pc"><li class="y">Many already have one. Handles big pots.</li><li class="n">Outdoors only, never in a garage or under a roof. Carbon monoxide can kill. Check the rules for balconies where you live.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Wood"><h4>Wood stove or fireplace</h4><p>Cook on top of the wood stove while you heat the house.</p><ul class="pc"><li class="y">Heat and cooking at the same time.</li><li class="n">Needs dry wood for the whole period and a clean chimney. Only works if the stove has a flat top.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Wood"><h4>Outdoor fire</h4><p>A fire in a fire pit, a grill area or a safe open spot.</p><ul class="pc"><li class="y">The fuel is often close by in the countryside.</li><li class="n">Follow fire bans. Needs dry wood, kindling and practice. Hard in rain.</li></ul></div>
+        <div class="mc tip2" data-bo="l h r" data-k="Insulation"><h4>Hay box, saves fuel</h4><p>Bring the food to a boil for a few minutes, wrap the pot in a sleeping bag, blankets or an insulated box, and let it stand. The food finishes cooking in its own heat.</p><ul class="pc"><li class="y">Saves a large part of the fuel. Works for rice, grains, beans and stews.</li><li class="n">Takes longer. Does not work for pasta, which goes mushy.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Cold winter"><h4>The cold as a fridge</h4><p>In winter, a cold balcony, a shed or a box outside can replace the fridge.</p><ul class="pc"><li class="y">Free cooling for milk and leftovers.</li><li class="n">Protect from animals and sun. Only works when it is cold outside.</li></ul></div>
+      </div>
+      <div class="do"><b>Save fuel:</b> lid on the pot, food that cooks in a few minutes, soak grains and beans beforehand, and boil only as much water as you need.</div>
+    </div>
+
+    <div class="hpane" id="h3">
+      <p class="hint">The first and cheapest step is always to keep the heat you have. A house without heating gets cold fast in winter.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Nothing"><h4>One warm room</h4><p>Gather everyone in one small room, ideally in the middle of the home. Close doors, hang blankets over windows and doors, put rugs on the floor.</p><ul class="pc"><li class="y">Works everywhere and costs nothing.</li><li class="n">Air out briefly a few times a day, or the air gets damp and stale.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Sleeping bag"><h4>A tent indoors</h4><p>Put up a tent or build a blanket fort over a table, and sleep there in sleeping bags.</p><ul class="pc"><li class="y">Body heat stays in the small space. Good for children.</li><li class="n">Takes space. Never use candles or stoves inside the tent.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Clothes"><h4>Dress right</h4><p>Several thin layers, wool next to the skin, a hat and thick socks. Indoors and at night too.</p><ul class="pc"><li class="y">The simplest thing there is, and it works.</li><li class="n">Change into dry clothes. Damp makes you cold.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Hot water"><h4>Hot bottles and hot food</h4><p>Fill a thermos or hot water bottle when you boil water anyway. Eat hot food and drink hot drinks.</p><ul class="pc"><li class="y">A lot of warmth for little fuel.</li><li class="n">Use bottles made for heat, and wrap them so nobody gets burned.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Wood"><h4>Wood stove or fireplace</h4><p>The best way to heat a house without power.</p><ul class="pc"><li class="y">Gives a lot of heat for a long time. A masonry stove holds heat for many hours.</li><li class="n">Needs dry wood, a clean chimney and a smoke alarm. Damp wood gives little heat and a lot of soot.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Kerosene or propane"><h4>Heaters made for indoor use</h4><p>Kerosene and propane heaters that are made to be used indoors.</p><ul class="pc"><li class="y">Can heat a room without power.</li><li class="n">Only models clearly approved for indoor use. Ventilate, and have a carbon monoxide alarm and a smoke alarm. Not in bedrooms while you sleep.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Fuel"><h4>Generator</h4><p>A gasoline or diesel generator can run, for example, a circulation pump, a heat pump or a few heaters.</p><ul class="pc"><li class="y">Can keep a whole house warm.</li><li class="n">Always outdoors, far from windows, because of carbon monoxide. Uses a lot of fuel. Never connect it to your home's wiring without a licensed electrician.</li></ul></div>
+        <div class="mc warn2" data-bo="l h r" data-k="Myth"><h4>Flower pot candle heater, a myth</h4><p>Clay pots over tea lights that are said to heat a room.</p><ul class="pc"><li class="n">Gives about as little heat as the candles alone, and can get hot enough to start a fire. Spend the effort on keeping heat in instead.</li></ul></div>
+      </div>
+      <div class="do"><b>If you live in an apartment:</b> your neighbors warm your walls. The room in the middle of the apartment stays warm longest. If you live on the ground floor, ask a neighbor higher up.</div>
+    </div>
+
+    <div class="hpane" id="h4">
+      <p class="hint">Use the same battery size for everything, and charge in advance. Most things can only be charged when you have power, not when it is gone.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Batteries"><h4>Headlamp and flashlight</h4><p>LED lights on standard batteries.</p><ul class="pc"><li class="y">Safe, bright and the batteries last long.</li><li class="n">Keep spare batteries of the same size. A headlamp keeps your hands free.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Batteries"><h4>LED lantern</h4><p>A lantern that lights up the whole room.</p><ul class="pc"><li class="y">Better than candles. No fire risk.</li><li class="n">Choose one that uses the same batteries as your lights.</li></ul></div>
+        <div class="mc warn2" data-bo="l h r" data-k="Matches"><h4>Candles</h4><p>Tea lights and candles.</p><ul class="pc"><li class="y">Cheap and in most homes.</li><li class="n">A common cause of fires during power cuts. Never unattended, never near fabric, always on a stable surface.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Charged in advance"><h4>Power bank</h4><p>A battery that charges your phone, lights and radio over USB.</p><ul class="pc"><li class="y">Small and simple. A large power bank charges a phone several times.</li><li class="n">Slowly loses charge. Charge it every month.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Charged in advance"><h4>Portable power station</h4><p>A large battery with regular power outlets.</p><ul class="pc"><li class="y">Can run lights, a router, a charger or a small cooler. Quiet and safe indoors.</li><li class="n">Not enough for heaters or a stove. Expensive.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Sun"><h4>Solar panel</h4><p>A folding panel that charges a power bank or power station.</p><ul class="pc"><li class="y">Gives new power for as long as the crisis lasts.</li><li class="n">Gives little power in winter in the north and when it is cloudy.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Muscle"><h4>Hand crank</h4><p>Lights, radios and chargers powered by a crank.</p><ul class="pc"><li class="y">Always works, without batteries.</li><li class="n">Little power for a lot of cranking. Best as a backup.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Fuel"><h4>The car</h4><p>Charge your phone and power bank in the car.</p><ul class="pc"><li class="y">A car is a big battery most people already have.</li><li class="n">Outdoors only if the engine runs, never in a garage. Run the engine so the car battery does not die.</li></ul></div>
+      </div>
+      <div class="do"><b>Save your phone:</b> lower the brightness, close apps you do not need and use airplane mode. Text messages often get through when calls do not.</div>
+    </div>
+
+    <div class="hpane" id="h5">
+      <p class="hint">When the mobile network and internet are gone, you need to know where to find information in other ways.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Batteries"><h4>Battery, crank or solar radio</h4><p>How authorities reach everyone. Find out which station carries emergency information where you live. In the US, NOAA Weather Radio broadcasts alerts.</p><ul class="pc"><li class="y">Works when everything else is gone.</li><li class="n">Write down the frequency in advance.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Fuel"><h4>The car radio</h4><p>The car has a radio that works without the grid.</p><ul class="pc"><li class="y">Most people already have one.</li><li class="n">Do not run the engine in a garage. Without the engine, the radio can drain the car battery.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Nothing"><h4>Local help points</h4><p>Many towns open places in a crisis where you can get information, help and sometimes charge your phone.</p><ul class="pc"><li class="y">Information and help when nothing else works.</li><li class="n">Find out in advance where they are where you live.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Nothing"><h4>Neighbors</h4><p>Agree in advance who checks on whom, and who has what.</p><ul class="pc"><li class="y">The fastest help is often in your building or on your street.</li><li class="n">Think especially of elderly neighbors and those who live alone.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Paper"><h4>Paper and a plan</h4><p>Important numbers, addresses and a map on paper, and a plan for where your family meets.</p><ul class="pc"><li class="y">Works even when your phone is dead.</li><li class="n">Update the list once a year.</li></ul></div>
+        <div class="mc warn2" data-bo="l h r" data-k="Critical thinking"><h4>Rumors and false information</h4><p>In a crisis, wrong information spreads fast, sometimes on purpose.</p><ul class="pc"><li class="n">Trust official channels. Ask who is spreading it and why, before you share it.</li></ul></div>
+      </div>
+      <div class="do"><b>Learn the signal:</b> find out what your country's public warning siren or alert sounds like, and what you should do when you hear it.</div>
+    </div>
+
+    <div class="hpane" id="h6">
+      <p class="hint">Without water, the toilet becomes the first problem. Good hygiene keeps everyone healthy when care is hard to reach.</p>
+      <div class="mgrid">
+        <div class="mc" data-bo="l h r" data-k="Water"><h4>Flush with a bucket</h4><p>Pour a bucket of water quickly into the toilet bowl, for example bathtub water.</p><ul class="pc"><li class="y">Simple if the sewer works.</li><li class="n">Only if the sewer works. In a flood, or if authorities say so: do not flush.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Bucket and bags"><h4>Emergency toilet</h4><p>Put two heavy trash bags in the toilet bowl or a bucket with a lid. Sprinkle cat litter, sawdust or peat after each use.</p><ul class="pc"><li class="y">Works when there is neither water nor sewer. The litter reduces smell.</li><li class="n">Tie the bag when it is half full. Keep it sealed and cool until trash collection works.</li></ul></div>
+        <div class="mc" data-bo="h r" data-k="Space"><h4>Outhouse or pit</h4><p>In the countryside, an outhouse or a pit far from wells and water can be a solution.</p><ul class="pc"><li class="y">Lasts longer than bags.</li><li class="n">Far from wells, lakes and streams. Cover after each use.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Little water"><h4>Wash with little water</h4><p>A washcloth in a bowl of water goes a long way. Hands matter most.</p><ul class="pc"><li class="y">Keeps you healthy with a few cups a day.</li><li class="n">Always wash your hands after the toilet and before eating.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="No water"><h4>Wet wipes and hand sanitizer</h4><p>When there is no water to spare at all.</p><ul class="pc"><li class="y">Needs no water.</li><li class="n">Hand sanitizer works poorly on dirty hands. Wipe off the dirt first.</li></ul></div>
+        <div class="mc" data-bo="l h r" data-k="Paper"><h4>Dishes without water</h4><p>Paper plates, or wipe the pot clean with paper towels and wash when the water returns.</p><ul class="pc"><li class="y">Saves water for drinking and food.</li><li class="n">Wipe right away, before the food dries on.</li></ul></div>
+      </div>
+      <div class="do"><b>Trash:</b> trash collection may stop. Keep trash in sealed bags, cool and out of reach of animals.</div>
+    </div>
+  </div>
+</section>
+
+<section id="law">
+  <div class="wrap">
+    <div class="eyebrow">Step 4</div>
     <h2 class="t">What do the authorities say?</h2>
     <p class="sub">The basics are the same everywhere: water, food, heat, information. Countries differ most in how long you should be able to manage.</p>
     <div class="tblwrap"><table class="tbl">
@@ -441,7 +582,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="calc">
   <div class="wrap">
-    <div class="eyebrow">Step 4</div>
+    <div class="eyebrow">Step 5</div>
     <h2 class="t">Plan for your household</h2>
     <p class="sub">Enter who lives at home and how long you want to manage. Everything is calculated here on the page. Nothing is sent anywhere.</p>
 
@@ -519,7 +660,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="meals">
   <div class="wrap">
-    <div class="eyebrow">Step 5</div>
+    <div class="eyebrow">Step 6</div>
     <h2 class="t">How to eat from your supplies</h2>
     <p class="sub">Every meal has carbs for energy, protein for your muscles and fat to keep you full. Everything comes from the shopping list above.</p>
     <div class="meals">
@@ -556,7 +697,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="areas">
   <div class="wrap">
-    <div class="eyebrow">Step 6</div>
+    <div class="eyebrow">Step 7</div>
     <h2 class="t">Seven areas, in this order</h2>
     <p class="sub">You can last a few days without water, a few weeks without food. That is why you start with water. The numbers in the lists are calculated for the household you entered.</p>
 
@@ -683,7 +824,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <section id="myths">
   <div class="wrap">
-    <div class="eyebrow">Step 7</div>
+    <div class="eyebrow">Step 8</div>
     <h2 class="t">Common mistakes</h2>
     <p class="sub">Things that are rarely in the brochures but that many beginners do.</p>
     <div class="myth">
@@ -1124,10 +1265,34 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   };
 
   /* Flikar för scenarierna */
-  document.querySelectorAll(".tabs button").forEach(function (b) {
+  document.querySelectorAll("#scen .tabs button").forEach(function (b) {
     b.onclick = function () {
-      document.querySelectorAll(".tabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll("#scen .tabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
       document.querySelectorAll(".scen").forEach(function (s) { s.classList.toggle("on", s.id === b.dataset.s); });
+    };
+  });
+
+
+  /* Lösningar: flikar, boende och etiketter */
+  var BO = {"l": "Apartment", "h": "House", "r": "Rural"};
+  document.querySelectorAll(".mc").forEach(function (c) {
+    var b = (c.dataset.bo || "").split(" ").filter(Boolean);
+    var m = document.createElement("div"); m.className = "mt";
+    m.innerHTML = '<span class="k">Needs: ' + c.dataset.k + '</span><span>Fits: ' + (b.length === 3 ? "All homes" : b.map(function (x) { return BO[x]; }).join(", ")) + '</span>';
+    c.appendChild(m);
+    if (c.classList.contains("cl")) c.insertAdjacentHTML("afterbegin", '<span class="cltag">Treatment</span>');
+  });
+  document.querySelectorAll(".htabs button").forEach(function (b) {
+    b.onclick = function () {
+      document.querySelectorAll(".htabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll(".hpane").forEach(function (p) { p.classList.toggle("on", p.id === b.dataset.h); });
+    };
+  });
+  document.querySelectorAll(".bo button").forEach(function (b) {
+    b.onclick = function () {
+      var v = b.dataset.bo;
+      document.querySelectorAll(".bo button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      document.querySelectorAll(".mc").forEach(function (c) { c.hidden = v !== "all" && (" " + c.dataset.bo + " ").indexOf(" " + v + " ") < 0; });
     };
   });
 
