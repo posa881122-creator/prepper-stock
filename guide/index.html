@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Börja preppa: guide för nybörjare med inköpslista för ditt hushåll | Prepper Stock</title>
+<meta name="description" content="Vad händer när strömmen går, vad behöver du hemma och hur mycket? Räkna ut vatten, mat och en färdig inköpslista för ditt hushåll. Byggt på myndigheternas råd.">
+<meta name="theme-color" content="#1E3326">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Börja preppa: inköpslista för ditt hushåll">
+<meta property="og:description" content="Räkna ut vatten, mat och en färdig inköpslista för 72 timmar, en vecka eller en månad. Byggt på myndigheternas råd.">
+<meta property="og:image" content="https://prepperstock.se/img/funktionsgrafik.jpg">
+<meta property="og:url" content="https://prepperstock.se/guide/">
+<link rel="canonical" href="https://prepperstock.se/guide/">
+<link rel="alternate" hreflang="sv" href="https://prepperstock.se/guide/">
+<link rel="alternate" hreflang="en" href="https://prepperstock.se/guide/en/">
+<link rel="alternate" hreflang="x-default" href="https://prepperstock.se/guide/en/">
+<link rel="icon" href="../img/ikon-192.png">
+<link rel="apple-touch-icon" href="../img/ikon-192.png">
+<style>
+@font-face { font-family: "Barlow Condensed"; src: url(../fonts/BarlowCondensed-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Barlow Condensed"; src: url(../fonts/BarlowCondensed-Bold.woff) format("woff"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-Regular.woff) format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-Medium.woff) format("woff"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(../fonts/Barlow-SemiBold.woff) format("woff"); font-weight: 600; font-display: swap; }
+:root {
+  --forest: #1E3326; --deep: #15281D; --moss: #34513B; --brass: #D4A537; --straw: #F1E3A4;
+  --lichen: #E5EADF; --paper: #F6F8F3; --coal: #142019; --mute: #4D5F51; --line: #D7DDD1;
+  --rust: #B5562F;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "Barlow", system-ui, sans-serif;
+  --wrap: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; font: 400 17px/1.6 var(--body); color: var(--coal); background: var(--lichen); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.04; margin: 0; letter-spacing: -.2px; }
+p { margin: 0 0 12px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+
+/* sidhuvud */
+.top { background: var(--forest); color: var(--straw); }
+.bar { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; padding-bottom: 18px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font: 700 26px/1 var(--display); color: var(--straw); }
+.brand img { width: 40px; height: 40px; border-radius: 10px; }
+.back { text-decoration: none; color: var(--straw); border: 1.5px solid var(--moss); border-radius: 999px; padding: 8px 16px; font: 500 15px/1 var(--body); }
+.back:hover { background: var(--moss); }
+
+.hero { padding-top: 34px; padding-bottom: 64px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.kicker { font: 600 14px/1 var(--body); letter-spacing: 2.4px; text-transform: uppercase; color: var(--brass); }
+.hero h1 { font-size: clamp(48px, 7vw, 84px); color: var(--brass); margin: 14px 0 18px; }
+.hero .lead { font-size: 20px; max-width: 560px; color: var(--straw); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.facts span { border: 1.5px solid var(--moss); border-radius: 999px; padding: 6px 14px; font: 500 14px/1.3 var(--body); }
+.route { background: var(--deep); border: 1.5px solid var(--moss); border-radius: 24px; padding: 22px; }
+.route h2 { font-size: 22px; color: var(--straw); margin-bottom: 12px; letter-spacing: .3px; }
+.route ol { list-style: none; margin: 0; padding: 0; counter-reset: r; }
+.route li { counter-increment: r; }
+.route a { display: flex; align-items: center; gap: 14px; text-decoration: none; padding: 9px 10px; border-radius: 12px; color: var(--straw); font: 500 16px/1.3 var(--body); }
+.route a:hover { background: var(--forest); }
+.route a::before { content: counter(r); flex: 0 0 30px; height: 30px; border-radius: 9px; background: var(--moss); display: grid; place-items: center; font: 700 18px/1 var(--display); color: var(--brass); }
+.route small { display: block; opacity: .65; font-size: 13px; }
+
+/* snabbmeny */
+.jump { position: sticky; top: 0; z-index: 20; background: rgba(229,234,223,.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.jump .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
+.jump .wrap::-webkit-scrollbar { display: none; }
+.jump a { flex: 0 0 auto; text-decoration: none; font: 600 14px/1 var(--body); padding: 9px 14px; border-radius: 999px; color: var(--mute); }
+.jump a:hover, .jump a.on { background: var(--forest); color: var(--straw); }
+
+section { padding: 72px 0 8px; }
+.eyebrow { font: 600 13px/1 var(--body); letter-spacing: 2.2px; text-transform: uppercase; color: var(--rust); margin-bottom: 10px; }
+h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
+.sub { font-size: 19px; color: var(--mute); max-width: 760px; margin-bottom: 30px; }
+.card { background: #fff; border-radius: 22px; padding: 28px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* varför */
+.why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.why .card h3 { font-size: 26px; margin-bottom: 8px; }
+.quote { margin-top: 18px; background: var(--forest); color: var(--straw); border-radius: 22px; padding: 26px 30px; font-size: 19px; }
+.quote b { color: var(--brass); }
+
+/* scenarier */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tabs button { appearance: none; border: 1.5px solid var(--line); background: #fff; color: var(--coal); border-radius: 999px; padding: 10px 18px; font: 600 15px/1 var(--body); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--forest); color: var(--straw); border-color: var(--forest); }
+.scen { display: none; }
+.scen.on { display: block; }
+.tl { position: relative; margin: 0; padding: 0; list-style: none; }
+.tl li { position: relative; display: grid; grid-template-columns: 150px 1fr; gap: 22px; padding: 0 0 22px; }
+.tl li::before { content: ""; position: absolute; left: 150px; margin-left: 4px; top: 8px; bottom: -8px; width: 2px; background: var(--line); }
+.tl li:last-child::before { display: none; }
+.tl .when { font: 700 22px/1.1 var(--display); color: var(--forest); text-align: right; padding-right: 18px; }
+.tl .what { position: relative; background: #fff; border-radius: 16px; padding: 16px 20px; }
+.tl .what::before { content: ""; position: absolute; left: -24px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--brass); box-shadow: 0 0 0 4px var(--lichen); }
+.tl .what b { display: block; margin-bottom: 2px; }
+.tl .what ul { margin: 6px 0 0; padding-left: 18px; }
+.tl .what li { display: list-item; padding: 0; }
+.tl .what li::before { display: none; }
+.do { margin-top: 6px; background: var(--forest); color: var(--straw); border-radius: 18px; padding: 18px 22px; }
+.do b { color: var(--brass); }
+
+/* myndigheter */
+.tbl { width: 100%; border-collapse: collapse; background: #fff; border-radius: 18px; overflow: hidden; font-size: 16px; }
+.tbl th { background: var(--forest); color: var(--straw); text-align: left; padding: 12px 16px; font: 600 14px/1.3 var(--body); }
+.tbl td { padding: 12px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+.tbl td:first-child { font-weight: 600; white-space: nowrap; }
+.tblwrap { overflow-x: auto; border-radius: 18px; }
+.note { font-size: 14px; color: var(--mute); margin-top: 12px; }
+
+/* räknare */
+.calc { background: var(--forest); color: var(--straw); border-radius: 28px; padding: 30px; display: grid; grid-template-columns: .95fr 1.05fr; gap: 30px; }
+.calc h3 { font-size: 28px; color: var(--straw); margin-bottom: 14px; }
+.who { display: grid; gap: 8px; }
+.p { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--deep); border-radius: 14px; padding: 10px 12px 10px 16px; }
+.p span { font: 500 16px/1.25 var(--body); }
+.p small { display: block; opacity: .6; font-size: 13px; }
+.step { display: flex; align-items: center; gap: 4px; }
+.step button { appearance: none; width: 38px; height: 38px; border-radius: 11px; border: 0; background: var(--moss); color: var(--straw); font: 600 22px/1 var(--body); cursor: pointer; }
+.step button:hover { background: var(--brass); color: var(--coal); }
+.step output { min-width: 34px; text-align: center; font: 700 26px/1 var(--display); color: var(--brass); }
+.days { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 14px; }
+.days button { appearance: none; border: 1.5px solid var(--moss); background: transparent; color: var(--straw); border-radius: 12px; padding: 10px 4px; font: 600 15px/1.15 var(--body); cursor: pointer; }
+.days button small { display: block; font-weight: 400; font-size: 12px; opacity: .7; }
+.days button[aria-pressed="true"] { background: var(--brass); color: var(--coal); border-color: var(--brass); }
+.res { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+.r { background: var(--deep); border-radius: 16px; padding: 16px 18px; }
+.r b { display: block; font: 700 44px/1 var(--display); color: var(--brass); }
+.r span { font-size: 14px; opacity: .85; }
+.r.wide { grid-column: 1 / -1; }
+.macro { display: flex; height: 30px; border-radius: 9px; overflow: hidden; margin: 10px 0 8px; font: 600 13px/1 var(--body); }
+.macro div { display: flex; align-items: center; padding-left: 10px; white-space: nowrap; color: #fff; }
+.calc .note { color: var(--straw); opacity: .65; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.btn { appearance: none; border: 0; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background: var(--brass); color: var(--coal); border-radius: 999px; padding: 12px 20px; font: 600 16px/1 var(--body); }
+.btn.ghost { background: transparent; color: var(--straw); border: 1.5px solid var(--moss); }
+.btn:hover { filter: brightness(1.07); }
+
+/* inköpslista */
+.shop { margin-top: 18px; display: grid; grid-template-columns: 1.3fr .7fr; gap: 18px; }
+.list { background: #fff; border-radius: 22px; padding: 8px 0; }
+.list h3 { font-size: 26px; padding: 18px 24px 6px; }
+.li { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: center; padding: 11px 24px; border-top: 1px solid var(--line); }
+.li:first-of-type { border-top: 0; }
+.li input { width: 20px; height: 20px; accent-color: var(--forest); }
+.li .n { font-weight: 600; }
+.li .n small { display: block; font-weight: 400; color: var(--mute); font-size: 14px; }
+.li .q { text-align: right; font: 700 22px/1 var(--display); color: var(--forest); white-space: nowrap; }
+.li .q small { display: block; font: 400 13px/1.3 var(--body); color: var(--mute); }
+.tag { display: inline-block; font: 600 11px/1 var(--body); letter-spacing: .6px; text-transform: uppercase; padding: 4px 7px; border-radius: 6px; margin-left: 6px; vertical-align: 2px; }
+.tag.k { background: #F3E6C4; color: #6B4E1A; }
+.tag.p { background: #DCE8DC; color: #24442C; }
+.tag.f { background: #EBDDD2; color: #6B3A20; }
+.tag.v { background: #E2E9F3; color: #2C4A6B; }
+.side .card + .card { margin-top: 18px; }
+.side h4 { font-size: 22px; margin-bottom: 6px; }
+.side ul { margin: 6px 0 0; padding-left: 18px; }
+.side li { margin: 4px 0; }
+
+
+/* akut */
+.akutbtn { width: 100%; justify-content: center; margin-top: 16px; background: var(--rust); color: #fff; padding: 16px 20px; font-size: 18px; }
+.akutbtn .dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.25); }
+.hero-ak { width: auto; margin-top: 26px; }
+.akut { margin-top: 18px; background: #fff; border-radius: 26px; padding: 28px; border: 3px solid var(--rust); }
+.ak-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.ak-head h3 { font-size: 38px; margin-top: 8px; }
+.btn.dark { color: var(--coal); border-color: var(--line); }
+.ak-first { background: var(--forest); color: var(--straw); border-radius: 18px; padding: 18px 22px; }
+.ak-first b { color: var(--brass); font-size: 18px; }
+.ak-first ol { margin: 8px 0 0; padding-left: 22px; }
+.ak-first li { margin: 4px 0; }
+.ak-lead { font-weight: 600; margin: 20px 0 10px; }
+.ak-g { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.ak-n { width: 44px; height: 44px; border-radius: 13px; background: var(--rust); color: #fff; display: grid; place-items: center; font: 700 26px/1 var(--display); }
+.ak-b h4 { font-size: 24px; margin: 8px 0 6px; }
+.ak-r { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; padding: 6px 0; }
+.ak-r input { width: 19px; height: 19px; accent-color: var(--rust); }
+.ak-r small { display: block; color: var(--mute); font-size: 14px; }
+.ak-r b { font: 700 20px/1.1 var(--display); color: var(--forest); text-align: right; }
+@media (max-width: 560px) { .ak-r { grid-template-columns: 22px 1fr; } .ak-r b { grid-column: 2; text-align: left; font-size: 18px; color: var(--rust); } .akut { padding: 18px; } .ak-head h3 { font-size: 30px; } .ak-g { grid-template-columns: 34px 1fr; gap: 10px; } .ak-n { width: 34px; height: 34px; font-size: 20px; } }
+@media print { .akut:not([hidden]) { border: 1px solid #999; } .akut:not([hidden]) ~ .shop { display: none; } }
+
+
+.done .n, .done > span:not(.q) { text-decoration: line-through; opacity: .45; }
+.done .q, .done > b { opacity: .45; }
+.check label.done { text-decoration: line-through; opacity: .5; }
+.ak-prog { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; }
+.ak-prog b { display: block; font: 700 26px/1.1 var(--display); color: var(--forest); }
+.ak-prog span { font-size: 14px; color: var(--mute); }
+.ak-bar { height: 10px; background: var(--lichen); border-radius: 99px; overflow: hidden; margin-top: 10px; }
+.ak-bar i { display: block; height: 100%; width: 0; background: var(--rust); border-radius: 99px; transition: width .25s; }
+
+
+.rm { appearance: none; border: 0; background: transparent; color: var(--mute); width: 30px; height: 30px; border-radius: 9px; font: 400 22px/1 var(--body); cursor: pointer; opacity: .55; }
+.rm:hover { background: var(--lichen); opacity: 1; color: var(--rust); }
+.li { grid-template-columns: 26px 1fr auto 30px !important; }
+.ak-r { grid-template-columns: 22px 1fr auto 30px !important; }
+.tag.e { background: var(--lichen); color: var(--mute); }
+.addf { display: grid; grid-template-columns: 1fr 120px auto; gap: 8px; padding: 14px 24px 6px; }
+.akut .addf { padding: 16px 0 4px; border-top: 1px solid var(--line); margin-top: 6px; }
+.addf input { font: 500 16px/1 var(--body); padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px; min-width: 0; background: #fff; color: var(--coal); }
+.addf input:focus { outline: none; border-color: var(--forest); }
+.addf .btn { padding: 12px 18px; background: var(--forest); color: var(--straw); }
+.undo { appearance: none; border: 0; background: none; color: var(--rust); font: 600 14px/1 var(--body); padding: 8px 24px 14px; cursor: pointer; text-decoration: underline; }
+.akut .undo { padding-left: 0; }
+@media (max-width: 560px) {
+  .li { grid-template-columns: 22px 1fr auto 28px !important; padding: 11px 12px 11px 16px; }
+  .ak-r { grid-template-columns: 22px 1fr 28px !important; }
+  .ak-r b { grid-row: 2; }
+  .addf { grid-template-columns: 1fr 90px; padding: 14px 16px 6px; }
+  .addf .btn { grid-column: 1 / -1; justify-content: center; }
+}
+@media print { .rm, .addf, .undo { display: none !important; } }
+
+/* matsedel */
+.meals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.meal { background: #fff; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; }
+.meal .lbl { font: 600 13px/1 var(--body); letter-spacing: 1.6px; text-transform: uppercase; color: var(--rust); }
+.meal h4 { font-size: 24px; margin: 8px 0 10px; }
+.meal ul { margin: 0 0 12px; padding-left: 18px; font-size: 15px; }
+.meal .chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 4px; }
+.meal .chips .tag { margin: 0; }
+.cold { font-size: 13px; color: var(--mute); margin-top: 10px; }
+.days7 { margin-top: 18px; }
+.days7 .tbl td { font-size: 15px; }
+
+/* områden */
+.area { background: #fff; border-radius: 24px; padding: 30px; margin-top: 18px; }
+.area-h { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+.area-h .num { flex: 0 0 48px; height: 48px; border-radius: 14px; background: var(--brass); display: grid; place-items: center; font: 700 30px/1 var(--display); }
+.area-h h3 { font-size: 40px; }
+.area .why1 { font-size: 18px; color: var(--mute); margin: 4px 0 18px; max-width: 820px; }
+.big { font: 700 52px/1 var(--display); color: var(--forest); }
+.big small { font: 500 18px/1.2 var(--body); color: var(--mute); }
+.area ul { margin: 6px 0 0; padding-left: 20px; }
+.area li { margin: 5px 0; }
+.buy { background: var(--paper); border-radius: 16px; padding: 18px 20px; }
+.buy h4 { font-size: 22px; margin-bottom: 6px; }
+.buy .row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px solid var(--line); }
+.buy .row:first-of-type { border-top: 0; }
+.buy .row b { font-family: var(--display); font-size: 20px; color: var(--forest); white-space: nowrap; }
+.tip { background: var(--paper); border-left: 5px solid var(--brass); border-radius: 10px; padding: 14px 18px; margin-top: 16px; }
+.warn { border-left-color: var(--rust); }
+
+/* misstag */
+.myth { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.m { background: var(--forest); color: var(--straw); border-radius: 20px; padding: 22px; }
+.m b { display: block; font: 700 24px/1.1 var(--display); color: var(--brass); margin-bottom: 8px; }
+
+/* checklista */
+.check { columns: 2; column-gap: 28px; background: #fff; border-radius: 22px; padding: 26px 30px; }
+.check .grp { break-inside: avoid; margin-bottom: 8px; }
+.check label { display: flex; gap: 10px; align-items: flex-start; break-inside: avoid; padding: 6px 0; }
+.check input { margin-top: 5px; width: 18px; height: 18px; accent-color: var(--forest); }
+.check h4 { font-size: 20px; margin: 6px 0 4px; color: var(--rust); }
+.check h4:first-child { margin-top: 0; }
+
+.cta { margin-top: 18px; background: var(--forest); color: var(--straw); border-radius: 28px; padding: 36px; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; }
+.cta h3 { font-size: 42px; color: var(--brass); margin-bottom: 10px; }
+.cta .stores { display: flex; flex-direction: column; gap: 10px; }
+.src { font-size: 14px; color: var(--mute); }
+.src a { color: var(--mute); }
+footer { margin-top: 70px; background: var(--forest); color: var(--straw); padding: 26px 0; font-size: 14px; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 18px; }
+.foot a { text-decoration: none; opacity: .85; }
+
+@media (max-width: 900px) {
+  .hero, .calc, .shop, .grid2 { grid-template-columns: minmax(0,1fr); }
+  .why, .grid3, .myth { grid-template-columns: minmax(0,1fr); }
+  .meals { grid-template-columns: 1fr 1fr; }
+  .cta { grid-template-columns: minmax(0,1fr); }
+  .check { columns: 1; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .meals { grid-template-columns: minmax(0,1fr); }
+  .tl li { grid-template-columns: minmax(0,1fr); gap: 6px; padding-left: 22px; }
+  .tl li::before { left: 4px; margin-left: 0; }
+  .tl .when { text-align: left; padding: 0; }
+  .tl .what::before { left: -24px; }
+  .area, .card, .calc { padding: 20px; }
+  .area-h h3 { font-size: 32px; }
+  .res { grid-template-columns: 1fr 1fr; }
+  .r b { font-size: 34px; }
+  .days { grid-template-columns: 1fr 1fr; }
+  .li { padding: 11px 16px; }
+  .route small { display: none; }
+}
+@media print {
+  .top, .jump, .no-print, footer, .tabs, .cta, #why, #scen, #law, #meals, #areas, #myths { display: none !important; }
+  body { background: #fff; }
+  section { padding: 0; }
+  .calc { background: #fff; color: #000; border: 1px solid #999; }
+  .r { background: #fff; border: 1px solid #ccc; } .r b { color: #000; }
+  .shop { grid-template-columns: 1fr; }
+  .list, .card { border: 1px solid #ccc; }
+  .check { columns: 2; border: 1px solid #ccc; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="../"><img src="../img/ikon-192.png" alt=""><span>Prepper Stock</span></a>
+    <a class="back" href="../">Till startsidan</a>
+  </div>
+  <div class="wrap hero">
+    <div>
+      <div class="kicker">Guide för nybörjare</div>
+      <h1>Börja preppa.<br>I rätt ordning.</h1>
+      <p class="lead">Vad som händer när strömmen går, vad du behöver hemma och exakt hur mycket. Fyll i ditt hushåll så får du en färdig inköpslista med varor som håller länge.</p>
+      <button class="btn akutbtn hero-ak" type="button" id="ak-hero"><span class="dot"></span>Det har redan hänt? Få en akut inköpslista</button>
+      <div class="facts"><span>Byggt på myndigheternas råd</span><span>Räknat i liter, kalorier och gram</span><span>Ingen reklam, ingen spårning</span></div>
+    </div>
+    <nav class="route" aria-label="Innehåll">
+      <h2>Så här går guiden</h2>
+      <ol>
+        <li><a href="#why">Varför preppa?<small>Det handlar inte om domedagen</small></a></li>
+        <li><a href="#scen">Vad händer när…<small>Strömavbrott, cyberattack, storm, krig</small></a></li>
+        <li><a href="#law">Vad säger myndigheterna?<small>Sex länder och EU</small></a></li>
+        <li><a href="#calc">Räkna ut för ditt hushåll<small>Vatten, mat och inköpslista</small></a></li>
+        <li><a href="#meals">Så äter du av lagret<small>Måltider med lång hållbarhet</small></a></li>
+        <li><a href="#areas">Sju områden i ordning<small>Vatten först, papper sist</small></a></li>
+        <li><a href="#myths">Vanliga misstag<small>Och checklista att skriva ut</small></a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Hoppa till">
+  <div class="wrap">
+    <a href="#why">Varför</a><a href="#scen">Vad händer</a><a href="#law">Myndigheterna</a><a href="#calc">Räknare</a><a href="#meals">Måltider</a><a href="#areas">Områden</a><a href="#myths">Misstag</a><a href="#list">Checklista</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow">Steg 1</div>
+    <h2 class="t">Varför preppa?</h2>
+    <p class="sub">Att preppa är inte att vänta på domedagen. Det är att ha det du behöver hemma när vardagen slutar fungera, i några dagar eller några veckor.</p>
+    <div class="why">
+      <div class="card"><h3>Hjälpen räcker inte till alla</h3><p>Vid en stor kris prioriterar kommuner och räddningstjänst de som inte kan klara sig själva: sjuka, äldre och barn. Kan du ta hand om ditt hushåll en vecka frigör du hjälp till dem.</p></div>
+      <div class="card"><h3>Det har redan hänt</h3><p>Efter stormen Gudrun 2005 var hundratusentals hushåll i södra Sverige utan ström, en del i flera veckor. I april 2025 slocknade elnätet i hela Spanien och Portugal. På många håll var strömmen borta i flera timmar, på vissa platser nästan ett dygn.</p></div>
+      <div class="card"><h3>Allt hänger ihop</h3><p>Utan el slutar mycket mer än lampan att fungera: kyl, värme, vatten i höghus, mobilnät, kortbetalning och bensinpumpar. Därför räcker det inte att ha ficklampa.</p></div>
+    </div>
+    <div class="quote">Myndigheterna i Sverige och Norge ber varje hushåll att kunna klara sig <b>minst en vecka</b> utan hjälp. Tyskland säger <b>tio dagar</b>. Det här är vad den här guiden hjälper dig med.</div>
+  </div>
+</section>
+
+<section id="scen">
+  <div class="wrap">
+    <div class="eyebrow">Steg 2</div>
+    <h2 class="t">Vad händer när…</h2>
+    <p class="sub">Det här är vad som händer i en vanlig bostad. När du vet vad som slutar fungera förstår du varför varje sak på listan behövs.</p>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-s="s1">Strömmen går</button>
+      <button role="tab" aria-selected="false" data-s="s2">Cyberattack</button>
+      <button role="tab" aria-selected="false" data-s="s3">Storm eller översvämning</button>
+      <button role="tab" aria-selected="false" data-s="s4">Vattnet försvinner</button>
+      <button role="tab" aria-selected="false" data-s="s5">Krig eller höjd beredskap</button>
+    </div>
+
+    <div class="scen on" id="s1">
+      <ol class="tl">
+        <li><div class="when">Direkt</div><div class="what"><b>Allt som går på el stannar</b><ul><li>Lampor, spis, mikro, vattenkokare och wifi.</li><li>Elelement, värmepump och de flesta pannor slutar värma, även fjärrvärmens pumpar i huset.</li><li>Hissar, garageportar och elektroniska lås.</li></ul></div></li>
+        <li><div class="when">Första timmarna</div><div class="what"><b>Mobilen fungerar, en stund</b><ul><li>Mobilmaster har reservbatterier som räcker några timmar, ibland längre. Sedan blir det tyst.</li><li>Butiker och bensinmackar kan inte ta betalt eller pumpa bensin utan reservkraft.</li><li>Kylskåpet håller maten kall cirka 4 timmar om du inte öppnar det.</li></ul></div></li>
+        <li><div class="when">Efter ett dygn</div><div class="what"><b>Kylan och vattnet märks</b><ul><li>En halvfull frys håller cirka ett dygn, en full cirka två.</li><li>På vintern blir det snabbt kallt inomhus. I ett hus utan annan värme kan det bli under 10 grader på något dygn.</li><li>I höghus och hus med egen brunn försvinner vattnet när pumparna stannar. Toaletten går inte att spola.</li></ul></div></li>
+        <li><div class="when">Efter tre dygn</div><div class="what"><b>Det du har hemma är det du har</b><ul><li>Maten i frysen är förstörd. Butikerna har fått lite eller ingen leverans.</li><li>Telefon och internet fungerar dåligt eller inte alls. Radion blir den viktigaste källan till information.</li><li>Det är nu förberedelserna gör skillnaden.</li></ul></div></li>
+      </ol>
+      <div class="do"><b>Viktigast:</b> vatten, mat som inte kräver kyl, ett sätt att laga mat och hålla värmen, och en radio på batteri.</div>
+    </div>
+
+    <div class="scen" id="s2">
+      <ol class="tl">
+        <li><div class="when">Direkt</div><div class="what"><b>Betalningar och inloggning slutar fungera</b><ul><li>Kort, Swish och e-legitimation kan ligga nere. Butiker kan bara ta kontanter, eller inget alls.</li><li>Uttagsautomater kan vara tomma eller ur funktion.</li></ul></div></li>
+        <li><div class="when">Samma dag</div><div class="what"><b>Samhällets system påverkas</b><ul><li>Apotek kan ha svårt att se recept. Vård kan få svårt att nå journaler.</li><li>Kommunikationen blir rörig, och falska uppgifter sprids snabbt.</li><li>Ibland drabbas också el, vatten eller transporter, eftersom de styrs av datorer.</li></ul></div></li>
+        <li><div class="when">Dagar</div><div class="what"><b>Den som har kontanter och mat hemma klarar sig</b><ul><li>Attacker kan ta dagar eller veckor att reda ut.</li><li>Lita på myndigheternas kanaler, inte på rykten i sociala medier.</li></ul></div></li>
+      </ol>
+      <div class="do"><b>Viktigast:</b> kontanter i små valörer, betalkort från mer än en bank, mediciner för flera dagar och viktiga telefonnummer på papper.</div>
+    </div>
+
+    <div class="scen" id="s3">
+      <ol class="tl">
+        <li><div class="when">Under stormen</div><div class="what"><b>Stanna inne</b><ul><li>Träd faller över elledningar och vägar. Strömavbrott är vanligt, ibland i flera dagar på landsbygden.</li><li>Vid översvämning kan källare och bottenvåning bli oanvändbara, och avloppet kan backa.</li></ul></div></li>
+        <li><div class="when">Efteråt</div><div class="what"><b>Vägarna kan vara stängda</b><ul><li>Du kan bli isolerad hemma eller inte komma hem.</li><li>Dricksvattnet kan bli förorenat. Följ kommunens råd om kokning.</li></ul></div></li>
+      </ol>
+      <div class="do"><b>Viktigast:</b> samma som vid strömavbrott, plus värdesaker och dokument högt upp och vattentätt, och en packad väska om du måste lämna hemmet.</div>
+    </div>
+
+    <div class="scen" id="s4">
+      <ol class="tl">
+        <li><div class="when">Direkt</div><div class="what"><b>Inget i kranen, eller vatten du inte kan dricka</b><ul><li>Orsaken kan vara en ledningsläcka, strömavbrott, förorening eller sabotage.</li><li>Toaletten går inte att spola. Disk och hygien blir svårt.</li></ul></div></li>
+        <li><div class="when">Efter några timmar</div><div class="what"><b>Kommunen ordnar tappställen</b><ul><li>Det kan dröja, och du behöver något att bära hem vattnet i.</li><li>Vid kokningsrekommendation: koka vattnet tills det bubblar kraftigt.</li></ul></div></li>
+      </ol>
+      <div class="do"><b>Viktigast:</b> vatten på flaskor, tomma dunkar med lock för att hämta mer, och sopsäckar för en nödtoalett.</div>
+    </div>
+
+    <div class="scen" id="s5">
+      <ol class="tl">
+        <li><div class="when">Höjd beredskap</div><div class="what"><b>Samhället ställer om</b><ul><li>Regeringen kan besluta om höjd beredskap. Den som har krigsplacering ska inställa sig.</li><li>Varor kan bli svåra att få tag i, och el, transporter och betalningar kan störas under lång tid.</li></ul></div></li>
+        <li><div class="when">Vid larm</div><div class="what"><b>Lyssna på radion</b><ul><li>Viktigt meddelande till allmänheten (VMA) i Sverige: 7 sekunders ton och 14 sekunders paus, under minst 2 minuter. Gå inomhus och lyssna på Sveriges Radio P4.</li><li>Vid flyglarm: ta skydd i närmaste skyddsrum, källare eller annat skyddat utrymme.</li></ul></div></li>
+        <li><div class="when">Efteråt</div><div class="what"><b>Klara dig själv längre</b><ul><li>Du kan behöva klara dig utan hjälp i mer än en vecka.</li><li>Var kritisk till information. Falska uppgifter sprids med flit.</li></ul></div></li>
+      </ol>
+      <div class="do"><b>Viktigast:</b> allt i den här guiden, plus att du vet var närmaste skyddsrum finns och har pass, id och viktiga papper samlade.</div>
+    </div>
+  </div>
+</section>
+
+<section id="law">
+  <div class="wrap">
+    <div class="eyebrow">Steg 3</div>
+    <h2 class="t">Vad säger myndigheterna?</h2>
+    <p class="sub">Grunderna är desamma överallt: vatten, mat, värme, information. Länderna skiljer sig mest i hur länge du ska klara dig.</p>
+    <div class="tblwrap"><table class="tbl">
+      <tr><th>Land</th><th>Myndighet</th><th>Klara dig själv</th><th>Vatten per person och dygn</th></tr>
+      <tr><td>Sverige</td><td>MSB</td><td>Minst 1 vecka</td><td>Minst 3 liter. Livsmedelsverket säger 3 till 5 liter</td></tr>
+      <tr><td>Norge</td><td>DSB</td><td>1 vecka, höjt från 3 dygn 2024</td><td>Minst 3 liter till dryck och matlagning</td></tr>
+      <tr><td>Tyskland</td><td>BBK</td><td>10 dagar</td><td>2 liter, och 2 200 kcal mat per dag</td></tr>
+      <tr><td>Danmark</td><td>Beredskabsstyrelsen</td><td>3 dygn</td><td>3 liter</td></tr>
+      <tr><td>Finland</td><td>SPEK, 72 tuntia</td><td>72 timmar</td><td>Minst 5 liter flaskvatten per person</td></tr>
+      <tr><td>EU</td><td>EU-kommissionen</td><td>Minst 72 timmar</td><td>Riktlinjer tas fram</td></tr>
+      <tr><td>USA</td><td>Ready.gov, FEMA</td><td>Flera dagar</td><td>1 gallon (3,8 liter), även till hygien</td></tr>
+    </table></div>
+    <p class="note">Den här guiden räknar med de svenska och norska råden: minst 3 liter vatten per person och dygn, och mat som ger cirka 2 200 kcal per vuxen och dygn.</p>
+  </div>
+</section>
+
+<section id="calc">
+  <div class="wrap">
+    <div class="eyebrow">Steg 4</div>
+    <h2 class="t">Räkna ut för ditt hushåll</h2>
+    <p class="sub">Fyll i vilka som bor hemma och hur länge ni vill klara er. Allt räknas här på sidan. Ingenting skickas någonstans.</p>
+
+    <div class="calc">
+      <div>
+        <h3>Vilka bor hemma?</h3>
+        <div class="who" id="who"></div>
+        <h3 style="margin-top:22px">Hur länge?</h3>
+        <div class="days" id="days">
+          <button type="button" data-d="3">72 timmar<small>EU, Danmark</small></button>
+          <button type="button" data-d="7">1 vecka<small>Sverige, Norge</small></button>
+          <button type="button" data-d="14">2 veckor<small>Bra mål</small></button>
+          <button type="button" data-d="30">1 månad<small>För den vane</small></button>
+        </div>
+      </div>
+      <div>
+        <h3>Det här behöver ni</h3>
+        <div class="res">
+          <div class="r"><b id="o-water">0 L</b><span>vatten till dryck och mat</span></div>
+          <div class="r"><b id="o-water2">0 L</b><span>med disk och hygien</span></div>
+          <div class="r"><b id="o-kcal">0</b><span>kcal mat totalt</span></div>
+          <div class="r"><b id="o-cans">0</b><span>dunkar à 10 liter, om du lagrar allt själv</span></div>
+          <div class="r wide">
+            <span>Fördelning i inköpslistan nedan</span>
+            <div class="macro"><div id="m-k" style="background:#A97B22">Kolhydrater</div><div id="m-p" style="background:#34513B">Protein</div><div id="m-f" style="background:#7A5532;flex:1">Fett</div></div>
+            <span id="o-macro"></span>
+          </div>
+        </div>
+        <p class="note" id="o-pet"></p>
+        <button class="btn akutbtn" type="button" id="ak-open"><span class="dot"></span>Akut: vad ska jag köpa nu?</button>
+        <div class="actions no-print">
+          <a class="btn" href="#shop">Visa inköpslistan</a>
+          <button class="btn ghost" type="button" id="copy">Kopiera länk till listan</button>
+          <button class="btn ghost" type="button" onclick="window.print()">Skriv ut</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="akut" id="akut" hidden></div>
+
+    <div class="shop" id="shop">
+      <div class="list">
+        <h3>Inköpslista: mat <span id="o-for" style="font-size:18px;color:var(--mute);font-family:var(--body);font-weight:500"></span></h3>
+        <div id="food"></div>
+      </div>
+      <div class="side">
+        <div class="card">
+          <h4>Så är listan räknad</h4>
+          <p style="font-size:15px">Varje vara är vald för att hålla länge i rumstemperatur. Mängderna ger tillsammans cirka 2 200 kcal per vuxen och dag, med kolhydrater, protein och fett inom de nordiska näringsrekommendationerna. Barn och äldre räknas efter sitt behov.</p>
+          <p style="font-size:15px;margin:0">Förpackningar rundas uppåt. Hellre lite för mycket än för lite.</p>
+        </div>
+        <div class="card">
+          <h4>Byt gärna</h4>
+          <ul style="font-size:15px">
+            <li>Tonfisk mot makrill, sardiner eller kyckling på burk.</li>
+            <li>Köttfärssås mot vegetarisk gryta eller chili på burk.</li>
+            <li>Pasta mot nudlar eller couscous, som kokar snabbare.</li>
+            <li>Mjölkpulver mot UHT-mjölk eller havredryck.</li>
+          </ul>
+          <p style="font-size:14px;color:var(--mute);margin:10px 0 0">Byt mot något med ungefär lika mycket energi och protein.</p>
+        </div>
+        <div class="card">
+          <h4>Lägg också till</h4>
+          <ul style="font-size:15px">
+            <li>Salt, buljong och kryddor</li>
+            <li>Kaffe, te eller kakao</li>
+                        <li>Barnmat som barnen redan äter</li>
+            <li>Konservöppnare som inte kräver el</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="meals">
+  <div class="wrap">
+    <div class="eyebrow">Steg 5</div>
+    <h2 class="t">Så äter du av lagret</h2>
+    <p class="sub">Varje måltid har en kolhydratkälla för energi, protein för musklerna och fett för att hålla dig mätt. Allt kommer från inköpslistan ovan.</p>
+    <div class="meals">
+      <div class="meal"><div class="lbl">Frukost</div><h4>Havregrynsgröt med russin</h4>
+        <ul><li>Havregryn</li><li>Mjölkpulver rört i vatten</li><li>Russin</li><li>Knäckebröd med jordnötssmör</li></ul>
+        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span></div>
+        <div class="cold">Utan värme: blötlägg havregrynen i kallt vatten och mjölkpulver kvällen innan.</div></div>
+      <div class="meal"><div class="lbl">Lunch</div><h4>Bön och tonfisksallad</h4>
+        <ul><li>Bönor eller linser på burk</li><li>Tonfisk</li><li>Majs</li><li>Rapsolja, salt</li><li>Knäckebröd</li></ul>
+        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span><span class="tag v">Grönsaker</span></div>
+        <div class="cold">Äts kall. Kräver varken värme eller extra vatten.</div></div>
+      <div class="meal"><div class="lbl">Middag</div><h4>Pasta med köttfärssås</h4>
+        <ul><li>Snabbkokt pasta eller ris</li><li>Köttfärssås på burk</li><li>Krossade tomater</li><li>En skvätt olja</li></ul>
+        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span><span class="tag v">Grönsaker</span></div>
+        <div class="cold">Kräver kokning. Snabbpasta tar 3 minuter och sparar bränsle och vatten.</div></div>
+      <div class="meal"><div class="lbl">Mellanmål</div><h4>Energi mellan målen</h4>
+        <ul><li>Nötter och russin</li><li>Nyponsoppa, ger C-vitamin</li><li>En bit choklad</li></ul>
+        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag f">Fett</span><span class="tag v">Vitaminer</span></div>
+        <div class="cold">Äts kallt. Bra att ha nära till hands när det är kallt inne.</div></div>
+    </div>
+
+    <div class="days7">
+      <div class="tblwrap"><table class="tbl">
+        <tr><th>Dag</th><th>Frukost</th><th>Lunch</th><th>Middag</th></tr>
+        <tr><td>Dag 1</td><td>Havregrynsgröt med russin</td><td>Bön och tonfisksallad</td><td>Pasta med köttfärssås</td></tr>
+        <tr><td>Dag 2</td><td>Knäckebröd, jordnötssmör, mjölk</td><td>Tonfisk, majs och knäckebröd</td><td>Ris med bönor i tomatsås</td></tr>
+        <tr><td>Dag 3</td><td>Kalla havregryn med mjölk</td><td>Linssallad med olja och salt</td><td>Pasta med tonfisk och tomat</td></tr>
+        <tr><td>Dag 4</td><td>Havregrynsgröt med jordnötssmör</td><td>Knäckebröd, bönor och majs</td><td>Ris med köttfärssås</td></tr>
+      </table></div>
+      <p class="note">Börja med det som går att äta kallt om du är osäker på hur länge bränslet räcker. Ät det som ligger i frysen först, medan det fortfarande är fryst.</p>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="wrap">
+    <div class="eyebrow">Steg 6</div>
+    <h2 class="t">Sju områden, i den här ordningen</h2>
+    <p class="sub">Utan vatten klarar du dig några dagar, utan mat några veckor. Därför börjar du med vatten. Siffrorna i listorna räknas för hushållet du fyllde i.</p>
+
+    <div class="area">
+      <div class="area-h"><div class="num">1</div><h3>Vatten</h3></div>
+      <p class="why1">Det viktigaste av allt, och det de flesta saknar. Vatten tar plats och är tungt, så börja här.</p>
+      <div class="grid2">
+        <div>
+          <div class="big"><span class="v-water">0 L</span> <small>för ditt hushåll</small></div>
+          <ul>
+            <li>Minst 3 liter per person och dygn till dryck och matlagning.</li>
+            <li>Fyll rena PET-flaskor med kallt kranvatten ända upp och skruva åt locket.</li>
+            <li>Förvara mörkt och svalt. Byt ut vattnet ungefär två gånger per år och skriv datum på flaskan.</li>
+            <li>Lägg några flaskor i frysen, inte helt fulla. De kyler maten när strömmen går och blir dricksvatten när de tinar.</li>
+            <li>Är du osäker på vattnet: koka det tills det bubblar kraftigt.</li>
+          </ul>
+        </div>
+        <div class="buy"><h4>Köp</h4><div id="b-water"></div></div>
+      </div>
+      <div class="tip"><b>Tänk på:</b> du behöver också något att hämta vatten i. Kommunens tappställen hjälper inte om du inte kan bära hem vattnet.</div>
+    </div>
+
+    <div class="area">
+      <div class="area-h"><div class="num">2</div><h3>Mat</h3></div>
+      <p class="why1">Mat som klarar rumstemperatur, som ni redan äter och som går att äta kall eller laga snabbt.</p>
+      <div class="grid2">
+        <div>
+          <div class="big"><span class="v-kcal">0</span> <small>kcal för ditt hushåll</small></div>
+          <ul>
+            <li>Köp det ni redan äter. Ät det äldsta först och fyll på när du handlar. Då blir ingenting gammalt.</li>
+            <li>Välj sådant som går att äta kallt eller kokar på några minuter.</li>
+            <li>Små förpackningar är bättre än stora när kylen inte fungerar.</li>
+            <li>Förvara torrvaror i tättslutande burkar, svalt och torrt.</li>
+          </ul>
+        </div>
+        <div class="buy"><h4>Inköpslistan</h4><p style="margin:6px 0 10px">Hela listan med antal förpackningar står i räknaren ovan.</p><a class="btn" href="#shop">Till inköpslistan</a></div>
+      </div>
+    </div>
+
+    <div class="area">
+      <div class="area-h"><div class="num">3</div><h3>Värme och matlagning</h3></div>
+      <p class="why1">På vintern blir kylan snabbt det största problemet. Och utan el behöver du ett annat sätt att koka.</p>
+      <div class="grid2">
+        <div>
+          <ul>
+            <li>Samla alla i ett rum, gärna det minsta, och stäng dörrarna.</li>
+            <li>Häng filtar för fönster och dörrar. Lägg mattor på golvet.</li>
+            <li>Klä dig i flera lager och ha mössa på. Sov i sovsäck, gärna i ett tält inomhus.</li>
+            <li>Använd stormkök och gasolkök utomhus eller med mycket god ventilation. Grill och annat som inte är gjort för inomhusbruk ska aldrig användas inne, på grund av kolmonoxid.</li>
+            <li>Har du kamin eller braskamin: ha torr ved för hela perioden.</li>
+          </ul>
+        </div>
+        <div class="buy"><h4>Köp</h4><div id="b-heat"></div></div>
+      </div>
+      <div class="tip warn"><b>Viktigt:</b> levande ljus och kök inomhus är den vanligaste orsaken till bränder vid strömavbrott. Ha en brandvarnare med batteri och en brandsläckare.</div>
+    </div>
+
+    <div class="area">
+      <div class="area-h"><div class="num">4</div><h3>Ljus och ström</h3></div>
+      <p class="why1">Mörkret kommer tidigt på vintern. Och mobilen behöver laddas för att du ska kunna nå andra.</p>
+      <div class="grid2">
+        <div>
+          <ul>
+            <li>Pannlampa är bättre än ficklampa, du får händerna fria.</li>
+            <li>Ha batterier i samma storlek till allt, gärna AA.</li>
+            <li>Ladda powerbanken regelbundet. En laddad powerbank laddar en mobil flera gånger.</li>
+            <li>Spara mobilens batteri: sänk ljusstyrkan och slå på flygplansläge när du inte använder den.</li>
+          </ul>
+        </div>
+        <div class="buy"><h4>Köp</h4><div id="b-light"></div></div>
+      </div>
+    </div>
+
+    <div class="area">
+      <div class="area-h"><div class="num">5</div><h3>Information</h3></div>
+      <p class="why1">När mobilnätet går ner är radion det sätt myndigheterna når dig på.</p>
+      <div class="grid2">
+        <div>
+          <ul>
+            <li>Ha en radio som går på batteri, vev eller solceller.</li>
+            <li>I Sverige är Sveriges Radio P4 beredskapskanal. Ta reda på vilken frekvens P4 har där du bor och skriv upp den.</li>
+            <li>Lär dig signalen Viktigt meddelande till allmänheten. Den testas klockan 15 första helgfria måndagen i mars, juni, september och december.</li>
+            <li>Skriv viktiga telefonnummer på papper: familj, grannar, vård, försäkring.</li>
+            <li>Bestäm var familjen ska träffas om ni inte kan nå varandra.</li>
+          </ul>
+        </div>
+        <div class="buy"><h4>Köp</h4><div id="b-info"></div></div>
+      </div>
+    </div>
+
+    <div class="area">
+      <div class="area-h"><div class="num">6</div><h3>Medicin och hygien</h3></div>
+      <p class="why1">Apotek och vård kan vara svåra att nå. Och utan vatten blir hygienen viktig för att ingen ska bli sjuk.</p>
+      <div class="grid2">
+        <div>
+          <ul>
+            <li>Mediciner du tar varje dag för hela perioden, <b class="v-days">7 dagar</b> eller mer. Prata med din läkare om du behöver ett extra uttag.</li>
+            <li>Husapotek: plåster, förband, värktabletter, febertermometer och det ni brukar använda.</li>
+            <li>Nödtoalett: en hink med lock och kraftiga sopsäckar, när toaletten inte går att spola.</li>
+            <li>Våtservetter och handsprit när det inte finns vatten att tvätta sig i.</li>
+          </ul>
+        </div>
+        <div class="buy"><h4>Köp</h4><div id="b-hyg"></div></div>
+      </div>
+    </div>
+
+    <div class="area">
+      <div class="area-h"><div class="num">7</div><h3>Pengar och viktiga papper</h3></div>
+      <p class="why1">När kort och Swish inte fungerar, och om du måste lämna hemmet snabbt.</p>
+      <div class="grid2">
+        <div>
+          <ul>
+            <li>Kontanter i små valörer, så att du kan handla mat och bränsle i några dagar.</li>
+            <li>Betalkort från mer än en bank, ifall en bank drabbas.</li>
+            <li>Pass, id-kort, försäkringar och recept samlade i en vattentät mapp.</li>
+            <li>Kopior på papper, och gärna digitalt i en app som fungerar utan nät.</li>
+          </ul>
+        </div>
+        <div class="buy"><h4>Köp</h4><div id="b-pap"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="myths">
+  <div class="wrap">
+    <div class="eyebrow">Steg 7</div>
+    <h2 class="t">Vanliga misstag</h2>
+    <p class="sub">Sådant som sällan står i broschyrerna men som många nybörjare gör.</p>
+    <div class="myth">
+      <div class="m"><b>Nödmat du aldrig smakat</b>Frystorkade påsar för tusenlappar som ingen i familjen tycker om. Börja med vanlig mat ni redan äter.</div>
+      <div class="m"><b>Allt måste kokas</b>Pasta och ris kräver vatten och bränsle. Ha mat som går att äta kall, och räkna med att bränslet tar slut.</div>
+      <div class="m"><b>Lagret blir gammalt</b>Ett förråd som ingen roterar går ut i tysthet. Skriv upp datum och ät det äldsta först.</div>
+      <div class="m"><b>Bara mat, inget vatten</b>Vatten är det som saknas oftast. Börja där, även om det känns tråkigt.</div>
+      <div class="m"><b>Allt på en gång</b>Du behöver inte köpa allt i dag. Köp lite extra varje gång du handlar, så har du en vecka på en månad.</div>
+      <div class="m"><b>Mobilen som enda källa</b>Utan ström och mobilnät är en radio på batteri det enda som fungerar.</div>
+    </div>
+  </div>
+</section>
+
+<section id="list">
+  <div class="wrap">
+    <div class="eyebrow">Checklista</div>
+    <h2 class="t">Har du det här hemma?</h2>
+    <p class="sub">Bocka av. Skriv ut sidan om du vill ha listan på papper.</p>
+    <div class="check">
+      <div class="grp"><h4>Vatten</h4>
+      <label><input type="checkbox" data-k="c:Dricksvatten för hela perioden">Dricksvatten för hela perioden</label>
+      <label><input type="checkbox" data-k="c:Tomma dunkar med lock för att hämta vatten">Tomma dunkar med lock för att hämta vatten</label></div>
+      <div class="grp"><h4>Mat</h4>
+      <label><input type="checkbox" data-k="c:Mat som håller i rumstemperatur">Mat som håller i rumstemperatur</label>
+      <label><input type="checkbox" data-k="c:Mat som går att äta kall">Mat som går att äta kall</label>
+      <label><input type="checkbox" data-k="c:Konservöppnare">Konservöppnare</label></div>
+      <div class="grp"><h4>Värme</h4>
+      <label><input type="checkbox" data-k="c:Sovsäck eller varma filtar till alla">Sovsäck eller varma filtar till alla</label>
+      <label><input type="checkbox" data-k="c:Stormkök eller gasolkök och bränsle">Stormkök eller gasolkök och bränsle</label>
+      <label><input type="checkbox" data-k="c:Tändstickor eller tändare">Tändstickor eller tändare</label>
+      <label><input type="checkbox" data-k="c:Brandvarnare och brandsläckare">Brandvarnare och brandsläckare</label></div>
+      <div class="grp"><h4>Ljus och ström</h4>
+      <label><input type="checkbox" data-k="c:Pannlampa eller ficklampa">Pannlampa eller ficklampa</label>
+      <label><input type="checkbox" data-k="c:Batterier">Batterier</label>
+      <label><input type="checkbox" data-k="c:Laddad powerbank">Laddad powerbank</label></div>
+      <div class="grp"><h4>Information</h4>
+      <label><input type="checkbox" data-k="c:Radio på batteri, vev eller solceller">Radio på batteri, vev eller solceller</label>
+      <label><input type="checkbox" data-k="c:Viktiga telefonnummer på papper">Viktiga telefonnummer på papper</label></div>
+      <div class="grp"><h4>Medicin och hygien</h4>
+      <label><input type="checkbox" data-k="c:Mediciner för hela perioden">Mediciner för hela perioden</label>
+      <label><input type="checkbox" data-k="c:Husapotek">Husapotek</label>
+      <label><input type="checkbox" data-k="c:Våtservetter, handsprit, toalettpapper">Våtservetter, handsprit, toalettpapper</label>
+      <label><input type="checkbox" data-k="c:Hink och sopsäckar till nödtoalett">Hink och sopsäckar till nödtoalett</label></div>
+      <div class="grp"><h4>Pengar och papper</h4>
+      <label><input type="checkbox" data-k="c:Kontanter i små valörer">Kontanter i små valörer</label>
+      <label><input type="checkbox" data-k="c:Betalkort från mer än en bank">Betalkort från mer än en bank</label>
+      <label><input type="checkbox" data-k="c:Pass, id och försäkringar samlade">Pass, id och försäkringar samlade</label></div>
+    </div>
+
+    <div class="cta">
+      <div>
+        <h3>Vet vad du har, och när det går ut</h3>
+        <p style="margin:0;font-size:18px">Lägg in det du köper i Prepper Stock. Appen räknar ut hur många dagar ditt hushåll klarar sig och påminner dig innan något går ut. Gratis, utan konto, och fungerar utan nät.</p>
+      </div>
+      <div class="stores">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=se.prepping.lager" target="_blank" rel="noopener">Google Play</a>
+        <a class="btn" href="https://apps.apple.com/app/id6825012438" target="_blank" rel="noopener">App Store</a>
+      </div>
+    </div>
+
+    <p class="src" style="margin-top:28px"><b>Källor:</b> MSB, Om krisen eller kriget kommer (2024). Livsmedelsverket, Livsmedel vid kris och matförrådslista. DSB, Råd om egenberedskap (2024). BBK och BLE, Notvorrat för tio dagar. Beredskabsstyrelsen, Forberedt på kriser (2024). SPEK, 72 tuntia. Ready.gov, Build a Kit. Europeiska kommissionen, Preparedness Union Strategy (2025). Nordic Nutrition Recommendations 2023. Uppgifterna om kyl och frys följer amerikanska livsmedelsverket USDA. Näringsvärdena är ungefärliga tabellvärden. Mängderna för spädbarn, hund och katt är ungefärliga uppskattningar, inte myndighetssiffror. Guiden är kontrollerad i november 2026.</p>
+    <p class="src"><a href="en/">English</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Poles Nathan Oshalem</span>
+    <nav>
+      <a href="../">Startsida</a>
+      <a href="../galleri/">Galleri</a>
+      <a href="../partners/">Partners</a>
+      <a href="../privacy/">Integritetspolicy</a>
+      <a href="mailto:prepperstock.global@gmail.com">Kontakt: prepperstock.global@gmail.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* Personer: kcal och liter vatten per dygn */
+  var P = [
+    { id: "a", namn: "Vuxna", info: "18 till 69 år", kcal: 2200, vatten: 3, n: 2 },
+    { id: "o", namn: "Äldre", info: "70 år och äldre", kcal: 1900, vatten: 3, n: 0 },
+    { id: "t", namn: "Tonåringar", info: "13 till 17 år", kcal: 2400, vatten: 3, n: 0 },
+    { id: "c", namn: "Barn", info: "4 till 12 år", kcal: 1700, vatten: 2, n: 0 },
+    { id: "s", namn: "Småbarn", info: "1 till 3 år", kcal: 1000, vatten: 1.5, n: 0 },
+    { id: "i", namn: "Spädbarn", info: "0 till 11 månader, ersättning", kcal: 0, vatten: 1, n: 0, djur: false, spad: true },
+    { id: "g", namn: "Hundar", info: "räknat på en medelstor hund", kcal: 0, vatten: 1, n: 0, djur: true },
+    { id: "k", namn: "Katter", info: "", kcal: 0, vatten: 0.25, n: 0, djur: true }
+  ];
+  var D = 7, S = {};
+  /* Sparas bara i den här webbläsaren. Ingenting skickas någonstans. */
+  var KEY = "ps-guide-1", ST = { c: {} };
+  try { ST = JSON.parse(localStorage.getItem(KEY)) || ST; } catch (e) {}
+  ST.c = ST.c || {}; ST.r = ST.r || {}; ST.add = ST.add || { a: [], f: [] };
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var XBTN = '<button type="button" class="rm" aria-label="Ta bort" title="Ta bort">×</button>';
+  function spara() { try { localStorage.setItem(KEY, JSON.stringify(ST)); } catch (e) {} }
+
+  /* Matkorgen för en vuxen i en vecka. Per 100 g: kcal, kolhydrater, protein, fett. */
+  var BAS = 15906;
+  var MAT = [
+    { namn: "Havregryn", info: "Frukost, kan ätas kallt", g: 500, pack: 750, enh: "paket", n: [370,59,13,7], t: "k" },
+    { namn: "Snabbmakaroner eller nudlar", info: "Kokar på 3 minuter", g: 500, pack: 500, enh: "paket", n: [355,71,12,1.5], t: "k" },
+    { namn: "Ris", info: "Gärna snabbris", g: 400, pack: 1000, enh: "paket", n: [350,78,7,0.6], t: "k" },
+    { namn: "Knäckebröd", info: "Håller i månader", g: 400, pack: 500, enh: "paket", n: [335,60,9,1.7], t: "k" },
+    { namn: "Bönor eller linser på burk", info: "400 g burk", g: 720, pack: 240, enh: "burkar", n: [110,16,7,0.5], t: "p" },
+    { namn: "Tonfisk på burk", info: "Cirka 150 g burk", g: 330, pack: 110, enh: "burkar", n: [110,0,25,1], t: "p" },
+    { namn: "Köttfärssås eller gryta på burk", info: "Cirka 500 g burk", g: 1000, pack: 500, enh: "burkar", n: [120,6,8,7], t: "p" },
+    { namn: "Jordnötssmör", info: "Mycket energi och protein", g: 340, pack: 340, enh: "burkar", n: [590,20,25,50], t: "f" },
+    { namn: "Rapsolja", info: "Fett och energi till maten", g: 100, pack: 500, enh: "flaskor à 0,5 l", n: [900,0,0,100], t: "f" },
+    { namn: "Mjölkpulver", info: "100 g ger 1 liter mjölk", g: 200, pack: 500, enh: "paket", n: [360,52,35,1], t: "p" },
+    { namn: "Krossade tomater", info: "400 g burk", g: 800, pack: 400, enh: "burkar", n: [25,4,1.3,0.2], t: "v" },
+    { namn: "Majs eller ärtor på burk", info: "Cirka 300 g burk", g: 400, pack: 285, enh: "burkar", n: [80,15,2.5,1], t: "v" },
+    { namn: "Nyponsoppa eller blåbärssoppa", info: "C-vitamin, 1 liter", g: 1000, pack: 1000, enh: "förpackningar", n: [55,13,0.3,0.1], t: "v" },
+    { namn: "Russin", info: "Mellanmål, i gröten", g: 250, pack: 250, enh: "paket", n: [300,70,3,0.5], t: "k" },
+    { namn: "Nötter", info: "Mellanmål", g: 200, pack: 200, enh: "påsar", n: [600,15,20,50], t: "f" },
+    { namn: "Mörk choklad", info: "Mellanmål, håller länge", g: 100, pack: 100, enh: "kakor", n: [540,45,7,35], t: "f" }
+  ];
+  var TAG = { k: "Kolhydrater", p: "Protein", f: "Fett", v: "Vitaminer" };
+
+  var $ = function (s) { return document.querySelector(s); };
+  var fmt = function (x) { return Math.round(x).toLocaleString("sv-SE"); };
+
+  /* Läs val från länken, till exempel ?a=2&c=1&d=7 */
+  var q = new URLSearchParams(location.search);
+  if (!q.has("d") && ST.h) q = new URLSearchParams(ST.h);
+  var harVal = P.some(function (p) { return q.has(p.id); });
+  P.forEach(function (p) { if (harVal) p.n = q.has(p.id) ? Math.max(0, Math.min(20, parseInt(q.get(p.id), 10) || 0)) : 0; });
+  if ([3,7,14,30].indexOf(parseInt(q.get("d"), 10)) > -1) D = parseInt(q.get("d"), 10);
+
+  var who = $("#who");
+  P.forEach(function (p) {
+    var row = document.createElement("div");
+    row.className = "p";
+    row.innerHTML = '<span>' + p.namn + '<small>' + p.info + '</small></span><div class="step"><button type="button" aria-label="Färre ' + p.namn.toLowerCase() + '">−</button><output aria-live="polite">' + p.n + '</output><button type="button" aria-label="Fler ' + p.namn.toLowerCase() + '">+</button></div>';
+    var b = row.querySelectorAll("button"), o = row.querySelector("output");
+    b[0].onclick = function () { if (p.n > 0) { p.n--; o.textContent = p.n; calc(); } };
+    b[1].onclick = function () { if (p.n < 20) { p.n++; o.textContent = p.n; calc(); } };
+    who.appendChild(row);
+  });
+  document.querySelectorAll("#days button").forEach(function (b) {
+    b.onclick = function () { D = parseInt(b.dataset.d, 10); calc(); };
+  });
+
+  function rows(el, list) {
+    $(el).innerHTML = list.map(function (r) { return '<div class="row"><span>' + r[0] + '</span><b>' + r[1] + '</b></div>'; }).join("");
+  }
+
+  function calc() {
+    document.querySelectorAll("#days button").forEach(function (b) { b.setAttribute("aria-pressed", parseInt(b.dataset.d, 10) === D); });
+    var folk = 0, kcalDag = 0, vattenDag = 0, djurVatten = 0;
+    var N = {}; P.forEach(function (p) { N[p.id] = p.n; });
+    P.forEach(function (p) {
+      if (p.djur) { djurVatten += p.n * p.vatten; return; }
+      folk += p.n; kcalDag += p.n * p.kcal; vattenDag += p.n * p.vatten;
+    });
+    vattenDag += djurVatten;
+    var kcal = kcalDag * D, vatten = vattenDag * D, vatten2 = vatten + folk * 2 * D;
+    S = { folk: folk, kcal: kcal, vatten: vatten, N: N, D: D };
+    $("#o-water").textContent = fmt(vatten) + " L";
+    $("#o-water2").textContent = fmt(vatten2) + " L";
+    $("#o-kcal").textContent = fmt(kcal);
+    $("#o-cans").textContent = Math.ceil(vatten / 10);
+    document.querySelectorAll(".v-water").forEach(function (e) { e.textContent = fmt(vatten) + " L"; });
+    document.querySelectorAll(".v-kcal").forEach(function (e) { e.textContent = fmt(kcal); });
+    document.querySelectorAll(".v-days").forEach(function (e) { e.textContent = D + " dagar"; });
+    $("#o-pet").textContent = (N.g || N.k) ? "Vattnet räknar med djuren. Hur mycket en hund behöver beror på storleken, ungefär 0,5 dl per kilo och dygn." : "";
+    var lbl = { 3: "72 timmar", 7: "1 vecka", 14: "2 veckor", 30: "1 månad" }[D];
+    $("#o-for").textContent = folk ? "för " + folk + (folk === 1 ? " person, " : " personer, ") + lbl : "";
+
+    /* Matlistan */
+    var f = kcal / BAS, sk = 0, sc = 0, sp = 0, sf = 0;
+    var html = folk ? "" : '<div class="li"><span></span><span class="n">Lägg till minst en person i räknaren.</span><span></span></div>';
+    if (folk) MAT.forEach(function (m) {
+      if (ST.r["f:" + m.namn]) return;
+      var g = m.g * f, st = Math.max(1, Math.ceil(g / m.pack - 0.15));
+      var gk = st * m.pack;
+      sk += m.n[0] * gk / 100; sc += m.n[1] * gk / 100; sp += m.n[2] * gk / 100; sf += m.n[3] * gk / 100;
+      html += '<label class="li"><input type="checkbox" data-k="f:' + m.namn + '"><span class="n">' + m.namn + '<span class="tag ' + m.t + '">' + TAG[m.t] + '</span><small>' + m.info + '</small></span><span class="q">' + st + ' <small>' + m.enh + '</small></span>' + XBTN + '</label>';
+    });
+    extra(D, N).forEach(function (x) {
+      if (ST.r["f:" + x[0]]) return;
+      html += '<label class="li"><input type="checkbox" data-k="f:' + x[0] + '"><span class="n">' + x[0] + '<span class="tag ' + x[3] + '">' + x[4] + '</span><small>' + x[1] + '</small></span><span class="q">' + x[2] + '</span>' + XBTN + '</label>';
+    });
+    ST.add.f.forEach(function (x) {
+      html += '<label class="li egen"><input type="checkbox" data-k="f:+' + esc(x[0]) + '"><span class="n">' + esc(x[0]) + '<span class="tag e">Egen</span></span><span class="q">' + esc(x[1]) + '</span>' + XBTN + '</label>';
+    });
+    html += addForm("f");
+    $("#food").innerHTML = html;
+    if (sk) {
+      var pk = Math.round(sc * 4 / sk * 100), pp = Math.round(sp * 4 / sk * 100), pf = 100 - pk - pp;
+      $("#m-k").style.width = pk + "%"; $("#m-k").textContent = "Kolhydrater " + pk + " %";
+      $("#m-p").style.width = pp + "%"; $("#m-p").textContent = "Protein " + pp + " %";
+      $("#m-f").textContent = "Fett " + pf + " %";
+      var mer = Math.round((sk / kcal - 1) * 100);
+      $("#o-macro").textContent = "Listan ger " + fmt(sk) + " kcal, varav " + fmt(sp) + " g protein." + (mer > 2 ? " Det är " + mer + " % mer än behovet, eftersom hela förpackningar räknas." : "");
+    } else { $("#o-macro").textContent = ""; }
+
+    /* Övriga områden */
+    var hush = Math.max(1, folk);
+    var patroner = Math.ceil(D * (20 + 10 * hush) / 60);
+    rows("#b-water", [
+      ["Flaskvatten eller egna fyllda flaskor", fmt(vatten) + " L"],
+      ["Dunk med kran, 10 liter, för att hämta vatten", Math.max(2, Math.ceil(hush / 2)) + " st"],
+      ["Vattenreningstabletter, som reserv", "1 förp"]
+    ]);
+    rows("#b-heat", [
+      ["Sovsäck eller varm filt", hush + " st"],
+      ["Stormkök eller gasolkök", "1 st"],
+      ["Gaspatroner à 230 g, ungefärligt", patroner + " st"],
+      ["Tändstickor eller tändare", "2 st"],
+      ["Brandvarnare med batteri och brandsläckare", "1 av varje"]
+    ]);
+    rows("#b-light", [
+      ["Pannlampa", Math.max(1, folk - (N.i || 0) - (N.s || 0)) + " st"],
+      ["Batterier AA", (hush * 4 + Math.ceil(D / 7) * 4) + " st"],
+      ["Powerbank, minst 10 000 mAh", Math.max(1, Math.ceil(hush / 2)) + " st"],
+      ["Värmeljus eller LED-ljus", Math.ceil(D * 2) + " st"]
+    ]);
+    rows("#b-info", [
+      ["Radio på batteri, vev eller solceller", "1 st"],
+      ["Telefonlista och karta på papper", "1 st"]
+    ]);
+    rows("#b-hyg", [
+      ["Daglig medicin", D + " dagar"],
+      ["Husapotek", "1 st"],
+      ["Hink med lock till nödtoalett", "1 st"],
+      ["Kraftiga sopsäckar", Math.ceil(hush * D / 2) + " st"],
+      ["Våtservetter", Math.ceil(hush * D / 7) + " förp"],
+      ["Toalettpapper", Math.ceil(hush * D / 4) + " rullar"]
+    ]);
+    rows("#b-pap", [
+      ["Kontanter i små valörer", "Några dagars mat"],
+      ["Vattentät dokumentmapp", "1 st"]
+    ]);
+
+    if ($("#akut") && !$("#akut").hidden) { var y = scrollY; akut(); scrollTo(0, y); }
+
+    /* Spara valen i länken */
+    var u = new URLSearchParams();
+    P.forEach(function (p) { if (p.n) u.set(p.id, p.n); });
+    u.set("d", D);
+    try { history.replaceState(null, "", location.pathname + "?" + u.toString() + location.hash); } catch (e) {}
+    ST.h = u.toString(); spara();
+    koppla();
+  }
+
+
+  /* Spädbarn, småbarn och djur: [namn, info, antal, tagg, taggtext] */
+  function pl(n, en, fler) { return n + ' <small>' + (n === 1 ? en : fler) + '</small>'; }
+  function extra(D, N) {
+    var r = [];
+    if (N.i) {
+      r.push(["Modersmjölksersättning", "Färdigblandad kräver inget rent vatten. Räknat på cirka 120 g pulver per dygn", pl(Math.ceil(N.i * D * 120 / 800), "paket à 800 g", "paket à 800 g"), "v", "Spädbarn"]);
+      r.push(["Nappflaskor och rengöring", "Diska i kokat vatten om kranen inte är säker", pl(Math.max(2, N.i * 2), "st", "st"), "v", "Spädbarn"]);
+    }
+    var bl = (N.i || 0) * 7 + (N.s || 0) * 5;
+    if (bl) r.push(["Blöjor", "Cirka 7 per dygn för spädbarn, 5 för småbarn", pl(Math.ceil(bl * D / 40), "paket à 40", "paket à 40"), "v", "Barn"]);
+    if (N.g) r.push(["Hundfoder, torrfoder", "Cirka 300 g per dygn för en medelstor hund", pl(Math.ceil(N.g * D * 300 / 3000), "säck à 3 kg", "säckar à 3 kg"), "f", "Hund"]);
+    if (N.k) {
+      r.push(["Kattmat, torrfoder", "Cirka 60 g per dygn", pl(Math.ceil(N.k * D * 60 / 2000), "paket à 2 kg", "paket à 2 kg"), "f", "Katt"]);
+      r.push(["Kattsand", "En säck räcker ungefär två veckor per katt", pl(Math.ceil(N.k * D / 14), "säck", "säckar"), "f", "Katt"]);
+    }
+    return r;
+  }
+
+  /* Lägga till och ta bort */
+  function addForm(l) {
+    var n = Object.keys(ST.r).filter(function (k) { return k.indexOf(l + ":") === 0; }).length;
+    return '<form class="addf" data-l="' + l + '"><input name="n" placeholder="Lägg till vara" maxlength="60" aria-label="Vara" required><input name="q" placeholder="Antal" maxlength="20" aria-label="Antal"><button class="btn" type="submit">Lägg till</button></form>' +
+      (n ? '<button type="button" class="undo" data-l="' + l + '">Visa ' + n + (n === 1 ? ' borttagen vara' : ' borttagna varor') + ' igen</button>' : '');
+  }
+  function omrita() { var y = scrollY; calc(); if (!$("#akut").hidden) akut(); scrollTo(0, y); }
+  document.addEventListener("submit", function (e) {
+    var f = e.target; if (!f.classList || !f.classList.contains("addf")) return;
+    e.preventDefault();
+    var n = f.n.value.trim(), q = f.q.value.trim(); if (!n) return;
+    ST.add[f.dataset.l].push([n, q]); spara(); omrita();
+  });
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest(".rm, .undo") : null; if (!b) return;
+    e.preventDefault();
+    if (b.classList.contains("undo")) {
+      var l = b.dataset.l;
+      Object.keys(ST.r).forEach(function (k) { if (k.indexOf(l + ":") === 0) delete ST.r[k]; });
+    } else {
+      var k = b.closest("label").querySelector("input").dataset.k, l2 = k.charAt(0), nm = k.slice(2);
+      if (nm.charAt(0) === "+") {
+        nm = nm.slice(1);
+        ST.add[l2] = ST.add[l2].filter(function (x) { return x[0] !== nm; });
+      } else ST.r[k] = 1;
+      delete ST.c[k];
+    }
+    spara(); omrita();
+  });
+
+  /* Kryss som sparas */
+  function koppla() {
+    document.querySelectorAll("input[data-k]").forEach(function (i) {
+      var k = i.dataset.k;
+      i.checked = !!ST.c[k];
+      i.closest("label").classList.toggle("done", i.checked);
+      i.onchange = function () {
+        if (i.checked) ST.c[k] = 1; else delete ST.c[k];
+        i.closest("label").classList.toggle("done", i.checked);
+        spara(); rakna();
+      };
+    });
+    rakna();
+  }
+  function rakna() {
+    var a = document.querySelectorAll("#akut input[data-k]");
+    if (!a.length || !$("#ak-cnt")) return;
+    var n = 0; a.forEach(function (i) { if (i.checked) n++; });
+    $("#ak-cnt").textContent = n === a.length ? "Allt är köpt" : n + " av " + a.length + " köpta";
+    $("#ak-fill").style.width = Math.round(n / a.length * 100) + "%";
+  }
+
+  /* Akutlistan */
+  var KALL = ["Knäckebröd", "Havregryn", "Bönor eller linser på burk", "Tonfisk på burk", "Köttfärssås eller gryta på burk", "Jordnötssmör", "Mjölkpulver", "Nyponsoppa eller blåbärssoppa", "Russin", "Nötter", "Mörk choklad"];
+  function akut() {
+    var N = S.N, D = S.D, folk = S.folk, barn = (N.c || 0) + (N.s || 0) + (N.i || 0);
+    var lbl = { 3: "72 timmar", 7: "1 vecka", 14: "2 veckor", 30: "1 månad" }[D];
+    var hush = Math.max(1, folk), lampa = Math.max(1, folk - (N.i || 0) - (N.s || 0));
+    var G = [];
+    G.push(["Vatten", [["Flaskvatten", Math.ceil(S.vatten / 1.5) + " flaskor à 1,5 L", "Totalt " + fmt(S.vatten) + " liter. Bär det du orkar, fyll resten hemma."]]]);
+    var b = [];
+    extra(D, N).forEach(function (x) { if (x[3] === "v") b.push([x[0], x[2].replace(/<[^>]+>/g, ""), x[1]]); });
+    if (N.c || N.s) b.push(["Barnmat och klämmisar", "Det barnen brukar äta", "Gärna sådant som inte kräver kyl"]);
+    if (b.length) G.push(["Barnen", b]);
+    var m = [["Daglig medicin, om du kan hämta ut", D + " dagar", "Fråga apoteket"], ["Värktabletter", "1 förpackning", ""]];
+    if (barn) m.push(["Febernedsättande för barn", "1 förpackning", "Rätt sort för barnets ålder"]);
+    G.push(["Mediciner", m]);
+    var base = 0, f;
+    MAT.forEach(function (x) { if (KALL.indexOf(x.namn) > -1) base += x.n[0] * x.g / 100; });
+    f = S.kcal / base;
+    var mat = [];
+    MAT.forEach(function (x) {
+      if (KALL.indexOf(x.namn) < 0) return;
+      var st = Math.max(1, Math.ceil(x.g * f / x.pack - 0.15));
+      mat.push([x.namn, st + " " + x.enh, x.info]);
+    });
+    mat.push(["Konservöppnare", "1 st", "Om du inte har en"]);
+    if (folk) G.push(["Mat som går att äta kall", mat]);
+    var d = [];
+    extra(D, N).forEach(function (x) { if (x[3] === "f") d.push([x[0], x[2].replace(/<[^>]+>/g, ""), x[1]]); });
+    if (d.length) G.push(["Djuren", d]);
+    G.push(["Ljus och ström", [["Batterier AA", (hush * 4 + Math.ceil(D / 7) * 4) + " st", ""], ["Pannlampa", lampa + " st", "Om ni saknar"], ["Värmeljus eller LED-ljus", Math.ceil(D * 2) + " st", ""]]]);
+    G.push(["Värme och matlagning", [["Gaspatroner till stormkök", Math.ceil(D * (20 + 10 * hush) / 60) + " st", "Om du har kök"], ["Tändstickor", "2 askar", ""]]]);
+    G.push(["Hygien", [["Toalettpapper", Math.ceil(hush * D / 4) + " rullar", ""], ["Våtservetter", Math.ceil(hush * D / 7) + " förp", ""], ["Kraftiga sopsäckar", Math.ceil(hush * D / 2) + " st", "Till nödtoalett"]]]);
+
+    var h = '<div class="ak-head"><div><div class="kicker" style="color:var(--rust)">Akut inköpslista</div><h3>' + (folk ? folk + (folk === 1 ? " person, " : " personer, ") : "") + lbl + '</h3></div><button class="btn ghost dark" type="button" id="ak-close">Stäng</button></div>';
+    h += '<div class="ak-first"><b>Gör det här först, det kostar inget</b><ol><li>Fyll kastruller, flaskor och badkaret med vatten medan kranen fungerar. Badkarsvattnet räcker till toaletten.</li><li>Ladda mobilen och powerbanken.</li><li>Ta ut kontanter, om automaterna fungerar.</li><li>Lyssna på Sveriges Radio P4.</li></ol></div>';
+    h += '<div class="ak-prog"><div><b id="ak-cnt">0 av 0 köpta</b><span>Kryssen sparas i den här telefonen.</span></div><button class="btn ghost dark" type="button" id="ak-reset">Rensa listan</button></div><div class="ak-bar"><i id="ak-fill"></i></div>';
+    h += '<p class="ak-lead">Köp i den här ordningen. Tar något slut, hoppa till nästa.</p>';
+    G = G.map(function (g) { return [g[0], g[1].filter(function (r) { return !ST.r["a:" + r[0]]; })]; }).filter(function (g) { return g[1].length; });
+    if (ST.add.a.length) G.push(["Egna varor", ST.add.a.map(function (x) { return ["+" + x[0], x[1], ""]; })]);
+    var txt = "AKUT INKÖPSLISTA, " + (folk ? folk + " personer, " : "") + lbl + "\n";
+    G.forEach(function (g, gi) {
+      h += '<div class="ak-g"><div class="ak-n">' + (gi + 1) + '</div><div class="ak-b"><h4>' + g[0] + '</h4>';
+      txt += "\n" + (gi + 1) + ". " + g[0].toUpperCase() + "\n";
+      g[1].forEach(function (r) {
+        var nm = r[0].charAt(0) === "+" ? esc(r[0].slice(1)) : r[0];
+        h += '<label class="ak-r"><input type="checkbox" data-k="a:' + esc(r[0]) + '"><span>' + nm + (r[2] ? '<small>' + r[2] + '</small>' : '') + '</span><b>' + esc(r[1]) + '</b>' + XBTN + '</label>';
+        txt += "[ ] " + (r[0].charAt(0) === "+" ? r[0].slice(1) : r[0]) + (r[1] ? ": " + r[1] : "") + "\n";
+      });
+      h += '</div></div>';
+    });
+    h += addForm("a");
+    h += '<div class="actions"><button class="btn" type="button" id="ak-copy">Kopiera listan som text</button></div>';
+    $("#akut").innerHTML = h;
+    $("#akut").hidden = false;
+    $("#ak-reset").onclick = function () {
+      Object.keys(ST.c).forEach(function (k) { if (k.indexOf("a:") === 0) delete ST.c[k]; });
+      spara(); koppla();
+    };
+    koppla();
+    $("#ak-close").onclick = function () { $("#akut").hidden = true; $("#calc").scrollIntoView(); };
+    $("#ak-copy").onclick = function () {
+      var bt = $("#ak-copy");
+      var ok = function () { bt.textContent = "Listan är kopierad"; setTimeout(function () { bt.textContent = "Kopiera listan som text"; }, 2200); };
+      try { navigator.clipboard.writeText(txt).then(ok, function () { bt.textContent = "Kunde inte kopiera"; }); } catch (e) { bt.textContent = "Kunde inte kopiera"; }
+    };
+    $("#akut").scrollIntoView();
+  }
+  $("#ak-open").onclick = function () { akut(); };
+  $("#ak-hero").onclick = function () { akut(); };
+
+  $("#copy").onclick = function () {
+    var t = location.href.split("#")[0] + "#shop";
+    var done = function () { $("#copy").textContent = "Länken är kopierad"; setTimeout(function () { $("#copy").textContent = "Kopiera länk till listan"; }, 2200); };
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function () { prompt("Kopiera länken:", t); });
+    else prompt("Kopiera länken:", t);
+  };
+
+  /* Flikar för scenarierna */
+  document.querySelectorAll(".tabs button").forEach(function (b) {
+    b.onclick = function () {
+      document.querySelectorAll(".tabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll(".scen").forEach(function (s) { s.classList.toggle("on", s.id === b.dataset.s); });
+    };
+  });
+
+  /* Markera var man är i snabbmenyn */
+  var links = document.querySelectorAll(".jump a");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) links.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll("main section").forEach(function (s) { io.observe(s); });
+  }
+
+  calc();
+})();
+</script>
+</body>
+</html>

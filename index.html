@@ -98,6 +98,12 @@ a.store small { opacity: .9; }
 .calc { background: var(--moss); color: var(--straw); padding: 72px 0 80px; }
 .calc-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
 .calc h2 { color: var(--straw); }
+.guide-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 30px; padding: 18px 22px; border-radius: 18px; background: var(--brass); color: var(--coal); text-decoration: none; max-width: 30em; transition: transform .15s; }
+.guide-cta[hidden] { display: none; }
+.guide-cta:hover { transform: translateY(-2px); }
+.guide-cta b { display: block; font: 700 24px/1.1 var(--display); }
+.guide-cta small { display: block; font: 500 15px/1.35 var(--body); margin-top: 4px; }
+.guide-cta .arr { font: 700 32px/1 var(--body); }
 .calc .intro { margin-top: 16px; color: var(--lichen); max-width: 30em; }
 .controls { display: grid; gap: 22px; margin-top: 30px; }
 .control label, .control .lbl { display: block; font: 600 16px/1.2 var(--body); margin-bottom: 10px; color: var(--lichen); }
@@ -291,10 +297,11 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
           </div>
         </div>
       </div>
+      <a class="guide-cta" id="guide-cta" href="guide/"><span><b>Få en färdig inköpslista för ert hushåll</b><small>Med barn, husdjur, akutlista och vad som händer när strömmen går</small></span><span class="arr" aria-hidden="true">→</span></a>
     </div>
     <div class="results" aria-live="polite">
       <div class="res"><div class="num" id="r-water">42</div><div class="what"><b data-t="water">liter dricksvatten</b><span data-t="water_s">3 liter per person och dygn</span></div></div>
-      <div class="res"><div class="num" id="r-kcal">28</div><div class="what"><b data-t="kcal">tusen kcal mat</b><span data-t="kcal_s">2 000 kcal per person och dygn</span></div></div>
+      <div class="res"><div class="num" id="r-kcal">28</div><div class="what"><b data-t="kcal">tusen kcal mat</b><span data-t="kcal_s">2 200 kcal per person och dygn</span></div></div>
       <div class="res"><div class="num" id="r-kg">7,8</div><div class="what"><b data-t="kg">kg torrvaror</b><span data-t="kg_s">om allt vore pasta, ris eller havregryn</span></div></div>
       <p class="fine" data-t="fine">En grov uppskattning för vuxna. Barn, äldre och den som har särskilda behov kan behöva annat. I appen räknar du i stället på det ni faktiskt har hemma.</p>
     </div>
@@ -488,6 +495,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
     <nav>
       <a href="galleri/" data-t="galleri">Galleri</a>
       <a href="partners/" data-t="partners">Partners</a>
+      <a href="guide/" id="guide-foot">Guide: Börja preppa</a>
       <a href="privacy/" data-t="privacy">Integritetspolicy</a>
       <a href="mailto:prepperstock.global@gmail.com" data-t="contact">Kontakt: prepperstock.global@gmail.com</a>
     </nav>
@@ -519,7 +527,7 @@ var T = {
     calc_intro: "Myndigheterna rekommenderar att hushållet klarar sig själv i minst en vecka. Räkna ut ungefär hur mycket vatten och mat det betyder för er.",
     people: "Antal personer", days: "Antal dygn", fewer: "Färre", more: "Fler",
     water: "liter dricksvatten", water_s: "3 liter per person och dygn",
-    kcal: "tusen kcal mat", kcal_s: "2 000 kcal per person och dygn",
+    kcal: "tusen kcal mat", kcal_s: "2 200 kcal per person och dygn",
     kg: "kg torrvaror", kg_s: "om allt vore pasta, ris eller havregryn",
     fine: "En grov uppskattning för vuxna. Barn, äldre och den som har särskilda behov kan behöva annat. I appen räknar du i stället på det ni faktiskt har hemma.",
     features: "Funktioner",
@@ -587,7 +595,7 @@ var T = {
     calc_intro: "Authorities recommend that every household can manage on its own for at least a week. Work out roughly how much water and food that means for you.",
     people: "Number of people", days: "Number of days", fewer: "Fewer", more: "More",
     water: "litres of drinking water", water_s: "3 litres per person per day",
-    kcal: "thousand kcal of food", kcal_s: "2,000 kcal per person per day",
+    kcal: "thousand kcal of food", kcal_s: "2,200 kcal per person per day",
     kg: "kg of dry food", kg_s: "if it were all pasta, rice or oats",
     fine: "A rough estimate for adults. Children, older people and anyone with special needs may need something else. In the app you count what you actually have at home.",
     features: "Features",
@@ -672,6 +680,11 @@ function inspRita() {
 function render() {
   var t = T[lang];
   document.documentElement.lang = lang;
+  var gc = document.getElementById("guide-cta"), gf = document.getElementById("guide-foot");
+  if (gc) gc.innerHTML = lang === "sv"
+    ? '<span><b>Få en färdig inköpslista för ert hushåll</b><small>Med barn, husdjur, akutlista och vad som händer när strömmen går</small></span><span class="arr" aria-hidden="true">→</span>'
+    : '<span><b>Get a ready made shopping list for your household</b><small>With children, pets, an emergency list and what happens when the power goes out</small></span><span class="arr" aria-hidden="true">→</span>';
+  if (gf) { gf.textContent = lang === "sv" ? "Guide: Börja preppa" : "Guide: Start prepping"; gf.href = lang === "sv" ? "guide/" : "guide/en/"; }
   document.querySelectorAll("a.ig:not(.tt)").forEach(function (a) { var u = lang === "sv" ? "prepperstock.app" : "prepperstock.global"; a.href = "https://www.instagram.com/" + u + "/"; a.setAttribute("aria-label", "Instagram: " + u); });
   document.title = t.title;
   var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", t.desc);
@@ -700,8 +713,10 @@ function fmt(n, d) { return n.toLocaleString(lang === "sv" ? "sv-SE" : "en-GB", 
 function calc() {
   document.getElementById("ppl").textContent = people;
   document.getElementById("r-water").textContent = fmt(people * days * 3, 0);
-  document.getElementById("r-kcal").textContent = fmt(people * days * 2, 0);
-  var kg = people * days * 2000 / 3600;
+  var tk = people * days * 2.2;
+  var g = document.getElementById("guide-cta"); if (g) g.href = (lang === "sv" ? "guide/" : "guide/en/") + "?a=" + people + "&d=" + days;
+  document.getElementById("r-kcal").textContent = fmt(tk, tk < 100 ? 1 : 0);
+  var kg = people * days * 2200 / 3600;
   document.getElementById("r-kg").textContent = fmt(kg, kg < 10 ? 1 : 0);
   document.querySelectorAll("[data-days]").forEach(function (b) { b.setAttribute("aria-pressed", +b.getAttribute("data-days") === days ? "true" : "false"); });
 }
