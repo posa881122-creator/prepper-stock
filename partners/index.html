@@ -182,14 +182,14 @@ footer { background:var(--forest); color:#AFC0A8; padding:30px 0 38px; font-size
       <div class="pt"><b data-t="p4b">Inga avgifter, inga bindningar</b><span data-t="p4">Det kostar ingenting. Vi ber bara att ni tipsar era kunder om appen, till exempel på er webbplats eller i sociala medier. Ingen ensamrätt, och avtalet kan avslutas när som helst.</span></div>
     </div>
     <button type="button" class="btn" id="mail" style="border:0;cursor:pointer" aria-expanded="false" aria-controls="val"><span data-t="btn">Skicka en ansökan</span><span aria-hidden="true">↗</span></button>
-    <div class="mob" id="mob" hidden><span>posa881122@gmail.com</span><button type="button" id="m-copy"><span id="m-copy-t" data-t="v_copy">Kopiera adressen</span></button></div>
+    <div class="mob" id="mob" hidden><span>prepperstock.global@gmail.com</span><button type="button" id="m-copy"><span id="m-copy-t" data-t="v_copy">Kopiera adressen</span></button></div>
     <div class="val" id="val" hidden>
       <b data-t="val_b">Hur vill du skicka?</b>
       <a id="v-gmail" target="_blank" rel="noopener"><span data-t="v_gmail">Öppna i Gmail</span><span aria-hidden="true">↗</span></a>
       <a id="v-outlook" target="_blank" rel="noopener"><span data-t="v_outlook">Öppna i Outlook</span><span aria-hidden="true">↗</span></a>
       <a id="v-app"><span data-t="v_app">Öppna i mejlappen</span><span aria-hidden="true">↗</span></a>
       <button type="button" id="v-copy"><span id="v-copy-t" data-t="v_copy">Kopiera adressen</span><span aria-hidden="true">⧉</span></button>
-      <p class="adr">posa881122@gmail.com</p>
+      <p class="adr">prepperstock.global@gmail.com</p>
     </div>
   </section>
 </div>
@@ -309,7 +309,7 @@ var lang;
 function render(){ var t=T[lang]; document.documentElement.lang=lang;
  document.querySelectorAll("[data-t]").forEach(function(e){ var k=e.getAttribute("data-t"); if(t[k]) e.textContent=t[k]; });
  document.querySelectorAll("[data-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-lang")===lang?"true":"false"); });
- var to="posa881122@gmail.com", su=encodeURIComponent(t.subj), bo=encodeURIComponent(t.body);
+ var to="prepperstock.global@gmail.com", su=encodeURIComponent(t.subj), bo=encodeURIComponent(t.body);
  document.getElementById("v-gmail").href="https://mail.google.com/mail/?view=cm&fs=1&to="+to+"&su="+su+"&body="+bo;
  document.getElementById("v-outlook").href="https://outlook.live.com/mail/0/deeplink/compose?to="+to+"&subject="+su+"&body="+bo;
  document.getElementById("v-app").href="mailto:"+to+"?subject="+su+"&body="+bo; partners(); }
@@ -317,12 +317,12 @@ var mobil=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(navigat
 if(mobil) document.getElementById("mob").hidden=false;
 function kopiera(id){ var el=document.getElementById(id);
  function ok(){ el.textContent=T[lang].copied; setTimeout(function(){ el.textContent=T[lang].v_copy; },2500); }
- if(navigator.clipboard){ navigator.clipboard.writeText("posa881122@gmail.com").then(ok,function(){}); } }
+ if(navigator.clipboard){ navigator.clipboard.writeText("prepperstock.global@gmail.com").then(ok,function(){}); } }
 document.getElementById("m-copy").addEventListener("click",function(){ kopiera("m-copy-t"); });
 document.getElementById("mail").addEventListener("click",function(){ if(mobil){ location.href=document.getElementById("v-app").href; return; } var v=document.getElementById("val"); v.hidden=!v.hidden; this.setAttribute("aria-expanded", v.hidden?"false":"true"); });
 document.getElementById("v-copy").addEventListener("click",function(){ var el=document.getElementById("v-copy-t");
  function ok(){ el.textContent=T[lang].copied; setTimeout(function(){ el.textContent=T[lang].v_copy; },2500); }
- if(navigator.clipboard){ navigator.clipboard.writeText("posa881122@gmail.com").then(ok,function(){}); } });
+ if(navigator.clipboard){ navigator.clipboard.writeText("prepperstock.global@gmail.com").then(ok,function(){}); } });
 document.addEventListener("click",function(e){ var l=e.target.closest("[data-lang]"); if(l){ lang=l.getAttribute("data-lang"); try{localStorage.setItem("ps-lang",lang);}catch(x){} render(); }});
 var saved=null; try{saved=localStorage.getItem("ps-lang");}catch(x){}
 var q=(location.search.match(/[?&]lang=(sv|en)/)||[])[1];
