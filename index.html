@@ -297,7 +297,7 @@ footer { background: #15241B; color: #B9C6B6; padding: 36px 0 44px; font-size: 1
           </div>
         </div>
       </div>
-      <a class="guide-cta" id="guide-cta" href="guide/"><span><b>Få en färdig inköpslista för ert hushåll</b><small>Med barn, husdjur, akutlista och vad som händer när strömmen går</small></span><span class="arr" aria-hidden="true">→</span></a>
+      <a class="guide-cta" id="guide-cta" href="guide/"><span><b>Ny som prepper? Börja här.</b><small>Testa hur förberedd du är, få en inköpslista för ert hushåll och lär dig ordna vatten, mat och värme utan el. Även för dig som redan har kommit igång.</small></span><span class="arr" aria-hidden="true">→</span></a>
     </div>
     <div class="results" aria-live="polite">
       <div class="res"><div class="num" id="r-water">42</div><div class="what"><b data-t="water">liter dricksvatten</b><span data-t="water_s">3 liter per person och dygn</span></div></div>
@@ -682,8 +682,8 @@ function render() {
   document.documentElement.lang = lang;
   var gc = document.getElementById("guide-cta"), gf = document.getElementById("guide-foot");
   if (gc) gc.innerHTML = lang === "sv"
-    ? '<span><b>Få en färdig inköpslista för ert hushåll</b><small>Med barn, husdjur, akutlista och vad som händer när strömmen går</small></span><span class="arr" aria-hidden="true">→</span>'
-    : '<span><b>Get a ready made shopping list for your household</b><small>With children, pets, an emergency list and what happens when the power goes out</small></span><span class="arr" aria-hidden="true">→</span>';
+    ? '<span><b>Ny som prepper? Börja här.</b><small>Testa hur förberedd du är, få en inköpslista för ert hushåll och lär dig ordna vatten, mat och värme utan el. Även för dig som redan har kommit igång.</small></span><span class="arr" aria-hidden="true">→</span>'
+    : '<span><b>New to prepping? Start here.</b><small>Test how prepared you are, get a shopping list for your household and learn to sort out water, food and heat without power. For experienced preppers too.</small></span><span class="arr" aria-hidden="true">→</span>';
   if (gf) { gf.textContent = lang === "sv" ? "Guide: Börja preppa" : "Guide: Start prepping"; gf.href = lang === "sv" ? "guide/" : "guide/en/"; }
   document.querySelectorAll("a.ig:not(.tt)").forEach(function (a) { var u = lang === "sv" ? "prepperstock.app" : "prepperstock.global"; a.href = "https://www.instagram.com/" + u + "/"; a.setAttribute("aria-label", "Instagram: " + u); });
   document.title = t.title;

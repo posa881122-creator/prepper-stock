@@ -111,6 +111,16 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .tbl td { padding: 12px 16px; border-top: 1px solid var(--line); vertical-align: top; }
 .tbl td:first-child { font-weight: 600; white-space: nowrap; }
 .tblwrap { overflow-x: auto; border-radius: 18px; }
+@media (max-width: 640px) {
+  .tblwrap { overflow: visible; }
+  .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; width: 100%; }
+  .tbl { background: none; border-radius: 0; }
+  .tbl thead, .tbl tr.th-row { display: none; }
+  .tbl tr { background: #fff; border-radius: 16px; padding: 12px 16px; margin-bottom: 10px; }
+  .tbl td { border: 0; padding: 4px 0; white-space: normal; }
+  .tbl td:first-child { font: 700 20px/1.2 var(--display); padding-bottom: 6px; white-space: normal; }
+  .tbl td[data-l]:not(:first-child)::before { content: attr(data-l); display: block; font: 600 12px/1.3 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--rust); }
+}
 .note { font-size: 14px; color: var(--mute); margin-top: 12px; }
 
 /* räknare */
@@ -133,8 +143,12 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .r b { display: block; font: 700 44px/1 var(--display); color: var(--brass); }
 .r span { font-size: 14px; opacity: .85; }
 .r.wide { grid-column: 1 / -1; }
-.macro { display: flex; height: 30px; border-radius: 9px; overflow: hidden; margin: 10px 0 8px; font: 600 13px/1 var(--body); }
-.macro div { display: flex; align-items: center; padding-left: 10px; white-space: nowrap; color: #fff; }
+.macro { display: flex; height: 18px; border-radius: 9px; overflow: hidden; margin: 10px 0 8px; font: 600 13px/1 var(--body); }
+.macro div { min-width: 0; }
+.mleg { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; margin-bottom: 8px; }
+.mleg span { display: inline-flex; align-items: center; gap: 6px; }
+.mleg i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.mleg em { font: 600 14px/1.3 var(--body); font-style: normal; }
 .calc .note { color: var(--straw); opacity: .65; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .btn { appearance: none; border: 0; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background: var(--brass); color: var(--coal); border-radius: 999px; padding: 12px 20px; font: 600 16px/1 var(--body); }
@@ -557,7 +571,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
     <div class="quote">Myndigheterna i Sverige och Norge ber varje hushåll att kunna klara sig <b>minst en vecka</b> utan hjälp. Tyskland säger <b>tio dagar</b>. Det här är vad den här guiden hjälper dig med.</div>
       <div class="events">
-      <h3 class="ev-h">Det har hänt, på riktigt</h3>
+      <h3 class="ev-h">Kriser vi kan lära av</h3>
       <div class="evgrid">
         <div class="ev"><div class="ev-y">2005</div><h4>Stormen Gudrun, Sverige</h4><p>Hundratusentals hushåll i södra Sverige blev utan ström, en del i flera veckor.</p><p class="ev-l"><b>Lärdom:</b> på landsbygden kan det dröja länge innan ledningarna lagas.</p></div>
         <div class="ev"><div class="ev-y">2021</div><h4>Vinterstormen i Texas, USA</h4><p>Nästan 10 miljoner människor blev utan ström mitt i en köldknäpp. Ungefär hälften förlorade rinnande vatten, i genomsnitt i två dygn. Delstaten räknade 246 dödsfall.</p><p class="ev-l"><b>Lärdom:</b> utan ström försvinner också värmen och vattnet.</p></div>
@@ -681,7 +695,8 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
           <div class="r"><b id="o-cans">0</b><span>dunkar à 10 liter, om du lagrar allt själv</span></div>
           <div class="r wide">
             <span>Fördelning i inköpslistan nedan</span>
-            <div class="macro"><div id="m-k" style="background:#A97B22">Kolhydrater</div><div id="m-p" style="background:#34513B">Protein</div><div id="m-f" style="background:#7A5532;flex:1">Fett</div></div>
+            <div class="macro"><div id="m-k" style="background:#A97B22"></div><div id="m-p" style="background:#34513B"></div><div id="m-f" style="background:#7A5532;flex:1"></div></div>
+            <div class="mleg"><span><i style="background:#A97B22"></i><em id="l-k">Kolhydrater</em></span><span><i style="background:#34513B"></i><em id="l-p">Protein</em></span><span><i style="background:#7A5532"></i><em id="l-f">Fett</em></span></div>
             <span id="o-macro"></span>
           </div>
         </div>
@@ -1177,7 +1192,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
         <div class="mc" data-bo="h r" data-k="Gasol eller kol"><h4>Grill</h4><p>Gasolgrill eller kolgrill, med kastrull på gallret.</p><ul class="pc"><li class="y">Många har redan en. Klarar stora kastruller.</li><li class="n">Bara utomhus, aldrig i garage eller under tak. Kolmonoxid kan döda. Kolla vad som gäller för balkong i ditt hus.</li></ul></div>
         <div class="mc" data-bo="h r" data-k="Ved"><h4>Kamin, vedspis eller kakelugn</h4><p>Laga mat på kaminens ovansida eller i vedspisen, samtidigt som du värmer huset.</p><ul class="pc"><li class="y">Värme och matlagning på en gång.</li><li class="n">Kräver torr ved för hela perioden och en sotad skorsten. Fungerar bara om kaminen har en plan yta.</li></ul></div>
         <div class="mc" data-bo="h r" data-k="Ved"><h4>Eldstad utomhus</h4><p>Eld i en eldstad, grillplats eller öppen plats på marken.</p><ul class="pc"><li class="y">Bränslet finns ofta i närheten på landet.</li><li class="n">Följ eldningsförbud. Kräver torr ved, tändmaterial och vana. Svårt i regn.</li></ul></div>
-        <div class="mc tip2" data-bo="l h r" data-k="Isolering"><h4>Höbox, sparar bränsle</h4><p>Koka upp maten några minuter, slå in kastrullen i en sovsäck, filtar eller en isolerad låda, och låt den stå. Maten blir klar av sin egen värme.</p><ul class="pc"><li class="y">Sparar en stor del av bränslet. Fungerar för ris, gryn, bönor och grytor.</li><li class="n">Tar längre tid. Fungerar inte för pasta, som blir mosig.</li></ul></div>
+        <div class="mc tip2" data-bo="l h r" data-k="Isolering"><h4>Värmelåda: maten kokar klart utan bränsle</h4><p>Koka upp maten några minuter, slå in kastrullen i en sovsäck, filtar eller en kylväska, och låt den stå. Maten blir klar av sin egen värme. Metoden kallas också eftervärmning, och förr kallades lådan hölåda.</p><ul class="pc"><li class="y">Sparar en stor del av bränslet. Fungerar för ris, gryn, bönor och grytor.</li><li class="n">Tar längre tid. Fungerar inte för pasta, som blir mosig.</li></ul></div>
         <div class="mc" data-bo="l h r" data-k="Kall vinter"><h4>Kyla som kylskåp</h4><p>På vintern kan en kall balkong, ett förråd eller en låda utomhus ersätta kylen.</p><ul class="pc"><li class="y">Gratis kyla för mjölk och rester.</li><li class="n">Skydda mot djur och sol. Fungerar bara när det är kallt ute.</li></ul></div>
       </div>
       <div class="do"><b>Spara bränsle:</b> lock på kastrullen, mat som kokar på några minuter, blötlägg gryn och bönor i förväg, och koka bara så mycket vatten du behöver.</div>
@@ -1395,6 +1410,15 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   function spara() { try { localStorage.setItem(KEY, JSON.stringify(ST)); } catch (e) {} }
 
   /* Matkorgen för en vuxen i en vecka. Per 100 g: kcal, kolhydrater, protein, fett. */
+  function packs(list, f, mal) {
+    var r = list.map(function (m) { var x = m.g * f / m.pack; return { m: m, x: x, st: Math.floor(x) }; });
+    var k = 0; r.forEach(function (o) { k += o.st * o.m.pack * o.m.n[0] / 100; });
+    while (r.length && k < mal) {
+      var b = null; r.forEach(function (o) { if (!b || o.x - o.st > b.x - b.st) b = o; });
+      b.st++; k += b.m.pack * b.m.n[0] / 100;
+    }
+    return r.filter(function (o) { return o.st > 0; });
+  }
   var BAS = 15906;
   var MAT = [
     { namn: "Havregryn", info: "Frukost, kan ätas kallt", g: 500, pack: 750, enh: "paket", n: [370,59,13,7], t: "k" },
@@ -1469,9 +1493,10 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     /* Matlistan */
     var f = kcal / BAS, sk = 0, sc = 0, sp = 0, sf = 0;
     var html = folk ? "" : '<div class="li"><span></span><span class="n">Lägg till minst en person i räknaren.</span><span></span></div>';
-    if (folk) MAT.forEach(function (m) {
-      if (ST.r["f:" + m.namn]) return;
-      var g = m.g * f, st = Math.max(1, Math.ceil(g / m.pack - 0.15));
+    var kvar = MAT.filter(function (m) { return !ST.r["f:" + m.namn]; }), mal = 0;
+    kvar.forEach(function (m) { mal += m.g * f * m.n[0] / 100; });
+    if (folk) packs(kvar, f, mal).forEach(function (o) {
+      var m = o.m, st = o.st;
       var gk = st * m.pack;
       sk += m.n[0] * gk / 100; sc += m.n[1] * gk / 100; sp += m.n[2] * gk / 100; sf += m.n[3] * gk / 100;
       html += '<label class="li"><input type="checkbox" data-k="f:' + m.namn + '"><span class="n">' + m.namn + '<span class="tag ' + m.t + '">' + TAG[m.t] + '</span><small>' + m.info + '</small></span><span class="q">' + st + ' <small>' + m.enh + '</small></span>' + XBTN + '</label>';
@@ -1487,9 +1512,9 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     $("#food").innerHTML = html;
     if (sk) {
       var pk = Math.round(sc * 4 / sk * 100), pp = Math.round(sp * 4 / sk * 100), pf = 100 - pk - pp;
-      $("#m-k").style.width = pk + "%"; $("#m-k").textContent = "Kolhydrater " + pk + " %";
-      $("#m-p").style.width = pp + "%"; $("#m-p").textContent = "Protein " + pp + " %";
-      $("#m-f").textContent = "Fett " + pf + " %";
+      $("#m-k").style.width = pk + "%"; $("#l-k").textContent = "Kolhydrater " + pk + " %";
+      $("#m-p").style.width = pp + "%"; $("#l-p").textContent = "Protein " + pp + " %";
+      $("#l-f").textContent = "Fett " + pf + " %";
       var mer = Math.round((sk / kcal - 1) * 100);
       $("#o-macro").textContent = "Listan ger " + fmt(sk) + " kcal, varav " + fmt(sp) + " g protein." + (mer > 2 ? " Det är " + mer + " % mer än behovet, eftersom hela förpackningar räknas." : "");
     } else { $("#o-macro").textContent = ""; }
@@ -1641,10 +1666,8 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     MAT.forEach(function (x) { if (KALL.indexOf(x.namn) > -1) base += x.n[0] * x.g / 100; });
     f = S.kcal / base;
     var mat = [];
-    MAT.forEach(function (x) {
-      if (KALL.indexOf(x.namn) < 0) return;
-      var st = Math.max(1, Math.ceil(x.g * f / x.pack - 0.15));
-      mat.push([x.namn, st + " " + x.enh, x.info]);
+    packs(MAT.filter(function (x) { return KALL.indexOf(x.namn) > -1; }), f, S.kcal).forEach(function (o) {
+      mat.push([o.m.namn, o.st + " " + o.m.enh, o.m.info]);
     });
     mat.push(["Konservöppnare", "1 st", "Om du inte har en"]);
     if (folk) G.push(["Mat som går att äta kall", mat]);
@@ -1740,9 +1763,14 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   });
 
 
+  document.querySelectorAll(".tbl").forEach(function (t) {
+    var h = [].map.call(t.querySelectorAll("thead th, tr:first-child th"), function (x) { return x.textContent.trim(); });
+    t.querySelectorAll("tr").forEach(function (r) { if (r.querySelector("th")) r.classList.add("th-row"); });
+    t.querySelectorAll("tbody tr").forEach(function (r) { [].forEach.call(r.children, function (c, i) { if (h[i]) c.setAttribute("data-l", h[i]); }); });
+  });
   /* Lösningar: flikar, boende och etiketter */
   var BO = {"l": "Lägenhet", "h": "Hus", "r": "Landsbygd"};
-  document.querySelectorAll(".mc").forEach(function (c) {
+  document.querySelectorAll("#how .mc").forEach(function (c) {
     var b = (c.dataset.bo || "").split(" ").filter(Boolean);
     var m = document.createElement("div"); m.className = "mt";
     m.innerHTML = '<span class="k">Kräver: ' + c.dataset.k + '</span><span>Passar: ' + (b.length === 3 ? "Alla boenden" : b.map(function (x) { return BO[x]; }).join(", ")) + '</span>';
@@ -1759,7 +1787,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     b.onclick = function () {
       var v = b.dataset.bo;
       document.querySelectorAll(".bo button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-      document.querySelectorAll(".mc").forEach(function (c) { c.hidden = v !== "all" && (" " + c.dataset.bo + " ").indexOf(" " + v + " ") < 0; });
+      document.querySelectorAll("#how .mc").forEach(function (c) { c.hidden = v !== "all" && (" " + c.dataset.bo + " ").indexOf(" " + v + " ") < 0; });
     };
   });
 
