@@ -251,6 +251,39 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .mt .k { background: #F3E6C4; color: #6B4E1A; }
 .cltag { display: inline-block; font: 600 11px/1 var(--body); letter-spacing: .6px; text-transform: uppercase; color: #2C6B8F; margin-bottom: 6px; }
 
+
+/* väskor */
+.btabs button[aria-selected="true"] { background: var(--forest); color: var(--straw); border-color: var(--forest); }
+.season button[aria-pressed="true"] { background: var(--brass); color: var(--coal); border-color: var(--brass); }
+.bpane { display: none; }
+.bpane.on { display: block; }
+.bhead { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-bottom: 16px; }
+.bpurp { background: var(--forest); color: var(--straw); border-radius: 22px; padding: 24px 26px; }
+.bpurp .lbl { font: 600 13px/1 var(--body); letter-spacing: 1.8px; text-transform: uppercase; color: var(--brass); }
+.bpurp h3 { font-size: 34px; color: var(--straw); margin: 8px 0 10px; }
+.bpurp p { margin: 0; font-size: 17px; }
+.bfacts { display: grid; gap: 8px; }
+.bfacts div { background: #fff; border-radius: 16px; padding: 14px 18px; }
+.bfacts b { display: block; font: 700 26px/1.1 var(--display); color: var(--forest); }
+.bfacts span { font-size: 14px; color: var(--mute); }
+.bgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.bgroup { background: #fff; border-radius: 20px; padding: 18px 20px; }
+.bgroup h4 { font-size: 22px; margin-bottom: 8px; color: var(--rust); }
+.bgroup label { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-top: 1px solid var(--line); font-size: 15.5px; }
+.bgroup h4 + label { border-top: 0; }
+.bgroup input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--forest); flex: 0 0 auto; }
+.bgroup label.done { text-decoration: line-through; opacity: .5; }
+.bgroup label[data-se]::after { content: attr(data-sel); margin-left: auto; font: 600 11px/1 var(--body); padding: 4px 6px; border-radius: 6px; background: var(--lichen); color: var(--mute); white-space: nowrap; align-self: center; }
+.se-empty { font-size: 15px; color: var(--mute); margin: 4px 0 0; }
+.bthink { background: #fff; border-radius: 20px; padding: 20px 24px; margin-top: 14px; border-left: 5px solid var(--brass); }
+.bthink h4 { font-size: 24px; margin-bottom: 4px; }
+.bthink ul { margin: 0; padding-left: 20px; }
+.bthink li { margin: 7px 0; }
+.bthink li.sw { list-style: none; margin-left: -20px; background: var(--paper); border-radius: 12px; padding: 10px 14px; }
+[data-se][hidden] { display: none !important; }
+@media (max-width: 900px) { .bhead { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 560px) { .btabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: -20px; margin-right: -20px; padding: 0 20px 4px; } .btabs::-webkit-scrollbar { display: none; } .btabs button { flex: 0 0 auto; } .bpurp h3 { font-size: 28px; } .bfacts { grid-template-columns: repeat(3, minmax(0,1fr)); } .bfacts div { padding: 10px 10px; } .bfacts b { font-size: 18px; } .bfacts span { font-size: 12px; display: block; line-height: 1.3; } .bgrid { grid-template-columns: minmax(0,1fr); } }
+
 /* matsedel */
 .meals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .meal { background: #fff; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; }
@@ -363,6 +396,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
         <li><a href="#calc">Räkna ut för ditt hushåll<small>Vatten, mat och inköpslista</small></a></li>
         <li><a href="#meals">Så äter du av lagret<small>Måltider med lång hållbarhet</small></a></li>
         <li><a href="#areas">Sju områden i ordning<small>Vatten först, papper sist</small></a></li>
+        <li><a href="#bags">Väskorna<small>Get home bag, bug out bag, bilen</small></a></li>
         <li><a href="#myths">Vanliga misstag<small>Och checklista att skriva ut</small></a></li>
       </ol>
     </nav>
@@ -371,7 +405,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <nav class="jump" aria-label="Hoppa till">
   <div class="wrap">
-    <a href="#why">Varför</a><a href="#scen">Vad händer</a><a href="#how">Lösningar</a><a href="#law">Myndigheterna</a><a href="#calc">Räknare</a><a href="#meals">Måltider</a><a href="#areas">Områden</a><a href="#myths">Misstag</a><a href="#list">Checklista</a>
+    <a href="#why">Varför</a><a href="#scen">Vad händer</a><a href="#how">Lösningar</a><a href="#law">Myndigheterna</a><a href="#calc">Räknare</a><a href="#meals">Måltider</a><a href="#areas">Områden</a><a href="#bags">Väskor</a><a href="#myths">Misstag</a><a href="#list">Checklista</a>
   </div>
 </nav>
 
@@ -822,9 +856,172 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   </div>
 </section>
 
-<section id="myths">
+<section id="bags">
   <div class="wrap">
     <div class="eyebrow">Steg 8</div>
+    <h2 class="t">Väskorna</h2>
+    <p class="sub">Lagret hemma hjälper bara om du är hemma. En packad väska gör att du klarar dig om du måste ta dig hem till fots, eller lämna hemmet med kort varsel.</p>
+    <div class="bo season" role="group" aria-label="Årstid">
+      <span>Årstid:</span>
+      <button type="button" data-se="s" aria-pressed="false">Sommar</button>
+      <button type="button" data-se="w" aria-pressed="true">Vinter</button>
+    </div>
+    <div class="tabs btabs" role="tablist">
+      <button role="tab" aria-selected="true" data-b="b1">Get home bag</button>
+      <button role="tab" aria-selected="false" data-b="b2">Bug out bag</button>
+      <button role="tab" aria-selected="false" data-b="b3">Bilen</button>
+    </div>
+
+    <div class="bpane on" id="b1">
+      <div class="bhead">
+        <div class="bpurp"><div class="lbl">Syfte</div><h3>Ta dig hem när inget fungerar</h3><p>Väskan finns där du är på dagarna: på jobbet, i skolan eller i bilen. Om tåg, bussar och vägar stannar ska den hjälpa dig att gå hem, även om det tar en hel dag eller mer.</p></div>
+        <div class="bfacts"><div><b>1 till 2 dygn</b><span>räcker den till</span></div><div><b>Lätt</b><span>du ska orka bära den hela vägen</span></div><div><b>Där du är</b><span>jobbet, skolan, bilen</span></div></div>
+      </div>
+      <div class="bgrid">
+        <div class="bgroup"><h4>Vatten och mat</h4>
+          <label><input type="checkbox" data-k="b:gh-vatten">Vattenflaska, 1 till 2 liter</label>
+          <label><input type="checkbox" data-k="b:gh-filter">Vattenfilter eller reningstabletter</label>
+          <label><input type="checkbox" data-k="b:gh-mat">Energirik mat som inte behöver lagas: nötter, bars, torkad frukt</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-termos">Termos med varm dryck, när du vet att det är på väg</label>
+        </div>
+        <div class="bgroup"><h4>Kläder och skor</h4>
+          <label><input type="checkbox" data-k="b:gh-skor">Bekväma skor att gå långt i, om du inte redan har det på dig</label>
+          <label><input type="checkbox" data-k="b:gh-strumpor">Ett par extra strumpor</label>
+          <label><input type="checkbox" data-k="b:gh-regn">Regnjacka eller regnponcho</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-under">Varmt underställ i ull</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-mossa">Mössa, vantar och halsduk eller buff</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-brodd">Broddar till skorna</label>
+          <label data-se="s"><input type="checkbox" data-k="b:gh-keps">Keps eller solhatt</label>
+        </div>
+        <div class="bgroup"><h4>Skydd och värme</h4>
+          <label><input type="checkbox" data-k="b:gh-filt">Räddningsfilt i folie</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-varm">Värmepåsar för händer och fötter</label>
+          <label data-se="s"><input type="checkbox" data-k="b:gh-sol">Solskydd</label>
+          <label data-se="s"><input type="checkbox" data-k="b:gh-mygg">Myggmedel</label>
+        </div>
+        <div class="bgroup"><h4>Ljus, karta och kontakt</h4>
+          <label><input type="checkbox" data-k="b:gh-lampa">Pannlampa med extra batterier</label>
+          <label><input type="checkbox" data-k="b:gh-karta">Karta på papper över vägen hem</label>
+          <label><input type="checkbox" data-k="b:gh-power">Powerbank och laddkabel</label>
+          <label><input type="checkbox" data-k="b:gh-nr">Viktiga telefonnummer på papper</label>
+          <label><input type="checkbox" data-k="b:gh-vissla">Visselpipa</label>
+          <label><input type="checkbox" data-k="b:gh-reflex">Reflexväst eller reflexer</label>
+        </div>
+        <div class="bgroup"><h4>Hälsa och övrigt</h4>
+          <label><input type="checkbox" data-k="b:gh-forband">Liten förbandslåda och skavsårsplåster</label>
+          <label><input type="checkbox" data-k="b:gh-med">Din dagliga medicin för ett par dygn</label>
+          <label><input type="checkbox" data-k="b:gh-kont">Kontanter i små valörer</label>
+          <label><input type="checkbox" data-k="b:gh-kniv">Multiverktyg eller fickkniv</label>
+          <label><input type="checkbox" data-k="b:gh-hyg">Våtservetter och lite toalettpapper</label>
+        </div>
+      </div>
+      <div class="bthink"><h4>Tänk på</h4><ul>
+        <li><b>Planera vägen hem i förväg.</b> Gå den en gång. Välj gärna två vägar, om en är avstängd.</li>
+        <li><b>Bestäm med familjen</b> vem som hämtar barnen och var ni möts om ni inte når varandra.</li>
+        <li><b>Väg väskan och gå en bit med den.</b> Det som känns lätt i hallen känns tungt efter två mil.</li>
+        <li><b>En vanlig person går ungefär 4 till 5 km i timmen</b> på bra väg, mindre i mörker, snö eller med barn.</li>
+        <li class="sw" data-se="w"><b>Vinter:</b> kylan är den stora faran. Undvik att bli svettig, ta av ett lager innan du börjar gå. Byt till torra strumpor. Ha vattnet innanför jackan så att det inte fryser.</li>
+        <li class="sw" data-se="s"><b>Sommar:</b> värmen och vätskan är den stora faran. Gå tidigt och sent på dagen, vila i skuggan och drick innan du blir törstig.</li>
+      </ul></div>
+    </div>
+
+    <div class="bpane" id="b2">
+      <div class="bhead">
+        <div class="bpurp"><div class="lbl">Syfte</div><h3>Lämna hemmet snabbt</h3><p>Vid brand, översvämning, gasläcka eller när myndigheterna ber dig evakuera ska du kunna ta väskan och gå inom några minuter. Den ska räcka tills du är hos släkt, vänner eller på en plats som kommunen ordnar.</p></div>
+        <div class="bfacts"><div><b>72 timmar</b><span>räcker den till</span></div><div><b>En per person</b><span>barn bär en egen liten</span></div><div><b>Vid dörren</b><span>lätt att ta med</span></div></div>
+      </div>
+      <div class="bgrid">
+        <div class="bgroup"><h4>Det viktigaste</h4>
+          <label><input type="checkbox" data-k="b:bo-dok">Kopior på pass, id och försäkringar i en vattentät påse</label>
+          <label><input type="checkbox" data-k="b:bo-med">Medicin för minst en vecka, och recepten</label>
+          <label><input type="checkbox" data-k="b:bo-kont">Kontanter i små valörer</label>
+          <label><input type="checkbox" data-k="b:bo-power">Laddad powerbank och laddkablar</label>
+          <label><input type="checkbox" data-k="b:bo-nr">Telefonnummer och adresser på papper</label>
+          <label><input type="checkbox" data-k="b:bo-nyck">Extra nycklar till hem och bil</label>
+        </div>
+        <div class="bgroup"><h4>Vatten och mat</h4>
+          <label><input type="checkbox" data-k="b:bo-vatten">Vatten, cirka 2 liter per person</label>
+          <label><input type="checkbox" data-k="b:bo-filter">Vattenfilter eller reningstabletter</label>
+          <label><input type="checkbox" data-k="b:bo-mat">Mat för tre dygn som inte behöver lagas</label>
+          <label><input type="checkbox" data-k="b:bo-kok">Litet kök, bränsle och tändstickor, om ni kan bära det</label>
+        </div>
+        <div class="bgroup"><h4>Kläder och sömn</h4>
+          <label><input type="checkbox" data-k="b:bo-klader">Ombyte av kläder och underkläder</label>
+          <label><input type="checkbox" data-k="b:bo-regn">Regnkläder</label>
+          <label><input type="checkbox" data-k="b:bo-sov">Sovsäck eller filt</label>
+          <label data-se="w"><input type="checkbox" data-k="b:bo-vinter">Vinterkläder: underställ, mössa, vantar, varma sockor</label>
+          <label data-se="w"><input type="checkbox" data-k="b:bo-liggu">Liggunderlag, kylan kommer underifrån</label>
+          <label data-se="s"><input type="checkbox" data-k="b:bo-sol">Solskydd, keps och myggmedel</label>
+        </div>
+        <div class="bgroup"><h4>Ljus, hälsa och hygien</h4>
+          <label><input type="checkbox" data-k="b:bo-lampa">Pannlampa och extra batterier</label>
+          <label><input type="checkbox" data-k="b:bo-radio">Liten radio på batteri eller vev</label>
+          <label><input type="checkbox" data-k="b:bo-forband">Förbandslåda</label>
+          <label><input type="checkbox" data-k="b:bo-hyg">Tandborste, tvål, våtservetter, toalettpapper, mensskydd</label>
+          <label><input type="checkbox" data-k="b:bo-glas">Glasögon eller linser</label>
+        </div>
+        <div class="bgroup"><h4>Barn och djur</h4>
+          <label><input type="checkbox" data-k="b:bo-barn">Blöjor, ersättning, nappflaska och något att göra</label>
+          <label><input type="checkbox" data-k="b:bo-gos">Ett gosedjur eller en favoritsak</label>
+          <label><input type="checkbox" data-k="b:bo-djur">Foder, vatten, koppel eller bur till djuren</label>
+        </div>
+      </div>
+      <div class="bthink"><h4>Tänk på</h4><ul>
+        <li><b>Bestäm vart ni ska.</b> Släkt eller vänner utanför ditt område är ofta bäst. Ha två alternativ.</li>
+        <li><b>Gå när myndigheterna säger det.</b> Vänta inte tills vägarna är fulla.</li>
+        <li><b>Stäng av el, vatten och gas om du hinner,</b> och lås. Ta med husdjuren.</li>
+        <li><b>Gå igenom väskan två gånger om året,</b> till exempel när klockan ställs om. Byt mat, vatten och mediciner som går ut, och kläder som barnen har vuxit ur.</li>
+        <li class="sw" data-se="w"><b>Vinter:</b> lägg till varma kläder och liggunderlag. En evakuering i kyla kräver mer än en i sommarvärme.</li>
+        <li class="sw" data-se="s"><b>Sommar:</b> mer vatten. Värme gör att du behöver dricka betydligt mer, särskilt barn och äldre.</li>
+      </ul></div>
+    </div>
+
+    <div class="bpane" id="b3">
+      <div class="bhead">
+        <div class="bpurp"><div class="lbl">Syfte</div><h3>Om du fastnar med bilen</h3><p>En olycka, ett snöoväder eller en stängd väg kan göra att du står still i timmar. Bilen ska hålla dig varm och säker tills hjälpen kommer, eller tills du kan ta dig vidare.</p></div>
+        <div class="bfacts"><div><b>Några timmar</b><span>till ett dygn</span></div><div><b>Alltid i bilen</b><span>året runt, byt efter säsong</span></div><div><b>Halv tank</b><span>kör aldrig på reserven</span></div></div>
+      </div>
+      <div class="bgrid">
+        <div class="bgroup"><h4>Säkerhet</h4>
+          <label><input type="checkbox" data-k="b:car-varn">Varningstriangel och reflexväst</label>
+          <label><input type="checkbox" data-k="b:car-lampa">Ficklampa eller pannlampa</label>
+          <label><input type="checkbox" data-k="b:car-forband">Förbandslåda</label>
+          <label><input type="checkbox" data-k="b:car-start">Startkablar eller en startbooster</label>
+          <label><input type="checkbox" data-k="b:car-ladd">Laddkabel till mobilen i bilen</label>
+        </div>
+        <div class="bgroup"><h4>Värme och mat</h4>
+          <label><input type="checkbox" data-k="b:car-filt">Filt eller sovsäck</label>
+          <label><input type="checkbox" data-k="b:car-vatten">Vatten och energirik mat</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-klader">Extra varma kläder, mössa och vantar</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-varm">Värmepåsar</label>
+        </div>
+        <div class="bgroup"><h4>Vinter</h4>
+          <label data-se="w"><input type="checkbox" data-k="b:car-spade">Snöspade</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-skrapa">Isskrapa och snöborste</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-sand">Sand eller grus att strö under hjulen</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-spol">Extra spolarvätska för vinter</label>
+          <p class="se-empty" data-se="s">Byt till vinterutrustningen i god tid innan första frosten.</p>
+        </div>
+        <div class="bgroup"><h4>Sommar</h4>
+          <label data-se="s"><input type="checkbox" data-k="b:car-mer-vatten">Mer vatten, flera liter</label>
+          <label data-se="s"><input type="checkbox" data-k="b:car-skugga">Solskydd och något att skapa skugga med</label>
+          <p class="se-empty" data-se="w">Spara sommarlistan till våren.</p>
+        </div>
+      </div>
+      <div class="bthink"><h4>Tänk på</h4><ul>
+        <li><b>Stanna i bilen</b> om det är kallt eller oväder, så länge det är säkert. Bilen är lättare att hitta än en människa.</li>
+        <li><b>Kör aldrig med låg tank,</b> särskilt på vintern. Tanka när det är halvt kvar.</li>
+        <li><b>Har du get home bag i bilen</b> kan du gå om det behövs.</li>
+        <li class="sw" data-se="w"><b>Vinter:</b> om du kör motorn för värme, håll avgasröret fritt från snö och öppna ett fönster en aning. Snö runt avgasröret kan fylla bilen med kolmonoxid. Kör motorn en stund i taget.</li>
+        <li class="sw" data-se="s"><b>Sommar:</b> lämna aldrig barn eller djur i en varm bil. Värme förstör vatten i plastflaskor, mediciner och batterier, så byt dem oftare.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="myths">
+  <div class="wrap">
+    <div class="eyebrow">Steg 9</div>
     <h2 class="t">Vanliga misstag</h2>
     <p class="sub">Sådant som sällan står i broschyrerna men som många nybörjare gör.</p>
     <div class="myth">
@@ -1294,6 +1491,23 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       document.querySelectorAll(".mc").forEach(function (c) { c.hidden = v !== "all" && (" " + c.dataset.bo + " ").indexOf(" " + v + " ") < 0; });
     };
   });
+
+
+  /* Väskor: flikar och årstid */
+  document.querySelectorAll(".btabs button").forEach(function (b) {
+    b.onclick = function () {
+      document.querySelectorAll(".btabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll(".bpane").forEach(function (p) { p.classList.toggle("on", p.id === b.dataset.b); });
+    };
+  });
+  function arstid(v) {
+    document.querySelectorAll(".season button").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.se === v); });
+    document.querySelectorAll("#bags [data-se]").forEach(function (e) { if (e.tagName !== "BUTTON") e.hidden = e.dataset.se !== v; });
+  }
+  document.querySelectorAll("#bags label[data-se]").forEach(function (l) { l.setAttribute("data-sel", l.dataset.se === "w" ? "Vinter" : "Sommar"); });
+  document.querySelectorAll(".season button").forEach(function (b) { b.onclick = function () { arstid(b.dataset.se); }; });
+  var mon = new Date().getMonth();
+  arstid(mon >= 3 && mon <= 8 ? "s" : "w");
 
   /* Markera var man är i snabbmenyn */
   var links = document.querySelectorAll(".jump a");

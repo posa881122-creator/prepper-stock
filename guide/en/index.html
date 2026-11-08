@@ -251,6 +251,39 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .mt .k { background: #F3E6C4; color: #6B4E1A; }
 .cltag { display: inline-block; font: 600 11px/1 var(--body); letter-spacing: .6px; text-transform: uppercase; color: #2C6B8F; margin-bottom: 6px; }
 
+
+/* väskor */
+.btabs button[aria-selected="true"] { background: var(--forest); color: var(--straw); border-color: var(--forest); }
+.season button[aria-pressed="true"] { background: var(--brass); color: var(--coal); border-color: var(--brass); }
+.bpane { display: none; }
+.bpane.on { display: block; }
+.bhead { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-bottom: 16px; }
+.bpurp { background: var(--forest); color: var(--straw); border-radius: 22px; padding: 24px 26px; }
+.bpurp .lbl { font: 600 13px/1 var(--body); letter-spacing: 1.8px; text-transform: uppercase; color: var(--brass); }
+.bpurp h3 { font-size: 34px; color: var(--straw); margin: 8px 0 10px; }
+.bpurp p { margin: 0; font-size: 17px; }
+.bfacts { display: grid; gap: 8px; }
+.bfacts div { background: #fff; border-radius: 16px; padding: 14px 18px; }
+.bfacts b { display: block; font: 700 26px/1.1 var(--display); color: var(--forest); }
+.bfacts span { font-size: 14px; color: var(--mute); }
+.bgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.bgroup { background: #fff; border-radius: 20px; padding: 18px 20px; }
+.bgroup h4 { font-size: 22px; margin-bottom: 8px; color: var(--rust); }
+.bgroup label { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-top: 1px solid var(--line); font-size: 15.5px; }
+.bgroup h4 + label { border-top: 0; }
+.bgroup input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--forest); flex: 0 0 auto; }
+.bgroup label.done { text-decoration: line-through; opacity: .5; }
+.bgroup label[data-se]::after { content: attr(data-sel); margin-left: auto; font: 600 11px/1 var(--body); padding: 4px 6px; border-radius: 6px; background: var(--lichen); color: var(--mute); white-space: nowrap; align-self: center; }
+.se-empty { font-size: 15px; color: var(--mute); margin: 4px 0 0; }
+.bthink { background: #fff; border-radius: 20px; padding: 20px 24px; margin-top: 14px; border-left: 5px solid var(--brass); }
+.bthink h4 { font-size: 24px; margin-bottom: 4px; }
+.bthink ul { margin: 0; padding-left: 20px; }
+.bthink li { margin: 7px 0; }
+.bthink li.sw { list-style: none; margin-left: -20px; background: var(--paper); border-radius: 12px; padding: 10px 14px; }
+[data-se][hidden] { display: none !important; }
+@media (max-width: 900px) { .bhead { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 560px) { .btabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-left: -20px; margin-right: -20px; padding: 0 20px 4px; } .btabs::-webkit-scrollbar { display: none; } .btabs button { flex: 0 0 auto; } .bpurp h3 { font-size: 28px; } .bfacts { grid-template-columns: repeat(3, minmax(0,1fr)); } .bfacts div { padding: 10px 10px; } .bfacts b { font-size: 18px; } .bfacts span { font-size: 12px; display: block; line-height: 1.3; } .bgrid { grid-template-columns: minmax(0,1fr); } }
+
 /* matsedel */
 .meals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .meal { background: #fff; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; }
@@ -363,6 +396,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
         <li><a href="#calc">Plan for your household<small>Water, food and shopping list</small></a></li>
         <li><a href="#meals">How to eat from your supplies<small>Meals that keep for a long time</small></a></li>
         <li><a href="#areas">Seven areas in order<small>Water first, papers last</small></a></li>
+        <li><a href="#bags">The bags<small>Get home bag, bug out bag, car</small></a></li>
         <li><a href="#myths">Common mistakes<small>And a checklist to print</small></a></li>
       </ol>
     </nav>
@@ -371,7 +405,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 <nav class="jump" aria-label="Jump to">
   <div class="wrap">
-    <a href="#why">Why</a><a href="#scen">What happens</a><a href="#how">Solutions</a><a href="#law">Authorities</a><a href="#calc">Calculator</a><a href="#meals">Meals</a><a href="#areas">Areas</a><a href="#myths">Mistakes</a><a href="#list">Checklist</a>
+    <a href="#why">Why</a><a href="#scen">What happens</a><a href="#how">Solutions</a><a href="#law">Authorities</a><a href="#calc">Calculator</a><a href="#meals">Meals</a><a href="#areas">Areas</a><a href="#bags">Bags</a><a href="#myths">Mistakes</a><a href="#list">Checklist</a>
   </div>
 </nav>
 
@@ -822,9 +856,172 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   </div>
 </section>
 
-<section id="myths">
+<section id="bags">
   <div class="wrap">
     <div class="eyebrow">Step 8</div>
+    <h2 class="t">The bags</h2>
+    <p class="sub">Supplies at home only help if you are at home. A packed bag means you can cope if you have to walk home, or leave home at short notice.</p>
+    <div class="bo season" role="group" aria-label="Season">
+      <span>Season:</span>
+      <button type="button" data-se="s" aria-pressed="false">Summer</button>
+      <button type="button" data-se="w" aria-pressed="true">Winter</button>
+    </div>
+    <div class="tabs btabs" role="tablist">
+      <button role="tab" aria-selected="true" data-b="b1">Get home bag</button>
+      <button role="tab" aria-selected="false" data-b="b2">Bug out bag</button>
+      <button role="tab" aria-selected="false" data-b="b3">The car</button>
+    </div>
+
+    <div class="bpane on" id="b1">
+      <div class="bhead">
+        <div class="bpurp"><div class="lbl">Purpose</div><h3>Get home when nothing works</h3><p>The bag is where you spend your days: at work, at school or in the car. If trains, buses and roads stop, it should help you walk home, even if it takes a whole day or more.</p></div>
+        <div class="bfacts"><div><b>1 to 2 days</b><span>it should last</span></div><div><b>Light</b><span>you must carry it all the way</span></div><div><b>Where you are</b><span>work, school, car</span></div></div>
+      </div>
+      <div class="bgrid">
+        <div class="bgroup"><h4>Water and food</h4>
+          <label><input type="checkbox" data-k="b:gh-vatten">Water bottle, 1 to 2 liters</label>
+          <label><input type="checkbox" data-k="b:gh-filter">Water filter or purification tablets</label>
+          <label><input type="checkbox" data-k="b:gh-mat">High energy food that needs no cooking: nuts, bars, dried fruit</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-termos">Thermos with a hot drink, when you know something is coming</label>
+        </div>
+        <div class="bgroup"><h4>Clothes and shoes</h4>
+          <label><input type="checkbox" data-k="b:gh-skor">Comfortable shoes for walking far, if you are not already wearing them</label>
+          <label><input type="checkbox" data-k="b:gh-strumpor">A spare pair of socks</label>
+          <label><input type="checkbox" data-k="b:gh-regn">Rain jacket or rain poncho</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-under">Warm wool base layer</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-mossa">Hat, gloves and a scarf or neck gaiter</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-brodd">Ice cleats for your shoes</label>
+          <label data-se="s"><input type="checkbox" data-k="b:gh-keps">Cap or sun hat</label>
+        </div>
+        <div class="bgroup"><h4>Protection and warmth</h4>
+          <label><input type="checkbox" data-k="b:gh-filt">Emergency foil blanket</label>
+          <label data-se="w"><input type="checkbox" data-k="b:gh-varm">Hand and foot warmers</label>
+          <label data-se="s"><input type="checkbox" data-k="b:gh-sol">Sunscreen</label>
+          <label data-se="s"><input type="checkbox" data-k="b:gh-mygg">Insect repellent</label>
+        </div>
+        <div class="bgroup"><h4>Light, map and contact</h4>
+          <label><input type="checkbox" data-k="b:gh-lampa">Headlamp with spare batteries</label>
+          <label><input type="checkbox" data-k="b:gh-karta">Paper map of the way home</label>
+          <label><input type="checkbox" data-k="b:gh-power">Power bank and charging cable</label>
+          <label><input type="checkbox" data-k="b:gh-nr">Important phone numbers on paper</label>
+          <label><input type="checkbox" data-k="b:gh-vissla">Whistle</label>
+          <label><input type="checkbox" data-k="b:gh-reflex">Reflective vest or reflectors</label>
+        </div>
+        <div class="bgroup"><h4>Health and other</h4>
+          <label><input type="checkbox" data-k="b:gh-forband">Small first aid kit and blister plasters</label>
+          <label><input type="checkbox" data-k="b:gh-med">Your daily medicine for a couple of days</label>
+          <label><input type="checkbox" data-k="b:gh-kont">Cash in small bills</label>
+          <label><input type="checkbox" data-k="b:gh-kniv">Multi tool or pocket knife</label>
+          <label><input type="checkbox" data-k="b:gh-hyg">Wet wipes and some toilet paper</label>
+        </div>
+      </div>
+      <div class="bthink"><h4>Keep in mind</h4><ul>
+        <li><b>Plan the way home in advance.</b> Walk it once. Ideally choose two routes, in case one is closed.</li>
+        <li><b>Agree with your family</b> who picks up the children and where you meet if you cannot reach each other.</li>
+        <li><b>Weigh the bag and walk a while with it.</b> What feels light in the hallway feels heavy after 20 km (12 miles).</li>
+        <li><b>An average person walks about 4 to 5 km (2.5 to 3 miles) an hour</b> on a good road, less in the dark, in snow or with children.</li>
+        <li class="sw" data-se="w"><b>Winter:</b> the cold is the big danger. Avoid getting sweaty, take off a layer before you start walking. Change into dry socks. Keep the water inside your jacket so it does not freeze.</li>
+        <li class="sw" data-se="s"><b>Summer:</b> heat and dehydration are the big danger. Walk early and late in the day, rest in the shade and drink before you get thirsty.</li>
+      </ul></div>
+    </div>
+
+    <div class="bpane" id="b2">
+      <div class="bhead">
+        <div class="bpurp"><div class="lbl">Purpose</div><h3>Leave home fast</h3><p>In a fire, flood, gas leak or when authorities ask you to evacuate, you should be able to grab the bag and leave within minutes. It should last until you are with family, friends or at a place the authorities arrange.</p></div>
+        <div class="bfacts"><div><b>72 hours</b><span>it should last</span></div><div><b>One per person</b><span>children carry a small one</span></div><div><b>By the door</b><span>easy to grab</span></div></div>
+      </div>
+      <div class="bgrid">
+        <div class="bgroup"><h4>The essentials</h4>
+          <label><input type="checkbox" data-k="b:bo-dok">Copies of passport, ID and insurance in a waterproof bag</label>
+          <label><input type="checkbox" data-k="b:bo-med">Medicine for at least a week, and the prescriptions</label>
+          <label><input type="checkbox" data-k="b:bo-kont">Cash in small bills</label>
+          <label><input type="checkbox" data-k="b:bo-power">Charged power bank and cables</label>
+          <label><input type="checkbox" data-k="b:bo-nr">Phone numbers and addresses on paper</label>
+          <label><input type="checkbox" data-k="b:bo-nyck">Spare keys to home and car</label>
+        </div>
+        <div class="bgroup"><h4>Water and food</h4>
+          <label><input type="checkbox" data-k="b:bo-vatten">Water, about 2 liters per person</label>
+          <label><input type="checkbox" data-k="b:bo-filter">Water filter or purification tablets</label>
+          <label><input type="checkbox" data-k="b:bo-mat">Food for three days that needs no cooking</label>
+          <label><input type="checkbox" data-k="b:bo-kok">Small stove, fuel and matches, if you can carry it</label>
+        </div>
+        <div class="bgroup"><h4>Clothes and sleep</h4>
+          <label><input type="checkbox" data-k="b:bo-klader">Change of clothes and underwear</label>
+          <label><input type="checkbox" data-k="b:bo-regn">Rain gear</label>
+          <label><input type="checkbox" data-k="b:bo-sov">Sleeping bag or blanket</label>
+          <label data-se="w"><input type="checkbox" data-k="b:bo-vinter">Winter clothes: base layer, hat, gloves, warm socks</label>
+          <label data-se="w"><input type="checkbox" data-k="b:bo-liggu">Sleeping pad, the cold comes from below</label>
+          <label data-se="s"><input type="checkbox" data-k="b:bo-sol">Sunscreen, cap and insect repellent</label>
+        </div>
+        <div class="bgroup"><h4>Light, health and hygiene</h4>
+          <label><input type="checkbox" data-k="b:bo-lampa">Headlamp and spare batteries</label>
+          <label><input type="checkbox" data-k="b:bo-radio">Small battery or crank radio</label>
+          <label><input type="checkbox" data-k="b:bo-forband">First aid kit</label>
+          <label><input type="checkbox" data-k="b:bo-hyg">Toothbrush, soap, wet wipes, toilet paper, period products</label>
+          <label><input type="checkbox" data-k="b:bo-glas">Glasses or contact lenses</label>
+        </div>
+        <div class="bgroup"><h4>Children and pets</h4>
+          <label><input type="checkbox" data-k="b:bo-barn">Diapers, formula, a bottle and something to do</label>
+          <label><input type="checkbox" data-k="b:bo-gos">A cuddly toy or favorite thing</label>
+          <label><input type="checkbox" data-k="b:bo-djur">Food, water, leash or carrier for your pets</label>
+        </div>
+      </div>
+      <div class="bthink"><h4>Keep in mind</h4><ul>
+        <li><b>Decide where you will go.</b> Family or friends outside your area are often best. Have two options.</li>
+        <li><b>Leave when the authorities say so.</b> Do not wait until the roads are full.</li>
+        <li><b>Turn off power, water and gas if you have time,</b> and lock up. Take your pets.</li>
+        <li><b>Check the bag twice a year,</b> for example when the clocks change. Replace food, water and medicine that expire, and clothes the children have outgrown.</li>
+        <li class="sw" data-se="w"><b>Winter:</b> add warm clothes and a sleeping pad. Evacuating in the cold takes more than in summer heat.</li>
+        <li class="sw" data-se="s"><b>Summer:</b> more water. Heat means you need to drink much more, especially children and the elderly.</li>
+      </ul></div>
+    </div>
+
+    <div class="bpane" id="b3">
+      <div class="bhead">
+        <div class="bpurp"><div class="lbl">Purpose</div><h3>If you get stuck in the car</h3><p>An accident, a snowstorm or a closed road can leave you standing still for hours. The car should keep you warm and safe until help arrives, or until you can move on.</p></div>
+        <div class="bfacts"><div><b>A few hours</b><span>up to a day</span></div><div><b>Always in the car</b><span>all year, change by season</span></div><div><b>Half a tank</b><span>never drive on reserve</span></div></div>
+      </div>
+      <div class="bgrid">
+        <div class="bgroup"><h4>Safety</h4>
+          <label><input type="checkbox" data-k="b:car-varn">Warning triangle and reflective vest</label>
+          <label><input type="checkbox" data-k="b:car-lampa">Flashlight or headlamp</label>
+          <label><input type="checkbox" data-k="b:car-forband">First aid kit</label>
+          <label><input type="checkbox" data-k="b:car-start">Jumper cables or a jump starter</label>
+          <label><input type="checkbox" data-k="b:car-ladd">Phone charging cable for the car</label>
+        </div>
+        <div class="bgroup"><h4>Warmth and food</h4>
+          <label><input type="checkbox" data-k="b:car-filt">Blanket or sleeping bag</label>
+          <label><input type="checkbox" data-k="b:car-vatten">Water and high energy food</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-klader">Extra warm clothes, hat and gloves</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-varm">Hand warmers</label>
+        </div>
+        <div class="bgroup"><h4>Winter</h4>
+          <label data-se="w"><input type="checkbox" data-k="b:car-spade">Snow shovel</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-skrapa">Ice scraper and snow brush</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-sand">Sand or cat litter for traction under the wheels</label>
+          <label data-se="w"><input type="checkbox" data-k="b:car-spol">Extra winter washer fluid</label>
+          <p class="se-empty" data-se="s">Switch to the winter kit well before the first frost.</p>
+        </div>
+        <div class="bgroup"><h4>Summer</h4>
+          <label data-se="s"><input type="checkbox" data-k="b:car-mer-vatten">More water, several liters</label>
+          <label data-se="s"><input type="checkbox" data-k="b:car-skugga">Sun protection and something to make shade</label>
+          <p class="se-empty" data-se="w">Save the summer list for spring.</p>
+        </div>
+      </div>
+      <div class="bthink"><h4>Keep in mind</h4><ul>
+        <li><b>Stay in the car</b> in cold or storms, as long as it is safe. A car is easier to find than a person.</li>
+        <li><b>Never drive with a low tank,</b> especially in winter. Fill up at half.</li>
+        <li><b>With a get home bag in the car</b> you can walk if you need to.</li>
+        <li class="sw" data-se="w"><b>Winter:</b> if you run the engine for heat, keep the exhaust pipe clear of snow and open a window slightly. Snow around the exhaust can fill the car with carbon monoxide. Run the engine a little at a time.</li>
+        <li class="sw" data-se="s"><b>Summer:</b> never leave children or pets in a hot car. Heat damages water in plastic bottles, medicine and batteries, so replace them more often.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="myths">
+  <div class="wrap">
+    <div class="eyebrow">Step 9</div>
     <h2 class="t">Common mistakes</h2>
     <p class="sub">Things that are rarely in the brochures but that many beginners do.</p>
     <div class="myth">
@@ -1295,6 +1492,23 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       document.querySelectorAll(".mc").forEach(function (c) { c.hidden = v !== "all" && (" " + c.dataset.bo + " ").indexOf(" " + v + " ") < 0; });
     };
   });
+
+
+  /* Väskor: flikar och årstid */
+  document.querySelectorAll(".btabs button").forEach(function (b) {
+    b.onclick = function () {
+      document.querySelectorAll(".btabs button").forEach(function (x) { x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll(".bpane").forEach(function (p) { p.classList.toggle("on", p.id === b.dataset.b); });
+    };
+  });
+  function arstid(v) {
+    document.querySelectorAll(".season button").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.se === v); });
+    document.querySelectorAll("#bags [data-se]").forEach(function (e) { if (e.tagName !== "BUTTON") e.hidden = e.dataset.se !== v; });
+  }
+  document.querySelectorAll("#bags label[data-se]").forEach(function (l) { l.setAttribute("data-sel", l.dataset.se === "w" ? "Winter" : "Summer"); });
+  document.querySelectorAll(".season button").forEach(function (b) { b.onclick = function () { arstid(b.dataset.se); }; });
+  var mon = new Date().getMonth();
+  arstid(mon >= 3 && mon <= 8 ? "s" : "w");
 
   /* Markera var man är i snabbmenyn */
   var links = document.querySelectorAll(".jump a");
