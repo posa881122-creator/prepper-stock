@@ -61,7 +61,7 @@ h2 { font:700 clamp(30px,4vw,42px)/1.05 var(--display); color:var(--forest); mar
 .mob button { appearance:none; border:1.5px solid var(--moss); background:var(--forest); color:var(--straw); font:500 15px/1 var(--body); padding:10px 14px; border-radius:10px; cursor:pointer; }
 .small { margin-top:16px; font-size:15px; color:#AFC0A8; }
 /* ===== Sidlayout med telefoner på sidorna ===== */
-.layout { display:grid; grid-template-columns:1fr; gap:44px; }
+.layout { display:grid; grid-template-columns:minmax(0,1fr); gap:44px; }
 .content { min-width:0; }
 .demo { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
 .demo-h { margin:0 0 6px; }
@@ -79,7 +79,8 @@ h2 { font:700 clamp(30px,4vw,42px)/1.05 var(--display); color:var(--forest); mar
   .side.world { grid-column:3; grid-row:1; justify-self:start; }
   .side { position:sticky; top:40px; margin-top:150px; }
 }
-@media (max-width:680px) { .demo { grid-template-columns:1fr; gap:40px; } .points { grid-template-columns:1fr; } }
+@media (max-width:680px) { .demo { grid-template-columns:minmax(0,1fr); gap:40px; } .points { grid-template-columns:1fr; } }
+@media (max-width:420px) { .phone { zoom:1; } }
 
 /* ===== Telefonen ===== */
 .phone { width:290px; max-width:100%; zoom:1.2; background:#0D0F0B; border-radius:44px; padding:10px; box-shadow:0 30px 60px -20px rgba(20,32,25,.55), 0 0 0 1.5px #2A2E22 inset; }
