@@ -181,6 +181,8 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 .akutbtn { width: 100%; justify-content: center; margin-top: 16px; background: var(--rust); color: #fff; padding: 16px 20px; font-size: 18px; }
 .akutbtn .dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.25); }
 .hero-ak { width: auto; margin-top: 26px; }
+.hero-list { display: flex; width: fit-content; margin-top: 12px; padding: 14px 20px; font-size: 17px; }
+.hero-list .arw { color: var(--brass); }
 .akut { margin-top: 18px; background: #fff; border-radius: 26px; padding: 28px; border: 3px solid var(--rust); }
 .ak-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
 .ak-head h3 { font-size: 38px; margin-top: 8px; }
@@ -658,6 +660,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       <h1>Start prepping.<br>In the right order.</h1>
       <p class="lead">What happens when the power goes out, what you need at home and exactly how much. Enter your household and get a ready made shopping list of food and supplies that keep for a long time.</p>
       <button class="btn akutbtn hero-ak" type="button" id="ak-hero"><span class="dot"></span>Already happening? Get an emergency shopping list</button>
+      <a class="btn ghost hero-list" href="#calc">Building a supply? Get a shopping list for your household <span class="arw" aria-hidden="true">↓</span></a>
       <div class="facts"><span>Based on official advice</span><span>Counted in liters, calories and grams</span><span>No ads, no tracking</span></div>
     </div>
     <nav class="route" aria-label="Five parts, one thing at a time">
