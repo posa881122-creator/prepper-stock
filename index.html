@@ -515,6 +515,17 @@ var PLAY_URL = "https://play.google.com/store/apps/details?id=se.prepping.lager&
 var PLAY_LIVE = true;
 var APPSTORE_URL = "https://apps.apple.com/app/id6825012438?ct=startsida&mt=8";
 
+/* Kampanj från adressen, till exempel prepperstock.se/?c=poles. Utan c blir det "startsida".
+   Sparas för besöket (samma nyckel som guiden), så märkningen följer med till guiden. */
+(function () {
+  var c = (location.search.match(/[?&]c=([a-z0-9-]{1,30})/i) || [])[1];
+  try { if (c) sessionStorage.setItem("ps-c", c.toLowerCase()); else c = sessionStorage.getItem("ps-c"); } catch (e) {}
+  if (!c || !/[a-z]/i.test(c)) return;
+  c = c.toLowerCase();
+  PLAY_URL = PLAY_URL.replace("utm_campaign%3Dstartsida", "utm_campaign%3D" + c);
+  APPSTORE_URL = APPSTORE_URL.replace("ct=startsida", "ct=" + c);
+})();
+
 var T = {
   sv: {
     partners: "Partners",
