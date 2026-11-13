@@ -645,6 +645,12 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   .list, .card { border: 1px solid #ccc; }
   .check { columns: 2; border: 1px solid #ccc; }
 }
+html, body, button, a, label, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+body.paged section.cs:not(.cur), body.paged .chap:not(.cur) { display: none; }
+body.paged section.cs .stog { display: none; }
+body.paged .top .hero.off { display: none; }
+.snext { justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.snext .sprev { background: transparent; color: var(--forest); border: 1.5px solid var(--line); }
 </style>
 </head>
 <body>
@@ -663,21 +669,21 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       <a class="btn hero-list" href="#calc">Bygg upp ett lager? Få en inköpslista för ert hushåll <span class="arw" aria-hidden="true">↓</span></a>
       <div class="facts"><span>Byggt på myndigheternas råd</span><span>Räknat i liter, kalorier och gram</span><span>Ingen reklam, ingen spårning</span></div>
     </div>
-    <nav class="route" aria-label="Fem delar, en sak i taget">
-      <h2>Fem delar, en sak i taget</h2>
-      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Förstå</b><small>1 Varför preppa? · 2 Vad händer när… · 3 Hur förberedd är du?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Planera</b><small>4 Vad säger myndigheterna? · 5 Räkna ut för ditt hushåll · 6 Familjens krisplan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Skaffa</b><small>7 Bygg upp lagret på fyra veckor · 8 Sju områden, i den här ordningen · 9 Så äter du av lagret · 10 Väskorna</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Lös</b><small>11 Så löser du det · 12 När det kräver lite mer</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Öva</b><small>13 Öva på en kris · 14 Vanliga misstag · 15 Din beredskap, samlad · 16 Håll lagret vid liv</small></span></a></li></ol>
+    <nav class="route" aria-label="Fem steg, ett i taget">
+      <h2>Fem steg, ett i taget</h2>
+      <ol class="parts"><li><a href="#del1"><span class="pn">1</span><span><b>Förstå</b><small>1 Varför preppa? · 2 Vad händer när… · 3 Hur förberedd är du?</small></span></a></li><li><a href="#del2"><span class="pn">2</span><span><b>Planera</b><small>1 Vad säger myndigheterna? · 2 Räkna ut för ditt hushåll · 3 Familjens krisplan</small></span></a></li><li><a href="#del3"><span class="pn">3</span><span><b>Skaffa</b><small>1 Bygg upp lagret på fyra veckor · 2 Sju områden, i den här ordningen · 3 Väskorna</small></span></a></li><li><a href="#del4"><span class="pn">4</span><span><b>Lös</b><small>1 Så löser du det · 2 När det kräver lite mer</small></span></a></li><li><a href="#del5"><span class="pn">5</span><span><b>Öva</b><small>1 Öva på en kris · 2 Vanliga misstag · 3 Din beredskap, samlad · 4 Håll lagret vid liv</small></span></a></li></ol>
     </nav>
   </div>
 </header>
 
-<nav class="jump" aria-label="Fem delar, en sak i taget">
-  <div class="wrap"><a href="#del1"><b>1</b> Förstå</a><a href="#del2"><b>2</b> Planera</a><a href="#del3"><b>3</b> Skaffa</a><a href="#del4"><b>4</b> Lös</a><a href="#del5"><b>5</b> Öva</a><button type="button" id="allbtn">Visa alla steg</button></div>
+<nav class="jump" aria-label="Fem steg, ett i taget">
+  <div class="wrap"><a href="#del1"><b>1</b> Förstå</a><a href="#del2"><b>2</b> Planera</a><a href="#del3"><b>3</b> Skaffa</a><a href="#del4"><b>4</b> Lös</a><a href="#del5"><b>5</b> Öva</a></div>
   <div class="prog"><i id="progbar"></i></div>
 </nav>
 
 <main>
 
-<div class="chap" id="del1"><div class="wrap"><div class="chap-n">Del 1 av 5</div><h2>Förstå</h2><p>Varför det spelar roll, vad som händer i en kris och var du står i dag.</p><div class="chap-steps"><a href="#why"><b>1</b>Varför preppa?</a><a href="#scen"><b>2</b>Vad händer när…</a><a href="#test"><b>3</b>Hur förberedd är du?</a></div></div></div>
+<div class="chap" id="del1"><div class="wrap"><div class="chap-n">Steg 1 av 5</div><h2>Förstå</h2><p>Varför det spelar roll, vad som händer i en kris och var du står i dag.</p><div class="chap-steps"><a href="#why"><b>1</b>Varför preppa?</a><a href="#scen"><b>2</b>Vad händer när…</a><a href="#test"><b>3</b>Hur förberedd är du?</a></div></div></div>
 <section class="cs" id="why">
   <div class="wrap">
     <div class="eyebrow">Steg 1</div>
@@ -763,12 +769,12 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   <div class="wrap">
     <div class="eyebrow">Steg 3</div>
     <h2 class="t">Hur förberedd är du?</h2>
-    <p class="sub">Tio snabba frågor. Svara ärligt, ingen ser svaren. Du får veta var du står och vad du ska göra först.</p>
+    <p class="sub">Tio snabba frågor. Du får veta var du står och vad du ska göra först.</p>
     <div class="quiz" id="quiz"></div>
     <div class="qres" id="qres" hidden></div>
   </div>
 </section>
-<div class="chap" id="del2"><div class="wrap"><div class="chap-n">Del 2 av 5</div><h2>Planera</h2><p>Hur mycket ni behöver och vad familjen gör om något händer.</p><div class="chap-steps"><a href="#law"><b>4</b>Vad säger myndigheterna?</a><a href="#calc"><b>5</b>Räkna ut för ditt hushåll</a><a href="#plan"><b>6</b>Familjens krisplan</a></div></div></div>
+<div class="chap" id="del2"><div class="wrap"><div class="chap-n">Steg 2 av 5</div><h2>Planera</h2><p>Hur mycket ni behöver och vad familjen gör om något händer.</p><div class="chap-steps"><a href="#law"><b>1</b>Vad säger myndigheterna?</a><a href="#calc"><b>2</b>Räkna ut för ditt hushåll</a><a href="#plan"><b>3</b>Familjens krisplan</a></div></div></div>
 <section class="cs" id="law">
   <div class="wrap">
     <div class="eyebrow">Steg 4</div>
@@ -781,7 +787,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       <tr><td>Tyskland</td><td>BBK</td><td>10 dagar</td><td>2 liter, och 2 200 kcal mat per dag</td></tr>
       <tr><td>Danmark</td><td>Beredskabsstyrelsen</td><td>3 dygn</td><td>3 liter</td></tr>
       <tr><td>Finland</td><td>SPEK, 72 tuntia</td><td>72 timmar</td><td>Minst 5 liter flaskvatten per person</td></tr>
-      <tr><td>EU</td><td>EU-kommissionen</td><td>Minst 72 timmar</td><td>Riktlinjer tas fram</td></tr>
+      <tr><td>EU</td><td>EU-kommissionen, riktlinjer 3 november 2026</td><td>Minst 72 timmar, som lägsta nivå</td><td>Ingen mängd anges. Följ ditt lands råd.</td></tr>
       <tr><td>USA</td><td>Ready.gov, FEMA</td><td>Flera dagar</td><td>1 gallon (3,8 liter), även till hygien</td></tr>
     </table></div>
     <p class="note">Den här guiden räknar med de svenska och norska råden: minst 3 liter vatten per person och dygn, och mat som ger cirka 2 200 kcal per vuxen och dygn.</p>
@@ -791,7 +797,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   <div class="wrap">
     <div class="eyebrow">Steg 5</div>
     <h2 class="t">Räkna ut för ditt hushåll</h2>
-    <p class="sub">Fyll i vilka som bor hemma och hur länge ni vill klara er. Allt räknas här på sidan. Ingenting skickas någonstans.</p>
+    <p class="sub">Fyll i vilka som bor hemma och hur länge ni vill klara er.</p>
 
     <div class="calc">
       <div>
@@ -811,7 +817,6 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
           <div class="r"><b id="o-water">0 L</b><span>vatten till dryck och mat</span></div>
           <div class="r"><b id="o-water2">0 L</b><span>med disk och hygien</span></div>
           <div class="r"><b id="o-kcal">0</b><span>kcal mat totalt</span></div>
-          <div class="r"><b id="o-cans">0</b><span>dunkar à 10 liter, om du lagrar allt själv</span></div>
           <div class="r wide">
             <span>Fördelning i inköpslistan nedan</span>
             <div class="macro"><div id="m-k" style="background:#A97B22"></div><div id="m-p" style="background:#34513B"></div><div id="m-f" style="background:#7A5532;flex:1"></div></div>
@@ -869,7 +874,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   <div class="wrap">
     <div class="eyebrow">Steg 6</div>
     <h2 class="t">Familjens krisplan</h2>
-    <p class="sub">Myndigheterna ber alla göra det här, men nästan ingen har det på papper. Fyll i, ladda ner eller skriv ut, och sätt den på kylskåpet. Allt sparas bara i den här telefonen.</p>
+    <p class="sub">Myndigheterna ber alla göra det här, men nästan ingen har det på papper. Fyll i, ladda ner eller skriv ut, och sätt den på kylskåpet.</p>
     <form class="kplan" id="kplan" autocomplete="off">
       <fieldset><legend>Om vi inte når varandra</legend>
         <label>Mötesplats nära hemmet<input name="mote1" placeholder="Till exempel lekplatsen vid skolan"></label>
@@ -905,7 +910,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
   </div>
 </section>
-<div class="chap" id="del3"><div class="wrap"><div class="chap-n">Del 3 av 5</div><h2>Skaffa</h2><p>Vad du köper, i vilken ordning och hur du äter av det.</p><div class="chap-steps"><a href="#weeks"><b>7</b>Bygg upp lagret på fyra veckor</a><a href="#areas"><b>8</b>Sju områden, i den här ordningen</a><a href="#meals"><b>9</b>Så äter du av lagret</a><a href="#bags"><b>10</b>Väskorna</a></div></div></div>
+<div class="chap" id="del3"><div class="wrap"><div class="chap-n">Steg 3 av 5</div><h2>Skaffa</h2><p>Vad du köper, i vilken ordning och hur du äter av det.</p><div class="chap-steps"><a href="#weeks"><b>1</b>Bygg upp lagret på fyra veckor</a><a href="#areas"><b>2</b>Sju områden, i den här ordningen</a><a href="#bags"><b>3</b>Väskorna</a></div></div></div>
 <section class="cs" id="weeks">
   <div class="wrap">
     <div class="eyebrow">Steg 7</div>
@@ -975,6 +980,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
             <li>Välj sådant som går att äta kallt eller kokar på några minuter.</li>
             <li>Små förpackningar är bättre än stora när kylen inte fungerar.</li>
             <li>Förvara torrvaror i tättslutande burkar, svalt och torrt.</li>
+            <li>För att lagra länge: förvara torrvaror som ris, havregryn, pasta, bönor och socker i mylarpåsar med syreabsorbent och försegla med värme. Det passar bara torr mat, inte mat som innehåller fett eller fukt.</li>
           </ul>
         </div>
         <div class="buy"><h4>Inköpslistan</h4><p style="margin:6px 0 10px">Hela listan med antal förpackningar står i räknaren ovan.</p><a class="btn" href="#shop">Till inköpslistan</a></div>
@@ -1062,55 +1068,6 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
         </div>
         <div class="buy"><h4>Köp</h4><div id="b-pap"></div></div>
       </div>
-    </div>
-  </div>
-</section>
-<section class="cs" id="meals">
-  <div class="wrap">
-    <div class="eyebrow">Steg 9</div>
-    <h2 class="t">Så äter du av lagret</h2>
-    <p class="sub">Varje måltid har en kolhydratkälla för energi, protein för musklerna och fett för att hålla dig mätt. Mängderna gäller en vuxen. Allt kommer från inköpslistan ovan.</p>
-    <div class="meals">
-      <div class="meal"><div class="lbl">Frukost</div><h4>Havregrynsgröt med russin</h4>
-        <ul><li>Havregryn <em>1,5 dl</em></li><li>Mjölkpulver rört i vatten <em>2,5 dl mjölk</em></li><li>Russin <em>2 msk</em></li><li>Knäckebröd med jordnötssmör <em>2 skivor, 1 msk</em></li></ul>
-        <div class="mstat"><span><b>540</b> kcal</span><span><b>23 g</b> protein</span><span><b>5,5 dl</b> vatten</span><span><b>3 min</b> kokning</span></div>
-        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span></div>
-        <div class="cold">Utan värme: blötlägg havregrynen i kallt vatten och mjölkpulver kvällen innan.</div>
-        <div class="swap"><b>Saknas något?</b> Inga russin? Ta torkad frukt eller lite sylt. Inget mjölkpulver? Ta havredryck eller mjölk som håller i rumstemperatur.</div></div>
-      <div class="meal"><div class="lbl">Lunch</div><h4>Bön och tonfisksallad</h4>
-        <ul><li>Bönor eller linser på burk <em>en halv burk</em></li><li>Tonfisk <em>en halv burk</em></li><li>Majs <em>en liten näve</em></li><li>Rapsolja, salt <em>1 msk olja</em></li><li>Knäckebröd <em>2 skivor</em></li></ul>
-        <div class="mstat"><span><b>420</b> kcal</span><span><b>26 g</b> protein</span><span><b>Ingen</b> vatten</span><span><b>Ingen</b> kokning</span></div>
-        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span><span class="tag v">Grönsaker</span></div>
-        <div class="cold">Äts kall. Kräver varken värme eller extra vatten.</div>
-        <div class="swap"><b>Saknas något?</b> Ingen tonfisk? Ta makrill, sardiner eller kikärtor. Äter du inte fisk räcker det med dubbelt så mycket bönor.</div></div>
-      <div class="meal"><div class="lbl">Middag</div><h4>Pasta med köttfärssås</h4>
-        <ul><li>Snabbkokt pasta eller ris <em>1 dl, cirka 100 g</em></li><li>Köttfärssås på burk <em>en halv burk</em></li><li>Krossade tomater <em>en kvarts burk</em></li><li>En skvätt olja <em>1 tsk</em></li></ul>
-        <div class="mstat"><span><b>720</b> kcal</span><span><b>33 g</b> protein</span><span><b>5 dl</b> vatten</span><span><b>5 min</b> kokning</span></div>
-        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag p">Protein</span><span class="tag f">Fett</span><span class="tag v">Grönsaker</span></div>
-        <div class="cold">Kräver kokning. Koka pastan i så lite vatten som möjligt och häll i såsen när den är klar, så räcker en kastrull.</div>
-        <div class="swap"><b>Saknas något?</b> Ingen köttfärssås? Ta bönor i tomatsås eller en vegetarisk gryta på burk. Utan värme går burken att äta kall med knäckebröd.</div></div>
-      <div class="meal"><div class="lbl">Mellanmål</div><h4>Energi mellan målen</h4>
-        <ul><li>Nötter <em>en näve, 30 g</em></li><li>Russin <em>2 msk</em></li><li>Nyponsoppa, ger C-vitamin <em>2,5 dl</em></li><li>En bit choklad <em>3 rutor</em></li></ul>
-        <div class="mstat"><span><b>490</b> kcal</span><span><b>9 g</b> protein</span><span><b>Ingen</b> vatten</span><span><b>Ingen</b> kokning</span></div>
-        <div class="chips"><span class="tag k">Kolhydrater</span><span class="tag f">Fett</span><span class="tag v">Vitaminer</span></div>
-        <div class="cold">Äts kallt. Bra att ha nära till hands när det är kallt inne.</div>
-        <div class="swap"><b>Saknas något?</b> Nötallergi? Ta solroskärnor eller pumpafrön. Ingen nyponsoppa? Ta juice eller frukt på burk.</div></div>
-    </div>
-    <p class="mtotal">Äter man alla fyra blir det ungefär 2 200 kcal och 90 g protein per vuxen och dag, samma nivå som räknaren ovan räknar med.</p>
-    <div class="days7">
-      <div class="mtog" role="group" aria-label="Visa veckomenyn"><span>Visa veckomenyn:</span><button type="button" data-m="0" aria-pressed="true">Vanlig vecka</button><button type="button" data-m="1" aria-pressed="false">Bara utan värme</button></div>
-      <div class="tblwrap"><table class="tbl">
-        <tr><th>Dag</th><th>Frukost</th><th>Lunch</th><th>Middag</th></tr>
-        <tr><td>Dag 1</td><td data-n="Havregrynsgröt med russin" data-c="Blötlagda havregryn med mjölk och russin">Havregrynsgröt med russin</td><td>Bön och tonfisksallad</td><td data-n="Pasta med köttfärssås" data-c="Köttfärssås direkt ur burken med knäckebröd">Pasta med köttfärssås</td></tr>
-        <tr><td>Dag 2</td><td>Knäckebröd, jordnötssmör, mjölk</td><td>Tonfisk, majs och knäckebröd</td><td data-n="Ris med bönor i tomatsås" data-c="Bönsallad med krossade tomater, olja och knäckebröd">Ris med bönor i tomatsås</td></tr>
-        <tr><td>Dag 3</td><td>Kalla havregryn med mjölk</td><td>Linssallad med olja och salt</td><td data-n="Pasta med tonfisk och tomat" data-c="Tonfisk, majs och krossade tomater med knäckebröd">Pasta med tonfisk och tomat</td></tr>
-        <tr><td>Dag 4</td><td data-n="Havregrynsgröt med jordnötssmör" data-c="Blötlagda havregryn med jordnötssmör">Havregrynsgröt med jordnötssmör</td><td>Knäckebröd, bönor och majs</td><td data-n="Ris med köttfärssås" data-c="Köttfärssås ur burken med knäckebröd">Ris med köttfärssås</td></tr>
-        <tr><td>Dag 5</td><td>Knäckebröd med jordnötssmör och nyponsoppa</td><td>Tonfisksallad med bönor och olja</td><td data-n="Nudlar med bönor och tomat" data-c="Bön och majssallad med olja och knäckebröd">Nudlar med bönor och tomat</td></tr>
-        <tr><td>Dag 6</td><td data-n="Havregrynsgröt med mjölk och russin" data-c="Blötlagda havregryn med mjölk och russin">Havregrynsgröt med mjölk och russin</td><td>Knäckebröd, tonfisk och majs</td><td data-n="Pasta med köttfärssås och majs" data-c="Köttfärssås och majs ur burken med knäckebröd">Pasta med köttfärssås och majs</td></tr>
-        <tr><td>Dag 7</td><td>Kalla havregryn med nötter och russin</td><td>Linser med krossade tomater och olja</td><td data-n="Ris med tonfisk och ärtor" data-c="Tonfisk och ärtor med knäckebröd">Ris med tonfisk och ärtor</td></tr>
-      </table></div>
-      <p class="note" id="m-cn" hidden>Utan värme går det åt mer knäckebröd och färre paket pasta och ris. Lägg gärna till ett extra paket knäckebröd i inköpslistan.</p>
-      <p class="note">Börja med det som går att äta kallt om du är osäker på hur länge bränslet räcker. Ät det som ligger i frysen först, medan det fortfarande är fryst.</p>
     </div>
   </div>
 </section>
@@ -1292,7 +1249,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
   </div>
 </section>
-<div class="chap" id="del4"><div class="wrap"><div class="chap-n">Del 4 av 5</div><h2>Lös</h2><p>Så klarar du vatten, mat, värme och resten utan el, även med särskilda behov.</p><div class="chap-steps"><a href="#how"><b>11</b>Så löser du det</a><a href="#needs"><b>12</b>När det kräver lite mer</a></div></div></div>
+<div class="chap" id="del4"><div class="wrap"><div class="chap-n">Steg 4 av 5</div><h2>Lös</h2><p>Så klarar du vatten, mat, värme och resten utan el, även med särskilda behov.</p><div class="chap-steps"><a href="#how"><b>1</b>Så löser du det</a><a href="#needs"><b>2</b>När det kräver lite mer</a></div></div></div>
 <section class="cs" id="how">
   <div class="wrap">
     <div class="eyebrow">Steg 11</div>
@@ -1419,7 +1376,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     </div>
   </div>
 </section>
-<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Del 5 av 5</div><h2>Öva</h2><p>Prova, undvik vanliga misstag och se till att allt håller.</p><div class="chap-steps"><a href="#drill"><b>13</b>Öva på en kris</a><a href="#myths"><b>14</b>Vanliga misstag</a><a href="#list"><b>15</b>Din beredskap, samlad</a><a href="#app"><b>16</b>Håll lagret vid liv</a></div></div></div>
+<div class="chap" id="del5"><div class="wrap"><div class="chap-n">Steg 5 av 5</div><h2>Öva</h2><p>Prova, undvik vanliga misstag och se till att allt håller.</p><div class="chap-steps"><a href="#drill"><b>1</b>Öva på en kris</a><a href="#myths"><b>2</b>Vanliga misstag</a><a href="#list"><b>3</b>Din beredskap, samlad</a><a href="#app"><b>4</b>Håll lagret vid liv</a></div></div></div>
 <section class="cs" id="drill">
   <div class="wrap">
     <div class="eyebrow">Steg 13</div>
@@ -1465,7 +1422,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   <div class="wrap">
     <div class="eyebrow">Steg 15</div>
     <h2 class="t">Din beredskap, samlad</h2>
-    <p class="sub">Här ser du allt du har gjort i guiden. Det som inte är klart har en länk tillbaka till rätt steg. Allt sparas bara i den här telefonen eller datorn.</p>
+    <p class="sub">Här ser du allt du har gjort i guiden. Det som inte är klart har en länk tillbaka till rätt steg.</p>
     <div class="sumtop"><div class="lvlc" id="sum-lvl"></div><div class="nx3" id="sum-nx"></div></div>
     <div class="srows" id="sum-rows"></div>
     <div class="actions sumact no-print"><button class="btn" type="button" id="sum-share">Dela din nivå</button><button class="btn ghost dark" type="button" id="sum-dl">Ladda ner</button><button class="btn ghost dark" type="button" id="sum-pr">Skriv ut</button></div>
@@ -1617,7 +1574,6 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     $("#o-water").textContent = fmt(vatten) + " L";
     $("#o-water2").textContent = fmt(vatten2) + " L";
     $("#o-kcal").textContent = fmt(kcal);
-    $("#o-cans").textContent = Math.ceil(vatten / 10);
     document.querySelectorAll(".v-water").forEach(function (e) { e.textContent = fmt(vatten) + " L"; });
     document.querySelectorAll(".v-kcal").forEach(function (e) { e.textContent = fmt(kcal); });
     document.querySelectorAll(".v-days").forEach(function (e) { e.textContent = D + " dagar"; });
@@ -1667,13 +1623,16 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       ["Stormkök eller gasolkök", "1 st"],
       ["Gaspatroner à 230 g, ungefärligt", patroner + " st"],
       ["Tändstickor eller tändare", "2 st"],
-      ["Brandvarnare med batteri och brandsläckare", "1 av varje"]
+      ["Brandvarnare med batteri och brandsläckare", "1 av varje"],
+      ["Kolmonoxidlarm och gasolvarnare, om ni värmer med gasol inomhus. Med fotogen räcker kolmonoxidlarm.", "1 av varje"]
     ]);
     rows("#b-light", [
       ["Pannlampa", Math.max(1, folk - (N.i || 0) - (N.s || 0)) + " st"],
       ["Batterier AA", (hush * 4 + Math.ceil(D / 7) * 4) + " st"],
       ["Powerbank, minst 10 000 mAh", Math.max(1, Math.ceil(hush / 2)) + " st"],
-      ["Värmeljus eller LED-ljus", Math.ceil(D * 2) + " st"]
+      ["Värmeljus", Math.ceil(D * 2) + " st"],
+      ["Stormlykta eller fotogenlampa", (hush > 4 ? 2 : 1) + " st"],
+      ["Lampolja eller fotogen", (Math.ceil(D / 7) * 0.5).toLocaleString("sv-SE") + " l"]
     ]);
     rows("#b-info", [
       ["Radio på batteri, vev eller solceller", "1 st"],
@@ -1786,6 +1745,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
   function akut() {
     openSec("calc", true);
     var N = S.N, D = S.D, folk = S.folk, barn = (N.c || 0) + (N.s || 0) + (N.i || 0);
+    var vux = (N.a || 0) + (N.o || 0) + (N.t || 0), bm = (N.c || 0) + (N.s || 0);
     var lbl = { 3: "72 timmar", 7: "1 vecka", 14: "2 veckor", 30: "1 månad" }[D];
     var hush = Math.max(1, folk), lampa = Math.max(1, folk - (N.i || 0) - (N.s || 0));
     var G = [];
@@ -1794,8 +1754,8 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     extra(D, N).forEach(function (x) { if (x[3] === "v") b.push([x[0], x[2].replace(/<[^>]+>/g, ""), x[1]]); });
     if (N.c || N.s) b.push(["Barnmat och klämmisar", "Det barnen brukar äta", "Gärna sådant som inte kräver kyl"]);
     if (b.length) G.push(["Barnen", b]);
-    var m = [["Daglig medicin, om du kan hämta ut", D + " dagar", "Fråga apoteket"], ["Värktabletter", "1 förpackning", ""]];
-    if (barn) m.push(["Febernedsättande för barn", "1 förpackning", "Rätt sort för barnets ålder"]);
+    var m = [["Daglig medicin, om du kan hämta ut", D + " dagar", "Fråga apoteket"], ["Paracetamol", vux + " förp", ""], ["Ibuprofen", vux + " förp", ""]];
+    if (bm) m.push(["Paracetamol för barn", bm + " förp", ""], ["Ibuprofen för barn", bm + " förp", ""]);
     G.push(["Mediciner", m]);
     var base = 0, f;
     MAT.forEach(function (x) { if (KALL.indexOf(x.namn) > -1) base += x.n[0] * x.g / 100; });
@@ -1809,13 +1769,13 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
     var d = [];
     extra(D, N).forEach(function (x) { if (x[3] === "f") d.push([x[0], x[2].replace(/<[^>]+>/g, ""), x[1]]); });
     if (d.length) G.push(["Djuren", d]);
-    G.push(["Ljus och ström", [["Batterier AA", (hush * 4 + Math.ceil(D / 7) * 4) + " st", ""], ["Pannlampa", lampa + " st", "Om ni saknar"], ["Värmeljus eller LED-ljus", Math.ceil(D * 2) + " st", ""]]]);
+    G.push(["Ljus och ström", [["Batterier AA", (hush * 4 + Math.ceil(D / 7) * 4) + " st", ""], ["Pannlampa", lampa + " st", "Om ni saknar"], ["Värmeljus", Math.ceil(D * 2) + " st", ""], ["Stormlykta eller fotogenlampa", (hush > 4 ? 2 : 1) + " st", "Fyll den utomhus eller över ett handfat"], ["Lampolja eller fotogen", (Math.ceil(D / 7) * 0.5).toLocaleString("sv-SE") + " l", "Aldrig sprit i lampan"]]]);
     G.push(["Värme och matlagning", [["Gaspatroner till stormkök", Math.ceil(D * (20 + 10 * hush) / 60) + " st", "Om du har kök"], ["Tändstickor", "2 askar", ""]]]);
     G.push(["Hygien", [["Toalettpapper", Math.ceil(hush * D / 4) + " rullar", ""], ["Våtservetter", Math.ceil(hush * D / 7) + " förp", ""], ["Kraftiga sopsäckar", Math.ceil(hush * D / 2) + " st", "Till nödtoalett"]]]);
 
     var h = '<div class="ak-head"><div><div class="kicker" style="color:var(--rust)">Akut inköpslista</div><h3>' + (folk ? folk + (folk === 1 ? " person, " : " personer, ") : "") + lbl + '</h3></div><button class="btn ghost dark" type="button" id="ak-close">Stäng</button></div>';
     h += '<div class="ak-first"><b>Gör det här först, det kostar inget</b><ol><li>Fyll kastruller, flaskor och badkaret med vatten medan kranen fungerar. Badkarsvattnet räcker till toaletten.</li><li>Ladda mobilen och powerbanken.</li><li>Ta ut kontanter, om automaterna fungerar.</li><li>Lyssna på Sveriges Radio P4.</li></ol></div>';
-    h += '<div class="ak-prog"><div><b id="ak-cnt">0 av 0 köpta</b><span>Kryssen sparas i den här telefonen.</span></div><button class="btn ghost dark" type="button" id="ak-reset">Rensa listan</button></div><div class="ak-bar"><i id="ak-fill"></i></div>';
+    h += '<div class="ak-prog"><div><b id="ak-cnt">0 av 0 köpta</b></div><button class="btn ghost dark" type="button" id="ak-reset">Rensa listan</button></div><div class="ak-bar"><i id="ak-fill"></i></div>';
     h += '<p class="ak-lead">Köp i den här ordningen. Tar något slut, hoppa till nästa.</p>';
     G = G.map(function (g) { return [g[0], g[1].filter(function (r) { return !ST.r["a:" + r[0]]; })]; }).filter(function (g) { return g[1].length; });
     ST.add.a.forEach(function (x) {
@@ -1953,7 +1913,7 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
 
 
   /* ===== Röd tråd: hopfällbara steg, nästa steg, framsteg ===== */
-  var L = {"opts": ["Ja", "Delvis", "Nej"], "q": [["Har ni vatten hemma för minst en vecka, 3 liter per person och dygn?", "Skaffa vatten för minst tre dygn. Det är det viktigaste av allt.", "areas"], ["Har ni mat för en vecka som klarar sig utan kylskåp?", "Köp mat som håller i rumstemperatur, efter inköpslistan.", "calc"], ["Kan ni laga mat eller värma vatten utan el?", "Skaffa ett stormkök eller gaskök, och bränsle.", "how"], ["Kan ni hålla värmen om elementen slutar fungera?", "Ha sovsäckar eller filtar, och ett rum ni kan hålla varmt.", "how"], ["Har ni en radio som fungerar utan el?", "Skaffa en radio på batteri eller vev.", "areas"], ["Har ni lampor och batterier som räcker en vecka?", "Pannlampor och extra batterier i samma storlek.", "areas"], ["Har ni daglig medicin för minst en vecka?", "Prata med din läkare eller ditt apotek om medicin för en vecka.", "needs"], ["Har ni kontanter hemma?", "Ta ut kontanter i små valörer, för några dagars mat.", "areas"], ["Vet alla i familjen var ni möts om ni inte når varandra?", "Fyll i familjens krisplan tillsammans.", "plan"], ["Har ni ett sätt att gå på toaletten om vattnet försvinner?", "Hink med lock och kraftiga sopsäckar till en nödtoalett.", "how"]], "answered": "frågor besvarade. Svara på alla för att se resultatet.", "result": "Ditt resultat", "of10": "av 10", "dec": ",", "levels": [[0, "Nybörjare", "Ni skulle få det svårt redan första dygnet. Börja med vatten och ljus, det tar en eftermiddag."], [7, "På väg", "Ni klarar några dagar. Fyll luckorna nedan, så klarar ni en vecka."], [13, "Bra förberedda", "Ni klarar er troligen en vecka. Fixa det sista och öva en kväll utan ström."], [18, "Väl förberedda", "Ni ligger före de flesta. Håll lagret fräscht, och hjälp gärna en granne."]], "first": "Gör det här först", "share": "Jag fick {x} av 10 på beredskapstestet hos Prepper Stock. Hur förberedd är du? prepperstock.se/guide/#test", "sharebtn": "Dela resultatet", "copied": "Kopierat", "redo": "Gör om testet", "saved": "Sparat i telefonen", "kptitle": "Familjens krisplan", "kpfile": "familjens-krisplan.txt", "clearq": "Vill du rensa hela planen?", "drillcat": "Från övningen", "added": "{n} sak(er) tillagda på akutlistan", "cal": [{"m": 2, "last": true}, {"m": 9, "last": true}], "calsum": "Prepper Stock: gå igenom beredskapen", "caldesc": "Gå igenom lagret och väskorna, byt vatten och mat som snart går ut, ladda powerbanken och se över familjens krisplan.", "calfile": "prepper-stock-paminnelse.ics", "same": "Gör om samma test", "newq": "Nya frågor", "bankn": "Frågorna väljs från en bank med 200 frågor, en från varje område. Du får nya frågor varje gång tills alla är använda."}, UI = {"show": "Visa", "hide": "Dölj", "nxt": "Nästa", "step": "Steg", "done": "Du är klar med guiden.", "all_open": "Visa alla steg", "all_close": "Fäll ihop alla"};
+  var L = {"opts": ["Ja", "Delvis", "Nej"], "q": [["Har ni vatten hemma för minst en vecka, 3 liter per person och dygn?", "Skaffa vatten för minst tre dygn. Det är det viktigaste av allt.", "areas"], ["Har ni mat för en vecka som klarar sig utan kylskåp?", "Köp mat som håller i rumstemperatur, efter inköpslistan.", "calc"], ["Kan ni laga mat eller värma vatten utan el?", "Skaffa ett stormkök eller gaskök, och bränsle.", "how"], ["Kan ni hålla värmen om elementen slutar fungera?", "Ha sovsäckar eller filtar, och ett rum ni kan hålla varmt.", "how"], ["Har ni en radio som fungerar utan el?", "Skaffa en radio på batteri eller vev.", "areas"], ["Har ni lampor och batterier som räcker en vecka?", "Pannlampor och extra batterier i samma storlek.", "areas"], ["Har ni daglig medicin för minst en vecka?", "Prata med din läkare eller ditt apotek om medicin för en vecka.", "needs"], ["Har ni kontanter hemma?", "Ta ut kontanter i små valörer, för några dagars mat.", "areas"], ["Vet alla i familjen var ni möts om ni inte når varandra?", "Fyll i familjens krisplan tillsammans.", "plan"], ["Har ni ett sätt att gå på toaletten om vattnet försvinner?", "Hink med lock och kraftiga sopsäckar till en nödtoalett.", "how"]], "answered": "frågor besvarade. Svara på alla för att se resultatet.", "result": "Ditt resultat", "of10": "av 10", "dec": ",", "levels": [[0, "Nybörjare", "Ni skulle få det svårt redan första dygnet. Börja med vatten och ljus, det tar en eftermiddag."], [7, "På väg", "Ni klarar några dagar. Fyll luckorna nedan, så klarar ni en vecka."], [13, "Bra förberedda", "Ni klarar er troligen en vecka. Fixa det sista och öva en kväll utan ström."], [18, "Väl förberedda", "Ni ligger före de flesta. Håll lagret fräscht, och hjälp gärna en granne."]], "first": "Gör det här först", "share": "Jag fick {x} av 10 på beredskapstestet hos Prepper Stock. Hur förberedd är du? prepperstock.se/guide/#test", "sharebtn": "Dela resultatet", "copied": "Kopierat", "redo": "Gör om testet", "saved": "", "kptitle": "Familjens krisplan", "kpfile": "familjens-krisplan.txt", "clearq": "Vill du rensa hela planen?", "drillcat": "Från övningen", "added": "{n} sak(er) tillagda på akutlistan", "cal": [{"m": 2, "last": true}, {"m": 9, "last": true}], "calsum": "Prepper Stock: gå igenom beredskapen", "caldesc": "Gå igenom lagret och väskorna, byt vatten och mat som snart går ut, ladda powerbanken och se över familjens krisplan.", "calfile": "prepper-stock-paminnelse.ics", "same": "Gör om samma test", "newq": "Nya frågor", "bankn": "Frågorna väljs från en bank med 200 frågor, en från varje område. Du får nya frågor varje gång tills alla är använda."}, UI = {"show": "Visa", "hide": "Dölj", "nxt": "Nästa", "step": "Steg", "done": "Du är klar med guiden.", "all_open": "", "all_close": "", "of": "av", "sec": "Avsnitt", "prev": "Föregående", "nsec": "Nästa avsnitt", "nstep": "Vidare till steg"};
   function dlText(text, name, type) {
     try {
       var bom = type ? "" : "﻿";
@@ -1963,58 +1923,67 @@ footer { margin-top: 70px; background: var(--forest); color: var(--straw); paddi
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
     } catch (e) {}
   }
+  /* En sida per avsnitt: bara avsnittet man läser syns. Fem steg, avsnitt numrerade inom varje steg. */
   var SECS = Array.prototype.slice.call(document.querySelectorAll("section.cs"));
-  function setSec(sec, open) {
-    sec.classList.toggle("open", open);
-    var t = sec.querySelector(".stog");
-    if (t) { t.textContent = open ? UI.hide : UI.show; t.setAttribute("aria-expanded", open); }
+  var CHAPS = Array.prototype.slice.call(document.querySelectorAll(".chap"));
+  var HERO = document.querySelector(".top .hero");
+  SECS.forEach(function (sec) {
+    var c = sec, ci = -1;
+    while ((c = c.previousElementSibling)) { if (c.classList.contains("chap")) { ci = CHAPS.indexOf(c); break; } }
+    sec._step = ci; sec._chap = CHAPS[ci];
+  });
+  SECS.forEach(function (sec) {
+    var same = SECS.filter(function (s) { return s._step === sec._step; });
+    sec._n = same.indexOf(sec) + 1; sec._of = same.length;
+    var eb = sec.querySelector(".eyebrow");
+    if (eb) eb.textContent = UI.step + " " + (sec._step + 1) + " " + UI.of + " 5 · " + UI.sec + " " + sec._n + " " + UI.of + " " + sec._of;
+  });
+  function chapTitle(i) { var c = CHAPS[i]; return c ? c.querySelector("h2").textContent : ""; }
+  var CUR = -1;
+  function setSec() {}
+  function go(i, scrollTo) {
+    i = Math.max(0, Math.min(SECS.length - 1, i));
+    CUR = i; ST.cur = SECS[i].id; spara();
+    document.body.classList.add("paged");
+    SECS.forEach(function (s, k) { s.classList.toggle("cur", k === i); s.classList.add("open"); });
+    CHAPS.forEach(function (c, k) { c.classList.toggle("cur", k === SECS[i]._step && SECS[i]._n === 1); });
+    if (HERO) HERO.classList.toggle("off", i !== 0);
+    jl.forEach(function (a, k) { a.classList.toggle("on", k === SECS[i]._step); });
+    $("#progbar").style.width = ((i + 1) / SECS.length * 100) + "%";
+    var el = scrollTo && document.getElementById(scrollTo);
+    if (el && el !== SECS[i]) { setTimeout(function () { el.scrollIntoView(); }, 30); }
+    else window.scrollTo(0, i === 0 ? 0 : (SECS[i]._n === 1 && SECS[i]._chap ? SECS[i]._chap : SECS[i]).getBoundingClientRect().top + window.scrollY - ($(".jump") ? $(".jump").offsetHeight : 0));
+    try { window.dispatchEvent(new Event("ps-sec")); } catch (e) {}
   }
-  function openSec(id, scroll) {
-    var el = document.getElementById(id); if (!el) return;
-    var sec = el.closest ? el.closest("section.cs") : null;
-    if (sec) setSec(sec, true);
-    if (scroll) (sec || el).scrollIntoView();
+  function secOf(id) {
+    var el = document.getElementById(id); if (!el) return -1;
+    if (el.classList.contains("chap")) { var ci = CHAPS.indexOf(el); for (var k = 0; k < SECS.length; k++) if (SECS[k]._step === ci) return k; }
+    var s = el.closest ? el.closest("section.cs") : null;
+    return s ? SECS.indexOf(s) : -1;
   }
+  function openSec(id, scroll) { var k = secOf(id); if (k >= 0) go(k, id); }
   SECS.forEach(function (sec, i) {
     var w = sec.querySelector(".wrap");
-    var head = document.createElement("div"); head.className = "shead";
-    var body = document.createElement("div"); body.className = "sbody";
-    var inHead = true;
-    Array.prototype.slice.call(w.children).forEach(function (k) {
-      if (inHead) head.appendChild(k); else body.appendChild(k);
-      if (k.classList.contains("sub")) inHead = false;
-    });
-    var tg = document.createElement("button"); tg.type = "button"; tg.className = "stog";
-    head.appendChild(tg);
-    w.appendChild(head); w.appendChild(body);
-    var nx = SECS[i + 1], nb = document.createElement("div"); nb.className = "snext no-print";
-    if (nx) {
-      nb.innerHTML = '<button type="button" class="btn">' + UI.nxt + ': ' + esc(nx.querySelector(".eyebrow").textContent) + ', ' + esc(nx.querySelector("h2.t").textContent) + ' <span aria-hidden="true">→</span></button>';
-      nb.querySelector("button").onclick = function () { setSec(sec, false); openSec(nx.id, true); };
-    } else nb.innerHTML = '<p>' + UI.done + '</p>';
-    body.appendChild(nb);
-    head.onclick = function (e) { if (e.target.closest("a")) return; setSec(sec, !sec.classList.contains("open")); };
-    setSec(sec, false);
+    var nb = document.createElement("div"); nb.className = "snext no-print";
+    var nx = SECS[i + 1], pv = SECS[i - 1], h2 = "";
+    if (pv) h2 += '<button type="button" class="btn ghost dark sprev"><span aria-hidden="true">←</span> ' + UI.prev + '</button>';
+    if (nx) h2 += '<button type="button" class="btn snx">' + (nx._step !== sec._step ? UI.nstep + " " + (nx._step + 1) + ": " + esc(chapTitle(nx._step)) : UI.nsec + ": " + esc(nx.querySelector("h2.t").textContent)) + ' <span aria-hidden="true">→</span></button>';
+    else h2 += '<p>' + UI.done + '</p>';
+    nb.innerHTML = h2;
+    if (pv) nb.querySelector(".sprev").onclick = function () { go(i - 1); };
+    if (nx) nb.querySelector(".snx").onclick = function () { go(i + 1); };
+    w.appendChild(nb);
   });
-  setSec(document.getElementById("why"), true);
+  var parts = CHAPS, jl = document.querySelectorAll(".jump a");
   document.addEventListener("click", function (e) {
     var a = e.target.closest ? e.target.closest('a[href^="#"]') : null; if (!a) return;
-    var id = a.getAttribute("href").slice(1); if (id) openSec(id, false);
+    var id = a.getAttribute("href").slice(1); var k = id ? secOf(id) : -1;
+    if (k >= 0) { e.preventDefault(); go(k, id); }
   });
-  if (location.hash.length > 1) { openSec(location.hash.slice(1), false); setTimeout(function () { var el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); }, 50); }
-  var allOpen = false;
-  $("#allbtn").onclick = function () {
-    allOpen = !allOpen; SECS.forEach(function (s) { setSec(s, allOpen); });
-    $("#allbtn").textContent = allOpen ? UI.all_close : UI.all_open;
-  };
-  var parts = document.querySelectorAll(".chap"), jl = document.querySelectorAll(".jump a");
-  function prog() {
-    var h = document.documentElement.scrollHeight - innerHeight;
-    $("#progbar").style.width = Math.max(0, Math.min(100, scrollY / h * 100)) + "%";
-    var cur = -1; parts.forEach(function (p, i) { if (p.getBoundingClientRect().top < 140) cur = i; });
-    jl.forEach(function (a, i) { a.classList.toggle("on", i === cur); });
-  }
-  addEventListener("scroll", prog, { passive: true }); prog();
+  function prog() {}
+  var startId = location.hash.length > 1 ? location.hash.slice(1) : (ST.cur || "");
+  var sk = startId ? secOf(startId) : -1;
+  go(sk >= 0 ? sk : 0, location.hash.length > 1 ? startId : null);
 
   /* ===== Testet ===== */
   var BANK = [["w", "Har ni vatten hemma för minst en vecka, 3 liter per person och dygn?", "Skaffa vatten för minst tre dygn. Det är det viktigaste av allt.", "areas"], ["w", "Har ni tomma dunkar med lock för att hämta vatten från en tankbil?", "Köp två eller tre dunkar på 10 liter. De tar slut i butikerna när det händer.", "areas"], ["w", "Vet du hur länge vatten måste koka för att bli säkert att dricka?", "Låt vattnet koka upp ordentligt. Läs om vatten i Så löser du det.", "how"], ["w", "Har ni reningstabletter eller ett vattenfilter hemma?", "Ett filter eller tabletter gör vatten från sjön eller bäcken drickbart.", "how"], ["w", "Vet du att varmvattenberedaren rymmer rent vatten när kranen är tom?", "Ta reda på var tappkranen sitter och hur man tömmer den säkert.", "how"], ["w", "Byter ni ut ert lagrade vatten minst en gång om året?", "Sätt en påminnelse. Kranvatten i rena flaskor bör bytas regelbundet.", "areas"], ["w", "Vet ni hur ni ska spara vatten när det inte går att spola toaletten?", "Ha en nödtoalett och använd inte dricksvattnet till att spola.", "how"], ["w", "Har ni vatten till husdjuren också?", "Räkna med vatten till djuren när ni räknar ut ert lager.", "areas"], ["w", "Vet du att kranvattnet kan sluta fungera när strömmen går?", "Pumpar och reningsverk behöver el. Läs Vad händer när.", "scen"], ["w", "Förvarar ni vattnet mörkt och svalt?", "Ljus och värme gör att vattnet blir dåligt fortare.", "areas"], ["w", "Har ni en kastrull med lock och bränsle för att koka vatten utan el?", "Ett stormkök och bränsle löser både mat och vatten.", "how"], ["w", "Har ni vatten i bilen?", "Ha några liter i bilen. Du kan bli stående länge i kö eller snöoväder.", "areas"], ["w", "Har ni vatten på jobbet eller i skolan?", "Ställ en flaska i skåpet eller i väskan.", "areas"], ["w", "Vet ni var närmaste vattenkälla finns om kranen är tom i flera dagar?", "Ta reda på var kommunen brukar ställa upp tankbilar.", "scen"], ["w", "Har ni extra vatten om någon i familjen är sjuk eller ammar?", "Sjuka och ammande behöver mer vätska. Räkna med extra.", "needs"], ["w", "Vet du hur man diskar med en liter vatten?", "Två baljor och lite diskmedel räcker långt.", "how"], ["w", "Har ni handsprit för när vattnet inte räcker till att tvätta händerna?", "Handsprit sparar vatten och minskar risken för magsjuka.", "areas"], ["w", "Vet du vad du gör om kommunen säger att vattnet måste kokas?", "Koka allt vatten till dryck, mat och tandborstning tills beskedet hävs.", "how"], ["w", "Räcker vattnet om ni inte kan laga mat med vatten?", "Ha mat som går att äta utan att kokas, då räcker vattnet längre.", "areas"], ["w", "Vet du var huvudkranen för vatten sitter hemma?", "Leta upp den nu. Vid ett läckage måste du kunna stänga den snabbt.", "areas"], ["f", "Har ni mat för en vecka som klarar sig utan kylskåp?", "Köp mat som håller i rumstemperatur, efter inköpslistan.", "calc"], ["f", "Har ni mat som går att äta kall, utan att värmas?", "Bönor, tonfisk, knäckebröd och jordnötssmör kräver ingen spis.", "meals"], ["f", "Har ni en konservöppnare som inte behöver el?", "En enkel konservöppnare kostar lite och kan avgöra mycket.", "calc"], ["f", "Äter ni av lagret och köper nytt, så att inget går ut?", "Ät det äldsta först och ställ det nya längst bak.", "calc"], ["f", "Vet ni hur många dagar er mat räcker för hela hushållet?", "Räkna ut det i räknaren i steg 5.", "calc"], ["f", "Har ni mat som ger tillräckligt med energi, runt 2 200 kcal per vuxen och dag?", "Välj mat med mycket energi, som olja, nötter och gryn.", "calc"], ["f", "Har ni mat som familjen faktiskt tycker om?", "Köp det ni äter till vardags. Okänd mat blir inte uppäten i en kris.", "meals"], ["f", "Har ni mat för den som har allergi eller specialkost?", "Specialkost tar slut först i butikerna. Ha ett eget lager.", "needs"], ["f", "Har ni barnmat eller ersättning för minst en vecka om ni har små barn?", "Färdigblandad ersättning kräver inget rent vatten.", "needs"], ["f", "Har ni mat till husdjuren för minst en vecka?", "Djurens mat tar också slut. Lägg till den på listan.", "calc"], ["f", "Vet ni vad ni äter först om frysen tinar?", "Ät det som ligger i frysen först, medan det fortfarande är kallt.", "meals"], ["f", "Vet du hur länge en full frys håller kylan utan ström?", "Ungefär två dygn om luckan hålls stängd. Öppna den så lite som möjligt.", "scen"], ["f", "Har ni mat som ger C-vitamin, till exempel nyponsoppa eller juice?", "Lägg till något med vitaminer i lagret.", "meals"], ["f", "Har ni snabbkokt pasta eller nudlar som sparar bränsle?", "Det som kokar på några minuter sparar både vatten och bränsle.", "calc"], ["f", "Har ni salt, olja och kryddor så att maten går att äta i en vecka?", "Lite smak gör att alla äter, även när det är jobbigt.", "meals"], ["f", "Förvarar ni maten svalt, torrt och skyddat från skadedjur?", "Tättslutande lådor skyddar mot fukt och möss.", "calc"], ["f", "Har ni mat som räcker om ni får gäster, till exempel grannar eller släkt?", "Räkna gärna med en person extra.", "calc"], ["f", "Har ni mellanmål som ger energi när det är kallt inne?", "Nötter, choklad och russin är bra att ha nära till hands.", "meals"], ["f", "Vet ni när det äldsta i lagret går ut?", "Gå igenom lagret två gånger om året.", "calc"], ["f", "Har ni mat som inte kräver mycket vatten att laga?", "Konserver innehåller redan vätska och sparar vatten.", "calc"], ["h", "Kan ni laga mat eller värma vatten utan el?", "Skaffa ett stormkök eller gaskök, och bränsle.", "how"], ["h", "Kan ni hålla värmen om elementen slutar fungera?", "Ha sovsäckar eller filtar, och ett rum ni kan hålla varmt.", "how"], ["h", "Har ni en sovsäck eller varma filtar till alla i hushållet?", "En bra sovsäck är det enklaste sättet att hålla värmen.", "how"], ["h", "Vet ni vilket rum ni samlas i om det blir kallt?", "Välj ett litet rum mitt i bostaden, med få fönster.", "how"], ["h", "Har ni ett kolmonoxidlarm om ni tänker värma med gasol eller fotogen?", "Kolmonoxid syns inte och luktar inte. Ha ett larm i samma rum.", "how"], ["h", "Har ni en fungerande brandvarnare i varje sovrum?", "Testa dem nu. Levande ljus och kaminer ökar risken för brand.", "areas"], ["h", "Har ni en brandsläckare eller brandfilt hemma?", "En pulversläckare och en brandfilt i köket räcker långt.", "areas"], ["h", "Har ni varma kläder i ull eller syntet för att vara inne i kylan?", "Ull värmer även när den är fuktig.", "how"], ["h", "Vet du att värmeljusugnar inte värmer ett rum?", "Lägg energin på att behålla värmen i stället. Läs Vanliga misstag.", "myths"], ["h", "Har ni ved och tändmaterial om ni har en kamin eller öppen spis?", "Torr ved för minst en vecka gör stor skillnad.", "how"], ["h", "Vet du att grillar och utomhuskök aldrig får användas inne?", "De ger kolmonoxid som kan döda. Använd dem bara utomhus.", "how"], ["h", "Har ni bränsle till stormköket för minst en vecka?", "Räkna med två måltider om dagen och några koppar varmt.", "how"], ["h", "Kan ni täta fönster och dörrar för att hålla kvar värmen?", "Filtar för fönstren och handdukar vid dörrarna hjälper.", "how"], ["h", "Vet ni hur ni håller små barn och äldre varma?", "De kyls ner fortast. Håll dem nära och kontrollera ofta.", "needs"], ["h", "Har ni en termos för att hålla vatten varmt?", "Varm dryck i termos sparar bränsle.", "how"], ["h", "Har ni tändstickor eller tändare som ni hittar i mörker?", "Ha dem på en fast plats, tillsammans med ljusen.", "areas"], ["h", "Vet du hur länge bostaden håller värmen en kall vinterdag utan el?", "Ett modernt hus kyls ner på något dygn. Planera för det.", "how"], ["h", "Har ni en mössa och vantar till alla, att ha på inomhus?", "Varma händer och fötter gör stor skillnad.", "how"], ["h", "Vet ni vart ni kan åka om det blir för kallt hemma?", "Bestäm i förväg vem ni kan bo hos.", "plan"], ["h", "Har ni ett tält eller en koja ni kan sätta upp inne för att sova varmare?", "Ett litet tält inomhus håller kvar kroppsvärmen.", "how"], ["l", "Har ni lampor och batterier som räcker en vecka?", "Pannlampor och extra batterier i samma storlek.", "areas"], ["l", "Har ni en pannlampa till varje person i hushållet?", "Med pannlampa har man händerna fria.", "areas"], ["l", "Har ni powerbanks som är laddade?", "Ladda dem nu, och sedan några gånger om året.", "areas"], ["l", "Vet ni var lamporna finns om det blir mörkt mitt i natten?", "Ha en lampa på en fast plats i varje rum.", "areas"], ["l", "Har ni batterier i alla storlekar som era lampor och radion behöver?", "Välj lampor som använder samma batterier.", "areas"], ["l", "Kan ni ladda mobilen utan el från uttaget?", "Powerbank, bil eller en liten solpanel.", "how"], ["l", "Har ni ljus som är säkra, till exempel lampor på batteri?", "Batterilampor ger ingen brandrisk.", "areas"], ["l", "Vet du hur länge mobilen räcker om du sparar på batteriet?", "Flygplansläge och låg ljusstyrka kan ge flera dygn.", "how"], ["l", "Om ni har elverk, står det utomhus och långt från fönster?", "Elverk ger kolmonoxid. Aldrig inne eller i garaget.", "how"], ["l", "Har ni en lampa i bilen?", "En ficklampa i handskfacket hjälper vid stopp i mörker.", "areas"], ["l", "Vet du vad som slutar fungera hemma när strömmen går?", "Läs Vad händer när, så blir du inte överraskad.", "scen"], ["l", "Har ni en sladdlös lösning för medicinsk utrustning som kräver el?", "Gör en reservplan med vårdgivaren.", "how"], ["l", "Har ni reflexer eller reflexväst om ni måste gå ute i mörker?", "Utan gatlampor syns man inte för bilister.", "areas"], ["l", "Vet du att larm, hissar och elektriska lås kan sluta fungera?", "Ta reda på hur du kommer in och ut när strömmen går.", "scen"], ["l", "Kontrollerar ni lamporna och batterierna två gånger om året?", "Gör det när klockan ställs om.", "areas"], ["l", "Har ni en laddkabel till bilen för telefonen?", "Bilen är en bra laddare, men låt inte motorn gå i garaget.", "how"], ["l", "Har ni en reservlampa i sovrummet?", "Den första lampan du behöver är den bredvid sängen.", "areas"], ["l", "Vet du hur du öppnar garageporten utan el?", "De flesta har ett handtag för manuell öppning. Leta upp det.", "how"], ["l", "Vet du att bensinstationer inte kan tanka när strömmen är borta?", "Håll tanken minst halvfull.", "scen"], ["l", "Har ni värmeljus eller stearinljus och något stadigt att ställa dem i?", "Ställ aldrig ljus där de kan välta, och släck när ni lämnar rummet.", "areas"], ["i", "Har ni en radio som fungerar utan el?", "Skaffa en radio på batteri eller vev.", "areas"], ["i", "Vet du vilken radiokanal som sänder viktig information där du bor?", "Sveriges Radio P4 sänder viktigt meddelande till allmänheten. Skriv upp frekvensen.", "areas"], ["i", "Har ni viktiga telefonnummer på papper?", "Skriv ner familj, grannar, vård och försäkring.", "areas"], ["i", "Vet du hur varningssignalen Viktigt meddelande till allmänheten låter?", "Sju sekunder ljud och fjorton sekunder tyst, i minst två minuter. Gå in och lyssna på radion.", "drill"], ["i", "Har ni bestämt vem i familjen alla ringer om ni tappar kontakten?", "En kontakt utanför området är lättast att nå.", "plan"], ["i", "Har ni appen eller sms tjänsten från er kommun eller myndighet för varningar?", "Ta reda på hur varningar skickas där du bor.", "areas"], ["i", "Vet du hur man känner igen falska rykten i en kris?", "Lita på myndigheter och kontrollera källan innan du delar.", "myths"], ["i", "Vet alla i familjen var ni möts om ni inte når varandra?", "Fyll i familjens krisplan tillsammans.", "plan"], ["i", "Har ni en karta på papper över ert område?", "Kartappar kan ligga nere. En papperskarta fungerar alltid.", "areas"], ["i", "Vet du hur du får tag på dina barn om skolan stänger?", "Ta reda på skolans plan och vem som får hämta.", "plan"], ["i", "Vet du att mobilnätet kan sluta fungera efter några timmar utan ström?", "Basstationerna har reservkraft en begränsad tid.", "scen"], ["i", "Har ni kontakt med era närmaste grannar?", "Byt telefonnummer med grannarna nu.", "areas"], ["i", "Vet du vilket nummer du ringer vid fara för liv?", "112 i Sverige och hela EU. Lär barnen numret.", "plan"], ["i", "Vet du vart du ringer för information som inte är akut?", "113 13 i Sverige för information vid allvarliga händelser.", "plan"], ["i", "Har ni penna och papper för att skriva ner information?", "Ett block i krislådan är bra för meddelanden och listor.", "areas"], ["i", "Har ni ett sätt att lämna meddelanden till varandra hemma?", "Bestäm en plats där ni lämnar lappar om ni måste gå.", "plan"], ["i", "Har ni laddat ner viktig information så att den finns utan internet?", "Spara krisplanen och viktiga papper i telefonen.", "areas"], ["i", "Vet du var du hittar myndigheternas råd om en kris inträffar?", "Krisinformation.se i Sverige. Lär dig var det står.", "scen"], ["i", "Vet släktingar långt bort hur de når er?", "Ge dem namnet på er kontaktperson och mötesplats.", "plan"], ["i", "Har ni en lista över vad som finns i ert lager?", "En lista gör det lätt att veta vad som saknas.", "areas"], ["m", "Har ni daglig medicin för minst en vecka?", "Prata med din läkare eller ditt apotek om medicin för en vecka.", "needs"], ["m", "Har ni ett husapotek med plåster, förband och värktabletter?", "Komplettera det som saknas och kontrollera datumen.", "areas"], ["m", "Har ni recepten på papper eller i telefonen?", "Då kan du få medicin även på ett annat apotek.", "needs"], ["m", "Kan du ge första hjälpen om någon blöder kraftigt?", "Gå en kurs i första hjälpen. Det tar en kväll.", "areas"], ["m", "Har ni febernedsättande till barnen, i rätt styrka för deras ålder?", "Fråga apoteket om rätt sort och dos.", "areas"], ["m", "Har ni en nödtoalett om vattnet försvinner?", "Hink med lock och kraftiga sopsäckar till en nödtoalett.", "how"], ["m", "Har ni toalettpapper, våtservetter och sopsäckar för en vecka?", "Det tar slut först i butikerna.", "areas"], ["m", "Har ni mensskydd för minst en vecka om någon i hushållet behöver det?", "Lägg till det på inköpslistan.", "needs"], ["m", "Har ni en termometer som fungerar utan el?", "En vanlig termometer på batteri räcker.", "areas"], ["m", "Har ni extra glasögon eller linser?", "Ett par gamla glasögon i krislådan räcker.", "needs"], ["m", "Vet ni hur länge elberoende hjälpmedel klarar sig på batteri?", "Kontrollera och gör en plan med vårdgivaren.", "needs"], ["m", "Vet du hur man håller rent när man inte kan duscha?", "Tvättlapp och en liter vatten räcker långt.", "how"], ["m", "Har ni tvål och diskmedel för en vecka?", "Rena händer förhindrar magsjuka.", "areas"], ["m", "Vet ni vem som kollar till äldre släktingar eller grannar?", "Kom överens om vem som hör av sig till vem.", "needs"], ["m", "Har ni munskydd och engångshandskar?", "De skyddar vid sjukdom och när man tar hand om någon.", "areas"], ["m", "Vet du hur du tar hand om sopor när hämtningen stoppar?", "Täta påsar och en sval plats utomhus.", "how"], ["m", "Har ni kontrollerat datumen på medicinerna i husapoteket?", "Byt ut det som har gått ut.", "areas"], ["m", "Har ni ett eget lager av det som någon i familjen inte klarar sig utan?", "Insulin, inhalator eller annat. Prata med vården.", "needs"], ["m", "Kan du göra hjärt och lungräddning?", "Gå en kurs. Det kan rädda ett liv.", "areas"], ["m", "Vet ni hur ni håller maten säker när kylen är varm?", "Släng mat som har stått varmt för länge. Hellre det än magsjuka.", "how"], ["p", "Har ni en skriven krisplan som alla i familjen känner till?", "Fyll i krisplanen och sätt upp den på kylskåpet.", "plan"], ["p", "Har ni två mötesplatser, en nära och en längre bort?", "Om den första inte går ska alla veta den andra.", "plan"], ["p", "Vet ni vem som hämtar barnen om ni inte kan?", "Skriv in det i krisplanen och berätta för skolan.", "plan"], ["p", "Vet ni vart ni åker om ni måste lämna hemmet?", "Bestäm två ställen, ett nära och ett längre bort.", "plan"], ["p", "Har ni en plan för husdjuren om ni måste lämna hemmet?", "Bur, koppel och mat ska vara lätta att ta med.", "plan"], ["p", "Har ni någon gång övat på en kväll utan ström?", "Gör övningen i steg 13. Det är det bästa sättet att hitta det som saknas.", "drill"], ["p", "Vet alla i familjen hur man stänger av el, vatten och ventilation?", "Visa var huvudkranen och elcentralen finns.", "plan"], ["p", "Har ni pratat med barnen om vad som händer i en kris?", "Prata lugnt och låt dem hjälpa till att packa.", "plan"], ["p", "Har ni en plan för hur ni bygger upp lagret steg för steg?", "Följ planen i fyra veckor.", "weeks"], ["p", "Vet ni vilka grannar som kan behöva hjälp?", "Äldre och ensamboende drabbas hårdast.", "plan"], ["p", "Vet ni vad ni gör om någon är på jobbet eller i skolan när det händer?", "Bestäm i förväg om man går hem eller stannar.", "plan"], ["p", "Har ni kopior av viktiga papper på ett säkert ställe?", "Pass, försäkringar och recept, på papper och i telefonen.", "plan"], ["p", "Vet ni hur ni tar er hemifrån utan bil?", "Planera en väg till fots eller med cykel.", "plan"], ["p", "Har ni en plan för en familjemedlem som behöver extra hjälp?", "Gör den tillsammans med personen och vården.", "plan"], ["p", "Går ni igenom lagret och planen minst två gånger om året?", "Gör det när klockan ställs om.", "weeks"], ["p", "Vet ni vem i familjen som ansvarar för vad?", "Dela upp uppgifterna, till exempel vatten, mat och kontakt.", "plan"], ["p", "Har ni sparat krisplanen så att den finns utan internet?", "Ladda ner den eller skriv ut den.", "plan"], ["p", "Vet ni vart ni ska om ni får besked att stanna inomhus?", "Stäng fönster, dörrar och ventilation. Lyssna på radion.", "plan"], ["p", "Vet du var närmaste skyddsrum finns?", "Leta upp det på kartan över skyddsrum.", "plan"], ["p", "Har ni bestämt hur länge ni ska klara er själva?", "En vecka är målet i Sverige. Börja med tre dygn.", "plan"], ["b", "Har du en packad väska på jobbet eller i bilen för att ta dig hem till fots?", "Packa en get home bag. Räknaren i steg 10 visar vad du behöver.", "bags"], ["b", "Har du skor på jobbet som du kan gå långt i?", "Ställ ett par bekväma skor i skåpet.", "bags"], ["b", "Vet du hur lång tid det tar att gå hem från jobbet?", "Räkna ut det i räknaren i steg 10.", "bags"], ["b", "Har ni en väska packad om ni måste lämna hemmet med kort varsel?", "Packa en bug out bag för varje person.", "bags"], ["b", "Klarar ni att lämna hemmet på 10 minuter med det viktigaste?", "Prova med övningen i steg 13.", "bags"], ["b", "Har ni vatten, mat, filtar och lampa i bilen?", "Bilen kan bli ditt skydd vid stopp på vägen.", "bags"], ["b", "Byter ni kläder i väskorna efter årstid?", "Vinterkläder på hösten, sommarkläder på våren.", "bags"], ["b", "Väger din väska så lite att du orkar bära den länge?", "Högst ungefär en tiondel av din vikt för en dagstur.", "bags"], ["b", "Har du en karta på papper med två vägar hem?", "Markera vägarna och lägg kartan i väskan.", "bags"], ["b", "Har du en plan B om du inte kan gå hela vägen hem på en dag?", "Bestäm var du kan stanna på vägen.", "bags"], ["b", "Har ni kopior av id handlingar i väskan?", "En kopia gör det lättare om originalen försvinner.", "bags"], ["b", "Har barnen en egen liten väska med det de behöver?", "Låt dem packa den själva, med något som tröstar.", "bags"], ["b", "Har du räddningsfilt och regnskydd i väskan?", "De väger nästan inget och skyddar mot nedkylning.", "bags"], ["b", "Har ni en filt och varma kläder i bilen på vintern?", "Du kan bli stående länge i snöoväder.", "bags"], ["b", "Har du skavsårsplåster och extra strumpor i väskan?", "Ett skavsår kan stoppa dig helt.", "bags"], ["b", "Vet du var väskorna står så att du hittar dem snabbt?", "Ha en fast plats nära dörren.", "bags"], ["b", "Har ni laddare och powerbank i väskorna?", "Telefonen är viktig när man är på väg.", "bags"], ["b", "Kontrollerar ni väskorna två gånger om året?", "Byt mat, vatten och batterier som har blivit gamla.", "bags"], ["b", "Har ni medicin för några dagar i väskorna?", "Det är lätt att glömma när man har bråttom.", "bags"], ["b", "Håller du tanken i bilen minst halvfull?", "Det kan vara omöjligt att tanka när strömmen är borta.", "bags"], ["c", "Har ni kontanter hemma?", "Ta ut kontanter i små valörer, för några dagars mat.", "areas"], ["c", "Har ni kontanter i små valörer, så att ni kan betala jämnt?", "Butiker kan sakna växel när kortsystemen ligger nere.", "areas"], ["c", "Har ni betalkort från mer än en bank?", "Om en bank har problem fungerar den andra kanske.", "areas"], ["c", "Vet ni vilka butiker nära er som tar emot kontanter?", "Ta reda på det innan det behövs.", "areas"], ["c", "Har ni pass, id och försäkringar samlade på ett ställe?", "Lägg dem i en mapp som är lätt att ta med.", "plan"], ["c", "Har ni kopior av viktiga papper i telefonen?", "Fotografera pass, försäkringar och recept.", "plan"], ["c", "Har ni en buffert så att ni klarar en månad utan inkomst?", "Spara lite varje månad. Det ger lugn i en kris.", "areas"], ["c", "Vet ni vad er hemförsäkring täcker vid översvämning eller storm?", "Läs villkoren och fotografera det ni äger.", "plan"], ["c", "Har ni kontanter i bilen eller väskan?", "Några hundralappar i väskan räcker långt.", "areas"], ["c", "Har ni lösenord och koder sparade på ett säkert sätt?", "Ett skrivet papper på säker plats kan behövas.", "plan"], ["c", "Har ni en lista över era viktigaste konton och kontaktuppgifter?", "Bank, försäkring, vård och myndigheter.", "plan"], ["c", "Vet du att kortbetalningar kan sluta fungera samtidigt som strömmen?", "Kassor och nätverk behöver el. Ha kontanter.", "scen"], ["c", "Har ni ett skåp eller en låda som skyddar papper mot vatten och brand?", "En enkel brandsäker box räcker.", "plan"], ["c", "Har ni lite extra av det ni köper varje vecka?", "En vecka extra i skafferiet är början på ett lager.", "areas"], ["c", "Vet ni hur ni betalar räkningar om internet ligger nere?", "Ta reda på bankens telefonnummer och kontor.", "plan"], ["c", "Har ni kontanter till husdjurens mat och mediciner också?", "Räkna med allt som behöver köpas den första veckan.", "areas"], ["c", "Har ni bilnyckel och husnyckel i reserv på ett ställe ni når?", "En reservnyckel hos en granne kan rädda dagen.", "plan"], ["c", "Vet ni vilka papper ni behöver om ni måste söka hjälp eller ersättning?", "Id, försäkring och kvitton på det ni äger.", "plan"], ["c", "Har ni bestämt hur mycket kontanter ni ska ha hemma?", "Ungefär så mycket som en veckas mat kostar.", "areas"], ["c", "Förvarar ni kontanterna säkert men lätt att nå?", "Inte allt på ett ställe, och inte i plånboken.", "areas"], ["k", "Vet du att du förväntas klara dig själv i minst en vecka i Sverige?", "Myndigheten för civilt försvar säger en vecka. Läs Varför preppa.", "why"], ["k", "Vet du vad som hände i Texas 2021 när strömmen försvann i flera dagar?", "Läs om verkliga kriser i steg 1.", "why"], ["k", "Vet du vilka misstag som är vanligast när man börjar preppa?", "Läs Vanliga misstag i steg 14.", "myths"], ["k", "Vet du hur man gör en nödtoalett?", "Läs Så löser du det, fliken Toalett och hygien.", "how"], ["k", "Vet du hur en värmelåda fungerar för att spara bränsle?", "Koka upp maten och låt den stå inslagen. Läs Så löser du det.", "how"], ["k", "Har barnen fått öva på vad de ska göra om det blir mörkt?", "Låt dem prova i övningen i steg 13.", "drill"], ["k", "Vet du vad du ska göra om du hör varningssignalen?", "Gå inomhus, stäng fönster och ventilation och lyssna på radion.", "areas"], ["k", "Vet du hur man håller ett rum varmt utan el?", "Ett rum, stängda dörrar och filtar för fönstren.", "how"], ["k", "Vet du att kriser oftast börjar med något vanligt, som en storm eller ett it fel?", "De flesta kriser är inte krig. Läs Kriser vi kan lära av.", "why"], ["k", "Kan du tända en eld eller ett stormkök i blåst?", "Öva utomhus en gång, innan du behöver det.", "how"], ["k", "Vet du hur mycket bränsle stormköket drar per måltid?", "Prova och mät, då vet du hur mycket du behöver.", "how"], ["k", "Vet du vad som händer första timmen, första dygnet och första veckan utan ström?", "Läs Vad händer när i steg 2.", "scen"], ["k", "Vet du vad myndigheterna i olika länder rekommenderar?", "Läs Vad säger myndigheterna i steg 4.", "law"], ["k", "Vet du hur ni äter en hel vecka utan att laga mat?", "Se veckomenyn med Bara utan värme i steg 9.", "meals"], ["k", "Vet du att det är farligt att värma bostaden med grill eller gasolkök?", "Kolmonoxid kan döda. Läs Vanliga misstag.", "myths"], ["k", "Har du gått en kurs i första hjälpen de senaste fem åren?", "Kunskapen är det enda du alltid har med dig.", "areas"], ["k", "Har ni sparat en övning och tänkt göra en svårare nästa gång?", "Spara övningen i steg 13 och prova en längre nästa gång.", "drill"], ["k", "Vet du hur man renar vatten om du inte kan koka det?", "Filter eller tabletter. Läs fliken Vatten i Så löser du det.", "how"], ["k", "Vet du hur man tar hand om någon som har blivit nedkyld?", "Torra kläder, filt, varm dryck och kroppsvärme. Ring 112 om personen blir slö.", "needs"], ["k", "Vet du varför det är bra att börja med tre dygn och sedan bygga vidare?", "Små steg gör att man kommer igång. Läs Fyra veckor.", "why"]], AREAS = ["w", "f", "h", "l", "i", "m", "p", "b", "c", "k"], ORIG = [0, 20, 40, 41, 80, 60, 100, 160, 87, null];
