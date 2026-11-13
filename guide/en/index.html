@@ -651,6 +651,16 @@ body.paged section.cs .stog { display: none; }
 body.paged .top .hero.off { display: none; }
 .snext { justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 .snext .sprev { background: transparent; color: var(--forest); border: 1.5px solid var(--line); }
+.ltabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 14px; }
+.ltabs button { appearance: none; border: 1.5px solid var(--line); background: #fff; color: var(--forest); border-radius: 999px; padding: 12px 18px; font: 600 16px/1 var(--body); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.ltabs button[aria-pressed="true"] { background: var(--forest); color: var(--straw); border-color: var(--forest); }
+.ltabs button[data-l="akut"][aria-pressed="true"] { background: var(--rust); border-color: var(--rust); }
+.ltabs .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rust); }
+.ltabs button[aria-pressed="true"] .dot { background: #fff; }
+#ak-open, #ak-close { display: none !important; }
+.downn { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-weight: 600; }
+.downn input { width: 110px; padding: 10px 12px; border-radius: 12px; border: 1.5px solid var(--line); font: 600 17px var(--body); }
+#sh-act { margin-top: 16px; }
 </style>
 </head>
 <body>
@@ -809,7 +819,9 @@ body.paged .top .hero.off { display: none; }
           <button type="button" data-d="7">1 week<small>Sweden, Norway</small></button>
           <button type="button" data-d="14">2 weeks<small>A good goal</small></button>
           <button type="button" data-d="30">1 month<small>For the experienced</small></button>
+          <button type="button" data-d="0" id="d-own">Your own<small>Enter number of days</small></button>
         </div>
+        <label class="downn" id="d-ownbox" hidden>Number of days <input type="number" id="d-num" min="1" max="365" inputmode="numeric"></label>
       </div>
       <div>
         <h3>This is what you need</h3>
@@ -834,12 +846,14 @@ body.paged .top .hero.off { display: none; }
       </div>
     </div>
 
+    <div class="ltabs" id="ltabs" role="group"><button type="button" data-l="akut"><span class="dot"></span>Emergency: buy now</button><button type="button" data-l="shop">Build up a supply</button></div>
     <div class="akut" id="akut" hidden></div>
 
     <div class="shop" id="shop">
       <div class="list">
         <h3>Shopping list: food <span id="o-for" style="font-size:18px;color:var(--mute);font-family:var(--body);font-weight:500"></span></h3>
         <div id="food"></div>
+        <div class="actions no-print" id="sh-act"><button class="btn" type="button" id="sh-pdf">Save as PDF</button><button class="btn ghost dark" type="button" id="sh-share" hidden>Share</button><button class="btn ghost dark" type="button" id="sh-copy">Copy the list as text</button></div>
       </div>
       <div class="side">
         <div class="card">
@@ -1540,7 +1554,7 @@ body.paged .top .hero.off { display: none; }
   if (q.has("c") && !/^\d+$/.test(q.get("c"))) q.delete("c");
   var harVal = P.some(function (p) { return q.has(p.id); });
   P.forEach(function (p) { if (harVal) p.n = q.has(p.id) ? Math.max(0, Math.min(20, parseInt(q.get(p.id), 10) || 0)) : 0; });
-  if ([3,7,14,30].indexOf(parseInt(q.get("d"), 10)) > -1) D = parseInt(q.get("d"), 10);
+  if (parseInt(q.get("d"), 10) > 0 && parseInt(q.get("d"), 10) <= 365) D = parseInt(q.get("d"), 10);
 
   var who = $("#who");
   P.forEach(function (p) {
@@ -1553,15 +1567,23 @@ body.paged .top .hero.off { display: none; }
     who.appendChild(row);
   });
   document.querySelectorAll("#days button").forEach(function (b) {
-    b.onclick = function () { D = parseInt(b.dataset.d, 10); calc(); };
+    b.onclick = function () {
+      var d = parseInt(b.dataset.d, 10);
+      if (!d) { $("#d-ownbox").hidden = false; var v = parseInt($("#d-num").value, 10); if (v > 0) D = Math.min(365, v); else { $("#d-num").value = D; } $("#d-num").focus(); }
+      else { D = d; $("#d-ownbox").hidden = true; }
+      calc();
+    };
   });
+  $("#d-num").oninput = function () { var v = parseInt($("#d-num").value, 10); if (v > 0) { D = Math.min(365, v); calc(); } };
 
   function rows(el, list) {
     $(el).innerHTML = list.map(function (r) { return '<div class="row"><span>' + r[0] + '</span><b>' + r[1] + '</b></div>'; }).join("");
   }
 
   function calc() {
-    document.querySelectorAll("#days button").forEach(function (b) { b.setAttribute("aria-pressed", parseInt(b.dataset.d, 10) === D); });
+    var stdD = [3, 7, 14, 30].indexOf(D) > -1;
+    document.querySelectorAll("#days button").forEach(function (b) { var d = parseInt(b.dataset.d, 10); b.setAttribute("aria-pressed", d ? d === D : !stdD); });
+    if (!stdD) { $("#d-ownbox").hidden = false; if (!$("#d-num").value) $("#d-num").value = D; }
     var folk = 0, kcalDag = 0, vattenDag = 0, djurVatten = 0;
     var N = {}; P.forEach(function (p) { N[p.id] = p.n; });
     P.forEach(function (p) {
@@ -1579,7 +1601,7 @@ body.paged .top .hero.off { display: none; }
     document.querySelectorAll(".v-kcal").forEach(function (e) { e.textContent = fmt(kcal); });
     document.querySelectorAll(".v-days").forEach(function (e) { e.textContent = D + " dagar"; });
     $("#o-pet").textContent = (N.g || N.k) ? "The water includes your pets. How much a dog needs depends on its size, roughly 50 ml per kilo (0.8 oz per pound) per day." : "";
-    var lbl = { 3: "72 hours", 7: "1 week", 14: "2 weeks", 30: "1 month" }[D];
+    var lbl = ({ 3: "72 hours", 7: "1 week", 14: "2 weeks", 30: "1 month" }[D] || D + " days");
     $("#o-for").textContent = folk ? "for " + folk + (folk === 1 ? " person, " : " people, ") + lbl : "";
 
     /* Matlistan */
@@ -1747,7 +1769,7 @@ body.paged .top .hero.off { display: none; }
     openSec("calc", true);
     var N = S.N, D = S.D, folk = S.folk, barn = (N.c || 0) + (N.s || 0) + (N.i || 0);
     var vux = (N.a || 0) + (N.o || 0) + (N.t || 0), bm = (N.c || 0) + (N.s || 0);
-    var lbl = { 3: "72 hours", 7: "1 week", 14: "2 weeks", 30: "1 month" }[D];
+    var lbl = ({ 3: "72 hours", 7: "1 week", 14: "2 weeks", 30: "1 month" }[D] || D + " days");
     var hush = Math.max(1, folk), lampa = Math.max(1, folk - (N.i || 0) - (N.s || 0));
     var G = [];
     G.push(["Water", [["Bottled water", Math.ceil(S.vatten / 1.5) + " bottles of 1.5 L", "In total " + fmt(S.vatten) + " liters (" + fmt(S.vatten * 0.264) + " gal). Carry what you can, fill the rest at home."]]]);
@@ -1799,7 +1821,7 @@ body.paged .top .hero.off { display: none; }
       h += '</div></div>';
     });
     h += addForm("a", cats);
-    h += '<div class="actions"><button class="btn" type="button" id="ak-dl">Download the list</button><button class="btn ghost dark" type="button" id="ak-share" hidden>Share</button><button class="btn ghost dark" type="button" id="ak-copy">Copy the list as text</button></div>';
+    h += '<div class="actions"><button class="btn" type="button" id="ak-dl">Save as PDF</button><button class="btn ghost dark" type="button" id="ak-share" hidden>Share</button><button class="btn ghost dark" type="button" id="ak-copy">Copy the list as text</button></div>';
     $("#akut").innerHTML = h;
     $("#akut").hidden = false;
     $("#ak-reset").onclick = function () {
@@ -1819,16 +1841,7 @@ body.paged .top .hero.off { display: none; }
       });
       return t;
     }
-    $("#ak-dl").onclick = function () {
-      var txt = nuText();
-      try {
-        var blob = new Blob(["\ufeff" + txt.replace(/\n/g, "\r\n")], { type: "text/plain;charset=utf-8" });
-        var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "shopping-list-prepper-stock.txt";
-        document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
-        $("#ak-dl").textContent = "The list is downloaded"; setTimeout(function () { $("#ak-dl").textContent = "Download the list"; }, 2200);
-      } catch (e) {}
-    };
+    $("#ak-dl").onclick = function () { psSavePdf("Emergency shopping list", nuText(), "emergency-shopping-list-prepper-stock.pdf"); };
     if (navigator.share) {
       $("#ak-share").hidden = false;
       $("#ak-share").onclick = function () { navigator.share({ text: nuText(), title: "Shopping list" }).catch(function () {}); };
@@ -1838,7 +1851,7 @@ body.paged .top .hero.off { display: none; }
       var ok = function () { bt.textContent = "The list is copied"; setTimeout(function () { bt.textContent = "Copy the list as text"; }, 2200); };
       try { navigator.clipboard.writeText(nuText()).then(ok, function () { bt.textContent = "Could not copy"; }); } catch (e) { bt.textContent = "Could not copy"; }
     };
-    $("#akut").scrollIntoView();
+    if (!AKQ) $("#ltabs").scrollIntoView();
   }
   $("#ak-open").onclick = function () { akut(); };
   $("#ak-hero").onclick = function () { akut(); };
@@ -2320,6 +2333,90 @@ body.paged .top .hero.off { display: none; }
   }
 
   calc();
+  /* ===== Enkel PDF utan bibliotek: rubrik och textrader, A4, sidbrytning. Fungerar utan nät. ===== */
+  function psPdf(title, text) {
+    var W = 595, H = 842, M = 50, LH = 14, maxc = 92;
+    function clean(s) { return String(s).replace(/[→←↓]/g, "-").replace(/[·•]/g, "-").replace(/[–—]/g, "-").replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/…/g, "...").replace(/ | /g, " ").replace(/[^\x20-\x7e\xa0-\xff]/g, ""); }
+    function esc2(s) { return s.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)"); }
+    function wrap(s) { var out = [], line = ""; s.split(" ").forEach(function (w) { if ((line + " " + w).trim().length > maxc) { if (line) out.push(line); line = w; } else line = (line + " " + w).trim(); }); out.push(line); return out; }
+    var items = [{ t: clean(title), b: 1, sz: 18 }];
+    String(text).split("\n").forEach(function (l) {
+      var bold = /^## /.test(l) || (/^[A-ZÅÄÖ0-9 .,:]{4,}$/.test(l) && /[A-ZÅÄÖ]/.test(l));
+      l = clean(l.replace(/^## /, ""));
+      if (!l.trim()) { items.push({ t: "", sz: 10 }); return; }
+      wrap(l).forEach(function (x) { items.push({ t: x, b: bold ? 1 : 0, sz: bold ? 12 : 10 }); });
+    });
+    var pages = [], cur = [], y = H - M;
+    items.forEach(function (it) {
+      var lh = it.sz > 12 ? 26 : (it.b ? 18 : LH);
+      if (y - lh < M) { pages.push(cur); cur = []; y = H - M; }
+      y -= lh; cur.push("BT /F" + (it.b ? 2 : 1) + " " + it.sz + " Tf " + M + " " + y + " Td (" + esc2(it.t) + ") Tj ET");
+    });
+    pages.push(cur);
+    var objs = [], n = 4 + pages.length * 2;
+    objs[1] = "<< /Type /Catalog /Pages 2 0 R >>";
+    var kids = []; for (var i = 0; i < pages.length; i++) kids.push((5 + i * 2) + " 0 R");
+    objs[2] = "<< /Type /Pages /Kids [" + kids.join(" ") + "] /Count " + pages.length + " >>";
+    objs[3] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>";
+    objs[4] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>";
+    pages.forEach(function (p, i) {
+      var c = p.join("\n");
+      objs[5 + i * 2] = "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 " + W + " " + H + "] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents " + (6 + i * 2) + " 0 R >>";
+      objs[6 + i * 2] = "<< /Length " + c.length + " >>\nstream\n" + c + "\nendstream";
+    });
+    var out = "%PDF-1.4\n", offs = [];
+    for (var k = 1; k <= n; k++) { offs[k] = out.length; out += k + " 0 obj\n" + objs[k] + "\nendobj\n"; }
+    var xref = out.length;
+    out += "xref\n0 " + (n + 1) + "\n0000000000 65535 f \n";
+    for (k = 1; k <= n; k++) out += ("000000000" + offs[k]).slice(-10) + " 00000 n \n";
+    out += "trailer\n<< /Size " + (n + 1) + " /Root 1 0 R >>\nstartxref\n" + xref + "\n%%EOF";
+    var bytes = new Uint8Array(out.length); for (k = 0; k < out.length; k++) bytes[k] = out.charCodeAt(k) & 255;
+    return new Blob([bytes], { type: "application/pdf" });
+  }
+  function psSavePdf(title, text, name) {
+    try {
+      var a = document.createElement("a"); a.href = URL.createObjectURL(psPdf(title, text)); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    } catch (e) {}
+  }
+  function psShare(title, text) {
+    if (navigator.share) { navigator.share({ title: title, text: text }).catch(function () {}); return true; }
+    return false;
+  }
+  function psCopy(btn, text, okTxt, failTxt) {
+    var old = btn.textContent;
+    var ok = function () { btn.textContent = okTxt; setTimeout(function () { btn.textContent = old; }, 2200); };
+    try { navigator.clipboard.writeText(text).then(ok, function () { btn.textContent = failTxt; }); } catch (e) { btn.textContent = failTxt; }
+  }
+
+  /* ===== En lista åt gången: Akut eller Bygg upp ett lager ===== */
+  var AKQ = false;
+  function showList(m, quiet) {
+    ST.lm = m; spara();
+    document.querySelectorAll("#ltabs button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.l === m); });
+    if (m === "akut") { AKQ = !!quiet; var y = scrollY, c = CUR; akut(); AKQ = false; if (quiet) { if (CUR !== c) go(c); scrollTo(0, y); } $("#shop").hidden = true; }
+    else { $("#akut").hidden = true; $("#shop").hidden = false; if (!quiet) $("#ltabs").scrollIntoView(); }
+  }
+  document.querySelectorAll("#ltabs button").forEach(function (b) { b.onclick = function () { showList(b.dataset.l); }; });
+  $("#ak-hero").onclick = function () { openSec("calc"); showList("akut"); };
+  $("#ak-open").onclick = function () { showList("akut"); };
+  var hl = document.querySelector(".hero-list"); if (hl) hl.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); openSec("calc"); showList("shop"); }, true);
+  var cpb = $("#copy"); if (cpb && cpb.parentNode) cpb.parentNode.style.display = "none";
+  showList("shop", true);
+  /* Knappar under inköpslistan */
+  function shopText() {
+    var t = "Shopping list" + ($("#o-for").textContent ? " " + $("#o-for").textContent : "") + "\n\n## " + "Water".toUpperCase() + "\n" + $("#o-water").textContent + "\n\n## " + "Food".toUpperCase() + "\n";
+    document.querySelectorAll("#food .li").forEach(function (r) {
+      var n = r.querySelector(".n"), q = r.querySelector(".q"), inp = r.querySelector("input"); if (!n || !inp) return;
+      var nm = n.firstChild && n.firstChild.nodeType === 3 ? n.firstChild.textContent.trim() : n.textContent.trim();
+      t += (inp.checked ? "[x] " : "[ ] ") + nm + (q ? ": " + q.textContent.replace(/\s+/g, " ").trim() : "") + "\n";
+    });
+    return t;
+  }
+  $("#sh-pdf").onclick = function () { psSavePdf("Shopping list", $("#o-for").textContent + "\n" + shopText().split("\n").slice(1).join("\n"), "shopping-list-prepper-stock.pdf"); };
+  if (navigator.share) { $("#sh-share").hidden = false; $("#sh-share").onclick = function () { psShare("Shopping list", shopText()); }; }
+  $("#sh-copy").onclick = function () { psCopy($("#sh-copy"), shopText(), "The list is copied", "Could not copy"); };
 })();
 </script>
 </body>
