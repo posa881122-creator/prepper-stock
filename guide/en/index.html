@@ -920,31 +920,36 @@ body.paged .top .hero.off { display: none; }
     <h2 class="t">Build your supplies in four weeks</h2>
     <p class="sub">You do not have to buy everything today. Take one week at a time, in this order. Buy a little extra every time you shop, and you will hardly notice it in your wallet.</p>
     <div class="weeks">
-      <div class="wk"><div class="wk-n">Week 1</div><h3>Water and light</h3>
-        <label><input type="checkbox" data-k="w:1a">Water for three days, 3 liters per person per day</label>
-        <label><input type="checkbox" data-k="w:1b">Two empty containers with lids</label>
-        <label><input type="checkbox" data-k="w:1c">Headlamp or flashlight and batteries</label>
-        <label><input type="checkbox" data-k="w:1d">Battery or crank radio</label>
-        <div class="wk-do"><b>Do:</b> fill clean bottles with tap water and write the date on them.</div></div>
-      <div class="wk"><div class="wk-n">Week 2</div><h3>Food for three days</h3>
-        <label><input type="checkbox" data-k="w:2a">Food that can be eaten cold: crackers, canned food, peanut butter, nuts</label>
-        <label><input type="checkbox" data-k="w:2b">A manual can opener</label>
-        <label><input type="checkbox" data-k="w:2c">More water, so it lasts a week</label>
-        <div class="wk-do"><b>Do:</b> keep the food on its own shelf and eat the oldest first.</div></div>
-      <div class="wk"><div class="wk-n">Week 3</div><h3>Heat, cooking and hygiene</h3>
-        <label><input type="checkbox" data-k="w:3a">Camping stove, fuel and matches</label>
-        <label><input type="checkbox" data-k="w:3b">Sleeping bag or warm blanket for everyone</label>
-        <label><input type="checkbox" data-k="w:3c">Trash bags, wet wipes and hand sanitizer</label>
-        <label><input type="checkbox" data-k="w:3d">Power bank, charged</label>
-        <div class="wk-do"><b>Do:</b> try the stove outdoors once, so you know how it works.</div></div>
-      <div class="wk"><div class="wk-n">Week 4</div><h3>The full week done</h3>
-        <label><input type="checkbox" data-k="w:4a">Food for the rest of the week, from the shopping list</label>
-        <label><input type="checkbox" data-k="w:4b">Daily medicine for at least a week</label>
-        <label><input type="checkbox" data-k="w:4c">Cash in small bills</label>
-        <label><input type="checkbox" data-k="w:4d">Important papers in a waterproof folder</label>
-        <div class="wk-do"><b>Do:</b> fill in your family emergency plan and practice an evening without power.</div></div>
+      <div class="wk"><div class="wk-n">Week 1</div><h3>Information and water</h3>
+        <label><input type="checkbox" data-k="w:na">A radio that runs on batteries or a crank</label>
+        <label><input type="checkbox" data-k="w:nb">Important phone numbers and a map of your area on paper</label>
+        <label><input type="checkbox" data-k="w:nc">A meeting place everyone in the family knows</label>
+        <label><input type="checkbox" data-k="w:nd">Water for a week: <b class="v-w7">0 L</b> for your family, 3 liters per person per day</label>
+        <label><input type="checkbox" data-k="w:ne">Clean containers with lids to fetch water in</label>
+        <div class="wk-do"><b>Do:</b> tune the radio to your local emergency station and test it. Fill clean bottles with tap water and write the date on them.</div></div>
+      <div class="wk"><div class="wk-n">Week 2</div><h3>Heat and light</h3>
+        <label><input type="checkbox" data-k="w:va">A sleeping bag or warm blankets for everyone</label>
+        <label><input type="checkbox" data-k="w:vb">A camping stove with extra fuel</label>
+        <label><input type="checkbox" data-k="w:vc">Matches or a lighter</label>
+        <label><input type="checkbox" data-k="w:vd">Candles and tea lights</label>
+        <label><input type="checkbox" data-k="w:ve">A flashlight or headlamp and batteries</label>
+        <label><input type="checkbox" data-k="w:vf">A charged power bank and cable</label>
+        <div class="wk-do"><b>Do:</b> sleep one night in a sleeping bag and try the stove outdoors once.</div></div>
+      <div class="wk"><div class="wk-n">Week 3</div><h3>Food</h3>
+        <label><input type="checkbox" data-k="w:ma">Food for a week from the shopping list, things you like that keep at room temperature</label>
+        <label><input type="checkbox" data-k="w:mb">A manual can opener</label>
+        <label><input type="checkbox" data-k="w:mc">Food and water for your pets</label>
+        <div class="wk-do"><b>Do:</b> put the food on its own shelf. Buy one extra item every time you shop and eat the oldest first.</div></div>
+      <div class="wk"><div class="wk-n">Week 4</div><h3>Money, health and home</h3>
+        <label><input type="checkbox" data-k="w:ha">Cash for a week of shopping, and more than one payment card</label>
+        <label><input type="checkbox" data-k="w:hb">A first aid kit and prescription medicine for a month</label>
+        <label><input type="checkbox" data-k="w:hc">Spare glasses, and baby supplies if you have small children</label>
+        <label><input type="checkbox" data-k="w:hd">Toilet paper, wet wipes, trash bags and menstrual products</label>
+        <label><input type="checkbox" data-k="w:he">Pliers or a wrench to turn off water and gas</label>
+        <div class="wk-do"><b>Do:</b> talk to your neighbors about how you can help each other, and decide where you can sleep if your home cannot be lived in.</div></div>
     </div>
-    <div class="do"><b>After four weeks</b> you can manage for a week, as Sweden and Norway ask. Want to go further: build up to two weeks, and pack the bags.</div>
+    <div class="do"><b>After four weeks</b> you can manage for a week, as the authorities in Sweden and Norway ask. Want to go further: build up to two weeks, and pack the bags.</div>
+    <p class="src">Sources: Swedish MSB, Sju dagar (2025). Norwegian DSB, self-preparedness for one week (2024). Ready.gov, Build a Kit.</p>
   </div>
 </section>
 <section class="cs" id="areas">
@@ -1583,6 +1588,7 @@ body.paged .top .hero.off { display: none; }
     var kcal = kcalDag * D, vatten = vattenDag * D, vatten2 = vatten + folk * 2 * D;
     S = { folk: folk, kcal: kcal, vatten: vatten, N: N, D: D };
     $("#o-water").textContent = fmt(vatten) + " L";
+    document.querySelectorAll(".v-w7").forEach(function (e) { e.textContent = fmt((vattenDag - djurVatten) * 7) + " L"; });
     $("#o-water-g").textContent = "water for drinking and food, about " + fmt(vatten * 0.264) + " US gallons";
     $("#o-water2").textContent = fmt(vatten2) + " L";
     $("#o-kcal").textContent = fmt(kcal);
