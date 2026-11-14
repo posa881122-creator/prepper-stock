@@ -214,6 +214,13 @@ h2.t { font-size: clamp(38px, 5vw, 56px); margin-bottom: 12px; }
 
 
 .rm { appearance: none; border: 0; background: transparent; color: var(--mute); width: 30px; height: 30px; border-radius: 9px; font: 400 22px/1 var(--body); cursor: pointer; opacity: .55; }
+.qb { display: flex; gap: 6px; justify-content: flex-end; margin-top: 6px; }
+.qm { appearance: none; border: 1px solid var(--line); background: transparent; color: var(--forest); width: 34px; height: 30px; border-radius: 9px; font: 600 18px/1 var(--body); cursor: pointer; }
+.qm:active { background: var(--lichen); }
+.qm[data-d="-1"]::before { content: "−"; }
+.qm[data-d="1"]::before { content: "+"; }
+@media (max-width: 560px) { .ak-r .qb { justify-content: flex-start; } }
+@media print { .qb { display: none !important; } }
 .rm:hover { background: var(--lichen); opacity: 1; color: var(--rust); }
 .li { grid-template-columns: 26px 1fr auto 30px !important; }
 .ak-r { grid-template-columns: 22px 1fr auto 30px !important; }
@@ -1419,12 +1426,16 @@ body.paged .top .hero.off { display: none; }
   /* Sparas bara i den här webbläsaren. Ingenting skickas någonstans. */
   var KEY = "ps-guide-en-1", ST = { c: {} };
   try { ST = JSON.parse(localStorage.getItem(KEY)) || ST; } catch (e) {}
-  ST.c = ST.c || {}; ST.r = ST.r || {}; ST.add = ST.add || { a: [], f: [] };
+  ST.c = ST.c || {}; ST.r = ST.r || {}; ST.dq = ST.dq || {}; ST.add = ST.add || { a: [], f: [] };
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   var XBTN = '<button type="button" class="rm" aria-label="Remove" title="Remove">×</button>';
   function spara() { try { localStorage.setItem(KEY, JSON.stringify(ST)); } catch (e) {} }
 
   /* Matkorgen för en vuxen i en vecka. Per 100 g: kcal, kolhydrater, protein, fett. */
+  /* plus och minus på raderna: ändringen sparas per rad (ST.dq) och läggs på guidens antal */
+  function dqN(k, n) { return Math.max(0, n + (ST.dq[k] || 0)); }
+  function dqS(k, s) { s = String(s); var m = /^(\s*)(\d+)([\s\S]*)$/.exec(s); if (!m || !ST.dq[k]) return s; return m[1] + dqN(k, parseInt(m[2], 10)) + m[3]; }
+  function qBtns(k, s) { return /^\s*\d/.test(String(s)) ? '<span class="qb"><button type="button" class="qm" data-k="' + esc(k) + '" data-d="-1" aria-label="Fewer"></button><button type="button" class="qm" data-k="' + esc(k) + '" data-d="1" aria-label="More"></button></span>' : ""; }
   function packs(list, f, mal) {
     var r = list.map(function (m) { var x = m.g * f / m.pack; return { m: m, x: x, st: Math.floor(x) }; });
     var k = 0; r.forEach(function (o) { k += o.st * o.m.pack * o.m.n[0] / 100; });
@@ -1524,20 +1535,22 @@ body.paged .top .hero.off { display: none; }
     var kvar = MAT.filter(function (m) { return !ST.r["f:" + m.namn]; }), mal = 0;
     kvar.forEach(function (m) { mal += m.g * f * m.n[0] / 100; });
     if (folk) packs(kvar, f, mal).forEach(function (o) {
-      var m = o.m, st = o.st;
+      var m = o.m, st = dqN("f:" + m.namn, o.st);
       SHOP.food.push({ key: "f:" + m.namn, name: m.namn, n: st, enh: m.enh, pc: m.nw || m.pack, dw: m.nw ? m.pack : 0, k100: m.n[0] });
       var gk = st * m.pack;
       sk += m.n[0] * gk / 100; sc += m.n[1] * gk / 100; sp += m.n[2] * gk / 100; sf += m.n[3] * gk / 100;
-      html += '<label class="li"><input type="checkbox" data-k="f:' + m.namn + '"><span class="n">' + m.namn + '<span class="tag ' + m.t + '">' + TAG[m.t] + '</span><small>' + m.info + '</small></span><span class="q">' + st + ' <small>' + m.enh + '</small></span>' + XBTN + '</label>';
+      html += '<label class="li"><input type="checkbox" data-k="f:' + m.namn + '"><span class="n">' + m.namn + '<span class="tag ' + m.t + '">' + TAG[m.t] + '</span><small>' + m.info + '</small></span><span class="q">' + st + ' <small>' + m.enh + '</small>' + qBtns("f:" + m.namn, "1") + '</span>' + XBTN + '</label>';
     });
     extra(D, N).forEach(function (x) {
       if (ST.r["f:" + x[0]]) return;
-      SHOP.other.push({ key: "f:" + x[0], name: x[0], q: String(x[2]) });
-      html += '<label class="li"><input type="checkbox" data-k="f:' + x[0] + '"><span class="n">' + x[0] + '<span class="tag ' + x[3] + '">' + x[4] + '</span><small>' + x[1] + '</small></span><span class="q">' + x[2] + '</span>' + XBTN + '</label>';
+      var xq = dqS("f:" + x[0], x[2]);
+      SHOP.other.push({ key: "f:" + x[0], name: x[0], q: String(xq).replace(/<[^>]+>/g, "") });
+      html += '<label class="li"><input type="checkbox" data-k="f:' + x[0] + '"><span class="n">' + x[0] + '<span class="tag ' + x[3] + '">' + x[4] + '</span><small>' + x[1] + '</small></span><span class="q">' + xq + qBtns("f:" + x[0], x[2]) + '</span>' + XBTN + '</label>';
     });
     ST.add.f.forEach(function (x) {
-      SHOP.other.push({ key: "f:+" + x[0], name: x[0], q: String(x[1] || "") });
-      html += '<label class="li egen"><input type="checkbox" data-k="f:+' + esc(x[0]) + '"><span class="n">' + esc(x[0]) + '<span class="tag e">Egen</span></span><span class="q">' + esc(x[1]) + '</span>' + XBTN + '</label>';
+      var oq = dqS("f:+" + x[0], x[1] || "");
+      SHOP.other.push({ key: "f:+" + x[0], name: x[0], q: oq });
+      html += '<label class="li egen"><input type="checkbox" data-k="f:+' + esc(x[0]) + '"><span class="n">' + esc(x[0]) + '<span class="tag e">Egen</span></span><span class="q">' + esc(oq) + qBtns("f:+" + x[0], x[1] || "") + '</span>' + XBTN + '</label>';
     });
     html += addForm("f");
     $("#food").innerHTML = html;
@@ -1641,7 +1654,14 @@ body.paged .top .hero.off { display: none; }
     var t = e.target; if (t.name !== "c" || !t.form) return;
     var nc = t.form.querySelector(".nc"); nc.hidden = t.value !== "__ny"; nc.required = !nc.hidden; if (!nc.hidden) nc.focus();
   });
+  /* Gå eller Enter på telefonens tangentbord stänger tangentbordet i rutor som inte hör till ett formulär */
+  document.addEventListener("keydown", function (e) {
+    var t = e.target; if (e.key !== "Enter" || !t || t.tagName !== "INPUT" || t.form) return;
+    e.preventDefault(); t.blur();
+  });
   document.addEventListener("click", function (e) {
+    var qb = e.target.closest ? e.target.closest(".qm") : null;
+    if (qb) { e.preventDefault(); var qk = qb.dataset.k; ST.dq[qk] = (ST.dq[qk] || 0) + Number(qb.dataset.d); if (!ST.dq[qk]) delete ST.dq[qk]; spara(); omrita(); return; }
     var b = e.target.closest ? e.target.closest(".rm, .undo") : null; if (!b) return;
     e.preventDefault();
     if (b.classList.contains("undo")) {
@@ -1732,8 +1752,8 @@ body.paged .top .hero.off { display: none; }
       txt += "\n" + (gi + 1) + ". " + g[0].toUpperCase() + "\n";
       g[1].forEach(function (r) {
         var nm = r[0].charAt(0) === "+" ? esc(r[0].slice(1)) : r[0];
-        h += '<label class="ak-r"><input type="checkbox" data-k="a:' + esc(r[0]) + '"><span>' + nm + (r[2] ? '<small>' + r[2] + '</small>' : '') + '</span><b>' + esc(r[1]) + '</b>' + XBTN + '</label>';
-        txt += (ST.c["a:" + r[0]] ? "[x] " : "[ ] ") + (r[0].charAt(0) === "+" ? r[0].slice(1) : r[0]) + (r[1] ? ": " + r[1] : "") + "\n";
+        h += '<label class="ak-r"><input type="checkbox" data-k="a:' + esc(r[0]) + '"><span>' + nm + (r[2] ? '<small>' + r[2] + '</small>' : '') + '</span><b>' + esc(dqS("a:" + r[0], r[1])) + qBtns("a:" + r[0], r[1]) + '</b>' + XBTN + '</label>';
+        txt += (ST.c["a:" + r[0]] ? "[x] " : "[ ] ") + (r[0].charAt(0) === "+" ? r[0].slice(1) : r[0]) + (r[1] ? ": " + dqS("a:" + r[0], r[1]) : "") + "\n";
       });
       h += '</div></div>';
     });
