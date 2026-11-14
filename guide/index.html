@@ -678,6 +678,13 @@ body.paged .top .hero.off { display: none; }
 @media (max-width: 760px) { .kp2 { grid-template-columns: minmax(0, 1fr); } }
 .dx-bo { margin-bottom: 16px; }
 .dx-resetrow { margin-top: 14px; }
+.bl-r { display: grid; grid-template-columns: 22px 1fr 28px; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.bl-r .rm { appearance: none; border: 0; background: none; color: var(--mute); font-size: 20px; cursor: pointer; }
+.bl-add { display: flex; gap: 8px; margin: 14px 0 6px; }
+.bl-add input { flex: 1; min-width: 0; padding: 11px 13px; border: 1.5px solid var(--line); border-radius: 12px; font: 500 16px var(--body); }
+.bl-rest { appearance: none; border: 0; background: none; color: var(--forest); font: 600 14px var(--body); padding: 6px 0; cursor: pointer; text-decoration: underline; }
+.bl-act { margin: 10px 0 18px; }
+#b1 .gh { margin: 0 0 18px; }
 </style>
 </head>
 <body>
@@ -1091,22 +1098,6 @@ body.paged .top .hero.off { display: none; }
       <button type="button" data-se="s" aria-pressed="false">Sommar</button>
       <button type="button" data-se="w" aria-pressed="true">Vinter</button>
     </div>
-    <div class="gh" id="gh">
-      <h3>Räkna ut din get home bag</h3><p style="margin:0">Skriv hur långt du har hem från jobbet eller skolan. Sidan räknar ut hur lång tid det tar att gå, och vad just din väska behöver.</p>
-      <div class="gh-in">
-        <label>Avstånd hem (km)<input type="number" id="gh-d" min="1" max="300" value="45" inputmode="decimal"></label>
-        <label>Din vikt (kg)<input type="number" id="gh-w" min="20" max="400" value="75" inputmode="decimal"></label>
-        <label>Du går klockan<input type="time" id="gh-t" value="16:00"></label>
-        <label>Datum<input type="date" id="gh-dt"></label>
-        <label>Var bor du?<select id="gh-r"><option data-lon="13.0" value="55.6">Skåne</option><option data-lon="12.0" value="57.7">Götaland</option><option data-lon="18.0" value="59.3" selected>Mälardalen</option><option data-lon="17.3" value="62.4">Södra Norrland</option><option data-lon="22.1" value="65.6">Norra Norrland</option><option data-lon="20.2" value="67.9">Lappland</option></select></label>
-      </div>
-      <div class="gh-st" id="gh-st"></div>
-      <div id="gh-day"></div>
-      <h4>Det här behöver din väska</h4>
-      <div class="gh-items" id="gh-items"></div>
-      <div class="gh-pb" id="gh-pb" hidden><h4 style="margin:0">Plan B: var kan du stanna?</h4><p>Om sträckan inte går att gå på en dag behöver du ett ställe att stanna på halvvägs, till exempel hos en kollega, en vän eller släkt. Bestäm det i förväg och berätta för familjen.</p><input id="gh-pbi" placeholder="Till exempel: hos Anna i Södertälje"><button class="btn" type="button" id="gh-pbb">Spara i krisplanen</button> <span class="kp-saved" id="gh-pbm"></span></div>
-      <p class="src">Källor: amerikanska arméns handbok för förflyttning till fots (ATP 3-21.18): 4 km i timmen med 10 minuters vila varje timme, normal dagsmarsch 20 till 32 km. ACSM: 0,4 till 0,8 liter vätska i timmen vid lång ansträngning. Compendium of Physical Activities: 3,5 MET för att gå med dagsryggsäck. Vanlig riktlinje för vandring: högst cirka 10 % av kroppsvikten på en dagstur och 20 % på flera dagar. Vintertid räknar vi med 3,5 km i timmen för halka, snö och mörker. Tiderna för dagsljus är ungefärliga.</p>
-    </div>
     <div class="tabs btabs" role="tablist">
       <button role="tab" aria-selected="true" data-b="b1">Get home bag</button>
       <button role="tab" aria-selected="false" data-b="b2">Bug out bag</button>
@@ -1118,44 +1109,22 @@ body.paged .top .hero.off { display: none; }
         <div class="bpurp"><div class="lbl">Syfte</div><h3>Ta dig hem när inget fungerar</h3><p>Väskan finns där du är på dagarna: på jobbet, i skolan eller i bilen. Om tåg, bussar och vägar stannar ska den hjälpa dig att gå hem, även om det tar en hel dag eller mer.</p></div>
         <div class="bfacts"><div><b>1 till 2 dygn</b><span>räcker den till</span></div><div><b>Lätt</b><span>du ska orka bära den hela vägen</span></div><div><b>Där du är</b><span>jobbet, skolan, bilen</span></div></div>
       </div>
-      <div class="bgrid">
-        <div class="bgroup"><h4>Vatten och mat</h4>
-          <label><input type="checkbox" data-k="b:gh-vatten">Vattenflaska, 1 till 2 liter</label>
-          <label><input type="checkbox" data-k="b:gh-filter">Vattenfilter eller reningstabletter</label>
-          <label><input type="checkbox" data-k="b:gh-mat">Energirik mat som inte behöver lagas: nötter, bars, torkad frukt</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-termos">Termos med varm dryck, när du vet att det är på väg</label>
-        </div>
-        <div class="bgroup"><h4>Kläder och skor</h4>
-          <label><input type="checkbox" data-k="b:gh-skor">Bekväma skor att gå långt i, om du inte redan har det på dig</label>
-          <label><input type="checkbox" data-k="b:gh-strumpor">Ett par extra strumpor</label>
-          <label><input type="checkbox" data-k="b:gh-regn">Regnjacka eller regnponcho</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-under">Varmt underställ i ull</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-mossa">Mössa, vantar och halsduk eller buff</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-brodd">Broddar till skorna</label>
-          <label data-se="s"><input type="checkbox" data-k="b:gh-keps">Keps eller solhatt</label>
-        </div>
-        <div class="bgroup"><h4>Skydd och värme</h4>
-          <label><input type="checkbox" data-k="b:gh-filt">Räddningsfilt i folie</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-varm">Värmepåsar för händer och fötter</label>
-          <label data-se="s"><input type="checkbox" data-k="b:gh-sol">Solskydd</label>
-          <label data-se="s"><input type="checkbox" data-k="b:gh-mygg">Myggmedel</label>
-        </div>
-        <div class="bgroup"><h4>Ljus, karta och kontakt</h4>
-          <label><input type="checkbox" data-k="b:gh-lampa">Pannlampa med extra batterier</label>
-          <label><input type="checkbox" data-k="b:gh-karta">Karta på papper över vägen hem</label>
-          <label><input type="checkbox" data-k="b:gh-power">Powerbank och laddkabel</label>
-          <label><input type="checkbox" data-k="b:gh-nr">Viktiga telefonnummer på papper</label>
-          <label><input type="checkbox" data-k="b:gh-vissla">Visselpipa</label>
-          <label><input type="checkbox" data-k="b:gh-reflex">Reflexväst eller reflexer</label>
-        </div>
-        <div class="bgroup"><h4>Hälsa och övrigt</h4>
-          <label><input type="checkbox" data-k="b:gh-forband">Liten förbandslåda och skavsårsplåster</label>
-          <label><input type="checkbox" data-k="b:gh-med">Din dagliga medicin för ett par dygn</label>
-          <label><input type="checkbox" data-k="b:gh-kont">Kontanter i små valörer</label>
-          <label><input type="checkbox" data-k="b:gh-kniv">Multiverktyg eller fickkniv</label>
-          <label><input type="checkbox" data-k="b:gh-hyg">Våtservetter och lite toalettpapper</label>
-        </div>
+      <div class="gh" id="gh">
+      <h3>Räkna ut din get home bag</h3><p style="margin:0">Skriv hur långt du har hem från jobbet eller skolan. Sidan räknar ut hur lång tid det tar att gå, och vad just din väska behöver.</p>
+      <div class="gh-in">
+        <label>Avstånd hem (km)<input type="number" id="gh-d" min="1" max="300" value="45" inputmode="decimal"></label>
+        <label>Din vikt (kg)<input type="number" id="gh-w" min="20" max="400" value="75" inputmode="decimal"></label>
+        <label>Du går klockan<input type="time" id="gh-t" value="16:00"></label>
       </div>
+      <div class="gh-st" id="gh-st"></div>
+      <div id="gh-day"></div>
+      <div class="gh-pb" id="gh-pb" hidden><h4 style="margin:0">Plan B: var kan du stanna?</h4><p>Om sträckan inte går att gå på en dag behöver du ett ställe att stanna på halvvägs, till exempel hos en kollega, en vän eller släkt. Bestäm det i förväg och berätta för familjen.</p><input id="gh-pbi" placeholder="Till exempel: hos Anna i Södertälje"><button class="btn" type="button" id="gh-pbb">Spara i krisplanen</button> <span class="kp-saved" id="gh-pbm"></span></div>
+      <p class="src">Källor: amerikanska arméns handbok för förflyttning till fots (ATP 3-21.18): 4 km i timmen med 10 minuters vila varje timme, normal dagsmarsch 20 till 32 km. ACSM: 0,4 till 0,8 liter vätska i timmen vid lång ansträngning. Compendium of Physical Activities: 3,5 MET för att gå med dagsryggsäck. Vanlig riktlinje för vandring: högst cirka 10 % av kroppsvikten på en dagstur och 20 % på flera dagar. Vintertid räknar vi med 3,5 km i timmen för halka, snö och mörker.</p>
+    </div>
+      <div class="blist" id="bl-g"></div>
+      <form class="bl-add" data-t="g"><input type="text" maxlength="120" placeholder="Lägg till egen sak"><button class="btn ghost dark" type="submit">Lägg till</button></form>
+      <button type="button" class="bl-rest" data-t="g" hidden>Visa borttagna igen</button>
+      <div class="actions no-print bl-act" data-t="g"><button class="btn" type="button" data-a="pdf">Spara som PDF</button><button class="btn ghost dark" type="button" data-a="share" hidden>Dela</button><button class="btn ghost dark" type="button" data-a="copy">Kopiera listan som text</button></div>
       <div class="bthink"><h4>Tänk på</h4><ul>
         <li><b>Planera vägen hem i förväg.</b> Gå den en gång. Välj gärna två vägar, om en är avstängd.</li>
         <li><b>Bestäm med familjen</b> vem som hämtar barnen och var ni möts om ni inte når varandra.</li>
@@ -1171,42 +1140,10 @@ body.paged .top .hero.off { display: none; }
         <div class="bpurp"><div class="lbl">Syfte</div><h3>Lämna hemmet snabbt</h3><p>Vid brand, översvämning, gasläcka eller när myndigheterna ber dig evakuera ska du kunna ta väskan och gå inom några minuter. Den ska räcka tills du är hos släkt, vänner eller på en plats som kommunen ordnar.</p></div>
         <div class="bfacts"><div><b>72 timmar</b><span>räcker den till</span></div><div><b>En per person</b><span>barn bär en egen liten</span></div><div><b>Vid dörren</b><span>lätt att ta med</span></div></div>
       </div>
-      <div class="bgrid">
-        <div class="bgroup"><h4>Det viktigaste</h4>
-          <label><input type="checkbox" data-k="b:bo-dok">Kopior på pass, id och försäkringar i en vattentät påse</label>
-          <label><input type="checkbox" data-k="b:bo-med">Medicin för minst en vecka, och recepten</label>
-          <label><input type="checkbox" data-k="b:bo-kont">Kontanter i små valörer</label>
-          <label><input type="checkbox" data-k="b:bo-power">Laddad powerbank och laddkablar</label>
-          <label><input type="checkbox" data-k="b:bo-nr">Telefonnummer och adresser på papper</label>
-          <label><input type="checkbox" data-k="b:bo-nyck">Extra nycklar till hem och bil</label>
-        </div>
-        <div class="bgroup"><h4>Vatten och mat</h4>
-          <label><input type="checkbox" data-k="b:bo-vatten">Vatten, cirka 2 liter per person</label>
-          <label><input type="checkbox" data-k="b:bo-filter">Vattenfilter eller reningstabletter</label>
-          <label><input type="checkbox" data-k="b:bo-mat">Mat för tre dygn som inte behöver lagas</label>
-          <label><input type="checkbox" data-k="b:bo-kok">Litet kök, bränsle och tändstickor, om ni kan bära det</label>
-        </div>
-        <div class="bgroup"><h4>Kläder och sömn</h4>
-          <label><input type="checkbox" data-k="b:bo-klader">Ombyte av kläder och underkläder</label>
-          <label><input type="checkbox" data-k="b:bo-regn">Regnkläder</label>
-          <label><input type="checkbox" data-k="b:bo-sov">Sovsäck eller filt</label>
-          <label data-se="w"><input type="checkbox" data-k="b:bo-vinter">Vinterkläder: underställ, mössa, vantar, varma sockor</label>
-          <label data-se="w"><input type="checkbox" data-k="b:bo-liggu">Liggunderlag, kylan kommer underifrån</label>
-          <label data-se="s"><input type="checkbox" data-k="b:bo-sol">Solskydd, keps och myggmedel</label>
-        </div>
-        <div class="bgroup"><h4>Ljus, hälsa och hygien</h4>
-          <label><input type="checkbox" data-k="b:bo-lampa">Pannlampa och extra batterier</label>
-          <label><input type="checkbox" data-k="b:bo-radio">Liten radio på batteri eller vev</label>
-          <label><input type="checkbox" data-k="b:bo-forband">Förbandslåda</label>
-          <label><input type="checkbox" data-k="b:bo-hyg">Tandborste, tvål, våtservetter, toalettpapper, mensskydd</label>
-          <label><input type="checkbox" data-k="b:bo-glas">Glasögon eller linser</label>
-        </div>
-        <div class="bgroup"><h4>Barn och djur</h4>
-          <label><input type="checkbox" data-k="b:bo-barn">Blöjor, ersättning, nappflaska och något att göra</label>
-          <label><input type="checkbox" data-k="b:bo-gos">Ett gosedjur eller en favoritsak</label>
-          <label><input type="checkbox" data-k="b:bo-djur">Foder, vatten, koppel eller bur till djuren</label>
-        </div>
-      </div>
+      <div class="blist" id="bl-b"></div>
+      <form class="bl-add" data-t="b"><input type="text" maxlength="120" placeholder="Lägg till egen sak"><button class="btn ghost dark" type="submit">Lägg till</button></form>
+      <button type="button" class="bl-rest" data-t="b" hidden>Visa borttagna igen</button>
+      <div class="actions no-print bl-act" data-t="b"><button class="btn" type="button" data-a="pdf">Spara som PDF</button><button class="btn ghost dark" type="button" data-a="share" hidden>Dela</button><button class="btn ghost dark" type="button" data-a="copy">Kopiera listan som text</button></div>
       <div class="bthink"><h4>Tänk på</h4><ul>
         <li><b>Bestäm vart ni ska.</b> Släkt eller vänner utanför ditt område är ofta bäst. Ha två alternativ.</li>
         <li><b>Gå när myndigheterna säger det.</b> Vänta inte tills vägarna är fulla.</li>
@@ -1222,33 +1159,10 @@ body.paged .top .hero.off { display: none; }
         <div class="bpurp"><div class="lbl">Syfte</div><h3>Om du fastnar med bilen</h3><p>En olycka, ett snöoväder eller en stängd väg kan göra att du står still i timmar. Bilen ska hålla dig varm och säker tills hjälpen kommer, eller tills du kan ta dig vidare.</p></div>
         <div class="bfacts"><div><b>Några timmar</b><span>till ett dygn</span></div><div><b>Alltid i bilen</b><span>året runt, byt efter säsong</span></div><div><b>Halv tank</b><span>kör aldrig på reserven</span></div></div>
       </div>
-      <div class="bgrid">
-        <div class="bgroup"><h4>Säkerhet</h4>
-          <label><input type="checkbox" data-k="b:car-varn">Varningstriangel och reflexväst</label>
-          <label><input type="checkbox" data-k="b:car-lampa">Ficklampa eller pannlampa</label>
-          <label><input type="checkbox" data-k="b:car-forband">Förbandslåda</label>
-          <label><input type="checkbox" data-k="b:car-start">Startkablar eller en startbooster</label>
-          <label><input type="checkbox" data-k="b:car-ladd">Laddkabel till mobilen i bilen</label>
-        </div>
-        <div class="bgroup"><h4>Värme och mat</h4>
-          <label><input type="checkbox" data-k="b:car-filt">Filt eller sovsäck</label>
-          <label><input type="checkbox" data-k="b:car-vatten">Vatten och energirik mat</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-klader">Extra varma kläder, mössa och vantar</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-varm">Värmepåsar</label>
-        </div>
-        <div class="bgroup"><h4>Vinter</h4>
-          <label data-se="w"><input type="checkbox" data-k="b:car-spade">Snöspade</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-skrapa">Isskrapa och snöborste</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-sand">Sand eller grus att strö under hjulen</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-spol">Extra spolarvätska för vinter</label>
-          <p class="se-empty" data-se="s">Byt till vinterutrustningen i god tid innan första frosten.</p>
-        </div>
-        <div class="bgroup"><h4>Sommar</h4>
-          <label data-se="s"><input type="checkbox" data-k="b:car-mer-vatten">Mer vatten, flera liter</label>
-          <label data-se="s"><input type="checkbox" data-k="b:car-skugga">Solskydd och något att skapa skugga med</label>
-          <p class="se-empty" data-se="w">Spara sommarlistan till våren.</p>
-        </div>
-      </div>
+      <div class="blist" id="bl-c"></div>
+      <form class="bl-add" data-t="c"><input type="text" maxlength="120" placeholder="Lägg till egen sak"><button class="btn ghost dark" type="submit">Lägg till</button></form>
+      <button type="button" class="bl-rest" data-t="c" hidden>Visa borttagna igen</button>
+      <div class="actions no-print bl-act" data-t="c"><button class="btn" type="button" data-a="pdf">Spara som PDF</button><button class="btn ghost dark" type="button" data-a="share" hidden>Dela</button><button class="btn ghost dark" type="button" data-a="copy">Kopiera listan som text</button></div>
       <div class="bthink"><h4>Tänk på</h4><ul>
         <li><b>Stanna i bilen</b> om det är kallt eller oväder, så länge det är säkert. Bilen är lättare att hitta än en människa.</li>
         <li><b>Kör aldrig med låg tank,</b> särskilt på vintern. Tanka när det är halvt kvar.</li>
@@ -1435,7 +1349,7 @@ body.paged .top .hero.off { display: none; }
     <p class="sub">Här ser du allt du har gjort i guiden. Det som inte är klart har en länk tillbaka till rätt steg.</p>
     <div class="sumtop"><div class="lvlc" id="sum-lvl"></div><div class="nx3" id="sum-nx"></div></div>
     <div class="srows" id="sum-rows"></div>
-    <div class="actions sumact no-print"><button class="btn" type="button" id="sum-share">Dela din nivå</button><button class="btn ghost dark" type="button" id="sum-dl">Ladda ner</button><button class="btn ghost dark" type="button" id="sum-pr">Skriv ut</button></div>
+    <div class="actions sumact no-print"><button class="btn" type="button" id="sum-share">Dela din nivå</button><button class="btn ghost dark" type="button" id="sum-dl">Spara som PDF</button><button class="btn ghost dark" type="button" id="sum-pr">Skriv ut</button></div>
     <div class="cal">
       <div><h3>Påminn mig två gånger om året</h3><p>Lägger in en påminnelse i telefonens kalender när klockan ställs om i mars och oktober: gå igenom lagret, byt vatten och mat som snart går ut, och se över väskorna.</p></div>
       <button class="btn" type="button" id="cal-add">Lägg in i kalendern</button>
@@ -1916,6 +1830,7 @@ body.paged .top .hero.off { display: none; }
   function arstid(v) {
     document.querySelectorAll(".season button").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.se === v); });
     document.querySelectorAll("#bags [data-se]").forEach(function (e) { if (e.tagName !== "BUTTON") e.hidden = e.dataset.se !== v; });
+    try { blRender(); } catch (e3) {}
   }
   document.querySelectorAll("#bags label[data-se]").forEach(function (l) { l.setAttribute("data-sel", l.dataset.se === "w" ? "Vinter" : "Sommar"); });
   document.querySelectorAll(".season button").forEach(function (b) { b.onclick = function () { arstid(b.dataset.se); }; });
@@ -2162,7 +2077,7 @@ body.paged .top .hero.off { display: none; }
     var se = document.querySelector('.season button[aria-pressed="true"]'), sv = se ? se.dataset.se : "";
     var bp = ["b1", "b2", "b3"].map(function (id) {
       var a = 0, b = 0;
-      document.querySelectorAll("#" + id + " label").forEach(function (l) { var i = l.querySelector("input"); if (!i) return; var x = l.getAttribute("data-se"); if (x && x !== sv) return; b++; if (i.checked) a++; });
+      document.querySelectorAll("#" + id + " .blist input").forEach(function (i) { b++; if (i.checked) a++; });
       return b ? Math.round(a / b * 100) : 0;
     });
     var bavg = Math.round((bp[0] + bp[1] + bp[2]) / 3);
@@ -2195,7 +2110,7 @@ body.paged .top .hero.off { display: none; }
     if (todo.length) { t += "\n" + SM.next3 + ":\n"; todo.forEach(function (x, i) { t += (i + 1) + ". " + R[x[0]][2] + "\n"; }); }
     return t + "\nhttps://prepperstock.se/guide/" + (SM.en ? "en/" : "") + "\n";
   }
-  $("#sum-dl").onclick = function () { sum(); dlText(sumText(), SM.file, "text/plain"); };
+  $("#sum-dl").onclick = function () { sum(); var st = sumText(); psSavePdf("Min beredskap", st, SM.file.replace(/\.txt$/, ".pdf")); };
   $("#sum-pr").onclick = function () { sum(); openSec("list", false); window.print(); };
   $("#sum-share").onclick = function () {
     sum();
@@ -2303,44 +2218,85 @@ body.paged .top .hero.off { display: none; }
   dxRender(); dxMedal();
   if (ST.bo) { var hb0 = document.querySelector('.bo button[data-bo="' + ST.bo + '"]'); if (hb0) hb0.click(); }
 
+
+  /* ===== Väsklistor: årstid och typ ger en lista som går att bocka av, ändra, spara som PDF och dela ===== */
+  var BL = {"g": {"a": [["water", "Vatten för vägen, {lit}. Bär högst 2 liter och fyll på längs vägen."], ["filter", "Vattenfilter eller reningstabletter"], ["food", "Energirik mat som inte behöver lagas, ungefär {kcal}: nötter, bars, torkad frukt"], ["shoes", "Bekväma skor att gå långt i"], ["socks", "Ett par extra strumpor"], ["rain", "Regnjacka eller regnponcho"], ["lamp", "Pannlampa och extra batterier"], ["power", "Powerbank och laddkabel"], ["map", "Karta på papper med två vägar hem"], ["numbers", "Viktiga telefonnummer på papper"], ["whistle", "Visselpipa"], ["reflex", "Reflexväst eller reflexer"], ["blanket", "Räddningsfilt i folie"], ["first", "Liten förbandslåda och skavsårsplåster"], ["meds", "Din dagliga medicin för ett par dygn"], ["cash", "Kontanter i små valörer"], ["knife", "Fickkniv eller multiverktyg"], ["hyg", "Våtservetter, lite toalettpapper och handsprit"], ["mask", "Munskydd"]], "s": [["sun", "Solskydd och keps eller solhatt"], ["mygg", "Myggmedel"], ["water2", "Lite extra vatten, det går åt mer när det är varmt"]], "w": [["under", "Varmt underställ i ull"], ["hat", "Mössa, vantar och halsduk eller buff"], ["sweater", "Varm extra tröja"], ["warmers", "Värmepåsar för händer och fötter"], ["cleats", "Broddar till skorna"], ["thermos", "Termos med varm dryck, när du vet att du ska ut"]]}, "b": {"a": [["water", "Vatten, 3 liter per person, och vattenfilter eller reningstabletter"], ["food", "Mat för tre dygn som inte behöver lagas"], ["docs", "Kopior av pass, id, försäkringar och recept i en vattentät påse"], ["meds", "Medicin för en vecka och extra glasögon"], ["cash", "Kontanter i små valörer"], ["power", "Telefonladdare och laddad powerbank"], ["radio", "Radio som går på batteri eller vev"], ["lamp", "Pannlampa och extra batterier"], ["first", "Förbandslåda"], ["hyg", "Tandborste, tandkräm, tvål, våtservetter, toalettpapper och mensskydd"], ["clothes", "Ombyte av kläder och underkläder"], ["rain", "Regnkläder"], ["sleep", "Sovsäck eller filt"], ["blanket", "Räddningsfilt"], ["whistle", "Visselpipa"], ["knife", "Fickkniv eller multiverktyg"], ["fire", "Tändstickor eller tändare"], ["tape", "Silvertejp och några buntband"], ["bags", "Kraftiga sopsäckar"], ["map", "Karta på papper och viktiga telefonnummer"], ["keys", "Reservnycklar till hemmet och bilen"], ["pen", "Penna och papper"], ["kids", "För barn: något tryggt, som ett gosedjur, och något att göra"], ["pets", "För husdjur: mat, vatten, koppel och en bild på djuret"]], "s": [["sun", "Solskydd, keps och myggmedel"]], "w": [["winter", "Varmt underställ, mössa, vantar och en varm jacka"], ["warmers", "Värmepåsar"]]}, "c": {"a": [["water", "Vatten, några flaskor"], ["food", "Energirik mat som håller länge, som bars och nötter"], ["blanket", "Filt eller sovsäck"], ["first", "Förbandslåda"], ["lamp", "Ficklampa och extra batterier"], ["cable", "Laddkabel för telefonen"], ["triangle", "Varningstriangel och reflexväst"], ["jumper", "Startkablar"], ["tow", "Bogserlina"], ["ext", "Brandsläckare"], ["cutter", "Bältesklippare och glaskross inom räckhåll från förarplatsen"], ["tape", "Silvertejp"], ["map", "Karta på papper"], ["cash", "Kontanter"], ["hyg", "Toalettpapper och våtservetter"], ["tank", "Håll tanken minst halvfull"]], "s": [["water2", "Mer vatten"], ["sun", "Solskydd"]], "w": [["scraper", "Isskrapa och snöborste"], ["shovel", "Liten snöskyffel"], ["sand", "Sand eller kattsand för grepp"], ["clothes", "Varma kläder: jacka, mössa, vantar och kängor"], ["sleep", "Sovsäck i stället för filt"], ["warmers", "Värmepåsar"], ["thermos", "Termos med varm dryck på längre resor"], ["candle", "Värmeljus i en burk och tändstickor, som nödvärme med fönstret på glänt"]]}}, BLU = {"add": "Lägg till egen sak", "addb": "Lägg till", "restore": "Visa borttagna igen", "pdf": "Spara som PDF", "share": "Dela", "copy": "Kopiera listan som text", "copied": "Listan är kopierad", "fail": "Kunde inte kopiera", "names": {"g": "Get home bag", "b": "Bug out bag", "c": "Bilen"}, "sw": {"s": "sommar", "w": "vinter"}, "rm": "Ta bort", "lit": "{l} liter", "kcal": "{k} kcal", "file": "vasklista", "home": "Går du hela vägen utan att stanna är du hemma ungefär klockan {c}.", "darkw": "På vintern blir det mörkt tidigt. Räkna med att gå en del i mörker. Pannlampa, reflexväst och extra batterier ska ligga i väskan.", "darks": "Går du på kvällen eller natten kan det bli mörkt. En pannlampa och en reflex ska alltid ligga i väskan.", "pbs": "Sparat i krisplanen."}, GHV = null;
+  ST.bl = ST.bl || { rm: {}, add: { g: [], b: [], c: [] } };
+  function blSeason() { var se = document.querySelector('.season button[aria-pressed="true"]'); return se ? se.dataset.se : "w"; }
+  function blRows(t) {
+    var s = blSeason(), rm = ST.bl.rm, out = [];
+    BL[t].a.concat(BL[t][s]).forEach(function (r) {
+      var k = t + ":" + r[0]; if (rm[k]) return;
+      var tx = r[1];
+      if (GHV && t === "g") tx = tx.replace("{lit}", BLU.lit.replace("{l}", GHV.lt)).replace("{kcal}", BLU.kcal.replace("{k}", GHV.kcal.toLocaleString(GHV.en ? "en-US" : "sv-SE")));
+      else tx = tx.replace(", {lit}. ", ". ").replace(", {lit}", "").replace(", ungefär {kcal}", "").replace(", about {kcal}", "");
+      out.push({ k: k, t: tx });
+    });
+    (ST.bl.add[t] || []).forEach(function (x, i) { out.push({ k: t + ":+" + i, t: x, own: i }); });
+    return out;
+  }
+  function blRender() {
+    ["g", "b", "c"].forEach(function (t) {
+      var box = document.getElementById("bl-" + t); if (!box) return;
+      box.innerHTML = blRows(t).map(function (r) { return '<label class="bl-r"><input type="checkbox" data-k="bl:' + r.k + '"><span>' + esc(r.t) + '</span><button type="button" class="rm" data-rm="' + r.k + '" aria-label="' + BLU.rm + '">×</button></label>'; }).join("");
+      var any = Object.keys(ST.bl.rm).some(function (k) { return k.indexOf(t + ":") === 0; });
+      var rb = document.querySelector('.bl-rest[data-t="' + t + '"]'); if (rb) rb.hidden = !any;
+    });
+    koppla();
+  }
+  document.querySelectorAll(".blist").forEach(function (box) {
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-rm]"); if (!b) return;
+      e.preventDefault(); var k = b.dataset.rm, t = k.split(":")[0];
+      if (k.indexOf(":+") > -1) ST.bl.add[t].splice(+k.split(":+")[1], 1); else ST.bl.rm[k] = 1;
+      delete ST.c["bl:" + k]; spara(); blRender(); sumLater();
+    });
+  });
+  document.querySelectorAll(".bl-add").forEach(function (fm) {
+    fm.onsubmit = function (e) { e.preventDefault(); var i = fm.querySelector("input"), v = i.value.trim(); if (!v) return; ST.bl.add[fm.dataset.t].push(v); i.value = ""; spara(); blRender(); };
+  });
+  document.querySelectorAll(".bl-rest").forEach(function (b) {
+    b.onclick = function () { Object.keys(ST.bl.rm).forEach(function (k) { if (k.indexOf(b.dataset.t + ":") === 0) delete ST.bl.rm[k]; }); spara(); blRender(); };
+  });
+  function blText(t) {
+    var s = blSeason(), out = BLU.names[t] + ", " + BLU.sw[s] + "\n\n";
+    blRows(t).forEach(function (r) { out += (ST.c["bl:" + r.k] ? "[x] " : "[ ] ") + r.t + "\n"; });
+    return out + "\nprepperstock.se\n";
+  }
+  document.querySelectorAll(".bl-act").forEach(function (box) {
+    var t = box.dataset.t;
+    box.querySelector('[data-a="pdf"]').onclick = function () { psSavePdf(BLU.names[t], blText(t).split("\n").slice(2).join("\n"), BLU.file + "-" + t + ".pdf"); };
+    var sh = box.querySelector('[data-a="share"]'); if (navigator.share) { sh.hidden = false; sh.onclick = function () { psShare(BLU.names[t], blText(t)); }; }
+    var cp = box.querySelector('[data-a="copy"]'); cp.onclick = function () { psCopy(cp, blText(t), BLU.copied, BLU.fail); };
+  });
   /* ===== Räknare för get home bag ===== */
   var GH = {"ui": {"h": "Räkna ut din get home bag", "p": "Skriv hur långt du har hem från jobbet eller skolan. Sidan räknar ut hur lång tid det tar att gå, och vad just din väska behöver.", "dist": "Avstånd hem", "du": "km", "wt": "Din vikt", "wu": "kg", "start": "Du går klockan", "date": "Datum", "reg": "Var bor du?", "regs": [["Skåne", 55.6], ["Götaland", 57.7], ["Mälardalen", 59.3], ["Södra Norrland", 62.4], ["Norra Norrland", 65.6], ["Lappland", 67.9]], "dst": true, "st": ["Gångtid", "Vatten", "Mat", "Väskan högst"], "tm": "{h} tim {m} min", "tmn": "inklusive 10 minuters vila varje timme", "wl": "{l} liter", "wln": "bär högst 2 liter, fyll på resten", "kc": "{k} kcal", "kcn": "det du gör av med på vägen", "kg": "{k} kg", "kgn": "{p} % av din vikt", "day": "Den dagen är det ljust ungefär {a} till {b}. Går du hela vägen utan att stanna är du hemma ungefär klockan {c}.", "dark": "Du kommer att gå i mörker en del av vägen.", "far": "Sträckan är längre än en normal dagsmarsch för soldater, 32 km. Planera för att stanna på vägen.", "long": "Det tar mer än 10 timmar. Planera för att stanna på vägen.", "ih": "Det här behöver din väska", "pb": "Plan B: var kan du stanna?", "pbp": "Om sträckan inte går att gå på en dag behöver du ett ställe att stanna på halvvägs, till exempel hos en kollega, en vän eller släkt. Bestäm det i förväg och berätta för familjen.", "pbph": "Till exempel: hos Anna i Södertälje", "pbb": "Spara i krisplanen", "pbs": "Sparat under Övrigt i krisplanen.", "pbt": "Plan B på vägen hem: ", "src": "Källor: amerikanska arméns handbok för förflyttning till fots (ATP 3-21.18): 4 km i timmen med 10 minuters vila varje timme, normal dagsmarsch 20 till 32 km. ACSM: 0,4 till 0,8 liter vätska i timmen vid lång ansträngning. Compendium of Physical Activities: 3,5 MET för att gå med dagsryggsäck. Vanlig riktlinje för vandring: högst cirka 10 % av kroppsvikten på en dagstur och 20 % på flera dagar. Vintertid räknar vi med 3,5 km i timmen för halka, snö och mörker. Tiderna för dagsljus är ungefärliga.", "info": "Förklaring", "nd": " nästa dag"}, "en": false, "it": [["water", "Vattenflaska, {w} liter", "Du gör av med vätska hela vägen, även när det är kallt. Drick lite och ofta i stället för mycket på en gång."], ["filter", "Vattenfilter eller reningstabletter", "Du behöver mer vatten än du orkar bära. Med filter kan du fylla på från sjöar och bäckar."], ["food", "Mat med cirka {k} kcal", "Nötter, choklad, energibars och torkad frukt ger mycket energi per gram och kräver ingen matlagning."], ["shoes", "Skor du kan gå långt i", "Skor för kontoret ger skavsår efter några kilometer. Har du inte bra skor på dig behöver ett par ligga i väskan."], ["feet", "Skavsårsplåster, tejp och ett par extra strumpor", "Militären lär ut att sköta fötterna direkt när det börjar skava, och att byta till torra strumpor på långa marscher. Ett skavsår kan stoppa dig helt."], ["map", "Karta på papper över vägen hem", "Mobilnät och kartappar kan ligga nere. Markera två olika vägar hem."], ["light", "Pannlampa och extra batterier", "Du går i mörker en del av vägen. Med pannlampa har du händerna fria."], ["reflex", "Reflexväst", "I mörker syns du inte för bilister. En reflexväst syns på flera hundra meters avstånd."], ["rain", "Regnjacka eller regnponcho", "Blöta kläder kyler kroppen snabbt, även på sommaren."], ["warm", "Mössa, vantar och ett varmt lager", "Det blir kallt när du stannar för att vila. Ull värmer även när den är fuktig."], ["sun", "Solskydd och keps", "En hel dag i solen ger brännskador och huvudvärk."], ["blanket", "Räddningsfilt", "Väger nästan inget och kan rädda dig från nedkylning om du måste stanna."], ["sleep", "Vindsäck eller lätt sovskydd", "Du kan behöva vila eller sova på vägen. En vindsäck håller dig torr och varm."], ["power", "Powerbank och laddkabel", "Så att mobilen räcker hela vägen om nätet fungerar."], ["cash", "Kontanter", "Butiker och kaféer längs vägen kanske bara tar kontanter."], ["first", "Liten förbandslåda och dina mediciner", "Ett skärsår eller huvudvärk ska inte stoppa dig. Ha mediciner för minst ett dygn."], ["numbers", "Viktiga nummer på papper", "Om mobilen dör kan du låna en telefon och ändå nå familjen."]]};
   ST.gh = ST.gh || {};
-  ["d", "w", "t", "dt", "r"].forEach(function (k) { var el = $("#gh-" + k); if (ST.gh[k]) el.value = ST.gh[k]; el.addEventListener("input", function () { ST.gh[k] = el.value; spara(); ghCalc(); }); });
-  if (!$("#gh-dt").value) { var td = new Date(); $("#gh-dt").value = td.getFullYear() + "-" + ("0" + (td.getMonth() + 1)).slice(-2) + "-" + ("0" + td.getDate()).slice(-2); }
+  ["d", "w", "t"].forEach(function (k) { var el = $("#gh-" + k); if (ST.gh[k]) el.value = ST.gh[k]; el.addEventListener("input", function () { ST.gh[k] = el.value; spara(); ghCalc(); }); });
   function hm(x) { x = ((x % 24) + 24) % 24; var h = Math.floor(x), m = Math.round((x - h) * 60); if (m === 60) { h = (h + 1) % 24; m = 0; } return ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2); }
   function ghCalc() {
     var u = GH.ui, en = GH.en;
     var dIn = parseFloat(String($("#gh-d").value).replace(",", ".")) || 0, wIn = parseFloat(String($("#gh-w").value).replace(",", ".")) || 0;
     var km = en ? dIn * 1.609 : dIn, kgw = en ? wIn * 0.4536 : wIn;
-    var dt = new Date($("#gh-dt").value || Date.now()), mo = dt.getMonth();
-    var se = document.querySelector('.season button[aria-pressed="true"]'), winter = se ? se.dataset.se === "w" : (mo < 3 || mo > 8);
+    var se = document.querySelector('.season button[aria-pressed="true"]'), winter = se ? se.dataset.se === "w" : true;
     var sp = winter ? 3.5 : 4, tot = km / sp, mov = tot * 50 / 60;
     var lit = Math.max(0.5, Math.round(tot * (winter ? 0.4 : 0.6) * 2) / 2);
     var kcal = Math.round(3.5 * (kgw || 75) * mov / 100) * 100;
-    var lat = parseFloat($("#gh-r").value) * Math.PI / 180, doy = Math.floor((dt - new Date(dt.getFullYear(), 0, 0)) / 864e5);
-    var decl = 23.44 * Math.PI / 180 * Math.sin(2 * Math.PI * (284 + doy) / 365), ch = (Math.sin(-0.833 * Math.PI / 180) - Math.sin(lat) * Math.sin(decl)) / (Math.cos(lat) * Math.cos(decl));
-    var H = ch <= -1 ? 12 : ch >= 1 ? 0 : Math.acos(ch) * 180 / Math.PI / 15;
-    var B = 2 * Math.PI * (doy - 81) / 364, eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B), so = $("#gh-r").selectedOptions[0], lon = so && so.dataset.lon ? +so.dataset.lon : 15;
-    var noon = 12 + (15 - lon) / 15 - eot / 60 + (u.dst && mo >= 3 && mo <= 9 ? 1 : 0), rise = noon - H, set = noon + H;
     var tp = ($("#gh-t").value || "16:00").split(":"), t0 = +tp[0] + (+tp[1] || 0) / 60, arr = t0 + tot;
-    var dark = H < 12 && (t0 < rise || arr > set || H === 0), plan = km > 32 || tot > 10, pct = plan ? 20 : 10;
+    var plan = km > 32 || tot > 10, pct = plan ? 20 : 10;
     var maxkg = Math.round((kgw || 75) * pct / 100 * 10) / 10, maxShow = en ? Math.round(maxkg / 0.4536) : String(maxkg).replace(".", ",");
     var hh = Math.floor(tot), mm = Math.round((tot - hh) * 60); if (mm === 60) { hh++; mm = 0; }
     var lt = en ? String(lit) : String(lit).replace(".", ",");
     function f(s, o) { return s.replace(/\{(\w)\}/g, function (m, k) { return o[k] != null ? o[k] : ""; }); }
     $("#gh-st").innerHTML = [[u.st[0], f(u.tm, { h: hh, m: mm }), u.tmn], [u.st[1], f(u.wl, { l: lt }), lit > 2 ? u.wln : ""], [u.st[2], f(u.kc, { k: kcal.toLocaleString(en ? "en-US" : "sv-SE") }), u.kcn], [u.st[3], f(u.kg, { k: maxShow }), f(u.kgn, { p: pct })]]
       .map(function (x) { return '<div><span>' + x[0] + '</span><b>' + x[1] + '</b><small>' + x[2] + '</small></div>'; }).join("");
-    var dtx = f(u.day, { a: hm(rise), b: hm(set), c: hm(arr) + (arr >= 24 ? GH.ui.nd : "") }); if (ch <= -1 || ch >= 1) dtx = (ch <= -1 ? "Solen går inte ner den dagen." : "Solen går inte upp den dagen.") + " " + dtx.replace(/^[^.]*\. /, "");
+    var dtx = BLU.home.replace("{c}", hm(arr) + (arr >= 24 ? GH.ui.nd : ""));
     var dh = '<p class="gh-day">' + dtx + '</p>';
-    if (dark) dh += '<div class="gh-warn">' + u.dark + '</div>';
+    dh += '<div class="gh-warn">' + (winter ? BLU.darkw : BLU.darks) + '</div>';
     if (km > 32) dh += '<div class="gh-warn">' + u.far + '</div>'; else if (tot > 10) dh += '<div class="gh-warn">' + u.long + '</div>';
     $("#gh-day").innerHTML = dh;
-    var need = { water: 1, filter: lit > 2, food: 1, shoes: 1, feet: km > 8, map: 1, light: dark || winter, reflex: dark, rain: 1, warm: winter || plan, sun: !winter && tot > 3, blanket: 1, sleep: plan, power: 1, cash: 1, first: 1, numbers: 1 };
-    $("#gh-items").innerHTML = GH.it.filter(function (x) { return need[x[0]]; }).map(function (x) {
-      var id = "ghi-" + x[0], n = f(x[1], { w: lt.replace(/^(\d+([.,]\d)?)$/, function (v) { return lit > 2 ? (en ? "2" : "2") : v; }), k: kcal.toLocaleString(en ? "en-US" : "sv-SE") });
-      return '<div class="task"><div class="tl"><span>' + n + '</span><button type="button" class="ib" aria-expanded="false" aria-controls="' + id + '" aria-label="' + u.info + '">i</button></div><div class="ibx" id="' + id + '" hidden>' + x[2] + '</div></div>';
-    }).join("");
+    GHV = { lit: lit, kcal: kcal, lt: lt, en: en };
+    blRender();
     $("#gh-pb").hidden = !plan;
   }
   $("#gh-pbi").value = ST.gh.pb || "";
@@ -2348,7 +2304,7 @@ body.paged .top .hero.off { display: none; }
   $("#gh-pbb").onclick = function () {
     var v = $("#gh-pbi").value.trim(); if (!v) return;
     kpAddRow(1, GH.ui.pbt.replace(/[:\s]+$/, ""), v);
-    spara(); $("#gh-pbm").textContent = GH.ui.pbs; sumLater();
+    spara(); $("#gh-pbm").textContent = BLU.pbs; sumLater();
   };
   document.querySelectorAll(".season button").forEach(function (b) { b.addEventListener("click", function () { setTimeout(ghCalc, 0); }); });
   ghCalc();

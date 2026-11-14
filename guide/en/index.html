@@ -678,6 +678,13 @@ body.paged .top .hero.off { display: none; }
 @media (max-width: 760px) { .kp2 { grid-template-columns: minmax(0, 1fr); } }
 .dx-bo { margin-bottom: 16px; }
 .dx-resetrow { margin-top: 14px; }
+.bl-r { display: grid; grid-template-columns: 22px 1fr 28px; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.bl-r .rm { appearance: none; border: 0; background: none; color: var(--mute); font-size: 20px; cursor: pointer; }
+.bl-add { display: flex; gap: 8px; margin: 14px 0 6px; }
+.bl-add input { flex: 1; min-width: 0; padding: 11px 13px; border: 1.5px solid var(--line); border-radius: 12px; font: 500 16px var(--body); }
+.bl-rest { appearance: none; border: 0; background: none; color: var(--forest); font: 600 14px var(--body); padding: 6px 0; cursor: pointer; text-decoration: underline; }
+.bl-act { margin: 10px 0 18px; }
+#b1 .gh { margin: 0 0 18px; }
 </style>
 </head>
 <body>
@@ -1091,22 +1098,6 @@ body.paged .top .hero.off { display: none; }
       <button type="button" data-se="s" aria-pressed="false">Summer</button>
       <button type="button" data-se="w" aria-pressed="true">Winter</button>
     </div>
-    <div class="gh" id="gh">
-      <h3>Work out your get home bag</h3><p style="margin:0">Enter how far you are from home at work or school. The page works out how long it takes to walk and what your bag needs.</p>
-      <div class="gh-in">
-        <label>Distance home (miles)<input type="number" id="gh-d" min="1" max="300" value="28" inputmode="decimal"></label>
-        <label>Your weight (lb)<input type="number" id="gh-w" min="20" max="400" value="170" inputmode="decimal"></label>
-        <label>You leave at<input type="time" id="gh-t" value="16:00"></label>
-        <label>Date<input type="date" id="gh-dt"></label>
-        <label>Where do you live?<select id="gh-r"><option value="30">Around 30° north (Texas, Florida)</option><option value="40">Around 40° north (New York, Madrid)</option><option value="51" selected>Around 50° north (London, Vancouver)</option><option value="55.7">Around 55° north (Scotland, Denmark)</option><option value="60">Around 60° north (Oslo, Helsinki)</option><option value="65">Around 65° north (northern Scandinavia)</option></select></label>
-      </div>
-      <div class="gh-st" id="gh-st"></div>
-      <div id="gh-day"></div>
-      <h4>What your bag needs</h4>
-      <div class="gh-items" id="gh-items"></div>
-      <div class="gh-pb" id="gh-pb" hidden><h4 style="margin:0">Plan B: where can you stop?</h4><p>If you cannot walk the distance in a day, you need somewhere to stop halfway, for example with a colleague, a friend or family. Decide in advance and tell your family.</p><input id="gh-pbi" placeholder="For example: at Anna's in the next town"><button class="btn" type="button" id="gh-pbb">Save in the emergency plan</button> <span class="kp-saved" id="gh-pbm"></span></div>
-      <p class="src">Sources: US Army foot march manual (ATP 3-21.18): 4 km (2.5 miles) per hour with a 10 minute rest every hour, normal day march 20 to 32 km (12 to 20 miles). ACSM: 0.4 to 0.8 liters of fluid per hour during long exercise. Compendium of Physical Activities: 3.5 MET for walking with a day pack. Common hiking guideline: about 10 % of body weight at most on a day hike and 20 % on multi day trips. In winter we count 3.5 km (2.2 miles) per hour for ice, snow and darkness. Daylight times are approximate.</p>
-    </div>
     <div class="tabs btabs" role="tablist">
       <button role="tab" aria-selected="true" data-b="b1">Get home bag</button>
       <button role="tab" aria-selected="false" data-b="b2">Bug out bag</button>
@@ -1118,44 +1109,22 @@ body.paged .top .hero.off { display: none; }
         <div class="bpurp"><div class="lbl">Purpose</div><h3>Get home when nothing works</h3><p>The bag is where you spend your days: at work, at school or in the car. If trains, buses and roads stop, it should help you walk home, even if it takes a whole day or more.</p></div>
         <div class="bfacts"><div><b>1 to 2 days</b><span>it should last</span></div><div><b>Light</b><span>you must carry it all the way</span></div><div><b>Where you are</b><span>work, school, car</span></div></div>
       </div>
-      <div class="bgrid">
-        <div class="bgroup"><h4>Water and food</h4>
-          <label><input type="checkbox" data-k="b:gh-vatten">Water bottle, 1 to 2 liters</label>
-          <label><input type="checkbox" data-k="b:gh-filter">Water filter or purification tablets</label>
-          <label><input type="checkbox" data-k="b:gh-mat">High energy food that needs no cooking: nuts, bars, dried fruit</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-termos">Thermos with a hot drink, when you know something is coming</label>
-        </div>
-        <div class="bgroup"><h4>Clothes and shoes</h4>
-          <label><input type="checkbox" data-k="b:gh-skor">Comfortable shoes for walking far, if you are not already wearing them</label>
-          <label><input type="checkbox" data-k="b:gh-strumpor">A spare pair of socks</label>
-          <label><input type="checkbox" data-k="b:gh-regn">Rain jacket or rain poncho</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-under">Warm wool base layer</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-mossa">Hat, gloves and a scarf or neck gaiter</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-brodd">Ice cleats for your shoes</label>
-          <label data-se="s"><input type="checkbox" data-k="b:gh-keps">Cap or sun hat</label>
-        </div>
-        <div class="bgroup"><h4>Protection and warmth</h4>
-          <label><input type="checkbox" data-k="b:gh-filt">Emergency foil blanket</label>
-          <label data-se="w"><input type="checkbox" data-k="b:gh-varm">Hand and foot warmers</label>
-          <label data-se="s"><input type="checkbox" data-k="b:gh-sol">Sunscreen</label>
-          <label data-se="s"><input type="checkbox" data-k="b:gh-mygg">Insect repellent</label>
-        </div>
-        <div class="bgroup"><h4>Light, map and contact</h4>
-          <label><input type="checkbox" data-k="b:gh-lampa">Headlamp with spare batteries</label>
-          <label><input type="checkbox" data-k="b:gh-karta">Paper map of the way home</label>
-          <label><input type="checkbox" data-k="b:gh-power">Power bank and charging cable</label>
-          <label><input type="checkbox" data-k="b:gh-nr">Important phone numbers on paper</label>
-          <label><input type="checkbox" data-k="b:gh-vissla">Whistle</label>
-          <label><input type="checkbox" data-k="b:gh-reflex">Reflective vest or reflectors</label>
-        </div>
-        <div class="bgroup"><h4>Health and other</h4>
-          <label><input type="checkbox" data-k="b:gh-forband">Small first aid kit and blister plasters</label>
-          <label><input type="checkbox" data-k="b:gh-med">Your daily medicine for a couple of days</label>
-          <label><input type="checkbox" data-k="b:gh-kont">Cash in small bills</label>
-          <label><input type="checkbox" data-k="b:gh-kniv">Multi tool or pocket knife</label>
-          <label><input type="checkbox" data-k="b:gh-hyg">Wet wipes and some toilet paper</label>
-        </div>
+      <div class="gh" id="gh">
+      <h3>Work out your get home bag</h3><p style="margin:0">Enter how far you are from home at work or school. The page works out how long it takes to walk and what your bag needs.</p>
+      <div class="gh-in">
+        <label>Distance home (miles)<input type="number" id="gh-d" min="1" max="300" value="28" inputmode="decimal"></label>
+        <label>Your weight (lb)<input type="number" id="gh-w" min="20" max="400" value="170" inputmode="decimal"></label>
+        <label>You leave at<input type="time" id="gh-t" value="16:00"></label>
       </div>
+      <div class="gh-st" id="gh-st"></div>
+      <div id="gh-day"></div>
+      <div class="gh-pb" id="gh-pb" hidden><h4 style="margin:0">Plan B: where can you stop?</h4><p>If you cannot walk the distance in a day, you need somewhere to stop halfway, for example with a colleague, a friend or family. Decide in advance and tell your family.</p><input id="gh-pbi" placeholder="For example: at Anna's in the next town"><button class="btn" type="button" id="gh-pbb">Save in the emergency plan</button> <span class="kp-saved" id="gh-pbm"></span></div>
+      <p class="src">Sources: US Army foot march manual (ATP 3-21.18): 4 km (2.5 miles) per hour with a 10 minute rest every hour, normal day march 20 to 32 km (12 to 20 miles). ACSM: 0.4 to 0.8 liters of fluid per hour during long exercise. Compendium of Physical Activities: 3.5 MET for walking with a day pack. Common hiking guideline: about 10 % of body weight at most on a day hike and 20 % on multi day trips. In winter we count 3.5 km (2.2 miles) per hour for ice, snow and darkness.</p>
+    </div>
+      <div class="blist" id="bl-g"></div>
+      <form class="bl-add" data-t="g"><input type="text" maxlength="120" placeholder="Add your own item"><button class="btn ghost dark" type="submit">Add</button></form>
+      <button type="button" class="bl-rest" data-t="g" hidden>Show removed items again</button>
+      <div class="actions no-print bl-act" data-t="g"><button class="btn" type="button" data-a="pdf">Save as PDF</button><button class="btn ghost dark" type="button" data-a="share" hidden>Share</button><button class="btn ghost dark" type="button" data-a="copy">Copy the list as text</button></div>
       <div class="bthink"><h4>Keep in mind</h4><ul>
         <li><b>Plan the way home in advance.</b> Walk it once. Ideally choose two routes, in case one is closed.</li>
         <li><b>Agree with your family</b> who picks up the children and where you meet if you cannot reach each other.</li>
@@ -1171,42 +1140,10 @@ body.paged .top .hero.off { display: none; }
         <div class="bpurp"><div class="lbl">Purpose</div><h3>Leave home fast</h3><p>In a fire, flood, gas leak or when authorities ask you to evacuate, you should be able to grab the bag and leave within minutes. It should last until you are with family, friends or at a place the authorities arrange.</p></div>
         <div class="bfacts"><div><b>72 hours</b><span>it should last</span></div><div><b>One per person</b><span>children carry a small one</span></div><div><b>By the door</b><span>easy to grab</span></div></div>
       </div>
-      <div class="bgrid">
-        <div class="bgroup"><h4>The essentials</h4>
-          <label><input type="checkbox" data-k="b:bo-dok">Copies of passport, ID and insurance in a waterproof bag</label>
-          <label><input type="checkbox" data-k="b:bo-med">Medicine for at least a week, and the prescriptions</label>
-          <label><input type="checkbox" data-k="b:bo-kont">Cash in small bills</label>
-          <label><input type="checkbox" data-k="b:bo-power">Charged power bank and cables</label>
-          <label><input type="checkbox" data-k="b:bo-nr">Phone numbers and addresses on paper</label>
-          <label><input type="checkbox" data-k="b:bo-nyck">Spare keys to home and car</label>
-        </div>
-        <div class="bgroup"><h4>Water and food</h4>
-          <label><input type="checkbox" data-k="b:bo-vatten">Water, about 2 liters per person</label>
-          <label><input type="checkbox" data-k="b:bo-filter">Water filter or purification tablets</label>
-          <label><input type="checkbox" data-k="b:bo-mat">Food for three days that needs no cooking</label>
-          <label><input type="checkbox" data-k="b:bo-kok">Small stove, fuel and matches, if you can carry it</label>
-        </div>
-        <div class="bgroup"><h4>Clothes and sleep</h4>
-          <label><input type="checkbox" data-k="b:bo-klader">Change of clothes and underwear</label>
-          <label><input type="checkbox" data-k="b:bo-regn">Rain gear</label>
-          <label><input type="checkbox" data-k="b:bo-sov">Sleeping bag or blanket</label>
-          <label data-se="w"><input type="checkbox" data-k="b:bo-vinter">Winter clothes: base layer, hat, gloves, warm socks</label>
-          <label data-se="w"><input type="checkbox" data-k="b:bo-liggu">Sleeping pad, the cold comes from below</label>
-          <label data-se="s"><input type="checkbox" data-k="b:bo-sol">Sunscreen, cap and insect repellent</label>
-        </div>
-        <div class="bgroup"><h4>Light, health and hygiene</h4>
-          <label><input type="checkbox" data-k="b:bo-lampa">Headlamp and spare batteries</label>
-          <label><input type="checkbox" data-k="b:bo-radio">Small battery or crank radio</label>
-          <label><input type="checkbox" data-k="b:bo-forband">First aid kit</label>
-          <label><input type="checkbox" data-k="b:bo-hyg">Toothbrush, soap, wet wipes, toilet paper, period products</label>
-          <label><input type="checkbox" data-k="b:bo-glas">Glasses or contact lenses</label>
-        </div>
-        <div class="bgroup"><h4>Children and pets</h4>
-          <label><input type="checkbox" data-k="b:bo-barn">Diapers, formula, a bottle and something to do</label>
-          <label><input type="checkbox" data-k="b:bo-gos">A cuddly toy or favorite thing</label>
-          <label><input type="checkbox" data-k="b:bo-djur">Food, water, leash or carrier for your pets</label>
-        </div>
-      </div>
+      <div class="blist" id="bl-b"></div>
+      <form class="bl-add" data-t="b"><input type="text" maxlength="120" placeholder="Add your own item"><button class="btn ghost dark" type="submit">Add</button></form>
+      <button type="button" class="bl-rest" data-t="b" hidden>Show removed items again</button>
+      <div class="actions no-print bl-act" data-t="b"><button class="btn" type="button" data-a="pdf">Save as PDF</button><button class="btn ghost dark" type="button" data-a="share" hidden>Share</button><button class="btn ghost dark" type="button" data-a="copy">Copy the list as text</button></div>
       <div class="bthink"><h4>Keep in mind</h4><ul>
         <li><b>Decide where you will go.</b> Family or friends outside your area are often best. Have two options.</li>
         <li><b>Leave when the authorities say so.</b> Do not wait until the roads are full.</li>
@@ -1222,33 +1159,10 @@ body.paged .top .hero.off { display: none; }
         <div class="bpurp"><div class="lbl">Purpose</div><h3>If you get stuck in the car</h3><p>An accident, a snowstorm or a closed road can leave you standing still for hours. The car should keep you warm and safe until help arrives, or until you can move on.</p></div>
         <div class="bfacts"><div><b>A few hours</b><span>up to a day</span></div><div><b>Always in the car</b><span>all year, change by season</span></div><div><b>Half a tank</b><span>never drive on reserve</span></div></div>
       </div>
-      <div class="bgrid">
-        <div class="bgroup"><h4>Safety</h4>
-          <label><input type="checkbox" data-k="b:car-varn">Warning triangle and reflective vest</label>
-          <label><input type="checkbox" data-k="b:car-lampa">Flashlight or headlamp</label>
-          <label><input type="checkbox" data-k="b:car-forband">First aid kit</label>
-          <label><input type="checkbox" data-k="b:car-start">Jumper cables or a jump starter</label>
-          <label><input type="checkbox" data-k="b:car-ladd">Phone charging cable for the car</label>
-        </div>
-        <div class="bgroup"><h4>Warmth and food</h4>
-          <label><input type="checkbox" data-k="b:car-filt">Blanket or sleeping bag</label>
-          <label><input type="checkbox" data-k="b:car-vatten">Water and high energy food</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-klader">Extra warm clothes, hat and gloves</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-varm">Hand warmers</label>
-        </div>
-        <div class="bgroup"><h4>Winter</h4>
-          <label data-se="w"><input type="checkbox" data-k="b:car-spade">Snow shovel</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-skrapa">Ice scraper and snow brush</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-sand">Sand or cat litter for traction under the wheels</label>
-          <label data-se="w"><input type="checkbox" data-k="b:car-spol">Extra winter washer fluid</label>
-          <p class="se-empty" data-se="s">Switch to the winter kit well before the first frost.</p>
-        </div>
-        <div class="bgroup"><h4>Summer</h4>
-          <label data-se="s"><input type="checkbox" data-k="b:car-mer-vatten">More water, several liters</label>
-          <label data-se="s"><input type="checkbox" data-k="b:car-skugga">Sun protection and something to make shade</label>
-          <p class="se-empty" data-se="w">Save the summer list for spring.</p>
-        </div>
-      </div>
+      <div class="blist" id="bl-c"></div>
+      <form class="bl-add" data-t="c"><input type="text" maxlength="120" placeholder="Add your own item"><button class="btn ghost dark" type="submit">Add</button></form>
+      <button type="button" class="bl-rest" data-t="c" hidden>Show removed items again</button>
+      <div class="actions no-print bl-act" data-t="c"><button class="btn" type="button" data-a="pdf">Save as PDF</button><button class="btn ghost dark" type="button" data-a="share" hidden>Share</button><button class="btn ghost dark" type="button" data-a="copy">Copy the list as text</button></div>
       <div class="bthink"><h4>Keep in mind</h4><ul>
         <li><b>Stay in the car</b> in cold or storms, as long as it is safe. A car is easier to find than a person.</li>
         <li><b>Never drive with a low tank,</b> especially in winter. Fill up at half.</li>
@@ -1435,7 +1349,7 @@ body.paged .top .hero.off { display: none; }
     <p class="sub">Here you see everything you have done in the guide. What is not done has a link back to the right step.</p>
     <div class="sumtop"><div class="lvlc" id="sum-lvl"></div><div class="nx3" id="sum-nx"></div></div>
     <div class="srows" id="sum-rows"></div>
-    <div class="actions sumact no-print"><button class="btn" type="button" id="sum-share">Share your level</button><button class="btn ghost dark" type="button" id="sum-dl">Download</button><button class="btn ghost dark" type="button" id="sum-pr">Print</button></div>
+    <div class="actions sumact no-print"><button class="btn" type="button" id="sum-share">Share your level</button><button class="btn ghost dark" type="button" id="sum-dl">Save as PDF</button><button class="btn ghost dark" type="button" id="sum-pr">Print</button></div>
     <div class="cal">
       <div><h3>Remind me twice a year</h3><p>Adds a reminder to your phone's calendar in spring and autumn: go through your supplies, replace water and food that will soon expire, and check the bags.</p></div>
       <button class="btn" type="button" id="cal-add">Add to calendar</button>
@@ -1917,6 +1831,7 @@ body.paged .top .hero.off { display: none; }
   function arstid(v) {
     document.querySelectorAll(".season button").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.se === v); });
     document.querySelectorAll("#bags [data-se]").forEach(function (e) { if (e.tagName !== "BUTTON") e.hidden = e.dataset.se !== v; });
+    try { blRender(); } catch (e3) {}
   }
   document.querySelectorAll("#bags label[data-se]").forEach(function (l) { l.setAttribute("data-sel", l.dataset.se === "w" ? "Winter" : "Summer"); });
   document.querySelectorAll(".season button").forEach(function (b) { b.onclick = function () { arstid(b.dataset.se); }; });
@@ -2163,7 +2078,7 @@ body.paged .top .hero.off { display: none; }
     var se = document.querySelector('.season button[aria-pressed="true"]'), sv = se ? se.dataset.se : "";
     var bp = ["b1", "b2", "b3"].map(function (id) {
       var a = 0, b = 0;
-      document.querySelectorAll("#" + id + " label").forEach(function (l) { var i = l.querySelector("input"); if (!i) return; var x = l.getAttribute("data-se"); if (x && x !== sv) return; b++; if (i.checked) a++; });
+      document.querySelectorAll("#" + id + " .blist input").forEach(function (i) { b++; if (i.checked) a++; });
       return b ? Math.round(a / b * 100) : 0;
     });
     var bavg = Math.round((bp[0] + bp[1] + bp[2]) / 3);
@@ -2196,7 +2111,7 @@ body.paged .top .hero.off { display: none; }
     if (todo.length) { t += "\n" + SM.next3 + ":\n"; todo.forEach(function (x, i) { t += (i + 1) + ". " + R[x[0]][2] + "\n"; }); }
     return t + "\nhttps://prepperstock.se/guide/" + (SM.en ? "en/" : "") + "\n";
   }
-  $("#sum-dl").onclick = function () { sum(); dlText(sumText(), SM.file, "text/plain"); };
+  $("#sum-dl").onclick = function () { sum(); var st = sumText(); psSavePdf("My preparedness", st, SM.file.replace(/\.txt$/, ".pdf")); };
   $("#sum-pr").onclick = function () { sum(); openSec("list", false); window.print(); };
   $("#sum-share").onclick = function () {
     sum();
@@ -2304,44 +2219,85 @@ body.paged .top .hero.off { display: none; }
   dxRender(); dxMedal();
   if (ST.bo) { var hb0 = document.querySelector('.bo button[data-bo="' + ST.bo + '"]'); if (hb0) hb0.click(); }
 
+
+  /* ===== Väsklistor: årstid och typ ger en lista som går att bocka av, ändra, spara som PDF och dela ===== */
+  var BL = {"g": {"a": [["water", "Water for the way, {lit}. Carry at most 2 liters and refill on the way."], ["filter", "Water filter or purification tablets"], ["food", "Energy-rich food that needs no cooking, about {kcal}: nuts, bars, dried fruit"], ["shoes", "Comfortable shoes to walk far in"], ["socks", "A pair of spare socks"], ["rain", "Rain jacket or poncho"], ["lamp", "Headlamp and spare batteries"], ["power", "Power bank and charging cable"], ["map", "Paper map with two routes home"], ["numbers", "Important phone numbers on paper"], ["whistle", "Whistle"], ["reflex", "Reflective vest or reflectors"], ["blanket", "Foil emergency blanket"], ["first", "Small first aid kit and blister plasters"], ["meds", "Your daily medicine for a couple of days"], ["cash", "Cash in small bills"], ["knife", "Pocket knife or multi-tool"], ["hyg", "Wet wipes, some toilet paper and hand sanitizer"], ["mask", "Face mask"]], "s": [["sun", "Sunscreen and a cap or sun hat"], ["mygg", "Insect repellent"], ["water2", "A little extra water, you need more when it is hot"]], "w": [["under", "Warm wool base layer"], ["hat", "Hat, gloves and a scarf or neck gaiter"], ["sweater", "A warm extra sweater"], ["warmers", "Hand and foot warmers"], ["cleats", "Ice cleats for your shoes"], ["thermos", "Thermos with a hot drink, when you know you are heading out"]]}, "b": {"a": [["water", "Water, 3 liters per person, and a water filter or purification tablets"], ["food", "Food for three days that needs no cooking"], ["docs", "Copies of passports, ID, insurance and prescriptions in a waterproof bag"], ["meds", "Medicine for a week and spare glasses"], ["cash", "Cash in small bills"], ["power", "Phone charger and a charged power bank"], ["radio", "Radio that runs on batteries or a crank"], ["lamp", "Headlamp and spare batteries"], ["first", "First aid kit"], ["hyg", "Toothbrush, toothpaste, soap, wet wipes, toilet paper and menstrual products"], ["clothes", "Change of clothes and underwear"], ["rain", "Rain gear"], ["sleep", "Sleeping bag or blanket"], ["blanket", "Emergency blanket"], ["whistle", "Whistle"], ["knife", "Pocket knife or multi-tool"], ["fire", "Matches or a lighter"], ["tape", "Duct tape and a few cable ties"], ["bags", "Heavy-duty trash bags"], ["map", "Paper map and important phone numbers"], ["keys", "Spare keys to your home and car"], ["pen", "Pen and paper"], ["kids", "For children: something comforting, like a cuddly toy, and something to do"], ["pets", "For pets: food, water, a leash and a photo of the animal"]], "s": [["sun", "Sunscreen, a cap and insect repellent"]], "w": [["winter", "Warm base layer, hat, gloves and a warm jacket"], ["warmers", "Hand warmers"]]}, "c": {"a": [["water", "Water, a few bottles"], ["food", "Long-lasting energy food, like bars and nuts"], ["blanket", "Blanket or sleeping bag"], ["first", "First aid kit"], ["lamp", "Flashlight and spare batteries"], ["cable", "Phone charging cable"], ["triangle", "Warning triangle and reflective vest"], ["jumper", "Jumper cables"], ["tow", "Tow rope"], ["ext", "Fire extinguisher"], ["cutter", "Seat belt cutter and window breaker within reach of the driver"], ["tape", "Duct tape"], ["map", "Paper map"], ["cash", "Cash"], ["hyg", "Toilet paper and wet wipes"], ["tank", "Keep the tank at least half full"]], "s": [["water2", "More water"], ["sun", "Sunscreen"]], "w": [["scraper", "Ice scraper and snow brush"], ["shovel", "Small snow shovel"], ["sand", "Sand or cat litter for traction"], ["clothes", "Warm clothes: jacket, hat, gloves and boots"], ["sleep", "A sleeping bag instead of a blanket"], ["warmers", "Hand warmers"], ["thermos", "Thermos with a hot drink on longer trips"], ["candle", "Tea light in a can and matches, for emergency heat with a window ajar"]]}}, BLU = {"add": "Add your own item", "addb": "Add", "restore": "Show removed items again", "pdf": "Save as PDF", "share": "Share", "copy": "Copy the list as text", "copied": "The list is copied", "fail": "Could not copy", "names": {"g": "Get home bag", "b": "Bug out bag", "c": "The car"}, "sw": {"s": "summer", "w": "winter"}, "rm": "Remove", "lit": "{l} liters", "kcal": "{k} kcal", "file": "bag-list", "home": "If you walk the whole way without stopping, you get home at about {c}.", "darkw": "In winter it gets dark early. Expect to walk part of the way in the dark. A headlamp, a reflective vest and spare batteries belong in the bag.", "darks": "If you walk in the evening or at night it can get dark. A headlamp and a reflector should always be in the bag.", "pbs": "Saved in the emergency plan."}, GHV = null;
+  ST.bl = ST.bl || { rm: {}, add: { g: [], b: [], c: [] } };
+  function blSeason() { var se = document.querySelector('.season button[aria-pressed="true"]'); return se ? se.dataset.se : "w"; }
+  function blRows(t) {
+    var s = blSeason(), rm = ST.bl.rm, out = [];
+    BL[t].a.concat(BL[t][s]).forEach(function (r) {
+      var k = t + ":" + r[0]; if (rm[k]) return;
+      var tx = r[1];
+      if (GHV && t === "g") tx = tx.replace("{lit}", BLU.lit.replace("{l}", GHV.lt)).replace("{kcal}", BLU.kcal.replace("{k}", GHV.kcal.toLocaleString(GHV.en ? "en-US" : "sv-SE")));
+      else tx = tx.replace(", {lit}. ", ". ").replace(", {lit}", "").replace(", ungefär {kcal}", "").replace(", about {kcal}", "");
+      out.push({ k: k, t: tx });
+    });
+    (ST.bl.add[t] || []).forEach(function (x, i) { out.push({ k: t + ":+" + i, t: x, own: i }); });
+    return out;
+  }
+  function blRender() {
+    ["g", "b", "c"].forEach(function (t) {
+      var box = document.getElementById("bl-" + t); if (!box) return;
+      box.innerHTML = blRows(t).map(function (r) { return '<label class="bl-r"><input type="checkbox" data-k="bl:' + r.k + '"><span>' + esc(r.t) + '</span><button type="button" class="rm" data-rm="' + r.k + '" aria-label="' + BLU.rm + '">×</button></label>'; }).join("");
+      var any = Object.keys(ST.bl.rm).some(function (k) { return k.indexOf(t + ":") === 0; });
+      var rb = document.querySelector('.bl-rest[data-t="' + t + '"]'); if (rb) rb.hidden = !any;
+    });
+    koppla();
+  }
+  document.querySelectorAll(".blist").forEach(function (box) {
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-rm]"); if (!b) return;
+      e.preventDefault(); var k = b.dataset.rm, t = k.split(":")[0];
+      if (k.indexOf(":+") > -1) ST.bl.add[t].splice(+k.split(":+")[1], 1); else ST.bl.rm[k] = 1;
+      delete ST.c["bl:" + k]; spara(); blRender(); sumLater();
+    });
+  });
+  document.querySelectorAll(".bl-add").forEach(function (fm) {
+    fm.onsubmit = function (e) { e.preventDefault(); var i = fm.querySelector("input"), v = i.value.trim(); if (!v) return; ST.bl.add[fm.dataset.t].push(v); i.value = ""; spara(); blRender(); };
+  });
+  document.querySelectorAll(".bl-rest").forEach(function (b) {
+    b.onclick = function () { Object.keys(ST.bl.rm).forEach(function (k) { if (k.indexOf(b.dataset.t + ":") === 0) delete ST.bl.rm[k]; }); spara(); blRender(); };
+  });
+  function blText(t) {
+    var s = blSeason(), out = BLU.names[t] + ", " + BLU.sw[s] + "\n\n";
+    blRows(t).forEach(function (r) { out += (ST.c["bl:" + r.k] ? "[x] " : "[ ] ") + r.t + "\n"; });
+    return out + "\nprepperstock.se\n";
+  }
+  document.querySelectorAll(".bl-act").forEach(function (box) {
+    var t = box.dataset.t;
+    box.querySelector('[data-a="pdf"]').onclick = function () { psSavePdf(BLU.names[t], blText(t).split("\n").slice(2).join("\n"), BLU.file + "-" + t + ".pdf"); };
+    var sh = box.querySelector('[data-a="share"]'); if (navigator.share) { sh.hidden = false; sh.onclick = function () { psShare(BLU.names[t], blText(t)); }; }
+    var cp = box.querySelector('[data-a="copy"]'); cp.onclick = function () { psCopy(cp, blText(t), BLU.copied, BLU.fail); };
+  });
   /* ===== Räknare för get home bag ===== */
   var GH = {"ui": {"h": "Work out your get home bag", "p": "Enter how far you are from home at work or school. The page works out how long it takes to walk and what your bag needs.", "dist": "Distance home", "du": "miles", "wt": "Your weight", "wu": "lb", "start": "You leave at", "date": "Date", "reg": "Where do you live?", "regs": [["Around 30° north (Texas, Florida)", 30], ["Around 40° north (New York, Madrid)", 40], ["Around 50° north (London, Vancouver)", 51], ["Around 55° north (Scotland, Denmark)", 55.7], ["Around 60° north (Oslo, Helsinki)", 60], ["Around 65° north (northern Scandinavia)", 65]], "dst": false, "st": ["Walking time", "Water", "Food", "Bag at most"], "tm": "{h} h {m} min", "tmn": "including a 10 minute rest every hour", "wl": "{l} liters", "wln": "carry at most 2 liters, refill the rest", "kc": "{k} kcal", "kcn": "what you burn on the way", "kg": "{k} lb", "kgn": "{p} % of your weight", "day": "That day it is light from about {a} to {b}. If you walk the whole way without stopping, you get home at about {c}.", "dark": "You will walk part of the way in the dark.", "far": "The distance is longer than a normal day march for soldiers, 20 miles. Plan to stop on the way.", "long": "It takes more than 10 hours. Plan to stop on the way.", "ih": "What your bag needs", "pb": "Plan B: where can you stop?", "pbp": "If you cannot walk the distance in a day, you need somewhere to stop halfway, for example with a colleague, a friend or family. Decide in advance and tell your family.", "pbph": "For example: at Anna's in the next town", "pbb": "Save in the emergency plan", "pbs": "Saved under Other in the emergency plan.", "pbt": "Plan B on the way home: ", "src": "Sources: US Army foot march manual (ATP 3-21.18): 4 km (2.5 miles) per hour with a 10 minute rest every hour, normal day march 20 to 32 km (12 to 20 miles). ACSM: 0.4 to 0.8 liters of fluid per hour during long exercise. Compendium of Physical Activities: 3.5 MET for walking with a day pack. Common hiking guideline: about 10 % of body weight at most on a day hike and 20 % on multi day trips. In winter we count 3.5 km (2.2 miles) per hour for ice, snow and darkness. Daylight times are approximate.", "info": "Explanation", "nd": " the next day"}, "en": true, "it": [["water", "Water bottle, {w} liters", "You lose fluid the whole way, even in the cold. Drink a little and often rather than a lot at once."], ["filter", "Water filter or purification tablets", "You need more water than you can carry. With a filter you can refill from lakes and streams."], ["food", "Food with about {k} kcal", "Nuts, chocolate, energy bars and dried fruit give a lot of energy per gram and need no cooking."], ["shoes", "Shoes you can walk far in", "Office shoes give you blisters after a few miles. If you do not wear good shoes, a pair needs to be in the bag."], ["feet", "Blister plasters, tape and a spare pair of socks", "The military teaches you to deal with your feet as soon as something rubs, and to change into dry socks on long marches. A blister can stop you completely."], ["map", "Paper map of the way home", "Mobile networks and map apps may be down. Mark two different routes home."], ["light", "Headlamp and spare batteries", "You will walk part of the way in the dark. A headlamp keeps your hands free."], ["reflex", "Reflective vest", "In the dark, drivers cannot see you. A reflective vest is visible from hundreds of meters away."], ["rain", "Rain jacket or poncho", "Wet clothes cool your body quickly, even in summer."], ["warm", "Hat, gloves and a warm layer", "You get cold when you stop to rest. Wool stays warm even when damp."], ["sun", "Sunscreen and a cap", "A whole day in the sun gives sunburn and headaches."], ["blanket", "Emergency blanket", "Weighs almost nothing and can save you from hypothermia if you have to stop."], ["sleep", "Bivy bag or light sleeping cover", "You may need to rest or sleep on the way. A bivy bag keeps you dry and warm."], ["power", "Power bank and cable", "So your phone lasts the whole way if the network works."], ["cash", "Cash", "Shops and cafés along the way may only take cash."], ["first", "Small first aid kit and your medicine", "A cut or a headache should not stop you. Bring medicine for at least one day."], ["numbers", "Important numbers on paper", "If your phone dies, you can borrow one and still reach your family."]]};
   ST.gh = ST.gh || {};
-  ["d", "w", "t", "dt", "r"].forEach(function (k) { var el = $("#gh-" + k); if (ST.gh[k]) el.value = ST.gh[k]; el.addEventListener("input", function () { ST.gh[k] = el.value; spara(); ghCalc(); }); });
-  if (!$("#gh-dt").value) { var td = new Date(); $("#gh-dt").value = td.getFullYear() + "-" + ("0" + (td.getMonth() + 1)).slice(-2) + "-" + ("0" + td.getDate()).slice(-2); }
+  ["d", "w", "t"].forEach(function (k) { var el = $("#gh-" + k); if (ST.gh[k]) el.value = ST.gh[k]; el.addEventListener("input", function () { ST.gh[k] = el.value; spara(); ghCalc(); }); });
   function hm(x) { x = ((x % 24) + 24) % 24; var h = Math.floor(x), m = Math.round((x - h) * 60); if (m === 60) { h = (h + 1) % 24; m = 0; } return ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2); }
   function ghCalc() {
     var u = GH.ui, en = GH.en;
     var dIn = parseFloat(String($("#gh-d").value).replace(",", ".")) || 0, wIn = parseFloat(String($("#gh-w").value).replace(",", ".")) || 0;
     var km = en ? dIn * 1.609 : dIn, kgw = en ? wIn * 0.4536 : wIn;
-    var dt = new Date($("#gh-dt").value || Date.now()), mo = dt.getMonth();
-    var se = document.querySelector('.season button[aria-pressed="true"]'), winter = se ? se.dataset.se === "w" : (mo < 3 || mo > 8);
+    var se = document.querySelector('.season button[aria-pressed="true"]'), winter = se ? se.dataset.se === "w" : true;
     var sp = winter ? 3.5 : 4, tot = km / sp, mov = tot * 50 / 60;
     var lit = Math.max(0.5, Math.round(tot * (winter ? 0.4 : 0.6) * 2) / 2);
     var kcal = Math.round(3.5 * (kgw || 75) * mov / 100) * 100;
-    var lat = parseFloat($("#gh-r").value) * Math.PI / 180, doy = Math.floor((dt - new Date(dt.getFullYear(), 0, 0)) / 864e5);
-    var decl = 23.44 * Math.PI / 180 * Math.sin(2 * Math.PI * (284 + doy) / 365), ch = (Math.sin(-0.833 * Math.PI / 180) - Math.sin(lat) * Math.sin(decl)) / (Math.cos(lat) * Math.cos(decl));
-    var H = ch <= -1 ? 12 : ch >= 1 ? 0 : Math.acos(ch) * 180 / Math.PI / 15;
-    var B = 2 * Math.PI * (doy - 81) / 364, eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B), so = $("#gh-r").selectedOptions[0], lon = so && so.dataset.lon ? +so.dataset.lon : 15;
-    var noon = 12 + (15 - lon) / 15 - eot / 60 + (u.dst && mo >= 3 && mo <= 9 ? 1 : 0), rise = noon - H, set = noon + H;
     var tp = ($("#gh-t").value || "16:00").split(":"), t0 = +tp[0] + (+tp[1] || 0) / 60, arr = t0 + tot;
-    var dark = H < 12 && (t0 < rise || arr > set || H === 0), plan = km > 32 || tot > 10, pct = plan ? 20 : 10;
+    var plan = km > 32 || tot > 10, pct = plan ? 20 : 10;
     var maxkg = Math.round((kgw || 75) * pct / 100 * 10) / 10, maxShow = en ? Math.round(maxkg / 0.4536) : String(maxkg).replace(".", ",");
     var hh = Math.floor(tot), mm = Math.round((tot - hh) * 60); if (mm === 60) { hh++; mm = 0; }
     var lt = en ? String(lit) : String(lit).replace(".", ",");
     function f(s, o) { return s.replace(/\{(\w)\}/g, function (m, k) { return o[k] != null ? o[k] : ""; }); }
     $("#gh-st").innerHTML = [[u.st[0], f(u.tm, { h: hh, m: mm }), u.tmn], [u.st[1], f(u.wl, { l: lt }), lit > 2 ? u.wln : ""], [u.st[2], f(u.kc, { k: kcal.toLocaleString(en ? "en-US" : "sv-SE") }), u.kcn], [u.st[3], f(u.kg, { k: maxShow }), f(u.kgn, { p: pct })]]
       .map(function (x) { return '<div><span>' + x[0] + '</span><b>' + x[1] + '</b><small>' + x[2] + '</small></div>'; }).join("");
-    var dtx = f(u.day, { a: hm(rise), b: hm(set), c: hm(arr) + (arr >= 24 ? GH.ui.nd : "") }); if (ch <= -1 || ch >= 1) dtx = (ch <= -1 ? "The sun does not set that day." : "The sun does not rise that day.") + " " + dtx.replace(/^[^.]*\. /, "");
+    var dtx = BLU.home.replace("{c}", hm(arr) + (arr >= 24 ? GH.ui.nd : ""));
     var dh = '<p class="gh-day">' + dtx + '</p>';
-    if (dark) dh += '<div class="gh-warn">' + u.dark + '</div>';
+    dh += '<div class="gh-warn">' + (winter ? BLU.darkw : BLU.darks) + '</div>';
     if (km > 32) dh += '<div class="gh-warn">' + u.far + '</div>'; else if (tot > 10) dh += '<div class="gh-warn">' + u.long + '</div>';
     $("#gh-day").innerHTML = dh;
-    var need = { water: 1, filter: lit > 2, food: 1, shoes: 1, feet: km > 8, map: 1, light: dark || winter, reflex: dark, rain: 1, warm: winter || plan, sun: !winter && tot > 3, blanket: 1, sleep: plan, power: 1, cash: 1, first: 1, numbers: 1 };
-    $("#gh-items").innerHTML = GH.it.filter(function (x) { return need[x[0]]; }).map(function (x) {
-      var id = "ghi-" + x[0], n = f(x[1], { w: lt.replace(/^(\d+([.,]\d)?)$/, function (v) { return lit > 2 ? (en ? "2" : "2") : v; }), k: kcal.toLocaleString(en ? "en-US" : "sv-SE") });
-      return '<div class="task"><div class="tl"><span>' + n + '</span><button type="button" class="ib" aria-expanded="false" aria-controls="' + id + '" aria-label="' + u.info + '">i</button></div><div class="ibx" id="' + id + '" hidden>' + x[2] + '</div></div>';
-    }).join("");
+    GHV = { lit: lit, kcal: kcal, lt: lt, en: en };
+    blRender();
     $("#gh-pb").hidden = !plan;
   }
   $("#gh-pbi").value = ST.gh.pb || "";
@@ -2349,7 +2305,7 @@ body.paged .top .hero.off { display: none; }
   $("#gh-pbb").onclick = function () {
     var v = $("#gh-pbi").value.trim(); if (!v) return;
     kpAddRow(1, GH.ui.pbt.replace(/[:\s]+$/, ""), v);
-    spara(); $("#gh-pbm").textContent = GH.ui.pbs; sumLater();
+    spara(); $("#gh-pbm").textContent = BLU.pbs; sumLater();
   };
   document.querySelectorAll(".season button").forEach(function (b) { b.addEventListener("click", function () { setTimeout(ghCalc, 0); }); });
   ghCalc();
