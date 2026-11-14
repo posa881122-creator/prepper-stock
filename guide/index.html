@@ -1440,8 +1440,8 @@ body.paged .top .hero.off { display: none; }
     { namn: "Snabbmakaroner eller nudlar", info: "Kokar på 3 minuter", g: 500, pack: 500, enh: "paket", n: [355,71,12,1.5], t: "k" },
     { namn: "Ris", info: "Gärna snabbris", g: 400, pack: 1000, enh: "paket", n: [350,78,7,0.6], t: "k" },
     { namn: "Knäckebröd", info: "Håller i månader", g: 400, pack: 500, enh: "paket", n: [335,60,9,1.7], t: "k" },
-    { namn: "Bönor eller linser på burk", info: "400 g burk", g: 720, pack: 240, enh: "burkar", n: [110,16,7,0.5], t: "p" },
-    { namn: "Tonfisk på burk", info: "Cirka 150 g burk", g: 330, pack: 110, enh: "burkar", n: [110,0,25,1], t: "p" },
+    { namn: "Bönor eller linser på burk", info: "400 g burk", g: 720, pack: 240, nw: 400, enh: "burkar", n: [110,16,7,0.5], t: "p" },
+    { namn: "Tonfisk på burk", info: "Cirka 150 g burk", g: 330, pack: 110, nw: 150, enh: "burkar", n: [110,0,25,1], t: "p" },
     { namn: "Köttfärssås eller gryta på burk", info: "Cirka 500 g burk", g: 1000, pack: 500, enh: "burkar", n: [120,6,8,7], t: "p" },
     { namn: "Jordnötssmör", info: "Mycket energi och protein", g: 340, pack: 340, enh: "burkar", n: [590,20,25,50], t: "f" },
     { namn: "Rapsolja", info: "Fett och energi till maten", g: 100, pack: 500, enh: "flaskor à 0,5 l", n: [900,0,0,100], t: "f" },
@@ -1491,6 +1491,7 @@ body.paged .top .hero.off { display: none; }
     $(el).innerHTML = list.map(function (r) { return '<div class="row"><span>' + r[0] + '</span><b>' + r[1] + '</b></div>'; }).join("");
   }
 
+  var SHOP = { water: 0, food: [], other: [] };
   function calc() {
     var stdD = [3, 7, 14, 30].indexOf(D) > -1;
     document.querySelectorAll("#days button").forEach(function (b) { var d = parseInt(b.dataset.d, 10); b.setAttribute("aria-pressed", d ? d === D : !stdD); });
@@ -1504,6 +1505,7 @@ body.paged .top .hero.off { display: none; }
     vattenDag += djurVatten;
     var kcal = kcalDag * D, vatten = vattenDag * D, vatten2 = vatten + folk * 2 * D;
     S = { folk: folk, kcal: kcal, vatten: vatten, N: N, D: D };
+    SHOP = { water: folk ? vatten : 0, food: [], other: [] };
     $("#o-water").textContent = fmt(vatten) + " L";
     document.querySelectorAll(".v-w7").forEach(function (e) { e.textContent = fmt((vattenDag - djurVatten) * 7) + " L"; });
     $("#o-water2").textContent = fmt(vatten2) + " L";
@@ -1522,15 +1524,18 @@ body.paged .top .hero.off { display: none; }
     kvar.forEach(function (m) { mal += m.g * f * m.n[0] / 100; });
     if (folk) packs(kvar, f, mal).forEach(function (o) {
       var m = o.m, st = o.st;
+      SHOP.food.push({ key: "f:" + m.namn, name: m.namn, n: st, enh: m.enh, pc: m.nw || m.pack, dw: m.nw ? m.pack : 0, k100: m.n[0] });
       var gk = st * m.pack;
       sk += m.n[0] * gk / 100; sc += m.n[1] * gk / 100; sp += m.n[2] * gk / 100; sf += m.n[3] * gk / 100;
       html += '<label class="li"><input type="checkbox" data-k="f:' + m.namn + '"><span class="n">' + m.namn + '<span class="tag ' + m.t + '">' + TAG[m.t] + '</span><small>' + m.info + '</small></span><span class="q">' + st + ' <small>' + m.enh + '</small></span>' + XBTN + '</label>';
     });
     extra(D, N).forEach(function (x) {
       if (ST.r["f:" + x[0]]) return;
+      SHOP.other.push({ key: "f:" + x[0], name: x[0], q: String(x[2]) });
       html += '<label class="li"><input type="checkbox" data-k="f:' + x[0] + '"><span class="n">' + x[0] + '<span class="tag ' + x[3] + '">' + x[4] + '</span><small>' + x[1] + '</small></span><span class="q">' + x[2] + '</span>' + XBTN + '</label>';
     });
     ST.add.f.forEach(function (x) {
+      SHOP.other.push({ key: "f:+" + x[0], name: x[0], q: String(x[1] || "") });
       html += '<label class="li egen"><input type="checkbox" data-k="f:+' + esc(x[0]) + '"><span class="n">' + esc(x[0]) + '<span class="tag e">Egen</span></span><span class="q">' + esc(x[1]) + '</span>' + XBTN + '</label>';
     });
     html += addForm("f");
@@ -2047,7 +2052,8 @@ body.paged .top .hero.off { display: none; }
   $("#kp-copy").onclick = function () { psCopy($("#kp-copy"), kpText(), KPU.copied, KPU.fail); };
   kpDraw();
   /* appen hämtar krisplanen som PDF härifrån */
-  window.PS_GUIDE_API = { planPdf: function () { return psPdf(KPU.title, kpText().split("\n").slice(1).join("\n")); }, planTitle: KPU.title };
+  window.PS_GUIDE_API = { shop: function () { var c = {}; document.querySelectorAll("#food input[data-k]").forEach(function (i) { c[i.dataset.k] = i.checked; }); return { water: SHOP.water, food: SHOP.food, other: SHOP.other, checked: c, forText: ($("#o-for") || {}).textContent || "" }; },
+    planPdf: function () { return psPdf(KPU.title, kpText().split("\n").slice(1).join("\n")); }, planTitle: KPU.title };
   var SM = {"rows": {"hush": ["Ert hushåll", "Räknaren behöver veta hur många ni är och hur länge ni vill klara er. Allt annat i guiden räknas utifrån det.", "Fyll i hur många ni är i räknaren", "{f} personer, {d} dygn", "Inte ifyllt"], "test": ["Testet", "Tio frågor som visar var ni står idag. Gör det igen efter ett tag och se skillnaden.", "Gör testet, det tar två minuter", "{x} av 10 poäng", "Inte gjort än"], "food": ["Inköpslistan", "Maten och vattnet är grunden. Bocka av det ni har köpt i listan i steg 5.", "Köp det som saknas på inköpslistan", "{a} av {b} köpta", "Inget avbockat än"], "plan": ["Krisplanen", "Vem gör vad, var ni ses och vilka ni ringer. En plan som finns på papper gör att ingen behöver gissa när det händer.", "Fyll i familjens krisplan", "{a} av {b} fält ifyllda", "Inte påbörjad"], "weeks": ["Fyra veckor", "Planen delar upp allt i fyra veckor så att det inte blir för mycket på en gång.", "Gör nästa vecka i planen", "{a} av {b} klara", "Inte påbörjad"], "bags": ["Väskorna", "Väskan för att ta dig hem, väskan för att lämna hemmet och bilen. Siffran gäller den årstid du har valt.", "Packa väskorna", "{t}", "Inget packat än"], "drill": ["Övningen", "Det enda sättet att veta om allt fungerar är att prova. Du hittar alltid något som saknas.", "Gör en kväll utan ström", "{a} av {b} uppgifter", "Inte gjord än"]}, "levels": [["Nybörjare", "Du har tagit första steget. Börja med de tre sakerna nedan."], ["På väg", "Grunden finns. Fortsätt med det som saknas, en sak i taget."], ["Förberedd", "Ert hushåll klarar sig bättre än de flesta. Fyll på det sista."], ["Självgående", "Ni klarar er själva länge. Håll lagret vid liv och öva en gång om året."]], "lvl": "Din nivå", "nextlvl": "Nästa nivå vid {p} %", "top": "Klart", "next3": "Gör det här härnäst", "none": "Inget kvar. Gör övningen igen om ett år.", "go": "Gå till", "bagn": ["Get home bag", "Bug out bag", "Bilen"], "file": "min-beredskap.txt", "img": "min-beredskap.png", "shtxt": "Jag är på nivån {l} i guiden Börja preppa. Testa hur förberedd du är: https://prepperstock.se/guide/", "en": false, "info": "Förklaring", "cap": "Hur förberedd är du? Testa själv."};
 
   /* ===== i-knappar ===== */

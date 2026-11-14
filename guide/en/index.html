@@ -1440,8 +1440,8 @@ body.paged .top .hero.off { display: none; }
     { namn: "Quick cook pasta or noodles", info: "Cooks in 3 minutes", g: 500, pack: 500, enh: "packs", n: [355,71,12,1.5], t: "k" },
     { namn: "Rice", info: "Ideally instant rice", g: 400, pack: 1000, enh: "packs", n: [350,78,7,0.6], t: "k" },
     { namn: "Crackers or crispbread", info: "Keeps for months", g: 400, pack: 500, enh: "packs", n: [335,60,9,1.7], t: "k" },
-    { namn: "Canned beans or lentils", info: "15 oz (400 g) can", g: 720, pack: 240, enh: "cans", n: [110,16,7,0.5], t: "p" },
-    { namn: "Canned tuna", info: "About 5 oz (150 g) can", g: 330, pack: 110, enh: "cans", n: [110,0,25,1], t: "p" },
+    { namn: "Canned beans or lentils", info: "15 oz (400 g) can", g: 720, pack: 240, nw: 400, enh: "cans", n: [110,16,7,0.5], t: "p" },
+    { namn: "Canned tuna", info: "About 5 oz (150 g) can", g: 330, pack: 110, nw: 150, enh: "cans", n: [110,0,25,1], t: "p" },
     { namn: "Canned chili or stew", info: "About 18 oz (500 g) can", g: 1000, pack: 500, enh: "cans", n: [120,6,8,7], t: "p" },
     { namn: "Peanut butter", info: "Lots of energy and protein", g: 340, pack: 340, enh: "cans", n: [590,20,25,50], t: "f" },
     { namn: "Vegetable oil", info: "Fat and energy for cooking", g: 100, pack: 500, enh: "bottles of 0.5 L", n: [900,0,0,100], t: "f" },
@@ -1491,6 +1491,7 @@ body.paged .top .hero.off { display: none; }
     $(el).innerHTML = list.map(function (r) { return '<div class="row"><span>' + r[0] + '</span><b>' + r[1] + '</b></div>'; }).join("");
   }
 
+  var SHOP = { water: 0, food: [], other: [] };
   function calc() {
     var stdD = [3, 7, 14, 30].indexOf(D) > -1;
     document.querySelectorAll("#days button").forEach(function (b) { var d = parseInt(b.dataset.d, 10); b.setAttribute("aria-pressed", d ? d === D : !stdD); });
@@ -1504,6 +1505,7 @@ body.paged .top .hero.off { display: none; }
     vattenDag += djurVatten;
     var kcal = kcalDag * D, vatten = vattenDag * D, vatten2 = vatten + folk * 2 * D;
     S = { folk: folk, kcal: kcal, vatten: vatten, N: N, D: D };
+    SHOP = { water: folk ? vatten : 0, food: [], other: [] };
     $("#o-water").textContent = fmt(vatten) + " L";
     document.querySelectorAll(".v-w7").forEach(function (e) { e.textContent = fmt((vattenDag - djurVatten) * 7) + " L"; });
     $("#o-water-g").textContent = "water for drinking and food, about " + fmt(vatten * 0.264) + " US gallons";
@@ -1523,15 +1525,18 @@ body.paged .top .hero.off { display: none; }
     kvar.forEach(function (m) { mal += m.g * f * m.n[0] / 100; });
     if (folk) packs(kvar, f, mal).forEach(function (o) {
       var m = o.m, st = o.st;
+      SHOP.food.push({ key: "f:" + m.namn, name: m.namn, n: st, enh: m.enh, pc: m.nw || m.pack, dw: m.nw ? m.pack : 0, k100: m.n[0] });
       var gk = st * m.pack;
       sk += m.n[0] * gk / 100; sc += m.n[1] * gk / 100; sp += m.n[2] * gk / 100; sf += m.n[3] * gk / 100;
       html += '<label class="li"><input type="checkbox" data-k="f:' + m.namn + '"><span class="n">' + m.namn + '<span class="tag ' + m.t + '">' + TAG[m.t] + '</span><small>' + m.info + '</small></span><span class="q">' + st + ' <small>' + m.enh + '</small></span>' + XBTN + '</label>';
     });
     extra(D, N).forEach(function (x) {
       if (ST.r["f:" + x[0]]) return;
+      SHOP.other.push({ key: "f:" + x[0], name: x[0], q: String(x[2]) });
       html += '<label class="li"><input type="checkbox" data-k="f:' + x[0] + '"><span class="n">' + x[0] + '<span class="tag ' + x[3] + '">' + x[4] + '</span><small>' + x[1] + '</small></span><span class="q">' + x[2] + '</span>' + XBTN + '</label>';
     });
     ST.add.f.forEach(function (x) {
+      SHOP.other.push({ key: "f:+" + x[0], name: x[0], q: String(x[1] || "") });
       html += '<label class="li egen"><input type="checkbox" data-k="f:+' + esc(x[0]) + '"><span class="n">' + esc(x[0]) + '<span class="tag e">Egen</span></span><span class="q">' + esc(x[1]) + '</span>' + XBTN + '</label>';
     });
     html += addForm("f");
@@ -2048,7 +2053,8 @@ body.paged .top .hero.off { display: none; }
   $("#kp-copy").onclick = function () { psCopy($("#kp-copy"), kpText(), KPU.copied, KPU.fail); };
   kpDraw();
   /* appen hämtar krisplanen som PDF härifrån */
-  window.PS_GUIDE_API = { planPdf: function () { return psPdf(KPU.title, kpText().split("\n").slice(1).join("\n")); }, planTitle: KPU.title };
+  window.PS_GUIDE_API = { shop: function () { var c = {}; document.querySelectorAll("#food input[data-k]").forEach(function (i) { c[i.dataset.k] = i.checked; }); return { water: SHOP.water, food: SHOP.food, other: SHOP.other, checked: c, forText: ($("#o-for") || {}).textContent || "" }; },
+    planPdf: function () { return psPdf(KPU.title, kpText().split("\n").slice(1).join("\n")); }, planTitle: KPU.title };
   var SM = {"rows": {"hush": ["Your household", "The calculator needs to know how many you are and how long you want to manage. Everything else in the guide is based on that.", "Fill in how many you are in the calculator", "{f} people, {d} days", "Not filled in"], "test": ["The test", "Ten questions that show where you stand today. Take it again after a while and see the difference.", "Take the test, it takes two minutes", "{x} of 10 points", "Not taken yet"], "food": ["The shopping list", "Food and water are the foundation. Tick off what you have bought in the list in step 5.", "Buy what is missing on the shopping list", "{a} of {b} bought", "Nothing ticked yet"], "plan": ["The emergency plan", "Who does what, where you meet and who you call. A plan on paper means nobody has to guess when it happens.", "Fill in your family emergency plan", "{a} of {b} fields filled in", "Not started"], "weeks": ["Four weeks", "The plan splits everything into four weeks so it is never too much at once.", "Do the next week in the plan", "{a} of {b} done", "Not started"], "bags": ["The bags", "The bag to get home, the bag to leave home and the car. The number is for the season you have chosen.", "Pack the bags", "{t}", "Nothing packed yet"], "drill": ["The exercise", "The only way to know that everything works is to try. You always find something missing.", "Do an evening without power", "{a} of {b} tasks", "Not done yet"]}, "levels": [["Beginner", "You have taken the first step. Start with the three things below."], ["On the way", "The basics are there. Keep going with what is missing, one thing at a time."], ["Prepared", "Your household will manage better than most. Fill in the last gaps."], ["Self reliant", "You can manage on your own for a long time. Keep your supplies fresh and practise once a year."]], "lvl": "Your level", "nextlvl": "Next level at {p} %", "top": "Done", "next3": "Do this next", "none": "Nothing left. Do the exercise again in a year.", "go": "Go to", "bagn": ["Get home bag", "Bug out bag", "The car"], "file": "my-preparedness.txt", "img": "my-preparedness.png", "shtxt": "I am at level {l} in the Start prepping guide. Test how prepared you are: https://prepperstock.se/guide/en/", "en": true, "info": "Explanation", "cap": "How prepared are you? Find out."};
 
   /* ===== i-knappar ===== */
